@@ -4,9 +4,28 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "chart.js": "2.7.0",
+    "datatables.net-bs4": "1.10.16",
+    "font-awesome": "4.7.0",
+    "jquery": "^3.2.1",
+    "jquery.easing": "^1.4.1"
+  },
+  "devDependencies": {
+    "browser-sync": "2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "3.9.0",
+    "gulp-header": "1.8.9",
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "3.0.0"
+  },
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.4.*",
+      "laravel/framework": "5.*",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {

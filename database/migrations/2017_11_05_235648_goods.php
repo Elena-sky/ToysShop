@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Coments extends Migration
+class Goods extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class Coments extends Migration
      */
     public function up()
     {
-        Schema::create('coments', function (Blueprint $table) {
+        Schema::create('goods', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('good_id');
-            $table->timestamp('date');
-            $table->integer('user_id');
-            $table->string('user_name');
-            $table->integer('stars');
-            $table->boolean('is_recomend');
+            $table->string('name');
+            $table->integer('code');
+            $table->text('made');
+            $table->integer('category_id');
+            $table->boolean('is_avaliable');
+            $table->boolean('is_new');
             $table->text('description');
+            $table->float('price');
+            $table->boolean('displaing');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class Coments extends Migration
      */
     public function down()
     {
-        Schema::drop('coments');
+        Schema::drop('goods');
     }
 }
