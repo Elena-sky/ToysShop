@@ -18,17 +18,18 @@
                     </thead>
                     <tbody>
                     @if(!empty($items))
-                        @foreach($items as $item)
-                            <tr>
+
+                        @foreach($items as $row)
+                            <tr data-item-id="{{$row->id}}">
                                 <td class="col-sm-8 col-md-6">
                                     <div class="media">
-                                        <a class="thumbnail pull-left" href="#"> <img class="media-object"
-                                                                                      src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
-                                                                                      style="width: 72px; height: 72px;">
-                                        </a>
+                                        {{--<a class="thumbnail pull-left" href="#"> <img class="media-object"--}}
+                                        {{--src="{{ asset("/uploads/$row->image") }}"--}}
+                                        {{--style="width: 72px; height: 72px;">--}}
+                                        {{--</a>--}}
                                         <div class="media-body">
-                                            <h4 class="media-heading"><a href="#">{{$item->name}}</a></h4>
-                                            <h5 class="media-heading"> Производитель: <a href="#">{{$item->made}}</a>
+                                            <h4 class="media-heading"><a href="#">{{$row->name}}</a></h4>
+                                            <h5 class="media-heading"> Производитель: <a href="#">{{$row->made}}</a>
                                             </h5>
                                             <span>Status: </span><span
                                                     class="text-success"><strong>In Stock</strong></span>
@@ -36,43 +37,39 @@
                                     </div>
                                 </td>
                                 <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+
+                                    <input type="number" class="form-control itemCount" value="{{$row->qty}}">
+
                                 </td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>{{$row->price}} грн</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>total</strong></td>
                                 <td class="col-sm-1 col-md-1">
-                                    <a href="{{action('CartController@actionDelete',['id' => $item->id])}}">
-                                        <button type="button" class="btn btn-danger">
-                                            <span class="glyphicon glyphicon-remove"></span> Remove
-                                        </button>
-                                    </a></td>
+
+                                    <button type="button" class="btn btn-danger ajax-btn-remove"
+                                            data-row-id="{{$row->id}}">
+                                        <span>Удалить</span>
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <span>Пусто пусто</span>
+                            <span><h1>Корзина пустая</h1></span>
                         </tr>
-                    @endif;
-                    <tr>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
-                    </tr>
-                    <tr>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-                    </tr>
+                    @endif
+                    {{--<tr>--}}
+                    {{--<td>  </td>--}}
+                    {{--<td>  </td>--}}
+                    {{--<td>  </td>--}}
+                    {{--<td><h5>Subtotal</h5></td>--}}
+                    {{--<td class="text-right"><h5><strong>{{Cart::subtotal()}} грн</strong></h5></td>--}}
+                    {{--</tr>--}}
                     <tr>
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                        <td class="text-right"><h3><strong>{{Cart::total()}} грн</strong></h3></td>
                     </tr>
                     <tr>
                         <td>  </td>

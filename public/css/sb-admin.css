@@ -502,4 +502,13 @@ footer.sticky-footer {
     body.sidenav-toggled footer.sticky-footer {
         width: calc(100% - 55px);
     }
+
+    .max-sunbol {
+        white-space: normal; /* Обычный перенос текста */
+        width: 20%
+    }
+
+    .max-sunbol:hover {
+        background: #f0f0f0; /* Цвет фона */
+    }
 }

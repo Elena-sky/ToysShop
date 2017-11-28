@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Heroic Features - Start Bootstrap Template</title>
 
@@ -21,6 +21,7 @@
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
     <link href="/css/shop-php.css" rel="stylesheet">
+    <script src="/js/script.js"></script>
 
 
 </head>
@@ -44,7 +45,6 @@
                     <div></div>
                 @endforeach;
 
-
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home
                         <span class="sr-only">(current)</span>
@@ -54,14 +54,14 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/cart">
-                        <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
-                        </button>
+                    <a class="nav-link" href="/cart">(
+                        <span class="count"> {{Cart::instance('shoppingCart')->count()}}</span>)
+                        Корзина -
+                        <span class="badge badge-warning total">{{Cart::instance('shoppingCart')->total()}} грн</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Войти</a>
+                <li class="nav-item" style="display: -webkit-box;">
+                    <a class="nav-link" href="/login">Войти</a> или <a class="nav-link" href="/register">Зарегистрироватся</a>
                 </li>
             </ul>
         </div>

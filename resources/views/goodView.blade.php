@@ -5,10 +5,11 @@
 
     <div class="card">
         <div class="container-fliud">
+
             <div class="wrapper row">
                 <div class="preview col-md-6">
 
-                    <img class="goodImg" src="{{ asset("/images/$good->image") }}">
+                    <img class="goodImg" src="{{ asset("/uploads/$good->image") }}">
 
 
                 </div>
@@ -29,12 +30,13 @@
                     </div>
 
                     <div>
-                        <div class="price box"><h4>Цена: <span>$180</span> грн</h4></div>
+                        <div class="price box"><h4>Цена: <span class="lead">{{$good->price}} грн</span>
+                                грн</h4></div>
                         <div class="action box">
-                            <a href="{{action('CartController@actionAdd',['id' => $good->id])}}">
-                                <button class="buttonBuy" style=""><span>Купить </span>
+                            <div class="action">
+                                <button class="btn-warning ajax-btn buttonBuy box" data-good-id="{{ $good->id}}">
+                                    <span>Купить </span>
                                 </button>
-                            </a>
                         </div>
                     </div>
                     <div>
@@ -58,7 +60,7 @@
                                     <li>На склад "Новой Почты" по тарифам оператора</li>
                                     <li>На склад "Укрпочты" по тарифам оператора</li>
                                 </ul>
-                                .</p>
+                                </p>
                             </div>
                             <div id="menu2" class="tab-pane fade">
                                 <h3>Menu 2</h3>
@@ -75,7 +77,6 @@
 
                 </div>
             </div>
-
 
         </div>
 

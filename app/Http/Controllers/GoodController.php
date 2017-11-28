@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
-
     public function goodView($id)
     {
         $good = Goods::find($id);
