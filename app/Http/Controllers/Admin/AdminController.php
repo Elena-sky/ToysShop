@@ -6,6 +6,7 @@ use App\Categories;
 use App\Goods;
 use App\Http\Controllers\Controller;
 use App\ImageUploader;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +21,7 @@ class AdminController extends Controller
 
     public function adminPageView()
     {
-        //dd('It work!');
         return view('admin.index');
-
     }
 
 
@@ -139,6 +138,31 @@ class AdminController extends Controller
         $goodDelete = Goods::find($id);
         $goodDelete->delete();
         return \redirect(route('productView'));
+    }
+
+    //Управление пользователями
+    public function viewUsersList()
+    {
+        $users = User::all();
+        return view('admin.usersView', ['users' => $users]);
+    }
+
+    //View page редактирование пользователя
+    public function viewUserUpdate($id)
+    {
+        $user = User::find($id);
+
+        return view('admin.userUpdate', ['user' => $user]);
+    }
+
+    // Action сохранить редактироование пользователя
+    public function actionSaveUserUpdate()
+    {
+        $data = $_POST;
+        $userData = User::find($data['id']);
+        $userData->update($data);
+
+        return \redirect(route('viewUsers'));
     }
 
 

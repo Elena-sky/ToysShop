@@ -5,6 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {{--user--}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,15 +27,26 @@
     <link href="/css/shop-php.css" rel="stylesheet">
     <script src="/js/script.js"></script>
 
+    {{--user--}}
+    {{--<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">--}}
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
+
 
 </head>
 
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="position: fixed;">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <!-- Branding Image -->
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -60,10 +75,44 @@
                         <span class="badge badge-warning total">{{Cart::instance('shoppingCart')->total()}} грн</span>
                     </a>
                 </li>
-                <li class="nav-item" style="display: -webkit-box;">
-                    <a class="nav-link" href="/login">Войти</a> или <a class="nav-link" href="/register">Зарегистрироватся</a>
-                </li>
+
             </ul>
+
+            <ul class="nav navbar-nav ml-auto">
+
+                @if (Auth::guest())
+                    <li class="nav-item" style="display: -webkit-box;">
+                        <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                    </li>
+                    <li class="nav-item" style="display: -webkit-box;">
+                        <a class="nav-link" href="{{ route('register') }}">Зарегистрироватся</a>
+                    </li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">
+                            {{ Auth::user()->name }}
+                            {{--<span class="caret"></span>--}}
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Выйти
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+
         </div>
 
         <style type="text/css">
@@ -80,6 +129,65 @@
 
             .dropdown.open {
                 display: inherit;
+            }
+
+            .panel-profile > .row {
+                padding-bottom: 30px;
+            }
+
+            .profile-item {
+                position: relative;
+                padding: 0 0 0 70px;
+                text-transform: none;
+                display: block;
+            }
+
+            .profile-item > a {
+                display: block;
+                overflow: hidden;
+                text-decoration: none;
+                font-size: 14pt;
+            }
+
+            .profile-item > a:first-child:before {
+                font-family: "FontAwesome";
+                display: inline-block;
+                font-size: 55px;
+                line-height: 18px;
+                padding: 20px 0 0 0px;
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                left: 0;
+            }
+
+            .profile-item-user > a:first-child:before {
+                content: "\f07a";
+            }
+
+            .profile-item-orders > a:first-child:before {
+                content: "\f022";
+            }
+
+            .profile-item-pwd > a:first-child:before {
+                content: "\f023";
+            }
+
+            .profile-item-pwd > a:first-child:before {
+                content: "\f023";
+                padding: 20px 0 0 10px;
+            }
+
+            .profile-item-star > a:first-child:before {
+                content: "\f006";
+            }
+
+            .profile-item-eye > a:first-child:before {
+                content: "\f06e";
+            }
+
+            .block {
+                display: block;
             }
         </style>
 

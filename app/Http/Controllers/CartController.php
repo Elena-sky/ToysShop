@@ -17,7 +17,7 @@ class CartController extends Controller
 {
     public function cartView(Request $request)
     {
-        if (Auth::check()) {
+        if (Auth::check()) { //проверка на пользователя
             $userName = Auth::id();
             Cart::restore($userName . '-shoppingCart');
         }
@@ -70,8 +70,8 @@ class CartController extends Controller
     {
         $data = $_POST;
         $result = false;
-        if (Auth::check()) {
-            $userName = Auth::id();
+        if (Auth::check()) { //проверка на пользователя
+            $userName = Auth::id(); //
             Cart::restore($userName . '-shoppingCart');
         }
         $goodsData = Cart::instance('shoppingCart')->content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
@@ -108,9 +108,7 @@ class CartController extends Controller
 
                     if (!is_null($rowId)) { // если не пустой $rowId
                         $result = Cart::remove($rowId); // удаляем
-                        //  Cart::store($delete);
                     }
-                    //    return ['id' => $rowId];
                     break;
 
                 case 'update':

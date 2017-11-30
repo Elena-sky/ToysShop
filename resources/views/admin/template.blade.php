@@ -56,6 +56,13 @@
                 </a>
             </li>
 
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
+                <a class="nav-link" href="{{route('viewUsers')}}">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">Управление пользователями</span>
+                </a>
+            </li>
+
 
             {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">--}}
             {{--<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"--}}
