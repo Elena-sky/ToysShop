@@ -32,7 +32,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <script src="{{ asset('js/app.js') }}"></script>
 
 
@@ -60,25 +60,22 @@
                     <div></div>
                 @endforeach;
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart">(
-                        <span class="count"> {{Cart::instance('shoppingCart')->count()}}</span>)
+                    <a class="nav-link" href="/cart">(<span
+                                class="count"> {{\App\Http\Controllers\CartController::kostilMeth('count')}}</span>)
                         Корзина -
-                        <span class="badge badge-warning total">{{Cart::instance('shoppingCart')->total()}} грн</span>
+                        <span class="badge badge-warning total">{{\App\Http\Controllers\CartController::kostilMeth('total')}}
+                            грн</span>
                     </a>
+                    {{--<a class="nav-link" href="/cart">(
+                        <span class="count"> {{Cart::count()}}</span>)
+                        Корзина -
+                        <span class="badge badge-warning total">{{Cart::total()}} грн</span>
+                    </a>--}}
                 </li>
-
-            </ul>
-
-            <ul class="nav navbar-nav ml-auto">
 
                 @if (Auth::guest())
                     <li class="nav-item" style="display: -webkit-box;">
@@ -88,14 +85,22 @@
                         <a class="nav-link" href="{{ route('register') }}">Зарегистрироватся</a>
                     </li>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false">
-                            {{ Auth::user()->name }}
-                            {{--<span class="caret"></span>--}}
+                    <li class="nav-item dropdown" style="display: -webkit-box; position: relative;">
+
+                        <a href="#" class=" nav-link dropdown-toggle" data-toggle="dropdown"
+                           aria-expanded="false">{{ Auth::user()->name }}
+                            <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('home') }}">Профиль</a>
+                            </li>
+                            <li>
+                                <a href="#">Что то еще</a>
+                            </li>
+                            <li class="divider"></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -110,8 +115,40 @@
                             </li>
                         </ul>
                     </li>
+
+
+
+
+                    {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"--}}
+                    {{--aria-expanded="false">--}}
+                    {{--{{ Auth::user()->name }}--}}
+                    {{--<span class="caret"></span>--}}
+                    {{--</a>--}}
+
+                    {{--<ul class="dropdown-menu" role="menu">--}}
+                    {{--<li>--}}
+                    {{--<a href="{{ route('logout') }}"--}}
+                    {{--onclick="event.preventDefault();--}}
+                    {{--document.getElementById('logout-form').submit();">--}}
+                    {{--Выйти--}}
+                    {{--</a>--}}
+
+                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST"--}}
+                    {{--style="display: none;">--}}
+                    {{--{{ csrf_field() }}--}}
+                    {{--</form>--}}
+                    {{--</li>--}}
+                    {{--</ul>--}}
+                    {{--</li>--}}
                 @endif
+
+
             </ul>
+
+            {{--<ul class="nav navbar-nav ml-auto">--}}
+
+            {{--</ul>--}}
 
         </div>
 
