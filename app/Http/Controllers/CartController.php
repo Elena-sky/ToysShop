@@ -26,7 +26,6 @@ class CartController extends Controller
         $cartItems = Cart::content();  //﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
         if (empty($cartItems)) {
             Cart::restore($userName . '-shoppingCart');
-            //  $cartItems = Cart::/*instance('shoppingCart')->*/content();
         }
         return view('cart', ['items' => $cartItems]);
     }
