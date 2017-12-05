@@ -14,5 +14,8 @@ class Goods extends Model
         return $this->belongsTo('App\Categories', 'category_id');
     }
 
-
+    public function goodImg()
+    {
+        return $this->hasMany('App\GoodsImages', 'product_id');
+    }
 }

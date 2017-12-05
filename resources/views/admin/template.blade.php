@@ -57,21 +57,21 @@
             </li>
 
 
-            {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">--}}
-            {{--<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"--}}
-            {{--data-parent="#exampleAccordion">--}}
-            {{--<i class="fa fa-fw fa-wrench"></i>--}}
-            {{--<span class="nav-link-text">Управление товарами</span>--}}
-            {{--</a>--}}
-            {{--<ul class="sidenav-second-level collapse" id="collapseComponents">--}}
-            {{--<li>--}}
-            {{--<a href="{{route('adminAddProductView')}}">Добавить товар</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-            {{--<a href="cards.html">Cards</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Управление содержимым сайта</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="{{route('viewSliders')}}">Управление слайдерами</a>
+                    </li>
+                    <li>
+                        <a href="#">Что то еще</a>
+                    </li>
+                </ul>
+            </li>
 
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">

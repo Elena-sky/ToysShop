@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Goods;
+use App\Sliders;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -17,5 +18,13 @@ class MainController extends BaseController
     {
         $goods = Categories::find($id)->goods;
         return view('shop', ['goods' => $goods]);
+    }
+
+    public function index()
+    {
+        $categories = \App\Categories::all();
+        $slides = Sliders::where('displaing', 1)
+            ->get();
+        return view('index', compact('categories', 'slides'));
     }
 }

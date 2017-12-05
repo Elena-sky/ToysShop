@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Categories;
 use App\Goods;
+use App\GoodsImages;
 use App\Http\Controllers\Controller;
 use App\ImageUploader;
+use App\Sliders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -40,7 +42,6 @@ class AdminController extends Controller
     {
         $category = Categories::find($id);
 
-        // добавть сюда
         return view('admin.categoryUpdate', ['category' => $category]);
     }
 
@@ -101,10 +102,16 @@ class AdminController extends Controller
     public function actionAddNewProduct(Request $request)
     {
         $fileName = self::uploader($request);
-        $data = ['image' => $fileName];
-        $data += Input::except(['_method', '_token']);
+        $data = Input::except(['_method', '_token']);
 
-        Goods::create($data);
+        $good = Goods::create($data);
+        $productId = $good->id;
+
+        foreach ($fileName as $onefile) {
+            $dataImages = ['filename' => $onefile, 'product_id' => $productId];
+
+            GoodsImages::create($dataImages);
+        }
 
         return \redirect(route('addNewProductPage'));
     }
@@ -115,6 +122,8 @@ class AdminController extends Controller
         $category = Categories::getCategories();
 
         $good = Goods::find($id);
+        $images = $good->goodImg;
+        $imagesName = array_pluck($images, 'filename');
 
         return view('admin.productUpdate', ['good' => $good], ['category' => $category]);
     }
@@ -139,6 +148,64 @@ class AdminController extends Controller
         $goodDelete = Goods::find($id);
         $goodDelete->delete();
         return \redirect(route('productView'));
+    }
+
+
+    //Управление содержимым сайта
+
+    // View Управление слайдерами
+    public function viewAllSliders()
+    {
+        $sliders = Sliders::all();
+
+        return view('admin.slideView', ['sliders' => $sliders]);
+    }
+
+    //View Добавление нового слайдера
+    public function viewSliderAddPage()
+    {
+
+        return view('admin.slideAdd');
+    }
+
+    // Action Добавление нового слайдера
+    public function actionSaveNewSlide(Request $request)
+    {
+        $path = '/sliders';  // Папка для загрузки слайдов
+        $fileName = self::uploader($request, $path);
+
+        foreach ($fileName as $onefile) {
+            $dataImages = ['filename' => $onefile];
+
+            Sliders::create($dataImages);
+        }
+
+        return \redirect(route('viewSlideAdd'));
+    }
+
+    // View редактирование слайда
+    public function viewSlideUpdatePage($id)
+    {
+        $slide = Sliders::find($id);
+
+        return view('admin.slideUpdate', ['slide' => $slide]);
+    }
+
+    // Action сохранить редактироование
+    public function actionSlideSaveUpdate()
+    {
+        $data = $_POST;
+        $slideData = Sliders::find($data['id']);
+        $slideData->update($data);
+        return \redirect(route('viewSliders'));
+    }
+
+    // Action удалить слайд
+    public function actionDeleteSlide($id)
+    {
+        $slideDelete = Sliders::find($id);
+        $slideDelete->delete();
+        return \redirect(route('viewSliders'));
     }
 
 

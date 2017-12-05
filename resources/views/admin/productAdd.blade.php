@@ -65,7 +65,7 @@
                     <div class="form-group ">
                         {!! Form::label('productImage', 'Изображение:') !!}
                         <div class="col-sm-10">
-                            {!! Form::file('image') !!}
+                            {!! Form::file('images[]', ['multiple' => true])!!}
                         </div>
                     </div>
 

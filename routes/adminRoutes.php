@@ -26,6 +26,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::post('fileUpload', ['as' => 'fileUpload', 'uses' => 'HomeController@fileUpload']);
     });
+
+    Route::get('/sliders', 'AdminController@viewAllSliders')->name('viewSliders'); //View обзор списка слайдеров
+    Route::get('/sliders/add', 'AdminController@viewSliderAddPage')->name('viewSlideAdd'); //View добавление нового слайдера
+    Route::post('/sliders/add/save', 'AdminController@actionSaveNewSlide')->name('actionNewSlide'); // Action добавление нового слайдера
+    Route::get('/sliders/update/{id}', 'AdminController@viewSlideUpdatePage')->name('viewSlideUpdate'); //View редактирование слайда
+    Route::post('/sliders/update/save', 'AdminController@actionSlideSaveUpdate')->name('actionSlideSave'); // Action сохранить редактироование
+    Route::get('/sliders/delete/{id}', 'AdminController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
+
     //// Управление товарами:
 //'admin/product/create' => 'adminProduct/create',
 //    'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',

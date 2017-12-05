@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index', ['categories' => \App\Categories::all()]);
-});
+Route::get('/', 'MainController@index');
+/*Route::get('/', function () {
+    return view('index', ['categories' => \App\Categories::all(), 'slides' => \App\Sliders::all()]);
+});*/
 
 Route::get('/about', function () {
     return view('about');
