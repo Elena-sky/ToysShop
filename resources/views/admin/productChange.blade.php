@@ -45,6 +45,7 @@
                                 <th>В наличии</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
 
                             </tr>
                             </thead>
@@ -61,6 +62,11 @@
                                     <td>{{$good->is_new}}</td>
                                     <td>{{$good->displaing}}</td>
                                     <td>{{$good->is_avaliable}}</td>
+                                    <td>
+                                        <a href="{{route('goodView', [$good->id])}}">
+                                            <button type="button" class="btn btn-info">Обзор</button>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="{{route('productUpdateView', [$good->id])}}">
                                             <button type="button" class="btn btn-warning">Изменить</button>

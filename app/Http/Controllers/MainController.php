@@ -17,7 +17,9 @@ class MainController extends BaseController
     public function categoryAction($id)
     {
         $goods = Categories::find($id)->goods;
-        return view('shop', ['goods' => $goods]);
+        $images = Goods::find($id)->goodImg;
+
+        return view('shop', ['goods' => $goods, $images => 'images']);
     }
 
     public function index()
