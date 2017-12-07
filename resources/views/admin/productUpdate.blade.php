@@ -28,49 +28,61 @@
 
                     <div class="form-group">
                         {!! Form::label('productName', 'Название:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::text('name', $good->name, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group ">
                         {!! Form::label('productCode', 'Код:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::text('code', $good->code, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group ">
                         {!! Form::label('productMade', 'Производитель:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::text('made', $good->made, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group ">
                         {!! Form::label('productCategory', ' Категория товара:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::select('category_id', $category, $good->category_id, ['class'=> 'form-control'])!!}
                         </div>
                     </div>
 
                     <div class="form-group ">
                         {!! Form::label('productPrice', 'Цена:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::text('price', $good->price, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group ">
-                        {!! Form::label('productImage', 'Изображение:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::file('image') !!}
+                        {!! Form::label('currentImage', 'Текущие изобращения') !!}
+                        <div class="col-sm-12">
+                            @foreach($images as $image )
+                                <div class="col-sm-4">
+                                    <img src="{{ asset("/uploads/$image->filename") }}" width="200px"
+                                         alt="{{$image->id}}">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        {!! Form::label('productImage', 'Новое изображение:') !!}
+                        <div class="col-sm-12">
+                            {!! Form::file('images[]', ['multiple' => true])!!}
                         </div>
                     </div>
 
                     <div class="form-group ">
                         {!! Form::label('productNew', 'Значок Новинка:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::radio('is_new', 1) !!} Отобразить как новинку
                             {!! Form::radio('is_new', 0) !!} Отменить
                         </div>
@@ -78,7 +90,7 @@
 
                     <div class="form-group ">
                         {!! Form::label('productA', 'Наличие товара:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::radio('is_avaliable', 1) !!} В наличии
                             {!! Form::radio('is_avaliable', 0) !!} Нет в наличии
                         </div>
@@ -86,7 +98,7 @@
 
                     <div class="form-group ">
                         {!! Form::label('productD', 'Отображение на странице:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::radio('displaing', 1) !!} Отображать
                             {!! Form::radio('displaing', 0) !!} Не отображать
                         </div>
@@ -94,13 +106,13 @@
 
                     <div class="form-group ">
                         {!! Form::label('productDescription', 'Описание:') !!}
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             {!! Form::text('description', $good->description, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group ">
-                        <div class="col-sm-offset-2 col-sm-10 btn btn-success">
+                        <div class="col-sm-offset-2 col-sm-2 btn btn-success">
                             {!! Form::submit('Сохранить изминения') !!}
                         </div>
                     </div>

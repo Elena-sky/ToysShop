@@ -69,8 +69,6 @@ class AdminController extends Controller
     }
 
     // Добавление новой категории
-
-
     public function actionAdminAddCategory()
     {
         $data = $_POST;
@@ -82,10 +80,10 @@ class AdminController extends Controller
 
 
     // Управление товарами
-
     public function actionProductView()
     {
-        $goods = Goods::all();
+        // $goods = Goods::all();
+        $goods = Goods::query()->paginate(6);
 
         return view('admin.productChange', ['goods' => $goods]);
     }
@@ -121,23 +119,40 @@ class AdminController extends Controller
     {
         $category = Categories::getCategories();
 
+
         $good = Goods::find($id);
-        $images = $good->goodImg;
+        $images = Goods::find($id)->goodImg;
+
+//        $images = $good->goodImg;
         $imagesName = array_pluck($images, 'filename');
 
-        return view('admin.productUpdate', ['good' => $good], ['category' => $category]);
+        return view('admin.productUpdate', ['good' => $good], ['category' => $category, 'images' => $images]);
     }
 
     // Action запись изменений товара в BD
     public function actionProductUpdateSave(Request $request)
     {
-        $fileName = self::uploader($request);
-        $data = ['image' => $fileName];
-        $data += Input::except(['_method', '_token']);
+        //на 1 картинку
+//        $fileName = self::uploader($request);
+//        $data = ['image' => $fileName];
+//        $data += Input::except(['_method', '_token']);
+//
+//        $goodData = Goods::find($data['id']);
+//        $goodData->update($data);
 
+
+        $fileName = self::uploader($request);
+
+        $data = Input::except(['_method', '_token']);
         $goodData = Goods::find($data['id']);
         $goodData->update($data);
-        // dd($goodData);
+
+        $productId = $goodData->id;
+
+        foreach ($fileName as $onefile) {
+            $dataImages = ['filename' => $onefile, 'product_id' => $productId];
+            GoodsImages::create($dataImages);
+        }
 
         return \redirect(route('productView'));
     }
@@ -146,7 +161,9 @@ class AdminController extends Controller
     public function actionProductDelete($id)
     {
         $goodDelete = Goods::find($id);
+        $goodDelete->goodImg()->delete();
         $goodDelete->delete();
+
         return \redirect(route('productView'));
     }
 

@@ -9,7 +9,8 @@
             @foreach($goods as $good)
                 <div class="item col-xs-4 col-lg-4">
                     <a href="{{route('goodView',['id' => $good->id])}}">
-                        <div class="goodImg" style="background-image: url({{ asset("/uploads/$good->image") }})">
+                        <div class="goodImg"
+                             style="background-image: url({{ asset("/uploads/".$good->goodImg[0]->filename) }})">
                         </div>
 
                         <div class="description">
@@ -26,7 +27,8 @@
                     </div>
                 </div>
 
-            @endforeach;
+            @endforeach
+            {{$goods->links()}}
         </div>
     </div>
     <!-- /.container -->

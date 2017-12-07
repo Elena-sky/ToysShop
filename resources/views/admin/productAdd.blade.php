@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="form-group ">
-                        <div class="col-sm-offset-2 col-sm-10 btn btn-success">
+                        <div class="col-sm-offset-2 btn btn-success">
                             {!! Form::submit('Добавить товар') !!}
                         </div>
                     </div>

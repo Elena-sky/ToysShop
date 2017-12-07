@@ -23,6 +23,10 @@
     <link href="/css/shop-php.css" rel="stylesheet">
     <script src="/js/script.js"></script>
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
 </head>
 
@@ -162,7 +166,39 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <div class="row" style="padding:20px 0px;padding-bottom: 25px; color: white">
+            <section class="footer-block col-xs-12 col-sm-3">
+                <div>
+                    <h4>КОНТАКТЫ</h4>
+                    <ul class="toggle-footer">
+                        <li><span>Пн-пт. 8:00-20:00, <br>cб-вс 9:00-17:00</span></li>
+                        <li><span>+38 (095) 0-333-333</span></li>
+                        <li><span>+38 (093) 0-333-333</span></li>
+                        <li><span>+38 (097) 0-333-333</span></li>
+                        <li><span>office@moreigrushek.ua</span></li>
+
+                    </ul>
+                </div>
+
+            </section>
+            <section class="footer-block col-xs-12 col-sm-3"></section>
+            <section class="footer-block col-xs-12 col-sm-3">
+                <div>
+                    <h4>МЫ В СОЦСЕТЯХ</h4>
+                    <ul class="toggle-footer clearfix">
+                        <li><a class="btn btn-social-icon btn-lg btn-facebook">
+                                <span class="fa fa-vk"></span>
+                            </a></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="footer-block col-xs-12 col-sm-3"></section>
+        </div>
+
+        <div style="text-align:center; !important"><p class="m-0 text-center text-white">Copyright &copy; Your Website
+                2017</p>
+        </div>
     </div>
     <!-- /.container -->
 </footer>

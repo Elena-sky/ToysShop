@@ -84,7 +84,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#home">Описание: </a></li>
                                 <li><a data-toggle="tab" href="#menu1">Доставка: </a></li>
-                                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                                <li><a data-toggle="tab" href="#menu2">Отзывы:</a></li>
                                 <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
                             </ul>
 
@@ -104,10 +104,10 @@
                                     </p>
                                 </div>
                                 <div id="menu2" class="tab-pane fade">
-                                    <h3>Menu 2</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque
-                                        laudantium, totam rem aperiam.</p>
+                                    <h3>Отзывы:</h3>
+                                    <p>Нет отзывов.</p>
+                                    <button type="button" class="btn btn-outline-info">Добавить отзыв</button>
+
                                 </div>
                                 <div id="menu3" class="tab-pane fade">
                                     <h3>Menu 3</h3>

@@ -16,10 +16,13 @@ class MainController extends BaseController
 
     public function categoryAction($id)
     {
-        $goods = Categories::find($id)->goods;
-        $images = Goods::find($id)->goodImg;
+        //$goods = Categories::find($id)->goods->paginate(5);
+        $goods = Goods::query()->where('category_id', $id)->paginate(6);
 
-        return view('shop', ['goods' => $goods, $images => 'images']);
+
+        //   $images = Goods::find($id)->goodImg;
+
+        return view('shop', ['goods' => $goods]);
     }
 
     public function index()
