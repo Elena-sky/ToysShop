@@ -66,7 +66,7 @@
                         </div>
 
                         <span class="review-no">Артикл: {{$good->code}}</span> <br/>
-                        <span class="review-no">Наличие: {{$good->is_avaliable}}</span>
+                        <span class="review-no">Наличие: {{ ($good->is_avaliable)? 'В наличии' : 'Нет в наличии'}}</span>
 
                     </div>
 

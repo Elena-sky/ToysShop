@@ -24,11 +24,13 @@
 
                     <div class="container ">
                         <a href="{{route('addNewProductPage')}}">
-                            <button type="button" class="btn btn-primary">Добавить новый товар</button>
+                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
+                                Добавить новый товар
+                            </button>
                         </a>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
 
                         <table class="table table-striped">
                             <thead>
@@ -58,23 +60,29 @@
                                     <td>{{$good->code}}</td>
                                     {{--<td>{{$good->made}}</td>--}}
                                     {{--<td>{{$good->description}}</td>--}}
-                                    <td>{{$good->price}}</td>
-                                    <td>{{$good->is_new}}</td>
-                                    <td>{{$good->displaing}}</td>
-                                    <td>{{$good->is_avaliable}}</td>
+                                    <td>{{$good->price.' грн'}}</td>
+                                    <td>{{($good->is_new)? 'Да':'Нет'}}</td>
+                                    <td>{{($good->displaing)? 'Да':'Нет'}}</td>
+                                    <td>{{($good->is_avaliable)? 'Да':'Нет'}}</td>
                                     <td>
                                         <a href="{{route('goodView', [$good->id])}}">
-                                            <button type="button" class="btn btn-info">Обзор</button>
+                                            <button type="button" class="btn btn-info"><span
+                                                        class="glyphicon glyphicon-eye-open"></span> Обзор
+                                            </button>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="{{route('productUpdateView', [$good->id])}}">
-                                            <button type="button" class="btn btn-warning">Изменить</button>
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="{{route('actionDeleteProduct', [$good->id])}}">
-                                            <button type="button" class="btn btn-danger">Удалить</button>
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-remove"></span> Удалить
+                                            </button>
                                         </a>
                                     </td>
 

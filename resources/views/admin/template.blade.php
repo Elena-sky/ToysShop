@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Админ - Мир Игрушек</title>
     <!-- Bootstrap core CSS-->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Page level plugin CSS-->
@@ -26,7 +26,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">Мир Игрушек</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -49,13 +49,13 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                 <a class="nav-link" href="{{route('productView')}}">
                     <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Управление товарами</span>
+                    <span class="nav-link-text"><span class="glyphicon glyphicon-barcode"></span> Товары</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
                 <a class="nav-link" href="{{route('viewCategory')}}">
                     <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Управление категориями</span>
+                    <span class="nav-link-text"><span class="glyphicon glyphicon-folder-open"></span> Категории</span>
                 </a>
             </li>
 
@@ -64,11 +64,12 @@
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
                    data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">Управление содержимым сайта</span>
+                    <span class="nav-link-text">Содержимое сайта</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="{{route('viewSliders')}}">Управление слайдерами</a>
+                        <a href="{{route('viewSliders')}}"><span class="glyphicon glyphicon-picture"></span> Управление
+                            слайдерами</a>
                     </li>
                     <li>
                         <a href="#">Что то еще</a>

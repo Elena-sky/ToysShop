@@ -21,18 +21,20 @@
 
                     <div class="container ">
                         <a href="{{route('viewSlideAdd')}}">
-                            <button type="button" class="btn btn-primary">Добавить новый слайд</button>
+                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
+                                Добавить новый слайд
+                            </button>
                         </a>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Картинка</th>
                                 <th>Имя файла</th>
-                                <th>Статус</th>
+                                <th>Отображать</th>
                                 <th></th>
                                 <th></th>
 
@@ -44,16 +46,20 @@
                                     <td>{{$slide->id}}</td>
                                     <td><img src="{{ asset("/uploads/sliders/$slide->filename") }}" width="189"></td>
                                     <td>{{$slide->filename}}</td>
-                                    <td>{{$slide->displaing}}</td>
+                                    <td>{{($slide->displaing)? 'Да':'Нет'}}</td>
 
                                     <td>
                                         <a href="{{route('viewSlideUpdate', [$slide->id])}}">
-                                            <button type="button" class="btn btn-warning">Изменить</button>
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="{{route('actionSlideDelete', [$slide->id])}}">
-                                            <button type="button" class="btn btn-danger">Удалить</button>
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-remove"></span> Удалить
+                                            </button>
                                         </a>
                                     </td>
 

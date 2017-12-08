@@ -84,8 +84,10 @@ class AdminController extends Controller
     {
         // $goods = Goods::all();
         $goods = Goods::query()->paginate(6);
+        $category = Categories::getCategories();
 
-        return view('admin.productChange', ['goods' => $goods]);
+
+        return view('admin.productChange', ['goods' => $goods, 'category' => $category]);
     }
 
     // View page добавления нового товара

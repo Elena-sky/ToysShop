@@ -24,11 +24,13 @@
 
                     <div class="container ">
                         <a href="{{route('addCategory')}}">
-                            <button type="button" class="btn btn-primary">Добавить новую категорию</button>
+                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
+                                Добавить новую категорию
+                            </button>
                         </a>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -45,16 +47,20 @@
                                 <tr class="max-sunbol">
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->sort_order}}</td>
-                                    <td>{{$category->status}}</td>
+                                    <td>{{($category->status)? 'Отображать':'Не отображать'}}</td>
 
                                     <td>
                                         <a href="{{route('viewUpdateCategory', [$category->id])}}">
-                                            <button type="button" class="btn btn-warning">Изменить</button>
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="{{route('actionDeleteCategory', [$category->id])}}">
-                                            <button type="button" class="btn btn-danger">Удалить</button>
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-remove"></span> Удалить
+                                            </button>
                                         </a>
                                     </td>
 
