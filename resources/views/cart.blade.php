@@ -27,6 +27,10 @@
                                         {{--src="{{ asset("/uploads/$row->image") }}"--}}
                                         {{--style="width: 72px; height: 72px;">--}}
                                         {{--</a>--}}
+
+                                        {{--<div class="goodImg"--}}
+                                        {{--style=" width: 72px; height: 72px; background-image: url({{ asset("/uploads/".$row->goodImg[0]->filename) }})">--}}
+                                        {{--</div>--}}
                                         <div class="media-body">
                                             <h4 class="media-heading"><a href="#">{{$row->name}}</a></h4>
                                             <h5 class="media-heading"> Производитель: <a href="#">{{$row->made}}</a>
