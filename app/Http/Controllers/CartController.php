@@ -133,10 +133,8 @@ class CartController extends Controller
         $rowId = null;
         foreach ($cartContent as $simple) {
             if ($id == $simple->id) $rowId = $simple->rowId;
-
-            return $rowId;
-
         }
+        return $rowId;
     }
 
 
@@ -150,8 +148,11 @@ class CartController extends Controller
 
     public function viewCheckoutPage()
     {
+        $user = Auth::user();
+        $cartItems = Cart::instance('shoppingCart')->content();  //﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
 
-        return view('cartCheckout');
+
+        return view('cartCheckout', ['user' => $user, 'items' => $cartItems]);
     }
 
     public function viewCheckoutSave()
