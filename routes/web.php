@@ -37,6 +37,10 @@ Route::get('/cart', 'CartController@cartView')->name('cartView');  //корзи�
 
 Route::post('cart/item-update', 'CartController@actionC')->name('actionDelete'); //удаляет товар из корзины
 
+Route::get('/cart/checkout', 'CartController@viewCheckoutPage')->name('viewCheckout');
+Route::post('/cart/checkout/save', 'CartController@viewCheckoutSave')->name('viewSaveCheckout');
+
+
 
 include_once 'adminRoutes.php';
 

@@ -23,14 +23,9 @@
                             <tr data-item-id="{{$row->id}}">
                                 <td class="col-sm-8 col-md-6">
                                     <div class="media">
-                                        {{--<a class="thumbnail pull-left" href="#"> <img class="media-object"--}}
-                                        {{--src="{{ asset("/uploads/$row->image") }}"--}}
-                                        {{--style="width: 72px; height: 72px;">--}}
-                                        {{--</a>--}}
-
-                                        {{--<div class="goodImg"--}}
-                                        {{--style=" width: 72px; height: 72px; background-image: url({{ asset("/uploads/".$row->goodImg[0]->filename) }})">--}}
-                                        {{--</div>--}}
+                                        <div class="goodImg"
+                                             style=" width: 72px; height: 72px; background-image: url({{ asset("/uploads/".\App\Http\Controllers\CartController::getGoodMainImage($row->id)) }})">
+                                        </div>
                                         <div class="media-body">
                                             <h4 class="media-heading"><a href="#">{{$row->name}}</a></h4>
                                             <h5 class="media-heading"> Производитель: <a href="#">{{$row->made}}</a>
@@ -85,9 +80,11 @@
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success">
-                                Checkout <span class="glyphicon glyphicon-play"></span>
-                            </button>
+                            <a href="{{route('viewCheckout')}}">
+                                <button type="button" class="btn btn-success">
+                                    Checkout
+                                </button>
+                            </a>
                         </td>
                     </tr>
                     </tbody>

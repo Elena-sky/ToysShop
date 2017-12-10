@@ -10,7 +10,7 @@
                 <div class="item col-xs-4 col-lg-4">
                     <a href="{{route('goodView',['id' => $good->id])}}">
                         <div class="goodImg"
-                             style="background-image: url({{ asset("/uploads/".$good->goodImg[0]->filename) }})">
+                             style="background-image: url({{ asset("/uploads/".\App\Http\Controllers\CartController::getGoodMainImage($good->id)) }})">
                         </div>
 
                         <div class="description">
@@ -21,7 +21,7 @@
                         <div class="action">
                             <span class="lead">{{$good->price}} грн</span>
                             <button class="btn-warning ajax-btn buttonBuy box" data-good-id="{{$good->id}}">
-                                <span>Купить </span>
+                                <span>в корзину</span>
                             </button>
                         </div>
                     </div>

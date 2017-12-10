@@ -139,4 +139,23 @@ class CartController extends Controller
         }
     }
 
+
+    public static function getGoodMainImage($id)
+    {
+        $good = Goods::find($id);
+        if (!$good) return false;
+        $firstImage = $good->goodImg[0];
+        return $firstImage->filename;
+    }
+
+    public function viewCheckoutPage()
+    {
+
+        return view('cartCheckout');
+    }
+
+    public function viewCheckoutSave()
+    {
+
+    }
 }
