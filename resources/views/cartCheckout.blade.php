@@ -20,63 +20,92 @@
                     <div class="form-group">
                         {!! Form::label('userFirstName', 'Имя') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
+                            {!! Form::text('userFirstName', $user->name, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('userLastName', 'Фамилия') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('userLastName', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userG', 'Город') !!}
+                        {!! Form::label('city', 'Город') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('city', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('userPhone', 'Мобильный телефон') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('userPhone', '', ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        {!! Form::label('payment', 'Метод оплаты') !!}
+                        <div class="col-sm-10">
+                            {!! Form::select('payment', ["Картой", "Наличными"], ['class' => 'form-control'])!!}
+
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userPhone', 'Метод доставки') !!}
+                        {!! Form::label('delivery', 'Метод доставки') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::select('delivery', ["Самовывоз", "Новая почта", "Укрпочта", "Интайм"], ['class' => 'form-control'])!!}
+
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userPhone', 'Адрес') !!}
+                        {!! Form::label('address', 'Адрес') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('address', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userPhone', 'Номер дома') !!}
+                        {!! Form::label('HouseNumber', 'Номер дома') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('HouseNumber', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userPhone', 'Квартира') !!}
+                        {!! Form::label('apartmentNumber', 'Квартира') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('apartmentNumber', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userPhone', 'Коментарий к заказу') !!}
+                        {!! Form::label('comment', 'Коментарий к заказу') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('comment', '', ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-10">
+                        Подтвеждая заказ, я принимаю условия
+                        <a href="" data-toggle="modal"
+                           data-target=".bs-example-modal-lg">Пользовательского соглашения</a>
+
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                             aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content col-sm-12">
+                                    <h1>Пользовательское соглашение</h1>
+                                    Компания МОРЕ ИГРУШЕК осуществляет продажу товаров через интернет-магазин по ссылке
+                                    https://# Используя наш сайт, вы автоматически соглашаетесь с его условиями, а также
+                                    даете согласие на сбор и обработку персональной информации. Пожалуйста, внимательно
+                                    ознакомьтесь с установленными положениями перед началом просмотра страниц сайта.
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -85,7 +114,8 @@
                         <div class="col-sm-offset-2 col-sm-10 btn btn-success">
                             {!! Form::submit('Оформить заказ') !!}
                         </div>
-                        Подтвеждая заказ, я принимаю условия
+
+
                     </div>
 
                     {!! Form::close() !!}
