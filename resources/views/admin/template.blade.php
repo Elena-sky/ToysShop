@@ -9,15 +9,13 @@
     <meta name="author" content="">
     <title>SB Admin - Start Bootstrap Template</title>
     <!-- Bootstrap core CSS-->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
-    <link href="{{asset('css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
-
-    <link href="{{asset('css/radio.css')}}" rel="stylesheet">
-
-
+    <link href="css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -44,36 +42,26 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="{{route('productView')}}">
+                <a class="nav-link" href="tables.html">
                     <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Управление товарами</span>
+                    <span class="nav-link-text">Tables</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
-                <a class="nav-link" href="{{route('viewCategory')}}">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Управление категориями</span>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Components</span>
                 </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="navbar.html">Navbar</a>
+                    </li>
+                    <li>
+                        <a href="cards.html">Cards</a>
+                    </li>
+                </ul>
             </li>
-
-
-            {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">--}}
-            {{--<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"--}}
-            {{--data-parent="#exampleAccordion">--}}
-            {{--<i class="fa fa-fw fa-wrench"></i>--}}
-            {{--<span class="nav-link-text">Управление товарами</span>--}}
-            {{--</a>--}}
-            {{--<ul class="sidenav-second-level collapse" id="collapseComponents">--}}
-            {{--<li>--}}
-            {{--<a href="{{route('adminAddProductView')}}">Добавить товар</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-            {{--<a href="cards.html">Cards</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
                    data-parent="#exampleAccordion">
@@ -95,7 +83,6 @@
                     </li>
                 </ul>
             </li>
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"
                    data-parent="#exampleAccordion">
@@ -112,7 +99,6 @@
                     <li>
                         <a href="#">Second Level Item</a>
                     </li>
-
                     <li>
                         <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
                             Level</a>
@@ -259,31 +245,6 @@
 
 @yield('content')
 
-<!-- Footer -->
-<footer class="sticky-footer">
-    <div class="container">
-        <div class="text-center">
-            <small>Copyright © Your Website 2017</small>
-        </div>
-    </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('js/jquery.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('js/jquery.easing.js')}}"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="{{asset('js/Chart.js')}}"></script>
-    <script src="{{asset('js/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin.js')}}"></script>
-    <!-- Custom scripts for this page-->
-    <script src="{{asset('js/sb-admin-datatables.js')}}"></script>
-
-    <script src="{{asset('js/sb-admin-charts.js')}}"></script>
-
-
-</footer>
 </body>
 
 </html>

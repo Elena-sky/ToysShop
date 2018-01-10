@@ -17,10 +17,12 @@
     <!-- Custom styles for this template -->
     <link href="/css/heroic-features.css" rel="stylesheet">
 
+    <link href="/css/shop-php.css" rel="stylesheet">
+
+
     {{--<!-- Bootstrap core JavaScript -->--}}
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
-    <link href="/css/shop-php.css" rel="stylesheet">
     <script src="/js/script.js"></script>
 
 
