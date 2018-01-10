@@ -9,16 +9,13 @@
     <meta name="author" content="">
     <title>Админ - Мир Игрушек</title>
     <!-- Bootstrap core CSS-->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
-    <link href="{{asset('css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
-
-    <link href="{{asset('css/radio.css')}}" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/css/sb-admin.css" rel="stylesheet">
 
 
 </head>
@@ -49,14 +46,22 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                 <a class="nav-link" href="{{route('productView')}}">
                     <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text"><span class="glyphicon glyphicon-barcode"></span> Товары</span>
+                    <span class="nav-link-text">Управление товарами</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
                 <a class="nav-link" href="{{route('viewCategory')}}">
                     <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text"><span class="glyphicon glyphicon-folder-open"></span> Категории</span>
+                    <span class="nav-link-text">Управление категориями</span>
                 </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="navbar.html">Navbar</a>
+                    </li>
+                    <li>
+                        <a href="cards.html">Cards</a>
+                    </li>
+                </ul>
             </li>
 
 
@@ -99,7 +104,6 @@
                     </li>
                 </ul>
             </li>
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"
                    data-parent="#exampleAccordion">
@@ -116,7 +120,6 @@
                     <li>
                         <a href="#">Second Level Item</a>
                     </li>
-
                     <li>
                         <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
                             Level</a>
@@ -263,6 +266,30 @@
 
 @yield('content')
 
+<!-- Footer -->
+<footer class="sticky-footer">
+    <div class="container">
+        <div class="text-center">
+            <small>Copyright © Your Website 2017</small>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/js/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="/js/Chart.min.js"></script>
+    <script src="/js/jquery.dataTables.js"></script>
+    <script src="/js/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="/js/sb-admin-datatables.min.js"></script>
+    <script src="/js/sb-admin-charts.min.js"></script>
+
+
+</footer>
 </body>
 
 </html>
