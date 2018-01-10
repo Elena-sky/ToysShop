@@ -15,13 +15,15 @@
     <!-- Page level plugin CSS-->
     <link href="/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="/css/sb-admin.css" rel="stylesheet">
+
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">Мир Игрушек</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -37,7 +39,7 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="charts.html">
-                    <i class="fa fa-fw fa-area-chart"></i>
+                    <i class="fa fa-sitemap"></i>
                     <span class="nav-link-text">Charts</span>
                 </a>
             </li>
@@ -245,6 +247,21 @@
 
 @yield('content')
 
+
+<!-- Bootstrap core JavaScript-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/js/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="/js/Chart.min.js"></script>
+<script src="/js/jquery.dataTables.js"></script>
+<script src="/js/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="/js/sb-admin-datatables.min.js"></script>
+<script src="/js/sb-admin-charts.min.js"></script>
 </body>
 
 </html>
