@@ -48,7 +48,7 @@
                                 <?php $item_class = ''; /* убираем 'preview' для следующих */ ?>
 
                                 <a href="javascript:void(0)">
-                                    <img src="{{ asset("/uploads/$image->filename") }}" width="300px"
+                                    <img src="{{ asset("/uploads/goods/$image->filename") }}" width="300px"
                                          alt="{{$image->id}}"></a>
                             </li>
                         @endforeach

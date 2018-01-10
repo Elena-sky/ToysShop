@@ -10,7 +10,7 @@
                 <div class="item col-xs-4 col-lg-4">
                     <a href="{{route('goodView',['id' => $good->id])}}">
                         <div class="goodImg"
-                             style="background-image: url({{ asset("/uploads/".\App\Http\Controllers\CartController::getGoodMainImage($good->id)) }})">
+                             style="background-image: url({{ asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($good->id)) }})">
                         </div>
 
                         <div class="description">
