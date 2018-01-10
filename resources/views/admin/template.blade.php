@@ -65,42 +65,37 @@
             </li>
 
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">Содержимое сайта</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="{{route('viewSliders')}}"><span class="glyphicon glyphicon-picture"></span> Управление
-                            слайдерами</a>
-                    </li>
-                    <li>
-                        <a href="#">Что то еще</a>
-                    </li>
-                </ul>
-            </li>
+            {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">--}}
+            {{--<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"--}}
+            {{--data-parent="#exampleAccordion">--}}
+            {{--<i class="fa fa-fw fa-wrench"></i>--}}
+            {{--<span class="nav-link-text">Содержимое сайта</span>--}}
+            {{--</a>--}}
+            {{--<ul class="sidenav-second-level collapse" id="collapseComponents">--}}
+            {{--<li>--}}
+            {{--<a href="{{route('viewSliders')}}"><span class="glyphicon glyphicon-picture"></span> Управление--}}
+            {{--слайдерами</a>--}}
+            {{--</li>--}}
+            {{--<li>--}}
+            {{--<a href="#">Что то еще</a>--}}
+            {{--</li>--}}
+            {{--</ul>--}}
+            {{--</li>--}}
 
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
                    data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-file"></i>
-                    <span class="nav-link-text">Example Pages</span>
+                    <span class="nav-link-text">Содержимое сайта</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li>
-                        <a href="login.html">Login Page</a>
+                        <a href="{{route('viewSliders')}}"><span class="glyphicon glyphicon-picture"></span> Управление
+                            слайдерами</a>
                     </li>
                     <li>
-                        <a href="register.html">Registration Page</a>
-                    </li>
-                    <li>
-                        <a href="forgot-password.html">Forgot Password Page</a>
-                    </li>
-                    <li>
-                        <a href="blank.html">Blank Page</a>
+                        <a href="#">Что то еще</a>
                     </li>
                 </ul>
             </li>
@@ -264,7 +259,38 @@
     </div>
 </nav>
 
+<div class="content-wrapper">
+
 @yield('content')
+
+
+<!-- Footer -->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Your Website 2017</small>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="/js/jquery.min.js"></script>
+
+        <script src="/js/bootstrap.bundle.min.js"></script>
+
+        <script src="/js/jquery.easing.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="/js/Chart.min.js"></script>
+        <script src="/js/jquery.dataTables.js"></script>
+        <script src="/js/dataTables.bootstrap4.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="/js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="/js/sb-admin-datatables.min.js"></script>
+        <script src="/js/sb-admin-charts.min.js"></script>
+
+
+    </footer>
+</div>
+
 
 <!-- Footer -->
 <footer class="sticky-footer">
