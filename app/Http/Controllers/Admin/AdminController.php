@@ -101,7 +101,7 @@ class AdminController extends Controller
     // Action добавление нового товара
     public function actionAddNewProduct(Request $request)
     {
-        $path = '/goods';  // Папка для загрузки слайдов
+        $path = '/goods';  // Папка для загрузки картинок
         $fileName = self::uploader($request, $path);
         $data = Input::except(['_method', '_token']);
 
@@ -143,8 +143,8 @@ class AdminController extends Controller
 //        $goodData = Goods::find($data['id']);
 //        $goodData->update($data);
 
-
-        $fileName = self::uploader($request);
+        $path = '/goods';  // Папка для загрузки картинок
+        $fileName = self::uploader($request, $path);
 
         $data = Input::except(['_method', '_token']);
         $goodData = Goods::find($data['id']);
