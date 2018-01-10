@@ -903,6 +903,33 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Footer -->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2017</small>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript-->
+            <script src="{{asset('js/jquery.js')}}"></script>
+            <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="{{asset('js/jquery.easing.js')}}"></script>
+            <!-- Page level plugin JavaScript-->
+            <script src="{{asset('js/Chart.js')}}"></script>
+            <script src="{{asset('js/jquery.dataTables.js')}}"></script>
+            <script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="{{asset('js/sb-admin.js')}}"></script>
+            <!-- Custom scripts for this page-->
+            <script src="{{asset('js/sb-admin-datatables.js')}}"></script>
+
+            <script src="{{asset('js/sb-admin-charts.js')}}"></script>
+
+
+        </footer>
     </div>
 
 @endsection
