@@ -101,7 +101,8 @@ class AdminController extends Controller
     // Action добавление нового товара
     public function actionAddNewProduct(Request $request)
     {
-        $fileName = self::uploader($request);
+        $path = '/goods';  // Папка для загрузки слайдов
+        $fileName = self::uploader($request, $path);
         $data = Input::except(['_method', '_token']);
 
         $good = Goods::create($data);

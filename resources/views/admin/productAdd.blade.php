@@ -44,7 +44,7 @@
                     <div class="form-group ">
                         {!! Form::label('productMade', 'Производитель:') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('made', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('made', 'Китай', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                     <div class="form-group ">
                         {!! Form::label('productNew', 'Значок Новинка:') !!}
                         <div class="col-sm-10">
-                            {!! Form::radio('is_new', 1) !!} Отобразить как новинку
+                            {!! Form::radio('is_new', 1, true) !!} Отобразить как новинку
                             {!! Form::radio('is_new', 0) !!} Отменить
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="form-group ">
                         {!! Form::label('productA', 'Наличие товара:') !!}
                         <div class="col-sm-10">
-                            {!! Form::radio('is_avaliable', 1) !!} В наличии
+                            {!! Form::radio('is_avaliable', 1, true) !!} В наличии
                             {!! Form::radio('is_avaliable', 0) !!} Нет в наличии
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                     <div class="form-group ">
                         {!! Form::label('productD', 'Отображение на странице:') !!}
                         <div class="col-sm-10">
-                            {!! Form::radio('displaing', 1) !!} Отображать
+                            {!! Form::radio('displaing', 1, true) !!} Отображать
                             {!! Form::radio('displaing', 0) !!} Не отображать
                         </div>
                     </div>
