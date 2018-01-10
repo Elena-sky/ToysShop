@@ -152,10 +152,14 @@ class AdminController extends Controller
 
         $productId = $goodData->id;
 
-        foreach ($fileName as $onefile) {
-            $dataImages = ['filename' => $onefile, 'product_id' => $productId];
-            GoodsImages::create($dataImages);
+        if (!empty($fileName)) {
+            foreach ($fileName as $onefile) {
+                $dataImages = ['filename' => $onefile, 'product_id' => $productId];
+                GoodsImages::create($dataImages);
+            }
+
         }
+
 
         return \redirect(route('productView'));
     }
