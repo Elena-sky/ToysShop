@@ -28,8 +28,9 @@
                 </div>
 
             @endforeach
-            {{$goods->links()}}
         </div>
+        {{$goods->links()}}
+
     </div>
     <!-- /.container -->
 
