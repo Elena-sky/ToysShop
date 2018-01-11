@@ -43,7 +43,7 @@
     var DataTable = $.fn.dataTable;
 
 
-	/* Set the defaults for DataTables initialisation */
+    /* Set the defaults for DataTables initialisation */
     $.extend(true, DataTable.defaults, {
         dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
         "<'row'<'col-sm-12'tr>>" +
@@ -52,7 +52,7 @@
     });
 
 
-	/* Default class modification */
+    /* Default class modification */
     $.extend(DataTable.ext.classes, {
         sWrapper: "dataTables_wrapper container-fluid dt-bootstrap4",
         sFilterInput: "form-control form-control-sm",
@@ -62,7 +62,7 @@
     });
 
 
-	/* Bootstrap paging button renderer */
+    /* Bootstrap paging button renderer */
     DataTable.ext.renderer.pageButton.bootstrap = function (settings, host, idx, buttons, page, pages) {
         var api = new DataTable.Api(settings);
         var classes = settings.oClasses;

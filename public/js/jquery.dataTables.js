@@ -877,6 +877,7 @@
             _fnCamelToHungarian(defaults, $.extend(oInit, $this.data()));
 
 
+
 			/* Check to see if we are re-initialising a table */
             var allSettings = DataTable.settings;
             for (i = 0, iLen = allSettings.length; i < iLen; i++) {
@@ -1269,7 +1270,7 @@
     };
 
 
-	/*
+    /*
 	 * It is useful to have variables which are scoped locally so only the
 	 * DataTables functions can access them and they don't leak into global space.
 	 * At the same time these functions are often useful over multiple files in the
@@ -3432,7 +3433,7 @@
                     }
 
                     i += j;
-					/* Move along the position array */
+                    /* Move along the position array */
                 }
 
                 insert.append(nNewNode);
@@ -4210,7 +4211,7 @@
 			 * word order. We also want double quoted text to be preserved, so word
 			 * order is important - a la google. So this is what we want to
 			 * generate:
-			 *
+             *
 			 * ^(?=.*?\bone\b)(?=.*?\btwo three\b)(?=.*?\bfour\b).*$
 			 */
             var a = $.map(search.match(/"[^"]+"|[^ ]+/g) || [''], function (word) {
@@ -4601,6 +4602,7 @@
 
         return div[0];
     }
+
 
 
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -6273,7 +6275,7 @@
                 }
             })
             .on('selectstart.DT', function () {
-				/* Take the brutal approach to cancelling text selection */
+                /* Take the brutal approach to cancelling text selection */
                 return false;
             });
     }
@@ -8021,6 +8023,7 @@
         }
         return false;
     });
+
 
 
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -11650,6 +11653,7 @@
     };
 
     _fnHungarianMap(DataTable.defaults);
+
 
 
 	/*

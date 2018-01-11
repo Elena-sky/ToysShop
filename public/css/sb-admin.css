@@ -157,7 +157,6 @@ body.fixed-nav {
         overflow: visible;
         max-height: none;
     }
-
     #mainNav .navbar-collapse .navbar-sidenav {
         position: absolute;
         top: 0;
@@ -202,7 +201,6 @@ body.fixed-nav {
     #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
         padding-left: 3.75em;
     }
-
     #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link {
         min-width: 0;
     }
@@ -211,7 +209,6 @@ body.fixed-nav {
         width: 24px;
         text-align: center;
     }
-
     #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown .dropdown-menu > .dropdown-item > .dropdown-message {
         max-width: 300px;
     }
@@ -238,7 +235,6 @@ body.fixed-nav {
         flex-direction: column;
         margin-top: calc(100vh - 56px);
     }
-
     #mainNav.fixed-top .sidenav-toggler > .nav-item {
         width: 250px;
         padding: 0;
@@ -382,7 +378,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
         background: #343a40;
     }
-
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
         color: white !important;
         background-color: #495057;
@@ -391,7 +386,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:hover {
         color: white;
     }
-
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level,
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
         background: #343a40;
@@ -429,7 +423,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     #mainNav.navbar-light .navbar-collapse .navbar-sidenav {
         background: #f8f9fa;
     }
-
     #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a {
         color: #000 !important;
         background-color: #e9ecef;
@@ -438,7 +431,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:focus, #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:hover {
         color: #000;
     }
-
     #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level,
     #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
         background: #f8f9fa;
