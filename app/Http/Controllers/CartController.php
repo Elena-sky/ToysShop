@@ -17,65 +17,47 @@ class CartController extends Controller
 {
     public function cartView(Request $request)
     {
-        if (Auth::check()) {
-            $userName = Auth::id();
+        if (Auth::check()) { //проверка на пользователя
+            $userName = Auth::id(); //
+        } else {
+            $userName = 'pipka';
+        }
+
+        $cartItems = Cart::content();  //﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
+        if (empty($cartItems)) {
             Cart::restore($userName . '-shoppingCart');
         }
-        $cartItems = Cart::instance('shoppingCart')->content();  //﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
-
         return view('cart', ['items' => $cartItems]);
     }
 
-//    public function actionAdd($id)
-//    {
-//        $goodsData = Cart::content(); //﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
-//        $rowId = self::searchInCart($id, $goodsData); //получаем товар по id
-//        $countQty = [];
-//
-//        if (is_null($rowId)) {
-//            $good = Goods::find($id); //стягиваем информацию о товаре по id
-//
-//            $cartAdd = Cart::add($id, $good->name, 1, $good->price); //добавляем в корзину 1 шт товара
-//            if (empty($goodsData)) Cart::store('test');
-//            $countQty = ['qty' => $cartAdd->qty, 'price' => $good->price];
-//
-//        } else {
-//            $item = Cart::get($rowId); //ищем товар в корзине для добавления колличества +1
-//            $count = $item->qty;// записываем в  $count текущее колличество
-//            Cart::update($rowId, ++$count); //добавляет +1 ед товара
-//            $countQty = ['qty' => $count, 'price' => $item->price];
-//
-//        }
-//
-//        //ToDO Create  unify array for added at first time & and changed qty good in cart and return price and count to JS
-//        return $countQty;// ['price' => , 'qty' => ]
-//
-//    }
 
-//    public function actionDelete($id)
-//    {
-//        //﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
-//        $goodsData = Cart::content();
-//
-//        $rowId = self::searchInCart($id, $goodsData); // находим нужное id товара в корзине
-//
-//        if (!is_null($rowId)) {
-//            Cart::remove($rowId);
-//        } // удаляем
-//
-//        return ['id' => $rowId];//\redirect(route('cartView'));
-//    }
+    public static function kostilMeth($returnable = 'content')
+    {
+        if (Auth::check()) { //проверка на пользователя
+            $userName = Auth::id(); //
+        } else {
+            $userName = 'pipka';
+        }
+        Cart::restore($userName . '-shoppingCart'); // Востанавливем корзину по уникальному ID
+        $total = Cart::total();
+        $count = Cart::count();
+        $content = Cart::content();
+        return $$returnable;
+    }
 
     public function actionC()
     {
         $data = $_POST;
         $result = false;
-        if (Auth::check()) {
-            $userName = Auth::id();
-            Cart::restore($userName . '-shoppingCart');
+        /*if (Auth::check()) { //проверка на пользователя
+            $userName = Auth::id(); //
+        } else {
+            $userName = 'pipka';
         }
-        $goodsData = Cart::instance('shoppingCart')->content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
-
+        Cart::restore($userName . '-shoppingCart'); // Востанавливем корзину по уникальному ID
+        $goodsData = Cart::
+        content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины*/
+        $goodsData = self::kostilMeth();
         $rowOld = $goodsData->search(function ($cartItem, $rowId) {
             return $cartItem->id === 1;
         });
@@ -84,7 +66,7 @@ class CartController extends Controller
         if (!empty($data)) {
             $id = $data['id'];  // id товара
             $rowId = self::searchInCart($id, $goodsData); //ищем этот товар в корзине
-
+            //Cart::restore($userName . '-shoppingCart'); // Востанавливем корзину по уникальному ID
 
             switch ($data['action']) {
                 case 'add':   //добваление товара
@@ -92,7 +74,8 @@ class CartController extends Controller
                     if (is_null($rowId)) { //не находим, значить нужно добавить
                         $good = Goods::find($id); //стягиваем информацию о товаре по id
 
-                        $cartAdd = Cart::instance('shoppingCart')->add($id, $good->name, 1, $good->price); //добавляем в корзину 1 шт товара
+                        $cartAdd = Cart::/*instance('shoppingCart')->*/
+                        add($id, $good->name, 1, $good->price); //добавляем в корзину 1 шт товара
                         $result = ['price' => $good->price];
 
                     } else {
@@ -108,19 +91,14 @@ class CartController extends Controller
 
                     if (!is_null($rowId)) { // если не пустой $rowId
                         $result = Cart::remove($rowId); // удаляем
-                        //  Cart::store($delete);
                     }
-                    //    return ['id' => $rowId];
                     break;
 
                 case 'update':
 
                     break;
             }
-            if (Auth::check()) {
-                $userName = Auth::id();
-                Cart::store($userName . '-shoppingCart');
-            }
+            Cart::store($userName . '-shoppingCart'); //сохраняем
 
             return $result;
         }

@@ -18,6 +18,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/category/update/save', 'AdminController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Action сохранить редактироование категории
     Route::get('/category/delete/{id}', 'AdminController@actionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
 
+    Route::get('/users', 'AdminController@viewUsersList')->name('viewUsers'); // View управление пользователями
+    Route::get('/users/update/{id}', 'AdminController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
+    Route::post('/users/update/save', 'AdminController@actionSaveUserUpdate')->name('actionSaveUser'); // Action сохранить редактироование пользователя
+    Route::get('/users/delete/{id}', 'AdminController@actionUserDelete')->name('userDelete'); //Удаление пользователя
+
     Route::group(['middleware' => 'web'], function () {
         Route::get('fileUpload', function () {
             return view('fileUpload');

@@ -24,6 +24,7 @@ Route::get('about/test', 'Controller@test');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@profileUser')->name('profile');
 
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 

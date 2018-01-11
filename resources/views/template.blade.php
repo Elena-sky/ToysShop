@@ -5,6 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {{--user--}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -21,13 +25,21 @@
 
 
     {{--<!-- Bootstrap core JavaScript -->--}}
+    {{--user--}}
+    {{--<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">--}}
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    <script src="{{ asset('js/app.js') }}"></script>
+
 
 </head>
 
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="position: fixed;">
     <div class="container">
         <a class="navbar-brand" href="#">Море Игрушек</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -43,20 +55,21 @@
                     <div></div>
                 @endforeach;
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart">(
-                        <span class="count"> {{Cart::instance('shoppingCart')->count()}}</span>)
+                    <a class="nav-link" href="/cart">(<span
+                                class="count"> {{\App\Http\Controllers\CartController::kostilMeth('count')}}</span>)
                         Корзина -
-                        <span class="badge badge-warning total">{{Cart::instance('shoppingCart')->total()}} грн</span>
+                        <span class="badge badge-warning total">{{\App\Http\Controllers\CartController::kostilMeth('total')}}
+                            грн</span>
                     </a>
+                    {{--<a class="nav-link" href="/cart">(
+                        <span class="count"> {{Cart::count()}}</span>)
+                        Корзина -
+                        <span class="badge badge-warning total">{{Cart::total()}} грн</span>
+                    </a>--}}
                 </li>
 
                     <!-- Authentication Links -->
@@ -103,6 +116,74 @@
                             </ul>
                         </li>
                     @endif
+
+                @if (Auth::guest())
+                    <li class="nav-item" style="display: -webkit-box;">
+                        <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                    </li>
+                    <li class="nav-item" style="display: -webkit-box;">
+                        <a class="nav-link" href="{{ route('register') }}">Зарегистрироватся</a>
+                    </li>
+                @else
+                    <li class="nav-item dropdown" style="display: -webkit-box; position: relative;">
+
+                        <a href="#" class=" nav-link dropdown-toggle" data-toggle="dropdown"
+                           aria-expanded="false">{{ Auth::user()->name }}
+                            <span class="caret"></span>
+                        </a>
+
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('home') }}">Профиль</a>
+                            </li>
+                            <li>
+                                <a href="#">Что то еще</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Выйти
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+                    {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"--}}
+                    {{--aria-expanded="false">--}}
+                    {{--{{ Auth::user()->name }}--}}
+                    {{--<span class="caret"></span>--}}
+                    {{--</a>--}}
+
+                    {{--<ul class="dropdown-menu" role="menu">--}}
+                    {{--<li>--}}
+                    {{--<a href="{{ route('logout') }}"--}}
+                    {{--onclick="event.preventDefault();--}}
+                    {{--document.getElementById('logout-form').submit();">--}}
+                    {{--Выйти--}}
+                    {{--</a>--}}
+
+                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST"--}}
+                    {{--style="display: none;">--}}
+                    {{--{{ csrf_field() }}--}}
+                    {{--</form>--}}
+                    {{--</li>--}}
+                    {{--</ul>--}}
+                    {{--</li>--}}
+                @endif
+
+
             </ul>
 
         </div>
@@ -121,6 +202,65 @@
 
             .dropdown.open {
                 display: inherit;
+            }
+
+            .panel-profile > .row {
+                padding-bottom: 30px;
+            }
+
+            .profile-item {
+                position: relative;
+                padding: 0 0 0 70px;
+                text-transform: none;
+                display: block;
+            }
+
+            .profile-item > a {
+                display: block;
+                overflow: hidden;
+                text-decoration: none;
+                font-size: 14pt;
+            }
+
+            .profile-item > a:first-child:before {
+                font-family: "FontAwesome";
+                display: inline-block;
+                font-size: 55px;
+                line-height: 18px;
+                padding: 20px 0 0 0px;
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                left: 0;
+            }
+
+            .profile-item-user > a:first-child:before {
+                content: "\f07a";
+            }
+
+            .profile-item-orders > a:first-child:before {
+                content: "\f022";
+            }
+
+            .profile-item-pwd > a:first-child:before {
+                content: "\f023";
+            }
+
+            .profile-item-pwd > a:first-child:before {
+                content: "\f023";
+                padding: 20px 0 0 10px;
+            }
+
+            .profile-item-star > a:first-child:before {
+                content: "\f006";
+            }
+
+            .profile-item-eye > a:first-child:before {
+                content: "\f06e";
+            }
+
+            .block {
+                display: block;
             }
         </style>
 
