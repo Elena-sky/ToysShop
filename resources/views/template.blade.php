@@ -17,7 +17,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/heroic-features.css" rel="stylesheet">
     <link href="/css/shop-php.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    {{--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">--}}
 
 
     {{--<!-- Bootstrap core JavaScript -->--}}
@@ -58,10 +58,53 @@
                         <span class="badge badge-warning total">{{Cart::instance('shoppingCart')->total()}} грн</span>
                     </a>
                 </li>
-                <li class="nav-item" style="display: -webkit-box;">
-                    <a class="nav-link" href="/login">Войти</a> или <a class="nav-link" href="/register">Зарегистрироватся</a>
-                </li>
+
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Зарегистрироватся</a>
+                        </li>
+                    @else
+                    <!-- Test -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ Auth::user()->name }} </a>
+                        </li>
+                        <!-- End Test -->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('home') }}">
+                                        Профиль
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Выйти
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
             </ul>
+
         </div>
 
         <style type="text/css">
