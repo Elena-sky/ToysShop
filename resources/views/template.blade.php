@@ -16,22 +16,11 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/heroic-features.css" rel="stylesheet">
-
     <link href="/css/shop-php.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 
     {{--<!-- Bootstrap core JavaScript -->--}}
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.bundle.js"></script>
-    <script src="/js/script.js"></script>
-
-    <!-- Latest compiled and minified CSS -->
-    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"--}}
-    {{--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">--}}
-
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 
 </head>
 
@@ -205,7 +194,12 @@
                 2017</p>
         </div>
     </div>
-    <!-- /.container -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/script.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
 </footer>
 
 

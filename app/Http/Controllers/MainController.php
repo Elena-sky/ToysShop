@@ -30,6 +30,7 @@ class MainController extends BaseController
         $categories = \App\Categories::all();
         $slides = Sliders::where('displaing', 1)
             ->get();
+
         return view('index', compact('categories', 'slides'));
     }
 }
