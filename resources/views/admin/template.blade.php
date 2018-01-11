@@ -16,7 +16,7 @@
     <!-- Page level plugin CSS-->
     <link href="/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="/css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -66,7 +66,7 @@
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
                 <a class="nav-link" href="{{route('viewUsers')}}">
-                    <i class="fa fa-fw fa-table"></i>
+                    <i class="fa fa-users"></i>
                     <span class="nav-link-text">Управление пользователями</span>
                 </a>
             </li>
@@ -98,8 +98,9 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li>
-                        <a href="{{route('viewSliders')}}"><span class="glyphicon glyphicon-picture"></span> Управление
-                            слайдерами</a>
+                        <a href="{{route('viewSliders')}}">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="glyphicon glyphicon-picture"></span> Управление слайдерами</a>
                     </li>
                     <li>
                         <a href="#">Что то еще</a>
