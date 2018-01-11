@@ -20,7 +20,7 @@
             <!-- Area Chart Example-->
             <div class="container">
 
-                <div class="row " style="display: inline-block;width: 100%;">
+                <div class="row">
                     {!! Form::model('', array('route' => array('actionNewSlide'), 'files' => true)
                     ) !!}
 
@@ -34,7 +34,7 @@
                     <div class="form-group ">
                         {!! Form::label('sliderDisplaing', 'Отображение на странице:') !!}
                         <div class="col-sm-10">
-                            {!! Form::radio('displaing', 1) !!} Отображать
+                            {!! Form::radio('displaing', 1, true) !!} Отображать
                             {!! Form::radio('displaing', 0) !!} Не отображать
                         </div>
                     </div>

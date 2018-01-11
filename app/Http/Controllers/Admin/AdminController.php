@@ -195,11 +195,15 @@ class AdminController extends Controller
     // Action Добавление нового слайдера
     public function actionSaveNewSlide(Request $request)
     {
+
         $path = '/sliders';  // Папка для загрузки слайдов
         $fileName = self::uploader($request, $path);
 
+        $data = Input::except(['_method', '_token']);
+        $displaing = $data['displaing'];
+
         foreach ($fileName as $onefile) {
-            $dataImages = ['filename' => $onefile];
+            $dataImages = ['filename' => $onefile, 'displaing' => $displaing];
 
             Sliders::create($dataImages);
         }
