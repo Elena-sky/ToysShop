@@ -4,8 +4,6 @@
 @section('content')
     <!-- Page Content -->
 
-
-    <div class="content-wrapper">
         <div class="container-fluid">
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
@@ -16,22 +14,18 @@
             </ol>
             <!-- Area Chart Example-->
 
-
             <div class="container">
-
                 <div class="row">
-
-
                     <div class="container ">
                         <a href="{{route('addNewProductPage')}}">
-                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
-                                Добавить новый товар
+
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> Добавить новый товар
                             </button>
                         </a>
                     </div>
 
                     <div class="col-md-12">
-
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -54,7 +48,7 @@
                             <tbody>
                             @foreach($goods as $good )
                                 <tr class="max-sunbol">
-                                    <td>{{$good->category_id}}</td>
+                                    <td>{{$category[$good->category_id]}}</td>
                                     <td>{{$good->name}}</td>
                                     {{--<td>{{$good->image}}</td>--}}
                                     <td>{{$good->code}}</td>
@@ -96,9 +90,6 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
 
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->

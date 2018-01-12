@@ -81,10 +81,9 @@ class AdminController extends Controller
     // Управление товарами
     public function actionProductView()
     {
-        // $goods = Goods::all();
-        $goods = Goods::query()->paginate(6);
-        $category = Categories::getCategories();
 
+        $goods = Goods::query()->orderBy('id', 'desc')->paginate(10);
+        $category = Categories::getCategories();
 
         return view('admin.productChange', ['goods' => $goods, 'category' => $category]);
     }
@@ -107,11 +106,14 @@ class AdminController extends Controller
         $good = Goods::create($data);
         $productId = $good->id;
 
-        foreach ($fileName as $onefile) {
-            $dataImages = ['filename' => $onefile, 'product_id' => $productId];
+        if (!empty($fileName)) {
+            foreach ($fileName as $onefile) {
+                $dataImages = ['filename' => $onefile, 'product_id' => $productId];
 
-            GoodsImages::create($dataImages);
+                GoodsImages::create($dataImages);
+            }
         }
+
 
         return \redirect(route('addNewProductPage'));
     }
