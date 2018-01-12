@@ -17,7 +17,6 @@
             <div class="row">
                 <div class="container ">
                     <a href="{{route('addNewProductPage')}}">
-
                         <button type="button" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Добавить новый товар
                         </button>
