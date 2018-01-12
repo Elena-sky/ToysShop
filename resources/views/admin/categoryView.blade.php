@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="container ">
                     <a href="{{route('addCategory')}}">
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
-                            Добавить новую категорию
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> Добавить новую категорию
                         </button>
                     </a>
                 </div>
