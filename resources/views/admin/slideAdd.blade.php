@@ -36,8 +36,9 @@
                     </div>
 
                     <div class="form-group ">
-                        <div class="col-sm-offset-2 col-sm-10 btn btn-success">
-                            {!! Form::submit('Добавить товар') !!}
+                        <div class=" col-sm-10">
+                            <h3>{{ Form::button('Создать', ['class' => 'badge badge-success', 'type' => 'submit']) }}
+                            </h3>
                         </div>
                     </div>
                     {!! Form::close() !!}

@@ -108,8 +108,9 @@
                 </div>
 
                 <div class="form-group ">
-                    <div class="col-sm-offset-2 col-sm-2 btn btn-success">
-                        {!! Form::submit('Сохранить изминения') !!}
+                    <div class=" col-sm-10">
+                        <h3>{{ Form::button('Сохранить', ['class' => 'badge badge-success', 'type' => 'submit']) }}
+                        </h3>
                     </div>
                 </div>
                 {!! Form::close() !!}

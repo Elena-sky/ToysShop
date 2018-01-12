@@ -37,15 +37,16 @@
 
                 <div class="form-group ">
                     {!! Form::label('productStatus', 'Отображать') !!}
-                    <div class="col-sm-10">
+                    <div class="">
                         {!! Form::radio('status', 1, true) !!} Да
                         {!! Form::radio('status', 0) !!} Нет
                     </div>
                 </div>
 
                 <div class="form-group ">
-                    <div class="col-sm-offset-2 col-sm-10 btn btn-success">
-                        {!! Form::submit('Добавить категорию') !!}
+                    <div class=" col-sm-10">
+                        <h3>{{ Form::button('Создать категорию', ['class' => 'badge badge-success', 'type' => 'submit']) }}
+                        </h3>
                     </div>
                 </div>
                 {!! Form::close() !!}
