@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'MainController@index');
+Route::get('/', 'MainController@index')->name('index');
 /*Route::get('/', function () {
     return view('index', ['categories' => \App\Categories::all(), 'slides' => \App\Sliders::all()]);
 });*/
@@ -24,8 +24,9 @@ Route::get('about/test', 'Controller@test');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'HomeController@profileUser')->name('profile');
-Route::post('/profile', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); //User сохраняет изменения в профиле
+Route::get('/profile', 'HomeController@profileUser')->name('profile'); //User view профиль
+Route::post('/profile/save', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); //User сохраняет изменения в профиле
+Route::get('/old-orders', 'HomeController@userViewOldOrders')->name('viewOldOrders'); // Обзор старых заказов
 
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 

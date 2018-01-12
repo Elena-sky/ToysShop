@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Мир Игрушек</title>
+    <title>Море Игрушек</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="position: fixed;">
     <div class="container">
-        <a class="navbar-brand" href="#">Море Игрушек</a>
+        <a class="navbar-brand" href="{{ route('index') }}">Море Игрушек</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -85,15 +85,14 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('profile') }}">Профиль</a>
                             </li>
-                            <li class="dropdown-item">
-                                <a href="#">Заказы</a>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('viewOldOrders') }}">Заказы</a>
                             </li>
-                            <li class="dropdown-item">
-                                <a href="#">Смена пароля</a>
+                            <li>
+                                <a class="dropdown-item" href="#">Смена пароля</a>
                             </li>
 
                             <div class="dropdown-divider"></div>
-
 
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

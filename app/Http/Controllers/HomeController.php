@@ -30,18 +30,26 @@ class HomeController extends Controller
         return view('home');
     }
 
+    //User view профиль
     public function profileUser()
     {
         $user = Auth::user();
 
-        return view('profile', ['user' => $user]);
+        return view('user.profile', ['user' => $user]);
     }
 
+    //User сохраняет изменения в профиле
     public function userActionSaveProfile()
     {
         $data = $_POST;
         $categoryData = User::find($data['id']);
         $categoryData->update($data);
-        return \redirect(route('profile'));
+        return \redirect(route('user.profile'));
+    }
+
+    public function userViewOldOrders()
+    {
+
+        return view('user.oldOrders');
     }
 }
