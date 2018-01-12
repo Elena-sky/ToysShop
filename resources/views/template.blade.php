@@ -38,7 +38,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                @foreach(\App\Categories::all() as $category)
+                @foreach(\App\Categories::where('status', 1)->get() as $category)
                     <li class="nav-item">
                         <a class="nav-link" href="/category/{{$category->id}}">{{$category->name}}</a>
                     </li>

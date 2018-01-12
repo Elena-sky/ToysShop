@@ -30,10 +30,9 @@ class AdminController extends Controller
     // Управление категориями
     public function viewCategoryPage()
     {
-        $categories = Categories::all();
+        $categories = Categories::query()->orderBy('id', 'desc')->get();
 
         return view('admin.categoryView', ['categories' => $categories]);
-
     }
 
     // View редактирование категории

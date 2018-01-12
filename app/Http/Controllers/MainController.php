@@ -27,7 +27,9 @@ class MainController extends BaseController
 
     public function index()
     {
-        $categories = \App\Categories::all();
+        $categories = Categories::where('status', 1)
+            ->get();
+
         $slides = Sliders::where('displaing', 1)
             ->get();
 
