@@ -24,6 +24,7 @@
     {{--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">--}}
     {{--<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">--}}
 
+
 </head>
 
 <body>
@@ -71,12 +72,6 @@
                             <a class="nav-link" href="{{ route('register') }}">Зарегистрироватся</a>
                         </li>
                     @else
-                    <!-- Test -->
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ Auth::user()->name }} </a>
-                        </li>
-                        <!-- End Test -->
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -117,6 +112,7 @@
                 @else
                     <li class="nav-item dropdown" style="display: -webkit-box; position: relative;">
 
+
                         <a href="#" class=" nav-link dropdown-toggle" data-toggle="dropdown"
                            aria-expanded="false">{{ Auth::user()->name }}
                             <span class="caret"></span>
@@ -125,22 +121,22 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('home') }}">Профиль</a>
+                                <a class="dropdown-item" href="{{ route('home') }}">Профиль</a>
                             </li>
-                            <li>
+                            <li class="dropdown-item">
                                 <a href="#">Что то еще</a>
                             </li>
-                            <li class="divider"></li>
+
+                            <div class="dropdown-divider"></div>
+
+
                             <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Выйти
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"> Выйти
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
+                                <form class="dropdown-item" id="logout-form" action="{{ route('logout') }}"
+                                      method="POST" style="display: none;"> {{ csrf_field() }}
                                 </form>
                             </li>
                         </ul>
@@ -375,7 +371,10 @@
 
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>--}}
 
 </footer>
 
