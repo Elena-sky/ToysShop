@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $test = 'test';
         return view('home');
     }
 
@@ -34,5 +35,13 @@ class HomeController extends Controller
         $user = Auth::user();
 
         return view('profile', ['user' => $user]);
+    }
+
+    public function userActionSaveProfile()
+    {
+        $data = $_POST;
+        $categoryData = User::find($data['id']);
+        $categoryData->update($data);
+        return \redirect(route('profile'));
     }
 }

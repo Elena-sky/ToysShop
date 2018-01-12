@@ -1,37 +1,45 @@
-@extends('layouts.app')
+@extends('template')
 
 @section('content')
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a href="#">Разделы личного кабинета
-                            </a>
-                        </h4>
-                    </div>
-                    <div class="panel-collapse">
-                        <ul class="list-group list-unstyled">
-                            <li class="list-group-item"><a href="{{ route('profile') }}">Личные даннные</a></li>
-                            <li class="list-group-item"><a href="#">Заказы</a></li>
-                            <li class="list-group-item"><a href="#">Закладки</a></li>
-                            <li class="list-group-item"><a href="#">Вы смотрели</a></li>
-                            <li class="list-group-item"><a href="#">Смена пароля</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
+            {{--<div class="col-md-3">--}}
+            {{--<h3><a href="#">Личный кабинет--}}
+            {{--</a></h3>--}}
+            {{--<div class="btn-group-vertical">--}}
 
-            @yield('content.1')
+            {{--<button type="button" class="btn btn-warning ">1</button>--}}
+            {{--<button type="button" class="btn btn-warning ">2</button>--}}
+            {{--<div class="btn-group">--}}
+            {{--<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">--}}
+            {{--3--}}
+            {{--</button>--}}
+            {{--<div class="dropdown-menu">--}}
+            {{--<a class="dropdown-item" href="#">3.1</a>--}}
+            {{--<a class="dropdown-item" href="#">3.2</a>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+
 
             <div class="col-md-12 profile">
-
+                @yield('content.1')
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
 
 
 

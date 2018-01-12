@@ -23,8 +23,9 @@ Route::get('/about', function () {
 Route::get('about/test', 'Controller@test');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'HomeController@profileUser')->name('profile');
+Route::post('/profile', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); //User сохраняет изменения в профиле
 
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 

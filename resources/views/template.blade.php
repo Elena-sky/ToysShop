@@ -64,44 +64,6 @@
                 </li>
 
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Войти</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Зарегистрироватся</a>
-                        </li>
-                    @else
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ route('home') }}">
-                                        Профиль
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Выйти
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-
                 @if (Auth::guest())
                     <li class="nav-item" style="display: -webkit-box;">
                         <a class="nav-link" href="{{ route('login') }}">Войти</a>
@@ -121,10 +83,13 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="{{ route('home') }}">Профиль</a>
+                                <a class="dropdown-item" href="{{ route('profile') }}">Профиль</a>
                             </li>
                             <li class="dropdown-item">
-                                <a href="#">Что то еще</a>
+                                <a href="#">Заказы</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="#">Смена пароля</a>
                             </li>
 
                             <div class="dropdown-divider"></div>
@@ -141,186 +106,9 @@
                             </li>
                         </ul>
                     </li>
-
-
-
-
-                    {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"--}}
-                    {{--aria-expanded="false">--}}
-                    {{--{{ Auth::user()->name }}--}}
-                    {{--<span class="caret"></span>--}}
-                    {{--</a>--}}
-
-                    {{--<ul class="dropdown-menu" role="menu">--}}
-                    {{--<li>--}}
-                    {{--<a href="{{ route('logout') }}"--}}
-                    {{--onclick="event.preventDefault();--}}
-                    {{--document.getElementById('logout-form').submit();">--}}
-                    {{--Выйти--}}
-                    {{--</a>--}}
-
-                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST"--}}
-                    {{--style="display: none;">--}}
-                    {{--{{ csrf_field() }}--}}
-                    {{--</form>--}}
-                    {{--</li>--}}
-                    {{--</ul>--}}
-                    {{--</li>--}}
                 @endif
-
-
             </ul>
-
         </div>
-
-        <style type="text/css">
-            .dropdown {
-                display: none;
-                position: absolute;
-                z-index: 9000;
-            }
-
-            .dropdown.dropdown-menu {
-                top: auto;
-                left: auto;
-            }
-
-            .dropdown.open {
-                display: inherit;
-            }
-
-            .panel-profile > .row {
-                padding-bottom: 30px;
-            }
-
-            .profile-item {
-                position: relative;
-                padding: 0 0 0 70px;
-                text-transform: none;
-                display: block;
-            }
-
-            .profile-item > a {
-                display: block;
-                overflow: hidden;
-                text-decoration: none;
-                font-size: 14pt;
-            }
-
-            .profile-item > a:first-child:before {
-                font-family: "FontAwesome";
-                display: inline-block;
-                font-size: 55px;
-                line-height: 18px;
-                padding: 20px 0 0 0px;
-                width: 70px;
-                height: 70px;
-                position: absolute;
-                left: 0;
-            }
-
-            .profile-item-user > a:first-child:before {
-                content: "\f07a";
-            }
-
-            .profile-item-orders > a:first-child:before {
-                content: "\f022";
-            }
-
-            .profile-item-pwd > a:first-child:before {
-                content: "\f023";
-            }
-
-            .profile-item-pwd > a:first-child:before {
-                content: "\f023";
-                padding: 20px 0 0 10px;
-            }
-
-            .profile-item-star > a:first-child:before {
-                content: "\f006";
-            }
-
-            .profile-item-eye > a:first-child:before {
-                content: "\f06e";
-            }
-
-            .block {
-                display: block;
-            }
-        </style>
-
-        {{--<div dropdown>--}}
-        {{--<button class="btn btn-default dropdown-open">Open</button>--}}
-        {{--<ul class="dropdown dropdown-menu">--}}
-        {{--<li><a ng-click="">Item #1</a></li>--}}
-        {{--<li><a ng-click="">Item #2</a></li>--}}
-        {{--<li><a ng-click="">Item #3</a></li>--}}
-        {{--</ul>--}}
-        {{--</div>--}}
-
-        {{--<script type="text/javascript">--}}
-        {{--App.directive("dropdown", function() {--}}
-        {{--return {--}}
-        {{--restrict: "A",--}}
-        {{--link: function(scope, element, attrs) {--}}
-        {{--var m = angular.element(element.findClass("dropdown")[0]);--}}
-        {{--var t = angular.element(element.findClass("dropdown-open")[0]);--}}
-        {{--var b = angular.element(document.getElementsByTagName("body"));--}}
-        {{--t.on("click", function(e) {--}}
-        {{--console.log("click!");--}}
-        {{--var c = function(e) {--}}
-        {{--if(m.hasClass("open")) {--}}
-        {{--m.removeClass("open");--}}
-        {{--t.removeClass("active");--}}
-        {{--b.unbind("click", c);--}}
-        {{--} else {--}}
-        {{--m.addClass("open");--}}
-        {{--t.addClass("active");--}}
-        {{--}--}}
-        {{--}--}}
-        {{--if(!m.hasClass("open"))--}}
-        {{--b.bind("click", c);--}}
-        {{--});--}}
-        {{--}--}}
-        {{--};--}}
-        {{--});--}}
-        {{--</script>--}}
-        {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-        {{--<!-- Left Side Of Navbar -->--}}
-        {{--<ul class="nav navbar-nav">--}}
-        {{--&nbsp;--}}
-        {{--</ul>--}}
-
-        {{--<!-- Right Side Of Navbar -->--}}
-        {{--<ul class="nav navbar-nav navbar-right">--}}
-        {{--<!-- Authentication Links -->--}}
-        {{--@if (Auth::guest())--}}
-        {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-        {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-        {{--@else--}}
-        {{--<li class="dropdown">--}}
-        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-        {{--{{ Auth::user()->name }} <span class="caret"></span>--}}
-        {{--</a>--}}
-
-        {{--<ul class="dropdown-menu" role="menu">--}}
-        {{--<li>--}}
-        {{--<a href="{{ route('logout') }}"--}}
-        {{--onclick="event.preventDefault();--}}
-        {{--document.getElementById('logout-form').submit();">--}}
-        {{--Logout--}}
-        {{--</a>--}}
-
-        {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-        {{--{{ csrf_field() }}--}}
-        {{--</form>--}}
-        {{--</li>--}}
-        {{--</ul>--}}
-        {{--</li>--}}
-        {{--@endif--}}
-        {{--</ul>--}}
-        {{--</div>--}}
     </div>
 </nav>
 
