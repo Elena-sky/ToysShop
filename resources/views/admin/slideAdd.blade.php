@@ -37,7 +37,7 @@
 
                     <div class="form-group ">
                         <div class=" col-sm-10">
-                            <h3>{{ Form::button('Создать', ['class' => 'badge badge-success', 'type' => 'submit']) }}
+                            <h3>{{ Form::button('Создать', ['class' => 'btn btn-success', 'type' => 'submit']) }}
                             </h3>
                         </div>
                     </div>
