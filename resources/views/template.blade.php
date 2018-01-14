@@ -50,17 +50,13 @@
                     <a class="nav-link" href="#">Контакты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart">(<span
-                                class="count"> {{\App\Http\Controllers\CartController::kostilMeth('count')}}</span>)
-                        Корзина -
-                        <span class="badge badge-warning total">{{\App\Http\Controllers\CartController::kostilMeth('total')}}
-                            грн</span>
+                    <a class="nav-link" href="/cart"></i> Корзина
                     </a>
-                    {{--<a class="nav-link" href="/cart">(
-                        <span class="count"> {{Cart::count()}}</span>)
-                        Корзина -
-                        <span class="badge badge-warning total">{{Cart::total()}} грн</span>
-                    </a>--}}
+                    {{--<a class="nav-link" href="/cart">(--}}
+                    {{--<span class="count"> {{Cart::count()}}</span>)--}}
+                    {{--Корзина ---}}
+                    {{--<span class="badge badge-warning total">{{Cart::total()}} грн</span>--}}
+                    {{--</a>--}}
                 </li>
 
                     <!-- Authentication Links -->

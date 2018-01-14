@@ -67,9 +67,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">(
-                        <span class="count"> {{Cart::instance('shoppingCart')->count()}}</span>)
+                        <span class="count"> {{Cart::instance('-shoppingCart')->count()}}</span>)
                         Корзина -
-                        <span class="badge badge-warning total">{{Cart::instance('shoppingCart')->total()}} грн</span>
+                        <span class="badge badge-warning total">{{Cart::instance('-shoppingCart')->total()}} грн</span>
                     </a>
                 </li>
                 <ul class="nav navbar-nav ml-auto">
