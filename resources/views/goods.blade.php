@@ -3,13 +3,8 @@
 @section('content')
     <!-- Page Content -->
 
-
-    {{--<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:300,500,600'>--}}
     <style class="cp-pen-styles">
-        body {
-            letter-spacing: 0.05rem;
-            font-size: 16px;
-        }
+
 
         h1, h2, h3 {
             text-transform: uppercase;
@@ -110,13 +105,6 @@
             align-items: stretch;
         }
 
-        .product-image {
-            display: block;
-            object-fit: cover;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-
         @media (min-width: 768px) {
             .product-image {
                 height: 450px;
@@ -188,14 +176,6 @@
             }
         }
 
-        .promo-image {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 50%;
-        }
-
         @supports (display: grid) {
             .promo-span-row-2 {
                 grid-row: span 2;
@@ -249,9 +229,12 @@
 
             <li class="product">
                 <div class="product-link">
-                    <button type="button" class="product-quickview ajax-btn  box" data-good-id="{{$good->id}}">Добавить
-                        в корзину
-                    </button>
+                    <div class="action">
+
+                        <button type="button" class="product-quickview ajax-btn  box" data-good-id="{{$good->id}}">Добавить
+                            в корзину
+                        </button>
+                    </div>
 
                     <a href="{{route('goodView',['id' => $good->id])}}">
                         <img src="{{url( asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($good->id))) }}"/>
