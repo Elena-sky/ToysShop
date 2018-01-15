@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Orders extends Model
 {
     protected $table = 'orders';
-
-    /*public function goods () {
-        $this->hasMany('App\Goods' );//TODO peredelatj
-    }*/
+    protected $fillable = ['id', 'user_id', 'delivery_id', 'total', 'status', 'comment'];
 
     public function goods()
     {

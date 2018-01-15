@@ -16,18 +16,21 @@
 
                     {!! Form::model($user, array('route' => array('viewSaveCheckout'))
                         ) !!}
+                    <div class="col-sm-10">
+                        {!! Form::hidden('user_id', $user->id, ['class' => 'form-control']) !!}
+                    </div>
 
                     <div class="form-group">
-                        {!! Form::label('userFirstName', 'Имя') !!}
+                        {!! Form::label('userLastName', 'Фамилия Имя Отчество') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('userFirstName', $user->name, ['class' => 'form-control']) !!}
+                            {!! Form::text('full_name', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userLastName', 'Фамилия') !!}
+                        {!! Form::label('userPhone', 'Мобильный телефон') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('userLastName', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('phone', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -39,47 +42,23 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('userPhone', 'Мобильный телефон') !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('userPhone', '', ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
                         {!! Form::label('payment', 'Метод оплаты') !!}
                         <div class="col-sm-10">
-                            {!! Form::select('payment', ["Картой", "Наличными"], ['class' => 'form-control'])!!}
-
+                            {!! Form::select('payment_method', ["Картой", "Наличными"], ['class' => 'form-control'])!!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('delivery', 'Метод доставки') !!}
                         <div class="col-sm-10">
-                            {!! Form::select('delivery', ["Самовывоз", "Новая почта", "Укрпочта", "Интайм"], ['class' => 'form-control'])!!}
-
+                            {!! Form::select('delivery_method', ["Самовывоз", "Новая почта", "Укрпочта", "Интайм"], ['class' => 'form-control'])!!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('address', 'Адрес') !!}
+                        {!! Form::label('address', 'Адрес доставки/номер отделения') !!}
                         <div class="col-sm-10">
-                            {!! Form::text('address', '', ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('HouseNumber', 'Номер дома') !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('HouseNumber', '', ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('apartmentNumber', 'Квартира') !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('apartmentNumber', '', ['class' => 'form-control']) !!}
+                            {!! Form::text('delivery_address', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -88,6 +67,10 @@
                         <div class="col-sm-10">
                             {!! Form::text('comment', '', ['class' => 'form-control']) !!}
                         </div>
+                    </div>
+
+                    <div class="col-sm-10">
+                        {!! Form::hidden('status', 1, ["1", "0"], ['class' => 'form-control'])!!}
                     </div>
 
                     <div class="col-sm-10">
@@ -111,8 +94,8 @@
 
 
                     <div class="form-group ">
-                        <div class="col-sm-offset-2 col-sm-10 btn btn-success">
-                            {!! Form::submit('Оформить заказ') !!}
+                        <div class="col-sm-offset-2 col-sm-10">
+                            {!! Form::button('Оформить заказ', ['class' => 'btn btn-success', 'type' => 'submit']) !!}
                         </div>
 
 
