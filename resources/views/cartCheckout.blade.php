@@ -127,8 +127,10 @@
                         @foreach($items as $row )
                             <div style="display: inline-flex">
                                 <div style="padding: 5px">
-                                    <img src="{{ asset("/uploads/".\App\Http\Controllers\CartController::getGoodMainImage($row->id)) }}"
-                                         width="80" height="76" alt="{{$row->name}}">
+
+                                    <img alt="{{$row->name}}" style=" width: 72px; height: 72px;"
+                                         src="{{url( asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($row->id))) }}"/>
+
                                 </div>
                                 <div>
                                     <div style="font-size: .846em; line-height: 1.273em; margin-bottom: .75em; padding-top: .636em;">
@@ -147,7 +149,7 @@
                         @endforeach
 
                         <div style="border-top: 1px solid #cdd3d5; margin-top: 1em; padding-top: .846em;">
-                            К оплате: {{Cart::total()}} грн (без учета доставки)
+                            К оплате: {{Cart::subtotal ()}} грн (без учета доставки)
                         </div>
 
                         <a href="{{route('cartView')}}">Редактировать заказ</a>

@@ -63,12 +63,6 @@
     padding: 5px 5px;
 }
 
-.goodImg {
-    margin: 0 auto;
-    height: 300px;
-    background-size: cover;
-}
-
 .description {
     white-space: nowrap; /* Отменяем перенос текста */
     overflow: hidden; /* Обрезаем содержимое */

@@ -9,10 +9,9 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
+                        <th>Название</th>
+                        <th>Количество</th>
+                        <th class="text-center">Цена</th>
                         <th> </th>
                     </tr>
                     </thead>
@@ -23,12 +22,11 @@
                             <tr data-item-id="{{$row->id}}">
                                 <td class="col-sm-8 col-md-6">
                                     <div class="media">
-                                        <div class="goodImg"
-                                             style=" width: 72px; height: 72px; background-image: url({{ asset("/uploads/".\App\Http\Controllers\CartController::getGoodMainImage($row->id)) }})">
-                                        </div>
+                                        <img style=" width: 72px; height: 72px;"
+                                             src="{{url( asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($row->id))) }}"/>
+
                                         <div class="media-body">
                                             <h4 class="media-heading"><a href="#">{{$row->name}}</a></h4>
-                                            <h5 class="media-heading"> Производитель: <a href="#">{{$row->made}}</a>
                                             </h5>
                                             <span>Status: </span><span
                                                     class="text-success"><strong>In Stock</strong></span>
@@ -40,10 +38,9 @@
                                     <input type="number" class="form-control itemCount" value="{{$row->qty}}">
 
                                 </td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>{{$row->price}} грн</strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>total</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>{{$row->price}} грн</strong>
+                                </td>
                                 <td class="col-sm-1 col-md-1">
-
                                     <button type="button" class="btn btn-danger ajax-btn-remove"
                                             data-row-id="{{$row->id}}">
                                         <span>Удалить</span>
@@ -61,17 +58,19 @@
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
-                        <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>{{Cart::total()}} грн</strong></h3></td>
+                        <td><h3>Итого:</h3></td>
+                        <td class="text-right"><h3><strong>{{Cart::subtotal ()}} грн</strong></h3></td>
                     </tr>
                     <tr>
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
                         <td>
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                            </button>
+                            <a href="{{route('index')}}">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Продолжить покупки
+                                </button>
+                            </a>
                         </td>
                         <td>
                             <a href="{{route('viewCheckout')}}">
