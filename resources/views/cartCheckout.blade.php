@@ -44,14 +44,14 @@
                     <div class="form-group">
                         {!! Form::label('payment', 'Метод оплаты') !!}
                         <div class="col-sm-10">
-                            {!! Form::select('payment_method', ["Картой", "Наличными"], ['class' => 'form-control'])!!}
+                            {!! Form::select('payment_method', array('Картой' => 'Картой', 'Наличными' => 'Наличными'), ['class' => 'form-control'])!!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('delivery', 'Метод доставки') !!}
                         <div class="col-sm-10">
-                            {!! Form::select('delivery_method', ["Самовывоз", "Новая почта", "Укрпочта", "Интайм"], ['class' => 'form-control'])!!}
+                            {!! Form::select('delivery_method', array('Самовывоз' => 'Самовывоз', 'Новая почта' => 'Новая почта', 'Укрпочта' => 'Укрпочта', 'Интайм' => 'Интайм'), ['class' => 'form-control'])!!}
                         </div>
                     </div>
 
