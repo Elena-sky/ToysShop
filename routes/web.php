@@ -27,6 +27,8 @@ Auth::routes();
 Route::get('/profile', 'HomeController@profileUser')->name('profile'); //User view профиль
 Route::post('/profile/save', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); //User сохраняет изменения в профиле
 Route::get('/old-orders', 'HomeController@userViewOldOrders')->name('viewOldOrders'); // Обзор старых заказов
+Route::post('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('viewOldOrdersById'); // Обзор старого заказа по id
+
 
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 

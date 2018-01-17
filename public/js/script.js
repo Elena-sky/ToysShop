@@ -6,7 +6,6 @@ $(document).ready(function () {
             cartCount = parseFloat($(".count").html()),
             countEl = $(".count");
 
-
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

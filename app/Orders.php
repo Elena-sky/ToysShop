@@ -13,4 +13,12 @@ class Orders extends Model
     {
         return $this->hasManyThrough('App\Goods', 'App\OrdersGoods');
     }
+
+    public static function getUserOrders($userId)
+    {
+
+        $userOrders = self::where('user_id', '=', $userId)->get();
+        return $userOrders;
+    }
+
 }
