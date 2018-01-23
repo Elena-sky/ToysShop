@@ -3,46 +3,65 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-
-                    <div class="col-md-4">
-                        <h3>История заказов</h3>
-                        <div class="list-group">
+            <div class="col-md-12 col-md-offset-2">
+                <h2>История заказов</h2>
+                <table class="table table-hover">
+                    <tbody>
                             @foreach($orders as $order)
-
-                                <a href="{{route('viewOldOrdersById', [$order->id])}}"
-                                   class="ajax-btn-order list-group-item list-group-item-secondary">{{$order->created_at}}</a>
+                                <tr>
+                                    <td>
+                                    <span>
+                                        {{$order->id}}
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <div>
+                                        <span>
+                                           Итого: {{$order->total}} грн
+                                        </span>
+                                        </div>
+                                        <div>
+                                        <span>
+                                        {{$order->created_at}}
+                                    </span>
+                                        </div>
+                                    </td>
+                                    <td style="display: -webkit-box;">
+                                        @foreach($order->goods as $good)
+                                            <div style="max-width: 100px;">
+                                                <img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
+                                            </div>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                    <span>
+                                      {{($order->status)? 'Обрабатываеться' : 'Обработан'}}
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('viewOldOrdersById', [$order->id])}}"
+                                           class="ajax-btn-order list-group-item list-group-item-secondary">Детальнее</a>
+                                    </td>
+                                </tr>
                             @endforeach
-                        </div>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="panel-heading">
-
-                        </div>
-
-                        <div class="panel-body">
-                            <h5>Информация о всех ваших заказах: номера, даты, состав заказов и их статусы.</h5>
-                        </div>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $(".ajax-btn-order").click(function () {
+    {{--<script>--}}
+    {{--$(document).ready(function () {--}}
+    {{--$(".ajax-btn-order").click(function () {--}}
 
-                var id = $(this).data('order-id');
-
-
-            })
+    {{--var id = $(this).data('order-id');--}}
 
 
-        });
+    {{--})--}}
 
 
-    </script>
+    {{--});--}}
+
+
+    {{--</script>--}}
 @endsection

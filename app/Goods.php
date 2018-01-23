@@ -28,4 +28,12 @@ class Goods extends Model
     {
         return $this->hasMany('App\GoodsImages', 'product_id');
     }
+
+    public function getFirstImage()
+    {
+        $goodsImages = $this/*->goodImg()*/
+        ;
+        $firstImage = $goodsImages->goodImg[0];
+        return $firstImage->filename;
+    }
 }

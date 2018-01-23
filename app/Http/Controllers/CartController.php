@@ -112,8 +112,7 @@ class CartController extends Controller
     {
         $good = Goods::find($id);
         if (!$good) return false;
-        $firstImage = $good->goodImg[0];
-        return $firstImage->filename;
+        return $good->getFirstImage();
     }
 
     public function viewCheckoutPage()

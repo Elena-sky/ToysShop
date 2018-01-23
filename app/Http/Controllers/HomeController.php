@@ -56,10 +56,9 @@ class HomeController extends Controller
         return view('user.oldOrders', ['orders' => $orders]);
     }
 
-    public function userViewOldOrdersById()
+    public function userViewOldOrdersById($orderId)
     {
-
-
-        return view('user.oldOrders');
+        $order = Orders::find($orderId);
+        return view('user.oldOrdersById', ['order' => $order]);
     }
 }
