@@ -11,27 +11,28 @@
                             Статус: {{($order->status)? 'Обрабатываеться' : 'Обработан'}}
                         </div>
                         <div class="col-md-6">
-                            Итого: {{$order->total}} грн
+                            <h3>Итого: {{$order->total}} грн</h3>
                         </div>
                     </div>
-
-
+                    @foreach($order->goods as $good)
                     <table class="table">
                         <tbody>
-                        @foreach()
                             <tr>
-                                <td>Mark</td>
-                                <td>Otto
-
+                                <td style="display: -webkit-box;">
+                                    <div style="max-width: 100px;">
+                                        <img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
+                                    </div>
                                 </td>
-                                <td>@mdo</td>
-                                <th scope="row">1</th>
+                                <td>
+                                    <span>{{$good->name}}</span>
+                                </td>
+                                <td>Количество</td>
+                                <th scope="row">{{$good->price}}</th>
 
                             </tr>
-                        @endforeach
                         </tbody>
                     </table>
-
+                    @endforeach
 
                 </div>
             </div>
