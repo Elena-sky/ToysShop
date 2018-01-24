@@ -27,6 +27,7 @@
                                 <th>Отредактированый</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,6 +40,11 @@
                                     <td>{{$user->created_at}}</td>
                                     <td>{{$user->updated_at}}</td>
                                     <td>
+                                        <a href="{{route('viewUserPage', [$user->id])}}">
+                                            <button type="button" class="btn btn-info">Обзор</button>
+                                        </a>
+                                    </td>
+                                    <td>
                                         <a href="{{route('viewUserUpdate', [$user->id])}}">
                                             <button type="button" class="btn btn-warning">Изменить</button>
                                         </a>
@@ -48,6 +54,7 @@
                                             <button type="button" class="btn btn-danger">Удалить</button>
                                         </a>
                                     </td>
+
                                 </tr>
                             @endforeach
                             </tbody>

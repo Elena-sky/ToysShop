@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/users/update/{id}', 'AdminController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
     Route::post('/users/update/save', 'AdminController@actionSaveUserUpdate')->name('actionSaveUser'); // Action сохранить редактироование пользователя
     Route::get('/users/delete/{id}', 'AdminController@actionUserDelete')->name('userDelete'); //Удаление пользователя
+    Route::get('/users/user/{id}', 'AdminController@adminViewUserPage')->name('viewUserPage'); //посмотреть профиль пользователя
 
     Route::group(['middleware' => 'web'], function () {
         Route::get('fileUpload', function () {
@@ -38,6 +39,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/sliders/update/{id}', 'AdminController@viewSlideUpdatePage')->name('viewSlideUpdate'); //View редактирование слайда
     Route::post('/sliders/update/save', 'AdminController@actionSlideSaveUpdate')->name('actionSlideSave'); // Action сохранить редактироование
     Route::get('/sliders/delete/{id}', 'AdminController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
+
+    Route::get('/orders', 'AdminController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
+    Route::get('/orders/slider/{id}', 'AdminController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
 
     //// Управление товарами:
 //'admin/product/create' => 'adminProduct/create',

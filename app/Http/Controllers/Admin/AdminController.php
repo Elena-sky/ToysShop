@@ -7,6 +7,7 @@ use App\Goods;
 use App\GoodsImages;
 use App\Http\Controllers\Controller;
 use App\ImageUploader;
+use App\Orders;
 use App\Sliders;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class AdminController extends Controller
     {
         $categories = Categories::query()->orderBy('id', 'desc')->get();
 
-        return view('admin.categoryView', ['categories' => $categories]);
+        return view('admin.category.categoryView', ['categories' => $categories]);
     }
 
     // View редактирование категории
@@ -40,7 +41,7 @@ class AdminController extends Controller
     {
         $category = Categories::find($id);
 
-        return view('admin.categoryUpdate', ['category' => $category]);
+        return view('admin.category.categoryUpdate', ['category' => $category]);
     }
 
     // Action сохранить редактироование категории
@@ -63,7 +64,7 @@ class AdminController extends Controller
 
     public function actionAddCategoryView()
     {
-        return view('admin.categoryAdd');
+        return view('admin.category.categoryAdd');
     }
 
     // Добавление новой категории
@@ -84,7 +85,7 @@ class AdminController extends Controller
         $goods = Goods::query()->orderBy('id', 'desc')->paginate(10);
         $category = Categories::getCategories();
 
-        return view('admin.productChange', ['goods' => $goods, 'category' => $category]);
+        return view('admin.product.productChange', ['goods' => $goods, 'category' => $category]);
     }
 
     // View page добавления нового товара
@@ -92,7 +93,7 @@ class AdminController extends Controller
     {
         $category = Categories::getCategories();
 
-        return view('admin.productAdd', ['categories' => $category]);
+        return view('admin.product.productAdd', ['categories' => $category]);
     }
 
     // Action добавление нового товара
@@ -129,7 +130,7 @@ class AdminController extends Controller
 //        $images = $good->goodImg;
         $imagesName = array_pluck($images, 'filename');
 
-        return view('admin.productUpdate', ['good' => $good], ['category' => $category, 'images' => $images]);
+        return view('admin.product.productUpdate', ['good' => $good], ['category' => $category, 'images' => $images]);
     }
 
     // Action запись изменений товара в BD
@@ -178,7 +179,7 @@ class AdminController extends Controller
     public function viewUsersList()
     {
         $users = User::all();
-        return view('admin.usersView', ['users' => $users]);
+        return view('admin.user.usersView', ['users' => $users]);
     }
 
     //View page редактирование пользователя
@@ -186,7 +187,7 @@ class AdminController extends Controller
     {
         $user = User::find($id);
 
-        return view('admin.userUpdate', ['user' => $user]);
+        return view('admin.user.userUpdate', ['user' => $user]);
     }
 
     // Action сохранить редактироование пользователя
@@ -199,6 +200,16 @@ class AdminController extends Controller
         return \redirect(route('viewUsers'));
     }
 
+    //посмотреть профиль пользователя
+    public function adminViewUserPage($id)
+    {
+
+        $user = User::find($id);
+        return view('admin.user.userPage', ['user' => $user]);
+    }
+
+
+
 
     //Управление содержимым сайта
 
@@ -207,14 +218,14 @@ class AdminController extends Controller
     {
         $sliders = Sliders::all();
 
-        return view('admin.slideView', ['sliders' => $sliders]);
+        return view('admin.slide.slideView', ['sliders' => $sliders]);
     }
 
     //View Добавление нового слайдера
     public function viewSliderAddPage()
     {
 
-        return view('admin.slideAdd');
+        return view('admin.slide.slideAdd');
     }
 
     // Action Добавление нового слайдера
@@ -241,7 +252,7 @@ class AdminController extends Controller
     {
         $slide = Sliders::find($id);
 
-        return view('admin.slideUpdate', ['slide' => $slide]);
+        return view('admin.slide.slideUpdate', ['slide' => $slide]);
     }
 
     // Action сохранить редактироование
@@ -259,6 +270,22 @@ class AdminController extends Controller
         $slideDelete = Sliders::find($id);
         $slideDelete->delete();
         return \redirect(route('viewSliders'));
+    }
+
+    //ЗАКАЗЫ
+
+    // View всех заказов
+    public function adminViewAllOrders()
+    {
+        $orders = Orders::all();
+        return view('admin.orders.ordersView', ['orders' => $orders]);
+    }
+
+    // View заказа
+    public function adminViewOneOrder($orderId)
+    {
+        $order = Orders::find($orderId);
+        return view('admin.orders.oneOrder', ['order' => $order]);
     }
 
 
