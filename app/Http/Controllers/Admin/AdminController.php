@@ -8,6 +8,7 @@ use App\GoodsImages;
 use App\Http\Controllers\Controller;
 use App\ImageUploader;
 use App\Orders;
+use App\OrdersDelivery;
 use App\Sliders;
 use App\User;
 use Illuminate\Http\Request;
@@ -203,7 +204,6 @@ class AdminController extends Controller
     //посмотреть профиль пользователя
     public function adminViewUserPage($id)
     {
-
         $user = User::find($id);
         return view('admin.user.userPage', ['user' => $user]);
     }
@@ -285,7 +285,20 @@ class AdminController extends Controller
     public function adminViewOneOrder($orderId)
     {
         $order = Orders::find($orderId);
-        return view('admin.orders.oneOrder', ['order' => $order]);
+        $userName = User::getNameById($order->user_id);
+        $delivery = OrdersDelivery::find($order->delivery_id);
+        $orderGoods = $order->orderGoods;
+//        $test = $orderGoods->goods_id;
+//        foreach ($orderGoods as $item)
+//        {
+//            if($item->order_id === $order->id){
+//                $order = $item;
+//            }
+//        }
+
+        dd($orderGoods);
+
+        return view('admin.orders.oneOrder', ['order' => $order, 'delivery' => $delivery, 'userName' => $userName]);
     }
 
 

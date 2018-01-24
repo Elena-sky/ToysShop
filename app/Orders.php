@@ -14,6 +14,11 @@ class Orders extends Model
         return $this->hasManyThrough('App\Goods', 'App\OrdersGoods', 'order_id', 'id');
     }
 
+    public function orderGoods()
+    {
+        return $this->hasMany('App\OrdersGoods', 'order_id');
+    }
+
     public static function getUserOrders($userId)
     {
         $userOrders = self::where('user_id', '=', $userId)->get();
@@ -26,5 +31,12 @@ class Orders extends Model
         $orderGoods = $userOrderGoods->goods;
         return $orderGoods;
     }
+
+    public static function getOrderGoods()
+    {
+        $good = Orders::orderGoods()->get();
+        return $good;
+    }
+
 
 }

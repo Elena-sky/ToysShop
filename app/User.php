@@ -28,4 +28,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function getNameById($id)
+    {
+        $user = self::find($id);
+        return $user;
+    }
 }
