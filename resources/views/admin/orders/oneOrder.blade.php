@@ -123,7 +123,8 @@
                                         <div class="input-group">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-danger btn-number"
-                                                        data-type="minus" data-field="{{$good->id}}">
+                                                        data-type="minus" data-field="{{$good->id}}"
+                                                        data-goodId="{{$good->id}}" data-orderId="{{$order->id}}">
                                                     <span class="glyphicon glyphicon-minus">-</span>
                                                 </button>
                                             </span>
@@ -151,12 +152,13 @@
 
                                     </td>
                                     <td>
-                                        <a href="{{route('actionOrderProductDelete', [$good->id])}}">
-                                            <button type="button" class="btn btn-danger" data-type="delete"
+                                        {{--<a href="{{route('actionOrderProductDelete', [$good->id])}}">--}}
+                                        <button type="button" class="btn btn-danger btn-delete" data-type="delete"
+                                                data-good-id="{{$good->id}}" data-order-id="{{$order->id}}"
                                                     data-field="{{$good->id}}"><span
                                                         class="glyphicon glyphicon-remove"></span> Удалить
                                             </button>
-                                        </a>
+                                        {{--</a>--}}
                                     </td>
                                 </tr>
                             @endforeach

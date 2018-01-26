@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <table class="table table-striped">
                         <thead>
-                        <tr>
+                        <tr class="table-info">
                             <th>Id заказа</th>
                             {{--<th>Сортировка?</th>--}}
                             <th>Пользователь ID</th>
@@ -58,6 +58,7 @@
                                         </button>
                                     </a>
                                 </td>
+                                <td>Удалить</td>
                             </tr>
                         @endforeach
                         </tbody>

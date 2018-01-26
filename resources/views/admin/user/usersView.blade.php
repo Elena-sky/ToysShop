@@ -18,7 +18,7 @@
                     <div class="col-md-6">
                         <table class="table table-striped">
                             <thead>
-                            <tr>
+                            <tr class="table-info">
                                 <th>ID</th>
                                 <th>Имя</th>
                                 <th>E-Mail</th>

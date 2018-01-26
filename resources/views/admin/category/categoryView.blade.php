@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <table class="table table-striped">
                         <thead>
-                        <tr>
+                        <tr class="table-info">
                             <th>Название</th>
                             {{--<th>Сортировка?</th>--}}
                             <th>Отображать</th>

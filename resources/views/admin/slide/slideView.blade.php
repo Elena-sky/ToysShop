@@ -25,7 +25,7 @@
 
                 <div class="col-md-12">
                     <table class="table table-striped">
-                        <thead>
+                        <thead class="table-info">
                         <tr>
                             <th>ID</th>
                             <th>Картинка</th>
