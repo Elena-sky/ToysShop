@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Orders extends Model
 {
@@ -32,11 +33,12 @@ class Orders extends Model
         return $orderGoods;
     }
 
-    public static function getOrderGoods()
+    public static function getOrderGood($orderId, $goodId)
     {
-        $good = Orders::orderGoods()->get();
-        return $good;
+        $good = DB::select
+        ('select * from OrdersGoods where order_id = :orderId and goods_id = :goodId', ['orderId' => $orderId, 'goodId' => $goodId]);
+        $result = (empty($good)) ? null : array_shift($good);
+        return $result;
     }
-
 
 }

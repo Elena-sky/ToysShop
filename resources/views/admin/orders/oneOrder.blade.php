@@ -118,7 +118,7 @@
                                 <tr class="max-sunbol">
                                     <td>{{$good->id}}</td>
                                     <td>{{$good->name}}</td>
-                                    <td>?</td>
+                                    <td>{{$good->getGoodCount($order->id)}}</td>
                                     <td>{{$good->code}}</td>
                                     <td>
                                         <div>

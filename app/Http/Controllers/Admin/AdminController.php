@@ -287,16 +287,14 @@ class AdminController extends Controller
         $order = Orders::find($orderId);
         $userName = User::getNameById($order->user_id);
         $delivery = OrdersDelivery::find($order->delivery_id);
-        $orderGoods = $order->orderGoods;
-//        $test = $orderGoods->goods_id;
-//        foreach ($orderGoods as $item)
-//        {
-//            if($item->order_id === $order->id){
-//                $order = $item;
-//            }
-//        }
 
-        dd($orderGoods);
+        $orderGoods = $order->orderGoods;
+
+//$test= $orderGoods[0];
+//$count = $test->goods;
+//
+//if($orderId)
+        //dd($order->goods);
 
         return view('admin.orders.oneOrder', ['order' => $order, 'delivery' => $delivery, 'userName' => $userName]);
     }
