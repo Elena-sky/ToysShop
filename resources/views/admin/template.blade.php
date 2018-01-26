@@ -326,6 +326,10 @@
         <script src="/js/sb-admin-datatables.min.js"></script>
         <script src="/js/sb-admin-charts.min.js"></script>
 
+
+        <script src="/js/ordersButton.js"></script>
+
+
     </footer>
 </div>
 

@@ -25,9 +25,9 @@
                         <div style="margin-bottom: 50px">
                             <h3>Заказ №
                                 <td>{{$order->id}}</h3>
-                            <table class="table table-striped">
+                            <table class="table">
                                 <thead>
-                                <tr>
+                                <tr class="table-info">
                                     <th>Id заказа</th>
                                     <th>Пользователь ID</th>
                                     <th>Сумма</th>
@@ -74,9 +74,9 @@
 
                     <div style="margin-bottom: 50px">
                         <h3>Информация о доставке</h3>
-                        <table class="table table-striped">
+                        <table class="table">
                             <thead>
-                            <tr>
+                            <tr class="table-info">
                                 <th>ФИО</th>
                                 <th>Телефон</th>
                                 <th>Город</th>
@@ -102,7 +102,7 @@
                         <h3>Товары</h3>
                         <table class="table table-striped">
                             <thead>
-                            <tr>
+                            <tr class="table-info">
                                 <th>id</th>
                                 <th>Название</th>
                                 <th>Количество</th>
@@ -114,11 +114,31 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             @foreach($order->goods as $good)
                                 <tr class="max-sunbol">
                                     <td>{{$good->id}}</td>
                                     <td>{{$good->name}}</td>
-                                    <td>{{$good->getGoodCount($order->id)}}</td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-danger btn-number"
+                                                        data-type="minus" data-field="{{$good->id}}">
+                                                    <span class="glyphicon glyphicon-minus">-</span>
+                                                </button>
+                                            </span>
+                                            <input type="text" style="width: 60px" name="{{$good->id}}"
+                                                   class="form-control input-number"
+                                                   value="{{$good->getGoodCount($order->id)}}" min="1" max="100">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-success btn-number"
+                                                        data-type="plus" data-field="{{$good->id}}">
+                                                    <span class="glyphicon glyphicon-plus">+</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </td>
+
                                     <td>{{$good->code}}</td>
                                     <td>
                                         <div>
@@ -127,12 +147,22 @@
                                         </div>
                                     </td>
                                     <td>{{$good->price}}</td>
-                                    <td>Редактировать</td>
-                                    <td>Удалить</td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <a href="{{route('actionOrderProductDelete', [$good->id])}}">
+                                            <button type="button" class="btn btn-danger" data-type="delete"
+                                                    data-field="{{$good->id}}"><span
+                                                        class="glyphicon glyphicon-remove"></span> Удалить
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
