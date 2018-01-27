@@ -83,6 +83,7 @@
                                 <th>Метод оплаты</th>
                                 <th>Метод доставки</th>
                                 <th>Адресс доставки</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -93,6 +94,13 @@
                                 <td>{{$delivery->payment_method}}</td>
                                 <td>{{$delivery->delivery_method}}</td>
                                 <td>{{$delivery->delivery_address}}</td>
+                                <td>
+                                    <a href="{{route('viewDeliveryUpdate', [$delivery->id])}}">
+                                        <button type="button" class="btn btn-warning"><span
+                                                    class="glyphicon glyphicon-pencil"></span> Изменить
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -129,7 +137,7 @@
                                                     <span class="glyphicon glyphicon-minus">-</span>
                                                 </button>
                                             </span>
-                                            <input type="text" style="width: 60px" name="{{$good->id}}"
+                                            <input type="text" style="width: 30px" name="{{$good->id}}"
                                                    class="form-control input-number" data-token="{{ csrf_token() }}"
                                                    value="{{$orderGoods->count}}">
                                             <span class="input-group-btn">

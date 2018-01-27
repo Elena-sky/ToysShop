@@ -308,5 +308,23 @@ class AdminController extends Controller
         }
     }
 
+    // View редактировать данные о доставке
+    public function adminViewDeliveryUpdate($id)
+    {
+        $delivery = OrdersDelivery::find($id);
+        return view('admin.orders.deliveryUpdate', ['delivery' => $delivery]);
+    }
+
+    //Action сохранить данные о доставке
+    public function adminActionDeliverySave()
+    {
+        $data = $_POST;
+        $deliveryData = OrdersDelivery::find($data['id']);
+        $deliveryData->update($data);
+
+        return \redirect(route('viewAllOrders'));
+
+    }
+
 
 }

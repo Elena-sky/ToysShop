@@ -21,7 +21,6 @@
                 ) !!}
                 <input name="id" type="hidden" value="{{$good->id}}">
 
-
                 <div class="form-group">
                     {!! Form::label('productName', 'Название:') !!}
                     <div class="col-sm-12">

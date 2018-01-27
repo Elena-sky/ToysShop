@@ -42,9 +42,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::get('/orders', 'AdminController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
     Route::get('/orders/order/{id}', 'AdminController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
-    Route::post('/orders/order/update/{id}', 'AdminController@adminOrderProductUpdate')->name('orderProductUpdate'); //View редактировать количество или удалить товар в заказе
-    Route::post('/order/product-action', 'AdminController@adminActionOrderProduct')->name('actionOrderProduct'); //  Action удалить товар из заказа
-
+    Route::post('/order/product-action', 'AdminController@adminActionOrderProduct')->name('actionOrderProduct');  //Ajax редактировать количество или удалить товар в заказе
+    Route::get('/order/delivery-update/{id}', 'AdminController@adminViewDeliveryUpdate')->name('viewDeliveryUpdate'); // View редактировать данные о доставке
+    Route::post('/order/delivery-update/save', 'AdminController@adminActionDeliverySave')->name('actionDeliverySave'); //Action сохранить данные о доставке
 
     //// Управление товарами:
 //'admin/product/create' => 'adminProduct/create',
