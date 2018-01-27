@@ -22,6 +22,8 @@
             <div class="row " style="display: inline-block;width: 100%;">
                 {!! Form::model($delivery, array('route' => array('actionDeliverySave'))
                 ) !!}
+                <input name="orderId" type="hidden" value="{{$orderId}}">
+
                 <input name="id" type="hidden" value="{{$delivery->id}}">
 
                 <div class="form-group">

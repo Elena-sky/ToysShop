@@ -47,6 +47,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/order/delivery-update/save', 'AdminController@adminActionDeliverySave')->name('actionDeliverySave'); //Action сохранить данные о доставке
     Route::get('/order/order-update/{id}', 'AdminController@adminViewOrderUpdate')->name('viewOrderUpdate'); // View редактировать заказ
     Route::post('/order/order-updste/save', 'AdminController@adminActionOrderSave')->name('actionOrderSave'); // Action созранить редактирование заказа
+    Route::get('/order/delete/{id}', 'AdminController@adminOrderDelete')->name('orderDelete'); //Action Удалить заказ
 
     //// Управление товарами:
 //'admin/product/create' => 'adminProduct/create',

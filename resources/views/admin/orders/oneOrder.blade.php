@@ -37,9 +37,11 @@
                                     <th>Отредактирован</th>
                                     <th>Статус</th>
                                     <th>
-                                        <button type="button" class="btn btn-danger"><span
-                                                    class="glyphicon glyphicon-pencil"></span> Удалить заказ
-                                        </button>
+                                        <a href="{{route('orderDelete', [$order->id])}}">
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Удалить заказ
+                                            </button>
+                                        </a>
                                     </th>
                                 </tr>
                                 </thead>

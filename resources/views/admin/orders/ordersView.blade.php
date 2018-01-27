@@ -20,7 +20,7 @@
                         <thead>
                         <tr class="table-info">
                             <th>Id заказа</th>
-                            <th>Пользователь ID</th>
+                            <th>Пользователь</th>
                             <th>Сумма</th>
                             <th>Способ доставки</th>
                             <th>Создан</th>

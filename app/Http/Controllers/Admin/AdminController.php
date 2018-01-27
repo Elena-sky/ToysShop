@@ -320,11 +320,11 @@ class AdminController extends Controller
     public function adminActionDeliverySave()
     {
         $data = $_POST;
+        $orderid = $data['orderId'];
         $deliveryData = OrdersDelivery::find($data['id']);
         $deliveryData->update($data);
 
-        return \redirect(route('viewAllOrders'));
-
+        return \redirect(route('viewOneOrder', ['orderid' => $orderid]));
     }
 
     // View зедактировать заказ
@@ -344,7 +344,14 @@ class AdminController extends Controller
         $orderData->update($data);
 
         return \redirect(route('viewOneOrder', ['orderid' => $orderid]));
+    }
 
+    //Action Удалить заказ
+    public function adminOrderDelete($orderId)
+    {
+        $orderDelete = Orders::find($orderId);
+        $orderDelete->delete();
+        return \redirect(route('viewAllOrders'));
     }
 
 
