@@ -24,6 +24,14 @@
                 ) !!}
                 <input name="id" type="hidden" value="{{$order->id}}">
 
+                <div class="form-group ">
+                    {!! Form::label('is_ew', 'Состояние заказа:') !!}
+                    <div class="col-sm-12">
+                        {!! Form::radio('is_new', 1) !!} Новый
+                        {!! Form::radio('is_new', 0) !!} Старый
+                    </div>
+                </div>
+
                 <div class="form-group">
                     {!! Form::label('total', 'Сумма:') !!}
                     <div class="col-sm-10">

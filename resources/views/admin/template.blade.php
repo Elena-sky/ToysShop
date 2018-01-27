@@ -32,7 +32,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Админ-панель">
                 <a class="nav-link" href="{{route('adminPageView')}}">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Админ-панель</span>
@@ -44,19 +44,19 @@
                     <span class="nav-link-text">Charts</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Заказы">
                 <a class="nav-link" href="{{route('viewAllOrders')}}">
                     <i class="fa fa-fw fa-list-alt"></i>
                     <span class="nav-link-text">Заказы</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление товарами">
                 <a class="nav-link" href="{{route('productView')}}">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Управление товарами</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление категориями">
                 <a class="nav-link" href="{{route('viewCategory')}}">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Управление категориями</span>
@@ -71,7 +71,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Category">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление пользователями">
                 <a class="nav-link" href="{{route('viewUsers')}}">
                     <i class="fa fa-users"></i>
                     <span class="nav-link-text">Управление пользователями</span>
@@ -97,7 +97,7 @@
             {{--</li>--}}
 
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Содержимое сайта">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
                    data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-file"></i>
@@ -107,7 +107,7 @@
                     <li>
                         <a href="{{route('viewSliders')}}">
                             <i class="fa fa-picture-o"></i>
-                            <span class="glyphicon glyphicon-picture"></span> Управление слайдерами</a>
+                            <span class="glyphicon glyphicon-picture"></span>Управление слайдерами</a>
                     </li>
                     <li>
                         <a href="#">Что то еще</a>

@@ -35,6 +35,7 @@
                                     <th>Создан</th>
                                     <th>Отредактирован</th>
                                     <th>Статус</th>
+                                    <th>Состояние</th>
                                     <th>
                                         <a href="{{route('orderDelete', [$order->id])}}">
                                             <button type="button" class="btn btn-danger"><span
@@ -56,6 +57,7 @@
                                     <td>{{$order->created_at}}</td>
                                     <td>{{$order->updated_at}}</td>
                                     <td>{{($order->status)? 'Обрабатываеться' : 'Обработан'}}</td>
+                                    <td><b>{{($order->is_new)? 'Новый':'Старый'}}</b></td>
                                     <td>
                                         <a href="{{route('viewOrderUpdate', [$order->id])}}">
                                             <button type="button" class="btn btn-warning"><span

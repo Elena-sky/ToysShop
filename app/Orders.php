@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Orders extends Model
 {
     protected $table = 'orders';
-    protected $fillable = ['id', 'user_id', 'delivery_id', 'total', 'status', 'user_coment', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'user_id', 'delivery_id', 'total', 'status', 'user_coment', 'is_new', 'created_at', 'updated_at'];
 
     public function goods()
     {

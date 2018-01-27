@@ -23,12 +23,10 @@
                             <th>Пользователь</th>
                             <th>Сумма</th>
                             <th>Создан</th>
-                            <th>Отредактирован</th>
                             <th>Статус</th>
+                            <th>Состояние</th>
                             <th></th>
                             <th></th>
-                            <th></th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -42,8 +40,8 @@
                                 </td>
                                 <td>{{$order->total}}</td>
                                 <td>{{$order->created_at}}</td>
-                                <td>{{$order->updated_at}}</td>
                                 <td>{{($order->status)? 'Обрабатываеться' : 'Обработан'}}</td>
+                                <td><b>{{($order->is_new)? 'Новый':'Старый'}}</b></td>
                                 <td>
                                     <a href="{{route('viewOneOrder', [$order->id])}}">
                                         <button type="button" class="btn btn-info"><span
