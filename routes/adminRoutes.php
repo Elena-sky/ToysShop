@@ -41,7 +41,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/sliders/delete/{id}', 'AdminController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
 
     Route::get('/orders', 'AdminController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
-    Route::get('/orders/slider/{id}', 'AdminController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
+    Route::get('/orders/order/{id}', 'AdminController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
+    Route::post('/orders/order/update/{id}', 'AdminController@adminOrderProductUpdate')->name('orderProductUpdate'); //View редактировать количество или удалить товар в заказе
+    Route::post('/order/product-action', 'AdminController@adminActionOrderProduct')->name('actionOrderProduct'); //  Action удалить товар из заказа
+
 
     //// Управление товарами:
 //'admin/product/create' => 'adminProduct/create',

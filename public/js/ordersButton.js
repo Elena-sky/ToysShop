@@ -2,40 +2,34 @@ $(document).ready(function () {
     $('.btn-number').click(function (e) {
         e.preventDefault();
 
-        var fieldName = $(this).attr('data-field');
-        var type = $(this).attr('data-type');
-        var input = $("input[name='" + fieldName + "']");
-        var currentVal = parseInt(input.val());
-        if (!isNaN(currentVal)) {
-            if (type == 'minus') {
-                var minValue = parseInt(input.attr('min'));
-                if (!minValue) minValue = 1;
-                if (currentVal > minValue) {
-                    input.val(currentVal - 1).change();
-                }
-                if (parseInt(input.val()) == minValue) {
-                    $(this).attr('disabled', true);
-                }
+        var type = $(this).data('action'),
+            input = $($(this).parents('.input-group')).children('input'),
+            oldVal = input.val(),
+            token = $(this).data('token'),
+            ogid = $(this).data('ogid');
 
-            } else if (type == 'plus') {
-                var maxValue = parseInt(input.attr('max'));
-                if (!maxValue) maxValue = 9999999999999;
-                if (currentVal < maxValue) {
-                    input.val(currentVal + 1).change();
-                }
-                if (parseInt(input.val()) == maxValue) {
-                    $(this).attr('disabled', true);
-                }
-
-            }
+        if (type == 'minus') {
+            input.val(--oldVal).change();
+        } else if (type == 'plus') {
+            input.val(++oldVal).change();
         } else {
             input.val(0);
         }
+
+        $.ajax({
+            type: "POST",
+            url: "http://webshop.loc/admin/order/product-action",
+            data: {ogid: ogid, oldVal: oldVal, action: 'update', '_token': token},
+            success: function (response) {
+                console.log(response.success);
+                console.log(response.msg);
+            }
+        })
     });
     $('.input-number').focusin(function () {
         $(this).data('oldValue', $(this).val());
     });
-    $('.input-number').change(function () {
+    /*$('.input-number').change(function () {
 
         var minValue = parseInt($(this).attr('min'));
         var maxValue = parseInt($(this).attr('max'));
@@ -58,7 +52,7 @@ $(document).ready(function () {
         }
 
 
-    });
+     });*/
     $(".input-number").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
@@ -74,4 +68,41 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
+
+
+    $('.btn-delete').click(function () {
+        var token = $(this).data('token'),
+            type = $(this).data('type'),
+            ogid = $(this).data('ogid');
+
+        $.ajax({
+            type: "POST",
+            url: "http://webshop.loc/admin/order/product-action",
+            data: {ogid: ogid, action: 'delete', '_token': token},
+            success: function (response) {
+                console.log(response.success);
+                console.log(response.msg);
+            }
+
+        })
+    });
+
 });
+
+//
+//
+// ﻿var userId = $('#side_accordion .panel .user-data.active').data('id');
+//
+// $.ajax({
+//     url: ,
+//     data: {'id': userId, 'start': start, 'end': end},
+//     type: "POST",
+//     success: function (html) {
+//         if ($("#add-event").length) {
+//             $("#add-event").remove();
+//         }
+//         $('body').append(html);
+//         $("#add-event").modal('show');
+//         events(calendar);
+//     }
+// });

@@ -115,25 +115,27 @@
                             </thead>
                             <tbody>
 
-                            @foreach($order->goods as $good)
+                            @foreach($order->orderGoods as $orderGoods)
+                                <?php $good = $orderGoods->good; ?>
                                 <tr class="max-sunbol">
-                                    <td>{{$good->id}}</td>
-                                    <td>{{$good->name}}</td>
+                                    <td>{{$orderGoods->goods_id}}</td>
+                                    <td>{{\App\Goods::getGoodName($good->id)}}</td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-danger btn-number"
-                                                        data-type="minus" data-field="{{$good->id}}"
-                                                        data-goodId="{{$good->id}}" data-orderId="{{$order->id}}">
+                                                        data-action="minus" data-ogid="{{$orderGoods->id}}"
+                                                        data-token="{{ csrf_token() }}">
                                                     <span class="glyphicon glyphicon-minus">-</span>
                                                 </button>
                                             </span>
                                             <input type="text" style="width: 60px" name="{{$good->id}}"
-                                                   class="form-control input-number"
-                                                   value="{{$good->getGoodCount($order->id)}}" min="1" max="100">
+                                                   class="form-control input-number" data-token="{{ csrf_token() }}"
+                                                   value="{{$orderGoods->count}}">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-success btn-number"
-                                                        data-type="plus" data-field="{{$good->id}}">
+                                                        data-action="plus" data-token="{{ csrf_token() }}"
+                                                        data-ogid="{{$orderGoods->id}}">
                                                     <span class="glyphicon glyphicon-plus">+</span>
                                                 </button>
                                             </span>
@@ -154,8 +156,7 @@
                                     <td>
                                         {{--<a href="{{route('actionOrderProductDelete', [$good->id])}}">--}}
                                         <button type="button" class="btn btn-danger btn-delete" data-type="delete"
-                                                data-good-id="{{$good->id}}" data-order-id="{{$order->id}}"
-                                                    data-field="{{$good->id}}"><span
+                                                data-token="{{ csrf_token() }}" data-ogid="{{$orderGoods->id}}"><span
                                                         class="glyphicon glyphicon-remove"></span> Удалить
                                             </button>
                                         {{--</a>--}}

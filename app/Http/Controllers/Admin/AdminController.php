@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\ImageUploader;
 use App\Orders;
 use App\OrdersDelivery;
+use App\OrdersGoods;
 use App\Sliders;
 use App\User;
 use Illuminate\Http\Request;
@@ -285,18 +286,26 @@ class AdminController extends Controller
     public function adminViewOneOrder($orderId)
     {
         $order = Orders::find($orderId);
+        //dd($order->orderGoods);
         $userName = User::getNameById($order->user_id);
         $delivery = OrdersDelivery::find($order->delivery_id);
 
-        $orderGoods = $order->orderGoods;
-
-//$test= $orderGoods[0];
-//$count = $test->goods;
-//
-//if($orderId)
-        //dd($order->goods);
-
         return view('admin.orders.oneOrder', ['order' => $order, 'delivery' => $delivery, 'userName' => $userName]);
+    }
+
+    //View редактировать количество товаров в заказе
+    public function adminActionOrderProduct()
+    {
+        $data = Input::get();
+        $orderGoods = OrdersGoods::find($data['ogid']);
+
+        if ($data['action'] == 'delete' && !empty($orderGoods)) {
+            $orderGoods->delete();
+        }
+
+        if ($data['action'] == 'update' && !empty($orderGoods)) {
+            $orderGoods->update(['count' => $data['oldVal']]);
+        }
     }
 
 

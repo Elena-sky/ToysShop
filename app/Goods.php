@@ -37,11 +37,17 @@ class Goods extends Model
         return $firstImage->filename;
     }
 
-
     public function getGoodCount($order_id)
     {
         $data = Orders::getOrderGood($order_id, $this->id);
         $count = is_object($data) ? $data->count : 0;
         return $count;
+    }
+
+    public static function getGoodName($good_id)
+    {
+        $data = Goods::find($good_id);
+        $name = is_object($data) ? $data->name : 'toy';
+        return $name;
     }
 }

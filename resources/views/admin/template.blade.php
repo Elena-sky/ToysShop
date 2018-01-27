@@ -326,7 +326,7 @@
         <script src="/js/sb-admin-datatables.min.js"></script>
         <script src="/js/sb-admin-charts.min.js"></script>
 
-
+        <!-- button product of orders plus and minus-->
         <script src="/js/ordersButton.js"></script>
 
 

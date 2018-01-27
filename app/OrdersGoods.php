@@ -10,9 +10,9 @@ class OrdersGoods extends Model
     protected $table = 'OrdersGoods';
     protected $fillable = ['id', 'order_id', 'goods_id', 'count'];
 
-    public function goods()
+    public function good()
     {
-        $goods = $this->hasMany('App\Goods', 'id');
+        $goods = $this->belongsTo('App\Goods', 'id');
         return $goods;
     }
 
