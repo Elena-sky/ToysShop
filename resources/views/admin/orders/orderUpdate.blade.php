@@ -32,17 +32,18 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    {!! Form::label('total', 'Сумма:') !!}
-                    <div class="col-sm-10">
-                        {!! Form::text('total', $order->total, ['class' => 'form-control']) !!}
+                <div class="form-group ">
+                    {!! Form::label('orderStatus', 'Статус:') !!}
+                    <div class="col-sm-12">
+                        {!! Form::radio('status', 1) !!} Обрабатываеться
+                        {!! Form::radio('status', 0) !!} Обработан
                     </div>
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('orderStatus', 'Статус	:') !!}
+                    {!! Form::label('total', 'Сумма:') !!}
                     <div class="col-sm-10">
-                        {!! Form::text('status',$order->status, ['class' => 'form-control']) !!}
+                        {!! Form::text('total', $order->total, ['class' => 'form-control']) !!}
                     </div>
                 </div>
 

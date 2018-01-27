@@ -53,11 +53,11 @@
                                             {{$userName->name}}
                                         </a>
                                     </td>
-                                    <td>{{$order->total}}</td>
+                                    <td>{{$order->total}} грн</td>
                                     <td>{{$order->created_at}}</td>
                                     <td>{{$order->updated_at}}</td>
                                     <td>{{($order->status)? 'Обрабатываеться' : 'Обработан'}}</td>
-                                    <td><b>{{($order->is_new)? 'Новый':'Старый'}}</b></td>
+                                    <td><b>{{($order->is_new)? 'Новый' : 'Старый'}}</b></td>
                                     <td>
                                         <a href="{{route('viewOrderUpdate', [$order->id])}}">
                                             <button type="button" class="btn btn-warning"><span
@@ -166,7 +166,7 @@
                                                  src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
                                         </div>
                                     </td>
-                                    <td>{{$good->price}}</td>
+                                    <td>{{$good->price}} грн</td>
                                     <td>
 
                                     </td>

@@ -29,14 +29,11 @@
                         <tr class="table-info">
                             <th>Категория</th>
                             <th>Название</th>
-                            {{--<th>Картинка</th>--}}
                             <th>Артикул</th>
-                            {{--<th>Производитель</th>--}}
-                            {{--<th>Описание</th>--}}
                             <th>Цена</th>
                             <th>NEW</th>
                             <th>Отображать</th>
-                            <th>В наличии</th>
+                            <th>Наличие</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -79,6 +76,20 @@
                             </tr>
                         @endforeach
                         </tbody>
+                        <thead>
+                        <tr class="table-info">
+                            <th>Категория</th>
+                            <th>Название</th>
+                            <th>Артикул</th>
+                            <th>Цена</th>
+                            <th>NEW</th>
+                            <th>Отображать</th>
+                            <th>Наличие</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
                     </table>
                     {{$goods->links()}}
                 </div>
