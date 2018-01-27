@@ -309,10 +309,11 @@ class AdminController extends Controller
     }
 
     // View редактировать данные о доставке
-    public function adminViewDeliveryUpdate($id)
+    public function adminViewDeliveryUpdate($orderId)
     {
-        $delivery = OrdersDelivery::find($id);
-        return view('admin.orders.deliveryUpdate', ['delivery' => $delivery]);
+        $order = Orders::find($orderId);
+        $delivery = OrdersDelivery::find($order->delivery_id);
+        return view('admin.orders.deliveryUpdate', ['delivery' => $delivery, 'orderId' => $orderId]);
     }
 
     //Action сохранить данные о доставке
@@ -323,6 +324,26 @@ class AdminController extends Controller
         $deliveryData->update($data);
 
         return \redirect(route('viewAllOrders'));
+
+    }
+
+    // View зедактировать заказ
+    public function adminViewOrderUpdate($orderId)
+    {
+        $order = Orders::find($orderId);
+        return view('admin.orders.orderUpdate', ['order' => $order]);
+
+    }
+
+    // Action созранить редактирование заказа
+    public function adminActionOrderSave()
+    {
+        $data = $_POST;
+        $orderid = $data['id'];
+        $orderData = Orders::find($orderid);
+        $orderData->update($data);
+
+        return \redirect(route('viewOneOrder', ['orderid' => $orderid]));
 
     }
 

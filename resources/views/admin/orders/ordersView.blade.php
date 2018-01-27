@@ -14,20 +14,12 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row">
-                {{--<div class="container ">--}}
-                {{--<a href="{{route('addCategory')}}">--}}
-                {{--<button type="button" class="btn btn-primary">--}}
-                {{--<i class="fa fa-plus"></i> Добавить новую категорию--}}
-                {{--</button>--}}
-                {{--</a>--}}
-                {{--</div>--}}
 
                 <div class="col-md-12">
                     <table class="table table-striped">
                         <thead>
                         <tr class="table-info">
                             <th>Id заказа</th>
-                            {{--<th>Сортировка?</th>--}}
                             <th>Пользователь ID</th>
                             <th>Сумма</th>
                             <th>Способ доставки</th>
@@ -44,7 +36,6 @@
                         @foreach($orders as $order)
                             <tr class="max-sunbol">
                                 <td>{{$order->id}}</td>
-                                {{--<td>{{$category->sort_order}}</td>--}}
                                 <td>{{$order->user_id}}</td>
                                 <td>{{$order->total}}</td>
                                 <td>{{$order->delivery_id}}</td>

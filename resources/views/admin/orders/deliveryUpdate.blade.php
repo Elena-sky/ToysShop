@@ -12,7 +12,9 @@
             <li class="breadcrumb-item">
                 <a href="{{route('viewAllOrders')}}">Все заказы</a>
             </li>
-            <li class="breadcrumb-item"> Детали заказа</li>
+            <li class="breadcrumb-item">
+                <a href="{{route('viewOneOrder', [$orderId])}}">Детали заказа</a>
+            </li>
             <li class="breadcrumb-item active"> Редактировать данные о доставке</li>
         </ol>
         <!-- Area Chart Example-->

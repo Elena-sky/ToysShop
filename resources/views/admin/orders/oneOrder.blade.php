@@ -22,9 +22,11 @@
 
                 <div class="col-md-12">
                     <div>
-                        <div style="margin-bottom: 50px">
-                            <h3>Заказ №
-                                <td>{{$order->id}}</h3>
+                        <div>
+                            <div>
+                                <h3>Заказ № {{$order->id}}</h3>
+                            </div>
+
                             <table class="table">
                                 <thead>
                                 <tr class="table-info">
@@ -34,7 +36,11 @@
                                     <th>Создан</th>
                                     <th>Отредактирован</th>
                                     <th>Статус</th>
-                                    <th></th>
+                                    <th>
+                                        <button type="button" class="btn btn-danger"><span
+                                                    class="glyphicon glyphicon-pencil"></span> Удалить заказ
+                                        </button>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -49,13 +55,13 @@
                                     <td>{{$order->created_at}}</td>
                                     <td>{{$order->updated_at}}</td>
                                     <td>{{($order->status)? 'Обрабатываеться' : 'Обработан'}}</td>
-                                    {{--<td>--}}
-                                    {{--<a href="{{route('viewOneOrder', [$order->id])}}">--}}
-                                    {{--<button type="button" class="btn btn-info"><span--}}
-                                    {{--class="glyphicon glyphicon-eye-open"></span> Обзор--}}
-                                    {{--</button>--}}
-                                    {{--</a>--}}
-                                    {{--</td>--}}
+                                    <td>
+                                        <a href="{{route('viewOrderUpdate', [$order->id])}}">
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -95,7 +101,7 @@
                                 <td>{{$delivery->delivery_method}}</td>
                                 <td>{{$delivery->delivery_address}}</td>
                                 <td>
-                                    <a href="{{route('viewDeliveryUpdate', [$delivery->id])}}">
+                                    <a href="{{route('viewDeliveryUpdate', [$order->id])}}">
                                         <button type="button" class="btn btn-warning"><span
                                                     class="glyphicon glyphicon-pencil"></span> Изменить
                                         </button>
@@ -137,7 +143,7 @@
                                                     <span class="glyphicon glyphicon-minus">-</span>
                                                 </button>
                                             </span>
-                                            <input type="text" style="width: 30px" name="{{$good->id}}"
+                                            <input type="text" style="width: 60px" name="{{$good->id}}"
                                                    class="form-control input-number" data-token="{{ csrf_token() }}"
                                                    value="{{$orderGoods->count}}">
                                             <span class="input-group-btn">
