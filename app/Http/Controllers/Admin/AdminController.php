@@ -286,7 +286,6 @@ class AdminController extends Controller
     public function adminViewOneOrder($orderId)
     {
         $order = Orders::find($orderId);
-        //dd($order->orderGoods);
         $userName = User::getNameById($order->user_id);
         $delivery = OrdersDelivery::find($order->delivery_id);
 

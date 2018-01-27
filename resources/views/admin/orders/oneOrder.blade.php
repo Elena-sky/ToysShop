@@ -12,8 +12,7 @@
             <li class="breadcrumb-item">
                 <a href="{{route('viewAllOrders')}}">Все заказы</a>
             </li>
-            <li class="breadcrumb-item active">Детали заказа №
-                <td>{{$order->id}}</td>
+            <li class="breadcrumb-item active">Детали заказа № {{$order->id}}
             </li>
         </ol>
         <!-- Area Chart Example-->

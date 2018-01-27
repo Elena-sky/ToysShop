@@ -22,7 +22,6 @@
                             <th>Id заказа</th>
                             <th>Пользователь</th>
                             <th>Сумма</th>
-                            <th>Способ доставки</th>
                             <th>Создан</th>
                             <th>Отредактирован</th>
                             <th>Статус</th>
@@ -36,9 +35,12 @@
                         @foreach($orders as $order)
                             <tr class="max-sunbol">
                                 <td>{{$order->id}}</td>
-                                <td>{{$order->user_id}}</td>
+                                <td>
+                                    <a href="{{route('viewUserPage', [$order->user_id])}}">
+                                        ID: {{$order->user_id}}
+                                    </a>
+                                </td>
                                 <td>{{$order->total}}</td>
-                                <td>{{$order->delivery_id}}</td>
                                 <td>{{$order->created_at}}</td>
                                 <td>{{$order->updated_at}}</td>
                                 <td>{{($order->status)? 'Обрабатываеться' : 'Обработан'}}</td>
@@ -49,7 +51,13 @@
                                         </button>
                                     </a>
                                 </td>
-                                <td>Удалить</td>
+                                <td>
+                                    <a href="{{route('orderDelete', [$order->id])}}">
+                                        <button type="button" class="btn btn-danger"><span
+                                                    class="glyphicon glyphicon-pencil"></span> Удалить заказ
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
