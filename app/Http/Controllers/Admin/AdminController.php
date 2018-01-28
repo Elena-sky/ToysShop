@@ -26,7 +26,9 @@ class AdminController extends Controller
 
     public function adminPageView()
     {
-        return view('admin.index');
+        $newOrders = Orders::where('is_new', 1)->count();
+
+        return view('admin.index', ['newOrders' => $newOrders]);
     }
 
 
@@ -326,7 +328,7 @@ class AdminController extends Controller
         return \redirect(route('viewOneOrder', ['orderid' => $orderid]));
     }
 
-    // View зедактировать заказ
+    // View редактировать заказ
     public function adminViewOrderUpdate($orderId)
     {
         $order = Orders::find($orderId);
