@@ -9,13 +9,37 @@
             <li class="breadcrumb-item">
                 <a href="{{route('adminPageView')}}">Админпанель</a>
             </li>
-            <li class="breadcrumb-item active">Все заказы</li>
+            <li class="breadcrumb-item active">Заказы</li>
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row">
 
                 <div class="col-md-12">
+                    <div class="div-btn-orders-view">
+                        <div class="btn-orders-view">
+                            <a href="?isnew=1">
+                                <button type="button" class="btn btn-outline-success btn-sm"><span
+                                            class="glyphicon glyphicon-pencil"></span>Новые заказы
+                                </button>
+                            </a>
+                        </div>
+                        <div class="btn-orders-view">
+                            <a href="?isnew=0">
+                                <button type="button" class="btn btn-outline-warning btn-sm"><span
+                                            class="glyphicon glyphicon-pencil"></span>Обработанные заказы
+                                </button>
+                            </a>
+                        </div>
+                        <div class="btn-orders-view">
+                            <a href="{{route('viewAllOrders')}}">
+                                <button type="button" class="btn btn-outline-info btn-sm"><span
+                                            class="glyphicon glyphicon-pencil"></span>Все заказы
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
                     <table class="table table-striped">
                         <thead>
                         <tr class="table-info">

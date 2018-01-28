@@ -278,7 +278,7 @@ class AdminController extends Controller
     // View всех заказов
     public function adminViewAllOrders()
     {
-        $orders = Orders::all();
+        $orders = (empty($_GET['isnew'])) ? Orders::all() : Orders::where('is_new', $_GET['isnew'])->get();
         return view('admin.orders.ordersView', ['orders' => $orders]);
     }
 

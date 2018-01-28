@@ -15,14 +15,12 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
                         <table class="table table-striped">
                             <thead>
                             <tr class="table-info">
                                 <th>ID</th>
                                 <th>Имя</th>
                                 <th>E-Mail</th>
-                                <th>Телефон</th>
                                 <th>Создан</th>
                                 <th>Отредактированый</th>
                                 <th></th>
@@ -36,7 +34,6 @@
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td></td>
                                     <td>{{$user->created_at}}</td>
                                     <td>{{$user->updated_at}}</td>
                                     <td>
@@ -59,7 +56,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
         </div>

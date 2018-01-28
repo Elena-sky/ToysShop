@@ -18,6 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin.css" rel="stylesheet">
 
+    <link href="/css/style-admin.css" rel="stylesheet">
+
 
 </head>
 
@@ -46,13 +48,13 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Заказы">
                 <a class="nav-link" href="{{route('viewAllOrders')}}">
-                    <i class="fa fa-fw fa-list-alt"></i>
+                    <i class="fa fa-fw fa-shopping-cart"></i>
                     <span class="nav-link-text">Заказы</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление товарами">
                 <a class="nav-link" href="{{route('productView')}}">
-                    <i class="fa fa-fw fa-table"></i>
+                    <i class="fa fa-fw fa-list-alt"></i>
                     <span class="nav-link-text">Управление товарами</span>
                 </a>
             </li>
