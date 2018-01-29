@@ -26,9 +26,12 @@ class AdminController extends Controller
 
     public function adminPageView()
     {
-        $newOrders = Orders::where('is_new', 1)->count();
+        $countNewOrders = Orders::where('is_new', 1)->count();
+        $countProduct = Goods::all()->count();
+        $countUser = User::all()->count();
 
-        return view('admin.index', ['newOrders' => $newOrders]);
+
+        return view('admin.index', ['countNewOrders' => $countNewOrders, 'countProduct' => $countProduct, 'countUser' => $countUser]);
     }
 
 

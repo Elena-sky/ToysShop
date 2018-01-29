@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Orders;
+use App\OrdersGoods;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +60,13 @@ class HomeController extends Controller
     public function userViewOldOrdersById($orderId)
     {
         $order = Orders::find($orderId);
+//
+//        $IdOrdersGoods = $order->goods;//todo replace
+//        $test = $order->getUserOrdersGoods($orderId);
+
+//        $IdOrdersGoods = OrdersGoods::query()->where('order_id', $orderId)->get();
+
+
         return view('user.oldOrdersById', ['order' => $order]);
     }
 }

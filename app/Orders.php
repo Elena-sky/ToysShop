@@ -29,7 +29,7 @@ class Orders extends Model
     public static function getUserOrdersGoods($orderId)
     {
         $userOrderGoods = self::find($orderId);
-        $orderGoods = $userOrderGoods->goods;
+        $orderGoods = $userOrderGoods->goods;//todo replace
         return $orderGoods;
     }
 

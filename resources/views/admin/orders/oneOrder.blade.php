@@ -133,10 +133,12 @@
                             <tbody>
 
                             @foreach($order->orderGoods as $orderGoods)
-                                <?php $good = $orderGoods->good; ?>
+                                <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
+
+                                <!--                                --><?php //$good = $orderGoods->good; ?>
                                 <tr class="max-sunbol">
                                     <td>{{$orderGoods->goods_id}}</td>
-                                    <td>{{\App\Goods::getGoodName($good->id)}}</td>
+                                    <td>{{$good->name}}</td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-btn">

@@ -4,16 +4,26 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-2">
-                <h2>История заказов</h2>
                 <table class="table table-hover">
+                    <thead>
+                    <tr class="table-success">
+                        <th>Заказ №</th>
+                        <th></th>
+                        <th>
+                            <h2>История заказов</h2>
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
                     <tbody>
                             @foreach($orders as $order)
+
                                 <tr>
-                                    <td>
-                                    <span>
+                                    <th>
                                         {{$order->id}}
-                                    </span>
-                                    </td>
+                                    </th>
+
                                     <td>
                                         <div>
                                         <span>
@@ -27,7 +37,8 @@
                                         </div>
                                     </td>
                                     <td style="display: -webkit-box;">
-                                        @foreach($order->goods as $good)
+                                        @foreach($order->orderGoods as $orderGoods)
+                                            <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
                                             <div style="max-width: 100px;">
                                                 <img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
                                             </div>
@@ -40,7 +51,7 @@
                                     </td>
                                     <td>
                                         <a href="{{route('viewOldOrdersById', [$order->id])}}"
-                                           class="ajax-btn-order list-group-item list-group-item-secondary">Детальнее</a>
+                                           class="ajax-btn-order  list-group-item list-group-item-info">Детальнее</a>
                                     </td>
                                 </tr>
                             @endforeach

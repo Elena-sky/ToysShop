@@ -5,35 +5,39 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div style="display: -webkit-box;">
-                        <div class="col-md-6">
-                            <h3>Заказ № {{$order->id}}</h3>
-                            Статус: {{($order->status)? 'Обрабатываеться' : 'Обработан'}}
-                        </div>
-                        <div class="col-md-6">
-                            <h3>Итого: {{$order->total}} грн</h3>
-                        </div>
-                    </div>
-                    @foreach($order->goods as $good)
+
                     <table class="table">
+                        <thead>
+                        <th><h3>Заказ № {{$order->id}}</h3></th>
+                        </thead>
+
+                        @foreach($order->orderGoods as $orderGoods)
+                            <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
                         <tbody>
                             <tr>
-                                <td style="display: -webkit-box;">
+                                <th style="display: -webkit-box;">
                                     <div style="max-width: 100px;">
                                         <img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
                                     </div>
-                                </td>
+                                </th>
+                                <td>{{$good->name}}</td>
                                 <td>
-                                    <span>{{$good->name}}</span>
+                                    {{$orderGoods->count}} шт
                                 </td>
-                                <td>Количество</td>
-                                <th scope="row">{{$good->price}}</th>
-
+                                <td>{{$good->price}} грн</td>
                             </tr>
                         </tbody>
-                    </table>
                     @endforeach
+                    </table>
 
+                    <div style="float:  right;">
+                        <div>
+                            <h5>Статус: {{($order->status)? 'Обрабатываеться' : 'Обработан'}}</h5>
+                        </div>
+                        <div>
+                            <h4>Итого: {{$order->total}} грн</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
