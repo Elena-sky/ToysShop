@@ -60,12 +60,6 @@ class HomeController extends Controller
     public function userViewOldOrdersById($orderId)
     {
         $order = Orders::find($orderId);
-//
-//        $IdOrdersGoods = $order->goods;//todo replace
-//        $test = $order->getUserOrdersGoods($orderId);
-
-//        $IdOrdersGoods = OrdersGoods::query()->where('order_id', $orderId)->get();
-
 
         return view('user.oldOrdersById', ['order' => $order]);
     }

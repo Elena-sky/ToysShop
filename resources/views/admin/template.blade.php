@@ -80,25 +80,6 @@
                 </a>
             </li>
 
-
-            {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">--}}
-            {{--<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"--}}
-            {{--data-parent="#exampleAccordion">--}}
-            {{--<i class="fa fa-fw fa-wrench"></i>--}}
-            {{--<span class="nav-link-text">Содержимое сайта</span>--}}
-            {{--</a>--}}
-            {{--<ul class="sidenav-second-level collapse" id="collapseComponents">--}}
-            {{--<li>--}}
-            {{--<a href="{{route('viewSliders')}}"><span class="glyphicon glyphicon-picture"></span> Управление--}}
-            {{--слайдерами</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-            {{--<a href="#">Что то еще</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Содержимое сайта">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
                    data-parent="#exampleAccordion">
@@ -149,12 +130,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-link"></i>
-                    <span class="nav-link-text">Link</span>
-                </a>
-            </li>
+
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">

@@ -16,4 +16,5 @@ class GoodController extends Controller
         return view('goodView', ['good' => $good, 'images' => $images]);
     }
 
+
 }

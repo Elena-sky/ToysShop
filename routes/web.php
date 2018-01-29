@@ -36,15 +36,12 @@ Route::get('/product/{id}', 'GoodController@goodView')->name('goodView'); //об
 
 Route::get('/cart', 'CartController@cartView')->name('cartView');  //корзина
 
-//Route::get('/cart/add/{id}', 'CartController@actionAdd')->name('actionAdd'); //добавляет товар в корзину
-
-//Route::get('/cart/delete/{id}', 'CartController@actionDelete')->name('actionDelete'); //удаляет товар из корзины
-
 Route::post('cart/item-update', 'CartController@actionC')->name('actionDelete'); //удаляет товар из корзины
 
 Route::get('/cart/checkout', 'CartController@viewCheckoutPage')->name('viewCheckout');
 Route::post('/cart/checkout/save', 'CartController@viewCheckoutSave')->name('viewSaveCheckout');
 
+Route::get('/search', 'GoodController@searchByGoodsName')->name('searchByGoods'); // Search
 
 
 include_once 'adminRoutes.php';
