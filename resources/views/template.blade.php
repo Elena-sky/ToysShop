@@ -43,12 +43,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                @foreach(\App\Categories::where('status', 1)->get() as $category)
-                    <li class="nav-item">
-                        <a class="nav-link" href="/category/{{$category->id}}">{{$category->name}}</a>
-                    </li>
-                    <div></div>
-                @endforeach
+
+                <div class="dropdown show nav-item">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Категории
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach(\App\Categories::where('status', 1)->get() as $category)
+                            <a class="dropdown-item " href="/category/{{$category->id}}">{{$category->name}}</a>
+                        @endforeach
+                    </div>
+                </div>
 
                 <li class="nav-item">
                     <a class="nav-link" href="#">Контакты</a>
@@ -117,7 +124,6 @@
                 @endif
             </ul>
         </div>
-
     </div>
 </nav>
 
