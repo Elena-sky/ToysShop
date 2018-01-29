@@ -33,9 +33,10 @@
                                     <th>Пользователь ID</th>
                                     <th>Сумма</th>
                                     <th>Создан</th>
-                                    <th>Отредактирован</th>
                                     <th>Статус</th>
                                     <th>Состояние</th>
+                                    <th>Оплата</th>
+
                                     <th>
                                         <a href="{{route('orderDelete', [$order->id])}}">
                                             <button type="button" class="btn btn-danger"><span
@@ -55,9 +56,10 @@
                                     </td>
                                     <td>{{$order->total}} грн</td>
                                     <td>{{$order->created_at}}</td>
-                                    <td>{{$order->updated_at}}</td>
                                     <td>{{($order->status)? 'Обрабатываеться' : 'Обработан'}}</td>
                                     <td><b>{{($order->is_new)? 'Новый' : 'Старый'}}</b></td>
+                                    <td>{{($order->is_paid)? 'Оплачен' : 'Неоплачен'}}</td>
+
                                     <td>
                                         <a href="{{route('viewOrderUpdate', [$order->id])}}">
                                             <button type="button" class="btn btn-warning"><span
@@ -135,7 +137,6 @@
                             @foreach($order->orderGoods as $orderGoods)
                                 <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
 
-                                <!--                                --><?php //$good = $orderGoods->good; ?>
                                 <tr class="max-sunbol">
                                     <td>{{$orderGoods->goods_id}}</td>
                                     <td>{{$good->name}}</td>

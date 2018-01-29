@@ -54,6 +54,14 @@
                     </div>
                 </div>
 
+                <div class="form-group ">
+                    {!! Form::label('isPaid', 'Оплата:') !!}
+                    <div class="col-sm-12">
+                        {!! Form::radio('is_paid', 1) !!} Оплачен
+                        {!! Form::radio('is_paid', 0) !!} Неоплачен
+                    </div>
+                </div>
+
 
                 <div class="form-group ">
                     <div class=" col-sm-10">

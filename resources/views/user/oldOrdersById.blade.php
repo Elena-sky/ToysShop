@@ -8,7 +8,9 @@
 
                     <table class="table">
                         <thead>
-                        <th><h3>Заказ № {{$order->id}}</h3></th>
+                        <tr>
+                            <th><h3>Заказ № {{$order->id}}</h3></th>
+                        </tr>
                         </thead>
 
                         @foreach($order->orderGoods as $orderGoods)
@@ -31,8 +33,9 @@
                     </table>
 
                     <div style="float:  right;">
+                        <div><h5>Статус оплаты: <b>{{($order->is_paid)? 'Оплачен' : 'Неоплачен'}}</b></h5></div>
                         <div>
-                            <h5>Статус: {{($order->status)? 'Обрабатываеться' : 'Обработан'}}</h5>
+                            <h5>Статус заказа: {{($order->status)? 'Обрабатываеться' : 'Обработан'}}</h5>
                         </div>
                         <div>
                             <h4>Итого: {{$order->total}} грн</h4>
