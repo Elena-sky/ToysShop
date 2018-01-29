@@ -72,5 +72,20 @@ $(document).ready(function () {
     $(".itemCount").each(function () {
         $(this).data("previousValue", $(this).val());
     });
+
+
+    $("#q").autocomplete({
+        source: document.location.origin + "/search/autocomplete",
+        minLength: 3,
+        select: function (event, ui) {
+            console.log(ui.item.value);
+            $('#q').val(ui.item.value);
+        }
+    }).data("ui-autocomplete")._renderItem = function (ul, item) {
+        return $("<li></li>")
+            .data("ui-autocomplete-item", item)
+            .append('<a href="/product/' + item.id + '">' + item.label + '</a>')
+            .appendTo(ul);
+    };
 });
 

@@ -41,7 +41,7 @@ Route::post('cart/item-update', 'CartController@actionC')->name('actionDelete');
 Route::get('/cart/checkout', 'CartController@viewCheckoutPage')->name('viewCheckout');
 Route::post('/cart/checkout/save', 'CartController@viewCheckoutSave')->name('viewSaveCheckout');
 
-Route::get('/search', 'GoodController@searchByGoodsName')->name('searchByGoods'); // Search
+Route::get('/search/autocomplete', 'SearchController@autocomplete'); // Search
 
 
 include_once 'adminRoutes.php';

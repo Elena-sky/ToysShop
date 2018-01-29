@@ -21,6 +21,10 @@
     <!-- Custom styles for this template -->
     <link href="/css/heroic-features.css" rel="stylesheet">
     <link href="/css/shop-php.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css"
+          type="text/css"/>
+
     {{--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">--}}
     {{--<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">--}}
 
@@ -49,12 +53,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Контакты</a>
                 </li>
+
                 <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-                    </form>
+                    {{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET']) }}
+                    {{ Form::text('term', '', ['id' =>  'q', 'placeholder' =>  'Enter name', 'class' => 'form-control mr-sm-2'])}}
+                    {{ Form::submit('Search', array('class' => 'btn btn-outline-success my-2 my-sm-0')) }}
+                    {{ Form::close() }}
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/cart"></i> Корзина
@@ -162,7 +168,9 @@
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>--}}
 
