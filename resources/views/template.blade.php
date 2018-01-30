@@ -63,8 +63,7 @@
 
                 <li class="nav-item">
                     {{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET']) }}
-                    {{ Form::text('term', '', ['id' =>  'q', 'placeholder' =>  'Enter name', 'class' => 'form-control mr-sm-2'])}}
-                    {{ Form::submit('Search', array('class' => 'btn btn-outline-success my-2 my-sm-0')) }}
+                    {{ Form::text('term', '', ['id' =>  'q', 'placeholder' =>  'Поиск', 'class' => 'form-control mr-sm-2'])}}
                     {{ Form::close() }}
                 </li>
 

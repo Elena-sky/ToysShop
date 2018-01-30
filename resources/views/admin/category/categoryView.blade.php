@@ -28,6 +28,7 @@
                         <tr class="table-info">
                             <th>Название</th>
                             {{--<th>Сортировка?</th>--}}
+                            <th>Изображение</th>
                             <th>Отображать</th>
                             <th></th>
                             <th></th>
@@ -39,6 +40,8 @@
                             <tr class="max-sunbol">
                                 <td>{{$category->name}}</td>
                                 {{--<td>{{$category->sort_order}}</td>--}}
+                                <td><img src="{{ asset("/uploads/category/$category->image") }}" width="189"></td>
+
                                 <td>{{($category->status)? 'Да':'Нет'}}</td>
                                 <td>
                                     <a href="{{route('goodsByCategory', [$category->id])}}">

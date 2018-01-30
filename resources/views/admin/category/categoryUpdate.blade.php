@@ -17,7 +17,7 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row " style="display: inline-block;width: 100%;">
-                {!! Form::model($category, array('route' => array('actionSaveUpdateCategory'))
+                {!! Form::model($category, array('route' => array('actionSaveUpdateCategory'), 'files' => true)
                 ) !!}
                 <input name="id" type="hidden" value="{{$category->id}}">
 
@@ -25,6 +25,20 @@
                     {!! Form::label('categoryName', 'Название:') !!}
                     <div class="col-sm-10">
                         {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {!! Form::label('currentImage', 'Текущее изображение:') !!}
+                    <div class="col-sm-10">
+                        <img src="{{ asset("/uploads/category/$category->image") }}" width="300">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {!! Form::label('newImage', 'Поменять изображение:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::file('image')!!}
                     </div>
                 </div>
 

@@ -35,10 +35,4 @@ trait ImageUploader
 
     }
 
-    /*public static function slidersUploader(Request $request)
-    {
-         if(request->isMethod('post')) {
-             if($re)
-    }
-    }*/
 }

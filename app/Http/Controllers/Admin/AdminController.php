@@ -52,11 +52,47 @@ class AdminController extends Controller
     }
 
     // Action сохранить редактироование категории
-    public function actionAdminSaveUpdate()
+    public function actionAdminSaveUpdate(Request $request)
     {
-        $data = $_POST;
+
+//        $data = Input::except(['_method', '_token']);
+//        $goodData = Goods::find($data['id']);
+//        $goodData->update($data);
+//
+//        $productId = $goodData->id;
+//
+//        if (!empty($fileName)) {
+//            foreach ($fileName as $onefile) {
+//                $dataImages = ['filename' => $onefile, 'product_id' => $productId];
+//                GoodsImages::create($dataImages);
+//            }
+//        }
+
+
+        $path = '/category';  // Папка для загрузки картинки
+        $data = Input::except(['_method', '_token']);
         $categoryData = Categories::find($data['id']);
         $categoryData->update($data);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = 'categoryImage' . rand(123, 655555) . '.' . $file->getClientOriginalExtension();
+
+            if ($file->move(public_path() . '/uploads' . $path, $name)) {
+                $dataImage = ['image' => $name];
+                $categoryData = Categories::find($data['id']);
+                $categoryData->update($dataImage);
+
+            }
+        }
+
+
+//
+//
+//        $data = $_POST;
+//        $categoryData = Categories::find($data['id']);
+//        $categoryData->update($data);
+
         return \redirect(route('viewCategory'));
     }
 
@@ -75,11 +111,26 @@ class AdminController extends Controller
     }
 
     // Добавление новой категории
-    public function actionAdminAddCategory()
+    public function actionAdminAddCategory(Request $request)
     {
-        $data = $_POST;
+        $path = '/category';  // Папка для загрузки картинки
 
-        Categories::create($data);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = 'categoryImage' . rand(123, 655555) . '.' . $file->getClientOriginalExtension();
+
+            if ($file->move(public_path() . '/uploads' . $path, $name)) {
+                $fileName = $name;
+
+                $data = Input::except(['_method', '_token']);
+                $categoryName = $data['name'];
+                $status = $data['status'];
+
+                $dataCategory = ['name' => $categoryName, 'status' => $status, 'image' => $fileName];
+
+                Categories::create($dataCategory);
+            }
+        }
 
         return \redirect(route('addCategory'));
     }
@@ -165,9 +216,7 @@ class AdminController extends Controller
                 $dataImages = ['filename' => $onefile, 'product_id' => $productId];
                 GoodsImages::create($dataImages);
             }
-
         }
-
 
         return \redirect(route('productView'));
     }
@@ -217,7 +266,7 @@ class AdminController extends Controller
 
 
 
-    //Управление содержимым сайта
+    //Управление слайдерами
 
     // View Управление слайдерами
     public function viewAllSliders()

@@ -17,7 +17,7 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row " style="display: inline-block;width: 100%;">
-                {!! Form::model('', array('route' => array('adminActionAddCategory'))
+                {!! Form::model('', array('route' => array('adminActionAddCategory'), 'files' => true)
                 ) !!}
 
                 <div class="form-group">
@@ -40,6 +40,13 @@
                     <div class="">
                         {!! Form::radio('status', 1, true) !!} Да
                         {!! Form::radio('status', 0) !!} Нет
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {!! Form::label('categoryImage', 'Изображение:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::file('image')!!}
                     </div>
                 </div>
 
