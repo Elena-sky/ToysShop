@@ -237,7 +237,12 @@
                     </div>
 
                     <a href="{{route('goodView',['id' => $good->id])}}">
+
+                        @if(\App\Http\Controllers\CartController::getGoodMainImage($good->id))
                         <img src="{{url( asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($good->id))) }}"/>
+                        @else
+                            <img src="{{ asset("/uploads/no_picture.jpg") }}" alt="{{'no_picture'}}">
+                        @endif
 
                         <div class="product-info">
                             {{--<h3 class="product-tag">New</h3>--}}

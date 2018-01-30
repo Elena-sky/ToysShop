@@ -28,12 +28,21 @@
                     </div>
                 </div>
 
+                @if($category->image)
                 <div class="form-group ">
                     {!! Form::label('currentImage', 'Текущее изображение:') !!}
                     <div class="col-sm-10">
                         <img src="{{ asset("/uploads/category/$category->image") }}" width="300">
                     </div>
                 </div>
+                @else
+                    <div class="form-group ">
+                        {!! Form::label('currentImage', 'Текущее изображение:') !!}
+                        <div class="col-sm-10">
+                            <img src="{{ asset("/uploads/no_picture.jpg") }}" width="200">
+                        </div>
+                    </div>
+                @endif
 
                 <div class="form-group ">
                     {!! Form::label('newImage', 'Поменять изображение:') !!}

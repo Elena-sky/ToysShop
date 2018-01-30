@@ -59,14 +59,24 @@
                 <div class="form-group ">
                     {!! Form::label('currentImage', 'Текущие изобращения') !!}
                     <div class="col-sm-12">
+
+
+                        @if($images)
                         @foreach($images as $image )
                             <div class="col-sm-4">
                                 <img src="{{ asset("/uploads/goods/$image->filename") }}" width="200px"
                                      alt="{{$image->id}}">
                             </div>
                         @endforeach
+                        @else
+                            <div class="col-sm-4">
+                                <img src="{{ asset("/uploads/no_picture.jpg") }}" width="200px"
+                                     alt="{{'no_picture'}}">
+                            </div>
+                        @endif
                     </div>
                 </div>
+
 
                 <div class="form-group ">
                     {!! Form::label('productImage', 'Новое изображение:') !!}

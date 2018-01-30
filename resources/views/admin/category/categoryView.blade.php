@@ -40,7 +40,11 @@
                             <tr class="max-sunbol">
                                 <td>{{$category->name}}</td>
                                 {{--<td>{{$category->sort_order}}</td>--}}
-                                <td><img src="{{ asset("/uploads/category/$category->image") }}" width="189"></td>
+                                @if($category->image)
+                                    <td><img src="{{ asset("/uploads/category/$category->image") }}" width="150"></td>
+                                @else
+                                    <td><img src="{{ asset("/uploads/no_picture.jpg") }}" width="150"></td>
+                                @endif
 
                                 <td>{{($category->status)? 'Да':'Нет'}}</td>
                                 <td>

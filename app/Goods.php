@@ -31,10 +31,10 @@ class Goods extends Model
 
     public function getFirstImage()
     {
-        $goodsImages = $this/*->goodImg()*/
-        ;
-        $firstImage = $goodsImages->goodImg[0];
-        return $firstImage->filename;
+        $goodsImages = $this->goodImg;
+        $firstImage = ($goodsImages->count() > 0) ? $goodsImages[0] : false;
+        $result = is_object($firstImage) ? $firstImage->filename : false;
+        return $result;
     }
 
     public function getGoodCount($order_id)

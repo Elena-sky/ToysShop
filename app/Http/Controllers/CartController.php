@@ -112,6 +112,9 @@ class CartController extends Controller
     {
         $good = Goods::find($id);
         if (!$good) return false;
+        $good->getFirstImage();
+
+
         return $good->getFirstImage();
     }
 

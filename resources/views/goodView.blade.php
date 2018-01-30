@@ -42,6 +42,7 @@
                     </style>
 
                     <ul class="product-images">
+                        @if($images)
                         <?php $item_class = ' preview'; ?>
                         @foreach($images as $image )
                             <li class="<?= $item_class ?>">
@@ -52,6 +53,12 @@
                                          alt="{{$image->id}}"></a>
                             </li>
                         @endforeach
+                        @else
+                            <li class=" preview">
+                                <img src="{{ asset("/uploads/no_picture.jpg") }}" style="max-width:300px"
+                                     alt="{{'no_picture'}}">
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="details col-md-6">

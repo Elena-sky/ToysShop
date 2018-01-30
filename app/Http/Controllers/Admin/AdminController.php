@@ -54,21 +54,6 @@ class AdminController extends Controller
     // Action сохранить редактироование категории
     public function actionAdminSaveUpdate(Request $request)
     {
-
-//        $data = Input::except(['_method', '_token']);
-//        $goodData = Goods::find($data['id']);
-//        $goodData->update($data);
-//
-//        $productId = $goodData->id;
-//
-//        if (!empty($fileName)) {
-//            foreach ($fileName as $onefile) {
-//                $dataImages = ['filename' => $onefile, 'product_id' => $productId];
-//                GoodsImages::create($dataImages);
-//            }
-//        }
-
-
         $path = '/category';  // Папка для загрузки картинки
         $data = Input::except(['_method', '_token']);
         $categoryData = Categories::find($data['id']);
@@ -82,17 +67,8 @@ class AdminController extends Controller
                 $dataImage = ['image' => $name];
                 $categoryData = Categories::find($data['id']);
                 $categoryData->update($dataImage);
-
             }
         }
-
-
-//
-//
-//        $data = $_POST;
-//        $categoryData = Categories::find($data['id']);
-//        $categoryData->update($data);
-
         return \redirect(route('viewCategory'));
     }
 
@@ -184,11 +160,11 @@ class AdminController extends Controller
 
         $good = Goods::find($id);
         $images = Goods::find($id)->goodImg;
-
+        $productImages = ($images->isEmpty()) ? false : $images;
 //        $images = $good->goodImg;
         $imagesName = array_pluck($images, 'filename');
 
-        return view('admin.product.productUpdate', ['good' => $good], ['category' => $category, 'images' => $images]);
+        return view('admin.product.productUpdate', ['good' => $good], ['category' => $category, 'images' => $productImages]);
     }
 
     // Action запись изменений товара в BD
