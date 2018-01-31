@@ -1,80 +1,138 @@
 @extends('template')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Регистрация</div>
 
-                    <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="{{route('index')}}">Главная</a>
+                        </li>
+                        <li>Создать аккаунт / Войти</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box">
+                        <h1>Создать аккаунт</h1>
+
+                        <p class="lead">Вы еще не зарегистрированны?</p>
+                        <p>С регистрацией с нами открывается новый мир игрушек и многое другое! Весь процесс не займет у
+                            вас больше минуты!!</p>
+                        <p class="text-muted">Если у вас есть какие-либо вопросы, пожалуйста, <a href="contact.html">свяжитесь
+                                с нами</a>.</p>
+
+                        <hr>
+
+                        <form action="{{route('register')}}" method="post">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Имя:</label>
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name"
+                                       name="name" value="{{ old('name') }}" required autofocus>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name"
-                                           value="{{ old('name') }}" required autofocus>
-
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail: </label>
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email"
+                                       name="email" value="{{ old('email') }}" required>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ old('email') }}" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Пароль:</label>
+                                <label for="password">Пароль</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Повторите пароль:</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required>
-                                </div>
+                                <label for="password-confirm">Повторите пароль</label>
+                                <input id="password-confirm" type="password" class="form-control"
+                                       name="password_confirmation" required>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Зарегистрироватся
-                                    </button>
-                                </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>
+                                    Зарегистрироваться
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="box">
+                        <h1>Войти</h1>
+
+                        <p class="lead">Вы уже наш клиент?</p>
+                        <p class="text-muted">Пожалуйста авторизуйтесь.</p>
+
+                        <hr>
+
+                        <form action="{{ route('login') }}" method="post">
+                            {{ csrf_field() }}
+
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                       value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password">Пароль</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Войти
+                                </button>
+                            </div>
+                        </form>
+
+                        <p class="text-center text-muted">
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                Забыли пароль?
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+
             </div>
+            <!-- /.container -->
         </div>
-    </div>
+        <!-- /#content -->
+
 @endsection
