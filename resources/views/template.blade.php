@@ -44,6 +44,34 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
+
+                {{--@if (Auth::guest())--}}
+
+                {{--<li><a href="{{ route('login') }}" data-toggle="modal" data-target="#login-modal">Войти</a>--}}
+                {{--</li>--}}
+                {{--<li><a href="{{ route('register') }}">Зарегистрироватся</a>--}}
+                {{--</li>--}}
+                {{--@else--}}
+                {{--<li><a href="#">{{ Auth::user()->name }}</a>--}}
+                {{--</li>--}}
+                {{--<li><a href="{{ route('profile') }}">Профиль</a>--}}
+                {{--</li>--}}
+                {{--<li><a href="{{ route('viewOldOrders') }}">Заказы</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();--}}
+                {{--document.getElementById('logout-form').submit();"> Выйти--}}
+                {{--</a>--}}
+
+                {{--<form class="dropdown-item" id="logout-form" action="{{ route('logout') }}"--}}
+                {{--method="POST" style="display: none;"> {{ csrf_field() }}--}}
+                {{--</form>--}}
+                {{--</li>--}}
+
+
+                {{--@endif--}}
+
+
                 <div class="dropdown show nav-item">
                     <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">

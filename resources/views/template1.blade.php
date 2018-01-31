@@ -51,10 +51,32 @@ _________________________________________________________ -->
         </div>
         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">
-                <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                @if (Auth::guest())
+
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Войти</a>
                 </li>
-                <li><a href="register.html">Register</a>
+                    <li><a href="{{ route('register') }}">Зарегистрироватся</a>
                 </li>
+                @else
+                    <li><a href="#">{{ Auth::user()->name }}</a>
+                    </li>
+                    <li><a href="{{ route('profile') }}">Профиль</a>
+                    </li>
+                    <li><a href="{{ route('viewOldOrders') }}">Заказы</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"> Выйти
+                        </a>
+
+                        <form class="dropdown-item" id="logout-form" action="{{ route('logout') }}"
+                              method="POST" style="display: none;"> {{ csrf_field() }}
+                        </form>
+                    </li>
+
+                @endif
+
+
                 <li><a href="contact.html">Contact</a>
                 </li>
                 <li><a href="#">Recently viewed</a>
@@ -68,25 +90,60 @@ _________________________________________________________ -->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="Login">Customer login</h4>
+                    <h4 class="modal-title" id="Login">Вход в аккаунт</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="customer-orders.html" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email-modal" placeholder="email">
+
+                    <form action="{{ route('login') }}" method="post">
+                        {{ csrf_field() }}
+
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <input type="email" class="form-control" id="email" placeholder="email"
+                                   name="email" value="{{ old('email') }}" required autofocus>
+
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
                         </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <input type="password" class="form-control" id="password" placeholder="password"
+                                   name="password" required>
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password-modal" placeholder="password">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                           name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня
+                                </label>
+                            </div>
                         </div>
 
                         <p class="text-center">
-                            <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                            <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Войти</button>
+                        </p>
+
+                        <p class="text-center text-muted">
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                Забыли пароль?
+                            </a>
                         </p>
 
                     </form>
 
-                    <p class="text-center text-muted">Not registered yet?</p>
-                    <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is
+                    <p class="text-center text-muted">Не зарегестрированны еще?</p>
+                    <p class="text-center text-muted"><a href="register.html"><strong>Зарегестрируйтесь сейчас</strong></a>!
+                        It is
                         easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                 </div>
