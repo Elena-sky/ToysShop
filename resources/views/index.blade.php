@@ -16,7 +16,7 @@
                             <div class="item <?= $item_class; ?>">
                                 <?php $item_class = ''; /* убираем 'active' для следующих */ ?>
 
-                                <img class="img-responsive " src="{{ asset("/uploads/sliders/$slide->filename") }}"
+                                <img class="img-responsive" src="{{ asset("/uploads/sliders/$slide->filename") }}"
                                      alt="{{$slide->id}}">
 
                             </div>

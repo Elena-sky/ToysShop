@@ -73,12 +73,12 @@ _________________________________________________________ -->
                     <li><a href="{{ route('viewOldOrders') }}">Заказы</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"> Выйти
                         </a>
 
-                        <form class="dropdown-item" id="logout-form" action="{{ route('logout') }}"
-                              method="POST" style="display: none;"> {{ csrf_field() }}
+                        <form id="logout-form" action="{{ route('logout') }}"
+                              method="POST"> {{ csrf_field() }}
                         </form>
                     </li>
 
@@ -248,7 +248,7 @@ _________________________________________________________ -->
                                     <div class="col-sm-3">
                                         <h5>User</h5>
                                         <ul>
-                                            <li><a href="register.html">Register / login</a>
+                                            <li><a href="{{ route('register') }}">Создать аккаунт / Войти</a>
                                             </li>
                                             <li><a href="customer-orders.html">Orders history</a>
                                             </li>
