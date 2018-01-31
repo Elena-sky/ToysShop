@@ -58,14 +58,13 @@
 
             @foreach($categories as $category)
             <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
                     <a href="/category/{{$category->id}}">
-                        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                        <div class="card-body">
-                            <h4 class="card-title">{{$category->name}}</h4>
+                        <div style="width: 300px; height: 300px;">
+                            <img class="card-img-top" src="{{ asset("/uploads/category/$category->image") }}" alt="">
+
                         </div>
+                        <h4>{{$category->name}}</h4>
                     </a>
-                </div>
             </div>
             @endforeach
         </div>
