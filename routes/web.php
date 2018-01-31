@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'MainController@index')->name('index');
+
+Route::get('/1', 'MainController@index1')->name('index1');
+
 /*Route::get('/', function () {
     return view('index', ['categories' => \App\Categories::all(), 'slides' => \App\Sliders::all()]);
 });*/

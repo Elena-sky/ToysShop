@@ -36,4 +36,14 @@ class MainController extends BaseController
 
         return view('index', compact('categories', 'slides'));
     }
+
+    public function index1()
+    {
+        $categories = Categories::where('status', 1)
+            ->get();
+
+        $slides = Sliders::where('displaing', 1)
+            ->get();
+        return view('index1', compact('categories', 'slides'));
+    }
 }
