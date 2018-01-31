@@ -34,7 +34,7 @@
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name"
+                                <input type="text" class="form-control"
                                        name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -46,7 +46,7 @@
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email"
+                                <input type="text" class="form-control"
                                        name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -58,7 +58,7 @@
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password">Пароль</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -69,7 +69,7 @@
 
                             <div class="form-group">
                                 <label for="password-confirm">Повторите пароль</label>
-                                <input id="password-confirm" type="password" class="form-control"
+                                <input type="password" class="form-control"
                                        name="password_confirmation" required>
                             </div>
 
@@ -96,7 +96,7 @@
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email"
+                                <input type="text" class="form-control" name="email"
                                        value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -107,7 +107,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password">Пароль</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

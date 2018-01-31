@@ -28,19 +28,19 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
 
     <!-- styles -->
-    <link href="css/1/font-awesome.css" rel="stylesheet">
-    <link href="css/1/bootstrap.min.css" rel="stylesheet">
-    <link href="css/1/animate.min.css" rel="stylesheet">
-    <link href="css/1/owl.carousel.css" rel="stylesheet">
-    <link href="css/1/owl.theme.css" rel="stylesheet">
+    <link href="{{ asset("css/1/font-awesome.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/1/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/1/animate.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/1/owl.carousel.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/1/owl.theme.css") }}" rel="stylesheet">
 
     <!-- theme stylesheet -->
-    <link href="css/1/style.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="{{ asset("css/1/style.default.css") }}" rel="stylesheet" id="theme-stylesheet">
 
     <!-- your stylesheet with modifications -->
-    <link href="css/1/custom.css" rel="stylesheet">
+    <link href="{{ asset("css/1/custom.css") }}" rel="stylesheet">
 
-    <script src="js/1/respond.min.js"></script>
+    <script src=""{{ asset("js/1/respond.min.js") }}></script>
 
     <link rel="shortcut icon" href="favicon.png">
 
@@ -172,8 +172,8 @@ _________________________________________________________ -->
         <div class="navbar-header">
 
             <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
-                <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
-                <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                <img src="{{ asset("img/logo.png") }}" alt="Obaju logo" class="hidden-xs">
+                <img src="{{ asset("img/logo-small.png") }}" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
             </a>
             <div class="navbar-buttons">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -521,14 +521,14 @@ _________________________________________________________ -->
 
 <!-- *** SCRIPTS TO INCLUDE ***
 _________________________________________________________ -->
-<script src="js/1/jquery-1.11.0.min.js"></script>
-<script src="js/1/bootstrap.min.js"></script>
-<script src="js/1/jquery.cookie.js"></script>
-<script src="js/1/waypoints.min.js"></script>
-<script src="js/1/modernizr.js"></script>
-<script src="js/1/bootstrap-hover-dropdown.js"></script>
-<script src="js/1/owl.carousel.min.js"></script>
-<script src="js/1/front.js"></script>
+<script src="{{ asset("js/1/jquery-1.11.0.min.js") }}"></script>
+<script src="{{ asset("js/1/bootstrap.min.js") }}"></script>
+<script src="{{ asset("js/1/jquery.cookie.js") }}"></script>
+<script src="{{ asset("js/1/waypoints.min.js") }}"></script>
+<script src="{{ asset("js/1/modernizr.js") }}"></script>
+<script src="{{ asset("js/1/bootstrap-hover-dropdown.js") }}"></script>
+<script src="{{ asset("js/1/owl.carousel.min.js") }}"></script>
+<script src="{{ asset("js/1/front.js") }}"></script>
 
 
 </body>
