@@ -122,7 +122,8 @@
                         </form>
 
                         <p class="text-center text-muted">
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{--Маршруты запроса ссылки для сброса пароля...--}}
+                            <a class="btn btn-link" href="{{ route('password.email') }}">
                                 Забыли пароль?
                             </a>
                         </p>

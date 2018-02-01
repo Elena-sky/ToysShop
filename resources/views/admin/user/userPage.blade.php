@@ -31,6 +31,10 @@
                             <td>{{$user->email}}</td>
                         </tr>
                         <tr class="max-sunbol">
+                            <td>Телефон</td>
+                            <td>{{$user->рhone}}</td>
+                        </tr>
+                        <tr class="max-sunbol">
                             <td>Создан</td>
                             <td>{{$user->created_at}}</td>
                         </tr>

@@ -128,14 +128,14 @@ _________________________________________________________ -->
                             @endif
                         </div>
 
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня
-                                </label>
-                            </div>
-                        </div>
+                        {{--<div class="form-group">--}}
+                        {{--<div class="checkbox">--}}
+                        {{--<label>--}}
+                        {{--<input type="checkbox"--}}
+                        {{--name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня--}}
+                        {{--</label>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
 
                         <p class="text-center">
                             <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Войти</button>

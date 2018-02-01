@@ -29,7 +29,7 @@
                             </div>
                         @endif
 
-                        <form method="post" action="email.blade.php">
+                        <form method="post" action="{{ route('password.email') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

@@ -46,7 +46,7 @@ class HomeController extends Controller
         $data = $_POST;
         $categoryData = User::find($data['id']);
         $categoryData->update($data);
-        return \redirect(route('user.profile'));
+        return \redirect(route('profile'));
     }
 
     public function userViewOldOrders()
