@@ -59,7 +59,7 @@
                         <td>  </td>
                         <td>  </td>
                         <td><h3>Итого:</h3></td>
-                        <td class="text-right"><h3><strong>{{Cart::subtotal ()}} грн</strong></h3></td>
+                        <td class="text-right"><h3><strong> грн</strong></h3></td>
                     </tr>
                     <tr>
                         <td>  </td>

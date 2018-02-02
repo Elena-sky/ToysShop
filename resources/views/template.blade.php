@@ -42,7 +42,9 @@
 
     <script src=""{{ asset("js/1/respond.min.js") }}></script>
 
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet"
+          href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css"
+          type="text/css"/>
 
 
 </head>
@@ -529,6 +531,10 @@ _________________________________________________________ -->
 <script src="{{ asset("js/1/bootstrap-hover-dropdown.js") }}"></script>
 <script src="{{ asset("js/1/owl.carousel.min.js") }}"></script>
 <script src="{{ asset("js/1/front.js") }}"></script>
+
+<script src="{{ asset("/js/script.js") }}"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script id="dsq-count-scr" src="//webshop1.disqus.com/count.js" async></script>
 
 
 </body>

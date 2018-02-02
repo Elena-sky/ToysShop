@@ -25,7 +25,7 @@ class CartController extends Controller
 
         $cartItems = Cart::content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
 
-        return view('cart', ['items' => $cartItems]);
+        return view('basket', ['items' => $cartItems]);
     }
 
 

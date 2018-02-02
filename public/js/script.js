@@ -24,7 +24,7 @@ $(document).ready(function () {
         })
     });
 
-    $(".ajax-btn-remove").click(function () {
+    $(".fa-trash-o").click(function () {
         var id = $(this).data('row-id');
 
         $.ajax({
