@@ -42,7 +42,7 @@
                     </style>
 
                     <ul class="product-images">
-                        @if($images)
+                        @if(isset($images))
                         <?php $item_class = ' preview'; ?>
                         @foreach($images as $image )
                             <li class="<?= $item_class ?>">

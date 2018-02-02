@@ -12,49 +12,16 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="{{route('index')}}">Главная</a></li>
-                        </li>
-                        <li> Категории
-                        </li>
+                        <li> Категории</li>
                     </ul>
                 </div>
 
-                <div class="col-md-3">
-                    <!-- *** MENUS AND FILTERS ***
-    _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
+                <!-- *** MENUS AND FILTERS ***
+_________________________________________________________ -->
+            @include('products.menuAndFilters')
 
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Categories</h3>
-                        </div>
+            <!-- *** MENUS AND FILTERS END *** -->
 
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked category-menu">
-                                @foreach(\App\Categories::where('status', 1)->get() as $category)
-
-                                    <li>
-                                        <a href="/category/{{$category->id}}">{{$category->name}} <span
-                                                    class="badge pull-right">42</span></a>
-                                    </li>
-                                @endforeach
-
-                                <li class="active">
-                                    <a href="category.html">Ladies <span class="badge pull-right">123</span></a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-                    </div>
-
-
-                    <!-- *** MENUS AND FILTERS END *** -->
-
-                    <div class="banner">
-                        <a href="#">
-                            <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
-                        </a>
-                    </div>
-                </div>
 
                 <div class="col-md-9">
 
@@ -100,47 +67,34 @@
                                 <div class="product">
                                     <div class="flip-container">
                                         <div class="flipper">
-                                            @if(isset($good->goodImg[1]->filename))
-                                                <div class="front">
-                                                    <a href="{{route('goodView',['id' => $good->id])}}">
+                                            <div class="front">
+                                                <a href="{{route('goodView',['id' => $good->id])}}">
+                                                    @if(isset($good->goodImg[1]->filename))
                                                         <img src="{{asset("/uploads/goods/".$good->goodImg[0]->filename) }}"
                                                              alt="{{$good->name}}" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                                <div class="back">
-                                                    <a href="{{route('goodView',['id' => $good->id])}}">
+                                                    @elseif(isset($good->goodImg[0]->filename))
+                                                        <img src="{{asset("/uploads/goods/".$good->goodImg[0]->filename) }}"
+                                                             alt="{{$good->name}}" class="img-responsive">
+                                                    @else
+                                                        <img src="{{ asset("/uploads/no_picture.jpg") }}"
+                                                             alt="no_picture" class="img-responsive">
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="{{route('goodView',['id' => $good->id])}}">
+                                                    @if(isset($good->goodImg[1]->filename))
                                                         <img src="{{url( asset("/uploads/goods/".$good->goodImg[1]->filename)) }}"
                                                              alt="{{$good->name}}" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                            @elseif(isset($good->goodImg[0]->filename))
-                                                <div class="front">
-                                                    <a href="{{route('goodView',['id' => $good->id])}}">
-                                                        <img src="{{asset("/uploads/goods/".$good->goodImg[0]->filename) }}"
-                                                             alt="{{$good->name}}" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                                <div class="back">
-                                                    <a href="{{route('goodView',['id' => $good->id])}}">
+                                                    @elseif(isset($good->goodImg[0]->filename))
                                                         <img src="{{url( asset("/uploads/goods/".$good->goodImg[0]->filename)) }}"
                                                              alt="{{$good->name}}" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                            @else
-                                                <div class="front">
-                                                    <a href="{{route('goodView',['id' => $good->id])}}">
+                                                    @else
                                                         <img src="{{ asset("/uploads/no_picture.jpg") }}"
                                                              alt="no_picture" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                                <div class="back">
-                                                    <a href="{{route('goodView',['id' => $good->id])}}">
-                                                        <img src="{{ asset("/uploads/no_picture.jpg") }}"
-                                                             alt="no_picture" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                            @endif
-
+                                                    @endif
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
 

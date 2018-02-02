@@ -19,7 +19,7 @@ class MainController extends BaseController
         //$goods = Categories::find($id)->goods->paginate(5);
         $goods = Goods::query()->where('category_id', $id)->paginate(6);
 
-        return view('category-left', ['goods' => $goods]);
+        return view('products.category-left', ['goods' => $goods]);
 
     }
 
@@ -34,13 +34,4 @@ class MainController extends BaseController
         return view('index', compact('categories', 'slides'));
     }
 
-    public function index1()
-    {
-        $categories = Categories::where('status', 1)
-            ->get();
-
-        $slides = Sliders::where('displaing', 1)
-            ->get();
-        return view('index1', compact('categories', 'slides'));
-    }
 }

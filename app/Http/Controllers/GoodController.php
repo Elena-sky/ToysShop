@@ -14,8 +14,7 @@ class GoodController extends Controller
         $productImages = ($images->isEmpty()) ? false : $images;
 
         $good = Goods::find($id);
-        return view('goodView', ['good' => $good, 'images' => $productImages]);
+        return view('products.detail', ['good' => $good, 'images' => $productImages]);
     }
-
 
 }
