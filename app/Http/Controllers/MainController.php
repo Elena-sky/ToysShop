@@ -19,7 +19,8 @@ class MainController extends BaseController
         //$goods = Categories::find($id)->goods->paginate(5);
         $goods = Goods::query()->where('category_id', $id)->paginate(6);
 
-        return view('products.category-left', ['goods' => $goods]);
+        $categoryName = Categories::find($id);
+        return view('products.category-left', ['goods' => $goods, 'categoryName' => $categoryName]);
 
     }
 

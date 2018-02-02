@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="{{route('index')}}">Главная</a></li>
-                        <li> Категории</li>
+                        <li> Категориия</li>
                         <li><a href="{{route('goodsByCategory', [$good->category_id])}}">{{$good->category->name}}</a>
                         </li>
                         <li>{{$good->name}}</li>

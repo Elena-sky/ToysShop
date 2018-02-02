@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
-    public function goodView($id)
+    public function productDetail($id)
     {
         $images = Goods::find($id)->goodImg;
         $productImages = ($images->isEmpty()) ? false : $images;
