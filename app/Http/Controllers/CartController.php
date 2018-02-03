@@ -89,6 +89,18 @@ class CartController extends Controller
                     break;
 
                 case 'update':
+                    if (!is_null($rowId)) { // если не пустой $rowId
+                        $qty = $data['count'];
+                        $prise = $data['price'];
+
+                        $goodPrice = $prise * $qty;
+
+                        $count = Cart::update($rowId, $qty);
+
+                        $result = ['qty' => $count, 'goodPrice' => $goodPrice];
+
+                    }
+
 
                     break;
             }

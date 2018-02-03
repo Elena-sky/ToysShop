@@ -41,6 +41,7 @@
     <link href="{{ asset("css/1/custom.css") }}" rel="stylesheet">
 
     <script src=""{{ asset("js/1/respond.min.js") }}></script>
+    <link href="{{ asset("css/spinner.btn.css") }}" rel="stylesheet">
 
     <link rel="stylesheet"
           href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css"
@@ -187,7 +188,8 @@ _________________________________________________________ -->
                     <i class="fa fa-search"></i>
                 </button>
                 <a class="btn btn-default navbar-toggle" href="basket.html">
-                    <i class="fa fa-shopping-cart"></i> <span class="hidden-xs">3 items in cart</span>
+                    <i class="fa fa-shopping-cart"></i> <span class="hidden-xs"> {{Cart::count()}}
+                        товар(ов) в корзине</span>
                 </a>
             </div>
         </div>
@@ -312,7 +314,7 @@ _________________________________________________________ -->
 
             <div class="navbar-collapse collapse right" id="basket-overview">
                 <a href="/cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span
-                            class="hidden-sm">3 items in cart</span></a>
+                            class="hidden-sm">{{Cart::count()}} товар(ов) в корзине</span></a>
             </div>
             <!--/.nav-collapse -->
 

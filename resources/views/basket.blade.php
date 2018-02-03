@@ -22,7 +22,7 @@
                         <form method="post" action="checkout1.html">
 
                             <h1>Корзина</h1>
-                            <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+                            <p class="text-muted">У Вас {{Cart::count()}} товар(ов) в корзине.</p>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -30,7 +30,7 @@
                                         <th colspan="2">Название</th>
                                         <th>Колличество</th>
                                         <th>Цена</th>
-                                        <th colspan="2">Total</th>
+                                        <th colspan="2">Сумма</th>
                                     </tr>
                                     </thead>
 
@@ -48,11 +48,13 @@
                                                 <td><a href="#">{{$row->name}}</a>
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control itemCount"
-                                                           value="{{$row->qty}}">
+
+                                                    <input type="number" value="{{$row->qty}}"
+                                                           class="form-control itemCount">
                                                 </td>
-                                                <td>{{$row->price}} грн</td>
-                                                <td>$246.00</td>
+                                                <td>{{$row->price}}</td>
+                                                <td data-item-price="{{$row->price}}">{{$row->price * $row->qty}}грн
+                                                </td>
                                                 <td><a href="#"><i class="fa fa-trash-o" data-row-id="{{$row->id}}"></i></a>
                                                 </td>
 
