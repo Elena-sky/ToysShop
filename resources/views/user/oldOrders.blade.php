@@ -1,78 +1,103 @@
 @extends('template')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-2">
-                <table class="table table-hover">
-                    <thead>
-                    <tr class="table-success">
-                        <th>Заказ №</th>
-                        <th></th>
-                        <th>
-                            <h2>История заказов</h2>
-                        </th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                            @foreach($orders as $order)
 
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="{{route('index')}}">Главная</a>
+                        <li>История заказов</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+                  _________________________________________________________ -->
+
+                @include('user.menuProfile')
+
+                <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9" id="customer-orders">
+                    <div class="box">
+                        <h1>История заказов</h1>
+
+                        <hr>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
                                 <tr>
-                                    <th>
-                                        {{$order->id}}
-                                    </th>
+                                    <th>Заказ</th>
+                                    <th>Дата</th>
+                                    <th>Итого</th>
+                                    <th>Статус</th>
+                                    <th></th>
 
+                                </tr>
+                                </thead>
+                                <tbody>
+                            @foreach($orders as $order)
+                                <tr>
+                                    <th># {{$order->id}}</th>
+                                    <td>{{$order->created_at}}</td>
+                                    <td>$ {{$order->total}}</td>
                                     <td>
-                                        <div>
-                                        <span>
-                                           Итого: {{$order->total}} грн
-                                        </span>
-                                        </div>
-                                        <div>
-                                        <span>
-                                        {{$order->created_at}}
-                                    </span>
-                                        </div>
-                                    </td>
-                                    <td style="display: -webkit-box;">
-                                        @foreach($order->orderGoods as $orderGoods)
-                                            <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
-                                            <div style="max-width: 100px;">
-                                                <img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
-                                            </div>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                    <span>
-                                      {{($order->status)? 'Обрабатываеться' : 'Обработан'}}
-                                    </span>
+                                        {!! ($order->status)? "<span class='label label-warning'>Обрабатываеться</span>" : "<span class='label label-success'>Обработан</span>" !!}
                                     </td>
                                     <td>
                                         <a href="{{route('viewOldOrdersById', [$order->id])}}"
-                                           class="ajax-btn-order  list-group-item list-group-item-info">Детальнее</a>
+                                           class="btn btn-primary btn-sm">Детальнее</a>
                                     </td>
                                 </tr>
                             @endforeach
-                    </tbody>
-                </table>
+
+                            {{--<td style="display: -webkit-box;">--}}
+                            {{--@foreach($order->orderGoods as $orderGoods)--}}
+                            {{--<?php $good = \App\Goods::find($orderGoods->goods_id) ?>--}}
+                            {{--<div style="max-width: 100px;">--}}
+                            {{--<img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>--}}
+                            {{--</div>--}}
+                            {{--@endforeach--}}
+                            {{--</td>--}}
+
+                            {{--<td>--}}
+                            {{--<a href="{{route('viewOldOrdersById', [$order->id])}}"--}}
+                            {{--class="ajax-btn-order  list-group-item list-group-item-info">Детальнее</a>--}}
+                            {{--</td>--}}
+
+
+                            {{--<script>--}}
+                            {{--$(document).ready(function () {--}}
+                            {{--$(".ajax-btn-order").click(function () {--}}
+
+                            {{--var id = $(this).data('order-id');--}}
+
+
+                            {{--})--}}
+
+
+                            {{--});--}}
+
+
+                            {{--</script>--}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <!-- /.container -->
         </div>
-    </div>
+        <!-- /#content -->
 
-    {{--<script>--}}
-    {{--$(document).ready(function () {--}}
-    {{--$(".ajax-btn-order").click(function () {--}}
-
-    {{--var id = $(this).data('order-id');--}}
-
-
-    {{--})--}}
-
-
-    {{--});--}}
-
-
-    {{--</script>--}}
 @endsection

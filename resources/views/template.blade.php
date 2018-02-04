@@ -72,8 +72,6 @@ _________________________________________________________ -->
                     </li>
                     <li><a href="{{ route('profile') }}">Профиль</a>
                     </li>
-                    <li><a href="{{ route('viewOldOrders') }}">Заказы</a>
-                    </li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"> Выйти
