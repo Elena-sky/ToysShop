@@ -41,7 +41,6 @@
     <link href="{{ asset("css/1/custom.css") }}" rel="stylesheet">
 
     <script src=""{{ asset("js/1/respond.min.js") }}></script>
-    <link href="{{ asset("css/spinner.btn.css") }}" rel="stylesheet">
 
     <link rel="stylesheet"
           href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css"

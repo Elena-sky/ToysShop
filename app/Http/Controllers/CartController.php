@@ -47,11 +47,6 @@ class CartController extends Controller
         $goodsData = self::kostilMeth();
 
         $cartItem = Cart::content();
-        $rowOld = $goodsData->search(function ($cartItem, $rowId) { // для чего?
-            return $cartItem->id === 1;
-        });
-        $countQty = [];
-
 
         if (!empty($data)) {
             $id = $data['id'];  // id товара
@@ -82,8 +77,6 @@ class CartController extends Controller
                     if (!is_null($rowId)) { // если не пустой $rowId
 
                         $result = Cart::remove($rowId); // удаляем
-//                        Cart::restore($userName . '-shoppingCart'); // Востанавливем корзину по уникальному ID
-
                     }
 
                     break;
@@ -104,7 +97,7 @@ class CartController extends Controller
 
                     break;
             }
-            Cart::store($userName . '-shoppingCart'); //сохраняем
+//            Cart::store($userName . '-shoppingCart'); //сохраняем- POST 500 уже сохранен
 
             return $result;
         }

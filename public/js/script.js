@@ -1,10 +1,6 @@
 $(document).ready(function () {
     $(".ajax-btn").click(function () {
-        var id = $(this).data('good-id'),
-            cartPrice = parseFloat($(".total").html()),
-            cartEl = $(".total"),
-            cartCount = parseFloat($(".count").html()),
-            countEl = $(".count");
+        var id = $(this).data('good-id');
 
         $.ajax({
             headers: {
@@ -16,10 +12,8 @@ $(document).ready(function () {
             success: function (returnable) {
                 console.log(returnable);
                 console.log(id + ' was successfully added!');
-                var resPrice = returnable.price + cartPrice;
                 //returnable.qty;
-                cartEl.text(resPrice + ' грн.');
-                countEl.text(++cartCount);
+                window.location.reload(true);
             }
         })
     });
@@ -35,11 +29,8 @@ $(document).ready(function () {
             url: "http://webshop.loc/cart/item-update",
             data: {id: id, action: 'delete'},
             success: function (del) {
-                console.log(id + ' правильное');
+                console.log(id + ' удалилось');
                 window.location.reload(true);
-                //do
-                // var resDel = del.id;
-                // return resDel;
             }
         })
     });
