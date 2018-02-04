@@ -2,9 +2,6 @@
 
 @section('content')
 
-
-
-
     <div id="all">
 
         <div id="content">
@@ -17,9 +14,7 @@
                         </li>
                         <li>Мой профиль</li>
                     </ul>
-
                 </div>
-
 
                 <div class="col-md-3">
                     <!-- *** CUSTOMER MENU ***
@@ -29,7 +24,6 @@
 
                     <!-- *** CUSTOMER MENU END *** -->
                 </div>
-
 
                 <div class="col-md-9">
                     <div class="box">
@@ -54,30 +48,27 @@
                                     </div>
                                 </div>
 
-                            </div>
+                        </div>
                             <!-- /.row -->
 
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {!! Form::label('UserPhone', 'Телефон') !!}
-                                        {!! Form::text('phone', $user->phone, ['class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 text-center">
-                                    {{ Form::button('<i class="fa fa-save"></i> Сохранить изменения', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {!! Form::label('UserPhone', 'Телефон') !!}
+                                    {!! Form::text('phone', $user->phone, ['class' => 'form-control']) !!}
                                 </div>
                             </div>
+
+                            <div class="col-sm-12 text-center">
+                                {{ Form::button('<i class="fa fa-save"></i> Сохранить изменения', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
+                            </div>
+                        </div>
                         {!! Form::close() !!}
                     </div>
                 </div>
-
-
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
 
 @endsection

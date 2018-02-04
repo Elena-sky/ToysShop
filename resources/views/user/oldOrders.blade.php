@@ -59,15 +59,6 @@
                                 </tr>
                             @endforeach
 
-                            {{--<td style="display: -webkit-box;">--}}
-                            {{--@foreach($order->orderGoods as $orderGoods)--}}
-                            {{--<?php $good = \App\Goods::find($orderGoods->goods_id) ?>--}}
-                            {{--<div style="max-width: 100px;">--}}
-                            {{--<img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>--}}
-                            {{--</div>--}}
-                            {{--@endforeach--}}
-                            {{--</td>--}}
-
                             {{--<td>--}}
                             {{--<a href="{{route('viewOldOrdersById', [$order->id])}}"--}}
                             {{--class="ajax-btn-order  list-group-item list-group-item-info">Детальнее</a>--}}
