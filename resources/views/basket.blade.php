@@ -19,7 +19,6 @@
 
                     <div class="box">
 
-                        <form method="post" action="checkout1.html">
 
                             <h1>Корзина</h1>
                             <p class="text-muted">У Вас {{Cart::count()}} товар(ов) в корзине.</p>
@@ -40,12 +39,13 @@
                                         @foreach($items as $row)
                                             <tr data-item-id="{{$row->id}}">
                                                 <td>
-                                                    <a href="#">
+                                                    <a href="{{route('goodView',['id' => $row->id])}}">
                                                         <img src="{{url( asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($row->id))) }}"
                                                              alt="{{$row->name}}">
                                                     </a>
                                                 </td>
-                                                <td><a href="#">{{$row->name}}</a>
+                                                <td>
+                                                    <a href="{{route('goodView',['id' => $row->id])}}">{{$row->name}}</a>
                                                 </td>
                                                 <td>
 
@@ -85,7 +85,6 @@
                                 </div>
                             </div>
 
-                        </form>
 
                     </div>
                     <!-- /.box -->

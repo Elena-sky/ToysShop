@@ -128,8 +128,7 @@ class CartController extends Controller
         $user = Auth::user();
 
         $cartItems = Cart::content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
-
-        return view('cartCheckout', ['user' => $user, 'items' => $cartItems]);
+        return view('checkout.checkoutData', ['user' => $user, 'items' => $cartItems]);
     }
 
     public function viewCheckoutSave(Request $request)
@@ -169,6 +168,13 @@ class CartController extends Controller
 
         return \redirect(route('index'));
 
+    }
+
+    public function viewCheckoutAddress()
+    {
+        $user = Auth::user();
+
+        return view('checkout.checkoutData', ['user' => $user]);
     }
 
 }
