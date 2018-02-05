@@ -380,12 +380,12 @@ _________________________________________________________ -->
 
                 <hr>
 
-                <h4>User section</h4>
+                <h4>Раздел пользователя</h4>
 
                 <ul>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Войти</a>
                     </li>
-                    <li><a href="register.html">Regiter</a>
+                    <li><a href="{{ route('register') }}">Регистрация</a>
                     </li>
                 </ul>
 

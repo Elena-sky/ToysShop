@@ -77,7 +77,7 @@
                                                 class="fa fa-chevron-left"></i> Продолжить покупки</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{route('viewCheckout')}}">
+                                    <a href="{{route('checkoutData')}}">
                                         <button type="submit" class="btn btn-primary">Перейти к оформлению заказа <i
                                                     class="fa fa-chevron-right"></i>
                                         </button>

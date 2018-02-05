@@ -8,7 +8,7 @@
 
         <ul class="nav nav-pills nav-stacked">
             <li class="active">
-                <a href="{{ route('viewOldOrders') }}"><i class="fa fa-list"></i> My orders</a>
+                <a href="{{ route('viewOldOrders') }}"><i class="fa fa-list"></i> Мои заказы</a>
             </li>
             <li>
                 <a href="customer-wishlist.html"><i class="fa fa-heart"></i> My wishlist</a>

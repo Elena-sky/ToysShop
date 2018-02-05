@@ -255,6 +255,7 @@
                                         <th>{{$row->price}} грн</th>
                                         <th>{{$row->price * $row->qty}} грн</th>
                                     </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>

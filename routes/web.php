@@ -13,8 +13,6 @@
 
 Route::get('/', 'MainController@index')->name('index');
 
-Route::get('/1', 'MainController@index1')->name('index1');
-
 /*Route::get('/', function () {
     return view('index', ['categories' => \App\Categories::all(), 'slides' => \App\Sliders::all()]);
 });*/
@@ -27,45 +25,29 @@ Route::get('about/test', 'Controller@test');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+//Профиль пользователя и его заказы
 Route::get('/profile', 'HomeController@profileUser')->name('profile'); //User view профиль
 Route::post('/profile/save', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); //User сохраняет изменения в профиле
 Route::get('/old-orders', 'HomeController@userViewOldOrders')->name('viewOldOrders'); // Обзор старых заказов
 Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('viewOldOrdersById'); // Обзор старого заказа по id
 
+//Категории и продукты
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); //обзор продукта
 
+
+//Корзина
 Route::get('/cart', 'CartController@cartView')->name('cartView');  //корзина
 Route::post('cart/item-update', 'CartController@actionC'); // Ajax Действия юзера в корзине : добавление, редактирование, удаление
 
-Route::get('cart/checkout/data', 'CartController@viewCheckoutData')->name('checkoutData'); // Заполнение данных заказа
+//Заказ
+Route::get('cart/checkout', 'OrderController@viewCheckoutPage')->name('checkoutData'); // Заполнение данных заказа
+Route::post('/cart/checkout/save', 'OrderController@viewCheckoutSave')->name('viewSaveCheckout'); // Action сохранения заказа в базу данных
 
-
-Route::get('/cart/checkout', 'CartController@viewCheckoutPage')->name('viewCheckout');
-Route::post('/cart/checkout/save', 'CartController@viewCheckoutSave')->name('viewSaveCheckout');
-
+//Поиск по названию товаров
 Route::get('/search/autocomplete', 'SearchController@autocomplete'); // Search
 
 
 include_once 'adminRoutes.php';
 
-
-
-
-
-
-// Корзина:
-//'cart/checkout' => 'cart/checkout', // actionAdd в CartController
-//    'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete в CartController
-//    'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd в CartController
-//    'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1', // actionAddAjax в CartController
-//    'cart' => 'cart/index', // actionIndex в CartController
-
-
-//// Товар:
-//'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController
-//    // Каталог:
-//    'catalog' => 'catalog/index', // actionIndex в CatalogController
-//    // Категория товаров:
-//    'category/([0-9]+)/page-([0-9]+)' => 'catalog/category/$1/$2', // actionCategory в CatalogController
-//    'category/([0-9]+)' => 'catalog/category/$1', // actionCategory в CatalogController

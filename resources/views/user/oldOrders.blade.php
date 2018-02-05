@@ -48,7 +48,7 @@
                                 <tr>
                                     <th># {{$order->id}}</th>
                                     <td>{{$order->created_at}}</td>
-                                    <td>$ {{$order->total}}</td>
+                                    <td>{{$order->total}} грн</td>
                                     <td>
                                         {!! ($order->status)? "<span class='label label-warning'>Обрабатываеться</span>" : "<span class='label label-success'>Обработан</span>" !!}
                                     </td>
@@ -58,27 +58,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
-                            {{--<td>--}}
-                            {{--<a href="{{route('viewOldOrdersById', [$order->id])}}"--}}
-                            {{--class="ajax-btn-order  list-group-item list-group-item-info">Детальнее</a>--}}
-                            {{--</td>--}}
-
-
-                            {{--<script>--}}
-                            {{--$(document).ready(function () {--}}
-                            {{--$(".ajax-btn-order").click(function () {--}}
-
-                            {{--var id = $(this).data('order-id');--}}
-
-
-                            {{--})--}}
-
-
-                            {{--});--}}
-
-
-                            {{--</script>--}}
 
                                 </tbody>
                             </table>

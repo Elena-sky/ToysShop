@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Orders;
+use App\OrdersDelivery;
 use App\OrdersGoods;
 use App\User;
 use Illuminate\Http\Request;
@@ -60,7 +61,8 @@ class HomeController extends Controller
     public function userViewOldOrdersById($orderId)
     {
         $order = Orders::find($orderId);
+        $delivery = OrdersDelivery::find($order->delivery_id);
 
-        return view('user.oldOrdersById', ['order' => $order]);
+        return view('user.oldOrdersById', ['order' => $order, 'delivery' => $delivery]);
     }
 }
