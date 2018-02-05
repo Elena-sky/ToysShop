@@ -38,7 +38,9 @@ class AdminController extends Controller
     // Управление категориями
     public function viewCategoryPage()
     {
-        $categories = Categories::query()->orderBy('id', 'desc')->get();
+        $categories = Categories::query()
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('admin.category.categoryView', ['categories' => $categories]);
     }
@@ -116,7 +118,9 @@ class AdminController extends Controller
     public function actionProductView()
     {
 
-        $goods = Goods::query()->orderBy('id', 'desc')->paginate(10);
+        $goods = Goods::query()
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         $category = Categories::getCategories();
 
         return view('admin.product.productChange', ['goods' => $goods, 'category' => $category]);

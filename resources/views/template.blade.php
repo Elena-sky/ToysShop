@@ -85,7 +85,7 @@ _________________________________________________________ -->
                 @endif
 
 
-                <li><a href="contact.html">Contact</a>
+                <li><a href="{{ route('contact') }}">Контакты</a>
                 </li>
                 <li><a href="#">Recently viewed</a>
                 </li>
@@ -374,11 +374,19 @@ _________________________________________________________ -->
                     </li>
                     <li><a href="faq.html">FAQ</a>
                     </li>
-                    <li><a href="contact.html">Contact us</a>
+                    <li><a href="{{ route('contact') }}">Контакты</a>
                     </li>
                 </ul>
 
                 <hr>
+
+
+                <hr class="hidden-md hidden-lg hidden-sm">
+
+            </div>
+            <!-- /.col-md-3 -->
+
+            <div class="col-md-3 col-sm-6">
 
                 <h4>Раздел пользователя</h4>
 
@@ -389,38 +397,6 @@ _________________________________________________________ -->
                     </li>
                 </ul>
 
-                <hr class="hidden-md hidden-lg hidden-sm">
-
-            </div>
-            <!-- /.col-md-3 -->
-
-            <div class="col-md-3 col-sm-6">
-
-                <h4>Top categories</h4>
-
-                <h5>Men</h5>
-
-                <ul>
-                    <li><a href="category.html">T-shirts</a>
-                    </li>
-                    <li><a href="category.html">Shirts</a>
-                    </li>
-                    <li><a href="category.html">Accessories</a>
-                    </li>
-                </ul>
-
-                <h5>Ladies</h5>
-                <ul>
-                    <li><a href="category.html">T-shirts</a>
-                    </li>
-                    <li><a href="category.html">Skirts</a>
-                    </li>
-                    <li><a href="category.html">Pants</a>
-                    </li>
-                    <li><a href="category.html">Accessories</a>
-                    </li>
-                </ul>
-
                 <hr class="hidden-md hidden-lg">
 
             </div>
@@ -428,46 +404,40 @@ _________________________________________________________ -->
 
             <div class="col-md-3 col-sm-6">
 
-                <h4>Where to find us</h4>
+                <h4>Toп категорий</h4>
 
-                <p><strong>Obaju Ltd.</strong>
-                    <br>13/25 New Avenue
-                    <br>New Heaven
-                    <br>45Y 73J
-                    <br>England
+                <ul>
+                    @foreach(\App\Categories::where('status', 1)->get() as $category)
+                        <li><a href="/category/{{$category->id}}">{{$category->name}}</a>
+                        </li>
+                    @endforeach
+
+                </ul>
+
+                <hr class="hidden-md hidden-lg">
+
+            </div>
+            <!-- /.col-md-3 -->
+
+
+
+
+            <div class="col-md-3 col-sm-6">
+
+                <h4>Где найти нас</h4>
+
+                <p><strong>Одесса</strong>
+                    <br>Одеська область
+                    <br>проспект Добровольського
+                    <br>114/2
+                    <br>Северный рынок
                     <br>
-                    <strong>Great Britain</strong>
+                    <strong>Контейнер №Г14</strong>
                 </p>
 
-                <a href="contact.html">Go to contact page</a>
+                <a href="{{ route('contact') }}">Перейти на страницу контактов</a>
 
                 <hr class="hidden-md hidden-lg">
-
-            </div>
-            <!-- /.col-md-3 -->
-
-
-            <div class="col-md-3 col-sm-6">
-
-                <h4>Get the news</h4>
-
-                <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                    turpis egestas.</p>
-
-                <form>
-                    <div class="input-group">
-
-                        <input type="text" class="form-control">
-
-                        <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
-			</span>
-
-                    </div>
-                    <!-- /input-group -->
-                </form>
 
                 <hr>
 

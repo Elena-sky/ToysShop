@@ -32,7 +32,19 @@ class MainController extends BaseController
         $slides = Sliders::where('displaing', 1)
             ->get();
 
-        return view('index', compact('categories', 'slides'));
+        $lastNewGoods = Goods::query()
+            ->where('is_new', 1)
+            ->orderBy('id', 'desc')
+            ->limit(8)
+            ->get();
+
+        return view('index', compact('categories', 'slides', 'lastNewGoods'));
+    }
+
+    public function viewContact()
+    {
+
+        return view('contact');
     }
 
 }

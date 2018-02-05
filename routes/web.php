@@ -32,6 +32,10 @@ Route::post('/profile/save', 'HomeController@userActionSaveProfile')->name('acti
 Route::get('/old-orders', 'HomeController@userViewOldOrders')->name('viewOldOrders'); // Обзор старых заказов
 Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('viewOldOrdersById'); // Обзор старого заказа по id
 
+
+//Контакты
+Route::get('/contact', 'MainController@viewContact')->name('contact');
+
 //Категории и продукты
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); //обзор продукта
