@@ -55,10 +55,7 @@
 _________________________________________________________ -->
 <div id="top">
     <div class="container">
-        <div class="col-md-6 offer" data-animate="fadeInDown">
-            <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a> <a href="#">Get
-                flat 35% off on orders over $50!</a>
-        </div>
+        <div class="col-md-6 offer" data-animate="fadeInDown"></div>
         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">
                 @if (Auth::guest())
@@ -472,14 +469,8 @@ _________________________________________________________ -->
 <div id="copyright">
     <div class="container">
         <div class="col-md-6">
-            <p class="pull-left">© 2015 Your name goes here.</p>
+            <p class="pull-left">© 2018 Alena Soroka.</p>
 
-        </div>
-        <div class="col-md-6">
-            <p class="pull-right">Template by <a href="https://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
-                & <a href="https://fity.cz">Fity</a>
-                <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-            </p>
         </div>
     </div>
 </div>
