@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\Goods;
 use App\Sliders;
+use App\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
+
 
 class MainController extends BaseController
 {
@@ -43,8 +47,14 @@ class MainController extends BaseController
 
     public function viewContact()
     {
+        $userId = (Auth::check()) ? Auth::id() : ''; //проверка на пользователя
 
-        return view('contact');
+        if (!empty($userId)) {
+            $user = User::find($userId);
+        }
+
+        return view('info.contact', compact('user'));
     }
+
 
 }

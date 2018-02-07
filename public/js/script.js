@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    //AJAX добавление товара в корзину
     $(".ajax-btn").click(function () {
         var id = $(this).data('good-id');
 
@@ -18,6 +20,7 @@ $(document).ready(function () {
         })
     });
 
+    // AJAX удаление товара из корзины
     $(".fa-trash-o").click(function () {
         var id = $(this).data('row-id');
 
@@ -35,7 +38,7 @@ $(document).ready(function () {
         })
     });
 
-
+    // AJAX редактирование колличесива товара в корзине и цену
     $(".itemCount").bind('keyup change click', function (e) {
         var id = $(this).data('row-id');
         var price = $($($(this).parents('tr')).children('td')[4]).data('item-price');
@@ -56,7 +59,7 @@ $(document).ready(function () {
 
     });
 
-
+    // Поиск по названию в товаре
     // $("#q").autocomplete({
     //     source: document.location.origin + "/search/autocomplete",
     //     minLength: 3,
@@ -70,5 +73,34 @@ $(document).ready(function () {
     //         .append('<a href="/product/' + item.id + '">' + item.label + '</a>')
     //         .appendTo(ul);
     // };
+
+
+    function getFormData($form) {
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+
+        $.map(unindexed_array, function (n, i) {
+            indexed_array[n['name']] = n['value'];
+        });
+
+        return indexed_array;
+    }
+
+    // AJAX контактная форма
+    $('#contactform').on('submit', function (e) {
+        e.preventDefault();
+        var form = $('#contactform');
+        var data = getFormData(form);
+        console.log(data);
+
+        $.ajax({
+            type: 'POST',
+            url: '/contact/sendmail',
+            data: data,
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    });
 });
 

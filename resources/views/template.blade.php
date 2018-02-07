@@ -383,21 +383,7 @@ _________________________________________________________ -->
             </div>
             <!-- /.col-md-3 -->
 
-            <div class="col-md-3 col-sm-6">
 
-                <h4>Раздел пользователя</h4>
-
-                <ul>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Войти</a>
-                    </li>
-                    <li><a href="{{ route('register') }}">Регистрация</a>
-                    </li>
-                </ul>
-
-                <hr class="hidden-md hidden-lg">
-
-            </div>
-            <!-- /.col-md-3 -->
 
             <div class="col-md-3 col-sm-6">
 
@@ -416,9 +402,6 @@ _________________________________________________________ -->
             </div>
             <!-- /.col-md-3 -->
 
-
-
-
             <div class="col-md-3 col-sm-6">
 
                 <h4>Где найти нас</h4>
@@ -436,7 +419,10 @@ _________________________________________________________ -->
 
                 <hr class="hidden-md hidden-lg">
 
-                <hr>
+            </div>
+            <!-- /.col-md-3 -->
+
+            <div class="col-md-3 col-sm-6">
 
                 <h4>Stay in touch</h4>
 

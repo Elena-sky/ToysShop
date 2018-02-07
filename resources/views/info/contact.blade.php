@@ -19,28 +19,7 @@
                 <div class="col-md-3">
                     <!-- *** PAGES MENU ***
  _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Pages</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="text.html">Text page</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact page</a>
-                                </li>
-                                <li>
-                                    <a href="faq.html">FAQ</a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-                    </div>
+                @include('info.pagesMenu')
 
                     <!-- *** PAGES MENU END *** -->
 
@@ -51,6 +30,7 @@
                         </a>
                     </div>
                 </div>
+
 
                 <div class="col-md-9">
 
@@ -106,48 +86,79 @@
                         <hr>
                         <h2>Контактная форма</h2>
 
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
+                        {!! Form::open(['id' => 'contactform', 'method' => 'POST', 'class' => 'validateform']) !!}
+                        {{ csrf_field() }}
+
+                        <div id="sendmessage" style="display:none;">
+
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="box">
+
+                                    <p class="text-center">
+                                        <img src="img/logo.png" alt="Obaju template">
+
+                                    <h4>Ваше сообщение отправлено!</h4>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="senderror" style="display:none;">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="box">
+
+                                    <p class="text-center">
+                                        <img src="img/logo.png" alt="Obaju template">
+                                    </p>
+
+                                    <h3>При отправке сообщения произошла ошибка. </h3>
+
+                                    <p class="text-center">Продублируйте его, пожалуйста, на почту администратора
+                                        <span>{{ env('MAIL_ADMIN_EMAIL') }}</span></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <input name="id" type="hidden" value="{{$user->id ?? ''}}">
+
+                            <div class="col-sm-6 field">
                                     <div class="form-group">
-                                        <label for="firstname">Firstname</label>
-                                        <input type="text" class="form-control" id="firstname">
+                                        {!! Form::label('userName', 'Имя:') !!}
+                                        {!! Form::text('name', $user->name ?? '', ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+
+                            <div class="col-sm-6 field">
                                     <div class="form-group">
-                                        <label for="lastname">Lastname</label>
-                                        <input type="text" class="form-control" id="lastname">
+                                        {!! Form::label('userEmail', 'Email:') !!}
+                                        {!! Form::text('email', $user->email ?? '', ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                            <div class="col-sm-6 field">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email">
+                                        {!! Form::label('userSubject', 'Тема:') !!}
+                                        {!! Form::text('subject', '', ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                            <div class="col-sm-12 field">
                                     <div class="form-group">
-                                        <label for="subject">Subject</label>
-                                        <input type="text" class="form-control" id="subject">
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea id="message" class="form-control"></textarea>
+                                        {!! Form::label('userMessage', 'Message:') !!}
+                                        {!! Form::textarea('message', '', ['placeholder' => 'Ваше сообщение...','class' => 'form-control']) !!}
                                     </div>
                                 </div>
 
                                 <div class="col-sm-12 text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send
-                                        message
-                                    </button>
+                                    <span class="pull-right margintop20">* Заполните, пожалуйста, все обязательные поля!</span>
+                                    <br>
 
+                                    {{ Form::button('<i class="fa fa-envelope-o"></i>Отправить', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
                                 </div>
                             </div>
                             <!-- /.row -->
-                        </form>
+                        {!! Form::close() !!}
 
 
                     </div>

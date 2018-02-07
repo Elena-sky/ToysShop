@@ -13,10 +13,6 @@
 
 Route::get('/', 'MainController@index')->name('index');
 
-/*Route::get('/', function () {
-    return view('index', ['categories' => \App\Categories::all(), 'slides' => \App\Sliders::all()]);
-});*/
-
 Route::get('/about', function () {
     return view('about');
 });
@@ -35,6 +31,7 @@ Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('vi
 
 //Контакты
 Route::get('/contact', 'MainController@viewContact')->name('contact');
+Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Отправка письма контактной формы
 
 //Категории и продукты
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
