@@ -30,27 +30,6 @@ class ContactController extends Controller
         $mail = ContactUS::create($dataMail);
         $dataMail['mail_id'] = $mail->id;
 
-
-//        $mailable = new Mailable();
-//        $mailable->to = env('MAIL_ADMIN_EMAIL');
-
         Mail::to(env('MAIL_ADMIN_EMAIL'))->send(new SendMail($dataMail));
-
-//        Mail::send('info.mail', $dataMail, function($message)
-//            {
-//                $message->to('foo@example.com', 'Джон Смит')->subject('Привет!');
-//            });
-
-//       Mail::send('email', array(
-//            'name' => $request->get('name'),
-//            'email' => $request->get('email'),
-//            'user_message' => $request->get('message')
-//        ), function($message)
-//            {
-//                $message->from('saquib.gt@gmail.com');
-//                $message->to('saquib.rizwan@cloudways.com', 'Admin')->subject('Cloudways Feedback');
-//            });
-
-//        return back()->with('success', 'Thanks for contacting us!');
     }
 }

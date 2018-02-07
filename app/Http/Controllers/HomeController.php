@@ -29,7 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $test = 'test';
         return view('home');
     }
 

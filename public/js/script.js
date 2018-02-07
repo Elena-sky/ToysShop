@@ -98,7 +98,36 @@ $(document).ready(function () {
             url: '/contact/sendmail',
             data: data,
             success: function (result) {
-                console.log(result);
+                $('#sendmessage').show();
+                $('#sendmessage').append('<div class="close">☓</div>');
+                $('#sendmessage').fadeIn('slow');
+                $('#sendmessage').css('top', ($(window).height() - $('#sendmessage').outerHeight()) / 2 + 'px');
+                $('#sendmessage').css('left', ($(window).width() - $('#sendmessage').outerWidth()) / 2 + 'px');
+                function windowClose() {
+                    $('#sendmessage').fadeOut('slow');
+                };
+                setTimeout(function () {
+                    windowClose()
+                }, 4000);
+                $('.close').click(function () {
+                    windowClose();
+                });
+            },
+            error: function () {
+                $('#senderror').show();
+                $('#senderror').append('<div class="close">☓</div>');
+                $('#senderror').fadeIn('slow');
+                $('#senderror').css('top', ($(window).height() - $('#senderror').outerHeight()) / 2 + 'px');
+                $('#senderror').css('left', ($(window).width() - $('#senderror').outerWidth()) / 2 + 'px');
+                function windowClose() {
+                    $('#senderror').fadeOut('slow');
+                };
+                setTimeout(function () {
+                    windowClose()
+                }, 4000);
+                $('.close').click(function () {
+                    windowClose();
+                });
             }
         });
     });
