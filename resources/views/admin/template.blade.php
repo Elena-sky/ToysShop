@@ -20,7 +20,6 @@
 
     <link href="/css/style-admin.css" rel="stylesheet">
 
-
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
