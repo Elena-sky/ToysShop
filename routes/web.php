@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'MainController@index')->name('index');
+Route::get('/pwd', 'HomeController@userCustomPasswordChange')->name('customPwdReset');
 
 Route::get('/about', function () {
     return view('about');
@@ -36,7 +37,6 @@ Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Отправ
 //Категории и продукты
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); //обзор продукта
-
 
 //Корзина
 Route::get('/cart', 'CartController@cartView')->name('cartView');  //корзина

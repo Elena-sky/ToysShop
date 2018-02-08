@@ -11,14 +11,11 @@
                 <a href="{{ route('viewOldOrders') }}"><i class="fa fa-list"></i> Мои заказы</a>
             </li>
             <li>
-                <a href="customer-wishlist.html"><i class="fa fa-heart"></i> My wishlist</a>
-            </li>
-            <li>
                 <a href="{{ route('profile') }}"><i class="fa fa-user"></i> Мой профиль</a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-key"></i> Изменить пароль</a>
-            </li>
+            {{--<li>--}}
+            {{--<a href="{{ route('customPwdReset') }}"><i class="fa fa-key"></i> Изменить пароль</a>--}}
+            {{--</li>--}}
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out"></i> Выйти

@@ -64,4 +64,11 @@ class HomeController extends Controller
 
         return view('user.oldOrdersById', ['order' => $order, 'delivery' => $delivery]);
     }
+
+//    public function userCustomPasswordChange()
+//    {
+//        return view('auth.passwords.reset')->with(
+//            ['token' => '', 'email' => Auth::user()->email]
+//        );
+//    }
 }

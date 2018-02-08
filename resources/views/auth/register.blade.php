@@ -123,7 +123,7 @@
 
                         <p class="text-center text-muted">
                             {{--Маршруты запроса ссылки для сброса пароля...--}}
-                            <a class="btn btn-link" href="{{ route('password.email') }}">
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
                                 Забыли пароль?
                             </a>
                         </p>

@@ -102,7 +102,6 @@ _________________________________________________________ -->
                     <form action="{{ route('login') }}" method="post">
                         {{ csrf_field() }}
 
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <input type="email" class="form-control" id="email" placeholder="email"
                                    name="email" value="{{ old('email') }}" required autofocus>
@@ -124,15 +123,6 @@ _________________________________________________________ -->
                                     </span>
                             @endif
                         </div>
-
-                        {{--<div class="form-group">--}}
-                        {{--<div class="checkbox">--}}
-                        {{--<label>--}}
-                        {{--<input type="checkbox"--}}
-                        {{--name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня--}}
-                        {{--</label>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
 
                         <p class="text-center">
                             <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Войти</button>
