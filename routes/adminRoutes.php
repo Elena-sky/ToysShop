@@ -11,12 +11,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/product/delete/{id}', 'AdminController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
 
 
-    Route::get('/category', 'AdminController@viewCategoryPage')->name('viewCategory'); // View управление категориями
-    Route::get('/category/add', 'AdminController@actionAddCategoryView')->name('addCategory'); // View page добавление новой категории
-    Route::post('/category/add/save', 'AdminController@actionAdminAddCategory')->name('adminActionAddCategory'); // Добавление категории
-    Route::get('/category/update/{id}', 'AdminController@viewAdminUpdateCategory')->name('viewUpdateCategory'); // View редактирование категории
-    Route::post('/category/update/save', 'AdminController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Action сохранить редактироование категории
-    Route::get('/category/delete/{id}', 'AdminController@actionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
+    //Управление категориями
+    Route::get('/category', 'CategoryController@viewCategoryPage')->name('viewCategory'); // View управление категориями
+    Route::get('/category/add', 'CategoryController@actionAddCategoryView')->name('addCategory'); // View page добавление новой категории
+    Route::post('/category/add/save', 'CategoryController@actionAdminAddCategory')->name('adminActionAddCategory'); // Добавление категории
+    Route::get('/category/update/{id}', 'CategoryController@viewAdminUpdateCategory')->name('viewUpdateCategory'); // View редактирование категории
+    Route::post('/category/update/save', 'CategoryController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Action сохранить редактироование категории
+    Route::get('/category/delete/{id}', 'CategoryController@actionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
 
     Route::get('/users', 'AdminController@viewUsersList')->name('viewUsers'); // View управление пользователями
     Route::get('/users/update/{id}', 'AdminController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
