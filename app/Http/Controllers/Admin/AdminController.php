@@ -34,7 +34,6 @@ class AdminController extends Controller
         return view('admin.index', ['countNewOrders' => $countNewOrders, 'countProduct' => $countProduct, 'countUser' => $countUser]);
     }
 
-
     // Управление товарами
     public function actionProductView()
     {

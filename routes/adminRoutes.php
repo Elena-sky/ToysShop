@@ -19,11 +19,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/category/update/save', 'CategoryController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Action сохранить редактироование категории
     Route::get('/category/delete/{id}', 'CategoryController@actionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
 
-    Route::get('/users', 'AdminController@viewUsersList')->name('viewUsers'); // View управление пользователями
-    Route::get('/users/update/{id}', 'AdminController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
-    Route::post('/users/update/save', 'AdminController@actionSaveUserUpdate')->name('actionSaveUser'); // Action сохранить редактироование пользователя
-    Route::get('/users/delete/{id}', 'AdminController@actionUserDelete')->name('userDelete'); //Удаление пользователя
-    Route::get('/users/user/{id}', 'AdminController@adminViewUserPage')->name('viewUserPage'); //посмотреть профиль пользователя
+    Route::get('/users', 'UserController@viewUsersList')->name('viewUsers'); // View управление пользователями
+    Route::get('/users/update/{id}', 'UserController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
+    Route::post('/users/update/save', 'UserController@actionSaveUserUpdate')->name('actionSaveUser'); // Action сохранить редактироование пользователя
+    Route::get('/users/delete/{id}', 'UserController@actionUserDelete')->name('userDelete'); //Удаление пользователя
+    Route::get('/users/user/{id}', 'UserController@adminViewUserPage')->name('viewUserPage'); //посмотреть профиль пользователя
 
     Route::group(['middleware' => 'web'], function () {
         Route::get('fileUpload', function () {
