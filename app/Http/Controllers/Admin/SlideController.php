@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sliders;
+use App\ImageUploader;
+use Illuminate\Support\Facades\Input;
 
 
 class SlideController extends Controller
 {
+    use ImageUploader;
 
     // View Управление слайдерами
     public function viewAllSliders()
