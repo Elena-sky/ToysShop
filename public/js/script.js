@@ -60,21 +60,21 @@ $(document).ready(function () {
     });
 
     // Поиск по названию в товаре
-    // $("#q").autocomplete({
-    //     source: document.location.origin + "/search/autocomplete",
-    //     minLength: 3,
-    //     select: function (event, ui) {
-    //         console.log(ui.item.value);
-    //         $('#q').val(ui.item.value);
-    //     }
-    // }).data("ui-autocomplete")._renderItem = function (ul, item) {
-    //     return $("<li></li>")
-    //         .data("ui-autocomplete-item", item)
-    //         .append('<a href="/product/' + item.id + '">' + item.label + '</a>')
-    //         .appendTo(ul);
-    // };
+    $("#q").autocomplete({
+        source: document.location.origin + "/search/autocomplete",
+        minLength: 3,
+        select: function (event, ui) {
+            console.log(ui.item.value);
+            $('#q').val(ui.item.value);
+        }
+    }).data("ui-autocomplete")._renderItem = function (ul, item) {
+        return $("<li></li>")
+            .data("ui-autocomplete-item", item)
+            .append('<a href="/product/' + item.id + '">' + item.label + '</a>')
+            .appendTo(ul);
+    };
 
-
+// AJAX контактная форма
     function getFormData($form) {
         var unindexed_array = $form.serializeArray();
         var indexed_array = {};

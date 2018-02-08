@@ -296,44 +296,24 @@ _________________________________________________________ -->
 
         <div class="navbar-buttons">
 
+
             <div class="navbar-collapse collapse right" id="basket-overview">
                 <a href="/cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span
                             class="hidden-sm">{{Cart::count()}} товар(ов) в корзине</span></a>
             </div>
             <!--/.nav-collapse -->
 
-            <div class="navbar-collapse collapse right" id="search-not-mobile">
 
-                <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle search</span>
-                    <i class="fa fa-search"></i>
-                </button>
+            <div class="navbar-collapse collapse right" id="search-not-mobile">
+                <div class="input-group">
+                    {{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET', 'class' => 'navbar-form']) }}
+                    {{ Form::text('term', '', ['id' =>  'q', 'placeholder' =>  'Поиск...', 'class' => 'form-control mr-sm-2'])}}
+                    {{ Form::close() }}
+
+                </div>
             </div>
 
         </div>
-
-        <div class="collapse clearfix" id="search">
-
-            {{--{{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET']) }}--}}
-            {{--{{ Form::text('term', '', ['id' =>  'q', 'placeholder' =>  'Поиск', 'class' => 'form-control mr-sm-2'])}}--}}
-            {{--{{ Form::close() }}--}}
-
-            {{--нужно подключить     /js/script.js--}}
-
-
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-
-			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-
-		    </span>
-                </div>
-            </form>
-
-        </div>
-        <!--/.nav-collapse -->
 
     </div>
     <!-- /.container -->
