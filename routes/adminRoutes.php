@@ -34,12 +34,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('fileUpload', ['as' => 'fileUpload', 'uses' => 'HomeController@fileUpload']);
     });
 
-    Route::get('/sliders', 'AdminController@viewAllSliders')->name('viewSliders'); //View обзор списка слайдеров
-    Route::get('/sliders/add', 'AdminController@viewSliderAddPage')->name('viewSlideAdd'); //View добавление нового слайдера
-    Route::post('/sliders/add/save', 'AdminController@actionSaveNewSlide')->name('actionNewSlide'); // Action добавление нового слайдера
-    Route::get('/sliders/update/{id}', 'AdminController@viewSlideUpdatePage')->name('viewSlideUpdate'); //View редактирование слайда
-    Route::post('/sliders/update/save', 'AdminController@actionSlideSaveUpdate')->name('actionSlideSave'); // Action сохранить редактироование
-    Route::get('/sliders/delete/{id}', 'AdminController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
+    Route::get('/sliders', 'SlideController@viewAllSliders')->name('viewSliders'); //View обзор списка слайдеров
+    Route::get('/sliders/add', 'SlideController@viewSliderAddPage')->name('viewSlideAdd'); //View добавление нового слайдера
+    Route::post('/sliders/add/save', 'SlideController@actionSaveNewSlide')->name('actionNewSlide'); // Action добавление нового слайдера
+    Route::get('/sliders/update/{id}', 'SlideController@viewSlideUpdatePage')->name('viewSlideUpdate'); //View редактирование слайда
+    Route::post('/sliders/update/save', 'SlideController@actionSlideSaveUpdate')->name('actionSlideSave'); // Action сохранить редактироование
+    Route::get('/sliders/delete/{id}', 'SlideController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
 
     Route::get('/orders', 'AdminController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
     Route::get('/orders/order/{id}', 'AdminController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
@@ -49,23 +49,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/order/order-update/{id}', 'AdminController@adminViewOrderUpdate')->name('viewOrderUpdate'); // View редактировать заказ
     Route::post('/order/order-updste/save', 'AdminController@adminActionOrderSave')->name('actionOrderSave'); // Action созранить редактирование заказа
     Route::get('/order/delete/{id}', 'AdminController@adminOrderDelete')->name('orderDelete'); //Action Удалить заказ
-
-    //// Управление товарами:
-//'admin/product/create' => 'adminProduct/create',
-//    'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
-//    'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',
-//    'admin/product' => 'adminProduct/index',
-//    // Управление категориями:
-//    'admin/category/create' => 'adminCategory/create',
-//    'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
-//    'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',
-//    'admin/category' => 'adminCategory/index',
-//    // Управление заказами:
-//    'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
-//    'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
-//    'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
-//    'admin/order' => 'adminOrder/index',
-//    // Админпанель:
-//    'admin' => 'admin/index',
 
 });
