@@ -84,8 +84,6 @@ _________________________________________________________ -->
 
                 <li><a href="{{ route('contact') }}">Контакты</a>
                 </li>
-                <li><a href="#">Recently viewed</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -209,86 +207,6 @@ _________________________________________________________ -->
                         </li>
                     </ul>
                 </li>
-
-
-                <li class="dropdown yamm-fw">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="yamm-content">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h5>Shop</h5>
-                                        <ul>
-                                            <li><a href="index.html">Homepage</a>
-                                            </li>
-                                            <li><a href="category.html">Category - sidebar left</a>
-                                            </li>
-                                            <li><a href="category-right.html">Category - sidebar right</a>
-                                            </li>
-                                            <li><a href="category-full.html">Category - full width</a>
-                                            </li>
-                                            <li><a href="detail.html">Product detail</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>User</h5>
-                                        <ul>
-                                            <li><a href="{{ route('register') }}">Создать аккаунт / Войти</a>
-                                            </li>
-                                            <li><a href="customer-orders.html">Orders history</a>
-                                            </li>
-                                            <li><a href="customer-order.html">Order history detail</a>
-                                            </li>
-                                            <li><a href="customer-wishlist.html">Wishlist</a>
-                                            </li>
-                                            <li><a href="customer-account.html">Customer account / change password</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Order process</h5>
-                                        <ul>
-                                            <li><a href="basket.html">Shopping cart</a>
-                                            </li>
-                                            <li><a href="checkout1.html">Checkout - step 1</a>
-                                            </li>
-                                            <li><a href="checkout2.html">Checkout - step 2</a>
-                                            </li>
-                                            <li><a href="checkout3.html">Checkout - step 3</a>
-                                            </li>
-                                            <li><a href="checkout4.html">Checkout - step 4</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Featured</h5>
-                                        <ul>
-                                            <li><a href="category.html">Trainers</a>
-                                            </li>
-                                            <li><a href="category.html">Sandals</a>
-                                            </li>
-                                            <li><a href="category.html">Hiking shoes</a>
-                                            </li>
-                                        </ul>
-                                        <h5>Looks and trends</h5>
-                                        <ul>
-                                            <li><a href="category.html">Trainers</a>
-                                            </li>
-                                            <li><a href="category.html">Sandals</a>
-                                            </li>
-                                            <li><a href="category.html">Hiking shoes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.yamm-content -->
-                        </li>
-                    </ul>
-                </li>
             </ul>
 
         </div>
@@ -332,14 +250,14 @@ _________________________________________________________ -->
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">
-                <h4>Pages</h4>
+                <h4>Страницы</h4>
 
                 <ul>
-                    <li><a href="text.html">About us</a>
+                    <li><a href="{{route('cartView')}}">Корзина</a>
                     </li>
-                    <li><a href="text.html">Terms and conditions</a>
+                    <li><a href="{{route('register')}}">Регистрация</a>
                     </li>
-                    <li><a href="faq.html">FAQ</a>
+                    <li><a href="{{route('login')}}">Вход</a>
                     </li>
                     <li><a href="{{ route('contact') }}">Контакты</a>
                     </li>

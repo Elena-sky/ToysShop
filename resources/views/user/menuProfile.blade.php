@@ -1,7 +1,7 @@
 <div class="panel panel-default sidebar-menu">
 
     <div class="panel-heading">
-        <h3 class="panel-title">Customer section</h3>
+        <h3 class="panel-title">Меню пользователя</h3>
     </div>
 
     <div class="panel-body">
@@ -13,9 +13,6 @@
             <li>
                 <a href="{{ route('profile') }}"><i class="fa fa-user"></i> Мой профиль</a>
             </li>
-            {{--<li>--}}
-            {{--<a href="{{ route('customPwdReset') }}"><i class="fa fa-key"></i> Изменить пароль</a>--}}
-            {{--</li>--}}
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out"></i> Выйти

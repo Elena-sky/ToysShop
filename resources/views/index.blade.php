@@ -117,11 +117,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="detail.html" class="invisible">
+                                <a href="{{route('goodView',['id' => $newGood->id])}}" class="invisible">
                                     <img src="img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">{{$newGood->name}}</a></h3>
+                                    <h3><a href="{{route('goodView',['id' => $newGood->id])}}">{{$newGood->name}}</a>
+                                    </h3>
                                     <p class="price">
                                         {{$newGood->price}} грн
                                     </p>
