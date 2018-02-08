@@ -33,6 +33,7 @@ Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('vi
 //Контакты
 Route::get('/contact', 'MainController@viewContact')->name('contact');
 Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Отправка письма контактной формы
+Route::get('/contact/page', 'MainController@viewContactPage')->name('contactPage'); // Контакты
 
 //Категории и продукты
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории

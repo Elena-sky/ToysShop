@@ -9,9 +9,8 @@
 
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
-                        </li>
-                        <li>Contact</li>
+                        <li><a href="{{route('index')}}">Главная</a>
+                        <li>Контактная форма</li>
                     </ul>
 
                 </div>
@@ -23,68 +22,16 @@
 
                     <!-- *** PAGES MENU END *** -->
 
-
-                    <div class="banner">
-                        <a href="#">
-                            <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
-                        </a>
-                    </div>
                 </div>
-
 
                 <div class="col-md-9">
 
-
                     <div class="box" id="contact">
-                        <h1>Контакт-центр</h1>
+
+                        <h2>Контактная форма</h2>
 
                         <p class="lead">Вам что-то интересно? У вас есть какие-то вопросы нам?</p>
                         <p>Пожалуйста, не стесняйтесь обращаться.</p>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h3><i class="fa fa-map-marker"></i> Адресс</h3>
-                                <p>Одесса
-                                    <br>Одеська область
-                                    <br>проспект Добровольського
-                                    <br>114/2
-                                    <br>Северный рынок
-                                    <br>
-                                    <strong>Контейнер №Г14</strong>
-                                </p>
-                            </div>
-                            <!-- /.col-sm-4 -->
-                            <div class="col-sm-4">
-                                <h3><i class="fa fa-phone"></i> Центр обработки вызовов</h3>
-                                <p class="text-muted"> Если у Вас возникли вопросы по товару или доставке - просто
-                                    позвоните нам. Стоимость звонков согласно тарифам вашего оператора.</p>
-                                <p><strong>+38 093 000 00 00</strong>
-                                </p>
-                            </div>
-                            <!-- /.col-sm-4 -->
-                            <div class="col-sm-4">
-                                <h3><i class="fa fa-envelope"></i> Электронная поддержка</h3>
-                                <p class="text-muted"> Пожалуйста, не стесняйтесь писать нам электронное письмо с
-                                    использованием електронной формы связи.</p>
-                                <ul>
-                                    <li><strong><a href="mailto:">info-igrushki@gmail.com</a></strong>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /.col-sm-4 -->
-                        </div>
-                        <!-- /.row -->
-
-                        <hr>
-
-                        <div id="map">
-
-                        </div>
-
-                        <hr>
-                        <h2>Контактная форма</h2>
 
                         {!! Form::open(['id' => 'contactform', 'method' => 'POST', 'class' => 'validateform']) !!}
                         {{ csrf_field() }}
@@ -162,7 +109,6 @@
 
 
                     </div>
-
 
                 </div>
                 <!-- /.col-md-9 -->

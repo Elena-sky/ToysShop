@@ -7,10 +7,10 @@
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             <li>
-                <a href="text.html">Text page</a>
+                <a href="{{route('contactPage')}}">Контакты</a>
             </li>
             <li>
-                <a href="{{ route('contact') }}">Контакты</a>
+                <a href="{{ route('contact') }}">Написать нам</a>
             </li>
 
         </ul>
