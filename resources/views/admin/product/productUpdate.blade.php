@@ -114,11 +114,12 @@
                         <div class="row">
                             @if($images)
                                 @foreach($images as $image )
-                                    <div class="content clossable ">
+                                    <div class="content clossable " id="Image1">
 
-                                        <div class="close"></div>
+                                        <div class="close" data-img-id="{{$image->id}}"
+                                             data-token="{{ csrf_token() }}"></div>
 
-                                        <img id="Image1" style="max-height: 250px !important;"
+                                        <img style="max-height: 250px !important;"
                                              src="{{ asset("/uploads/goods/$image->filename") }}"
                                              alt="{{$image->id}}">
                                     </div>

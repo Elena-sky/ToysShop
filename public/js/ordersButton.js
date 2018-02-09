@@ -21,6 +21,8 @@ $(document).ready(function () {
             url: "http://webshop.loc/admin/order/product-action",
             data: {ogid: ogid, oldVal: oldVal, action: 'update', '_token': token},
             success: function (response) {
+                window.location.reload(true);
+
                 console.log(response.success);
                 console.log(response.msg);
             }
@@ -80,6 +82,7 @@ $(document).ready(function () {
             url: "http://webshop.loc/admin/order/product-action",
             data: {ogid: ogid, action: 'delete', '_token': token},
             success: function (response) {
+                window.location.reload(true);
                 console.log(response.success);
                 console.log(response.msg);
             }
@@ -87,22 +90,35 @@ $(document).ready(function () {
         })
     });
 
-});
+    // admin/productUpdate/delete image
+    // $('.content.clossable').hover(function () {
+    //         $(this).find('.close').animate({opacity: 1}, 100)
+    //     }, function () {
+    //         $(this).find('.close').animate({opacity: 0}, 100)
+    //     }
+    // );
+    $('.close').click(function () {
+            var imgId = $(this).data('img-id'),
+                token = $(this).data('token');
+            console.log("клик по Id" + imgId);
+            $.ajax({
+                type: "POST",
+                url: "http://webshop.loc/admin/product/delete-img",
+                data: {imgId: imgId, '_token': token},
+                success: function () {
+                    console.log("удалило");
+                    $('#Image1').remove();
 
-//
-//
-// ﻿var userId = $('#side_accordion .panel .user-data.active').data('id');
-//
-// $.ajax({
-//     url: ,
-//     data: {'id': userId, 'start': start, 'end': end},
-//     type: "POST",
-//     success: function (html) {
-//         if ($("#add-event").length) {
-//             $("#add-event").remove();
-//         }
-//         $('body').append(html);
-//         $("#add-event").modal('show');
-//         events(calendar);
-//     }
-// });
+                    // $(this).offsetParent().hide();
+                },
+                error: function () {
+                    console.log("ошибка");
+
+                }
+            })
+
+        }
+    );
+
+
+});

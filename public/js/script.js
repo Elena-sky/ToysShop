@@ -132,12 +132,6 @@ $(document).ready(function () {
         });
     });
 
-    // admin/productUpdate/delete image
-    $('.content.clossable').hover(function () {
-            $(this).find('.close').animate({opacity: 1}, 100)
-        }, function () {
-            $(this).find('.close').animate({opacity: 0}, 100)
-        }
-    );
+
 });
 

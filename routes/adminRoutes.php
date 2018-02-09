@@ -50,3 +50,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); //Action Удалить заказ
 
 });
+
+Route::group(['namespace' => 'Ajax', 'prefix' => 'admin'], function () {
+// Контроллеры в пространстве имён "App\Http\Controllers\Ajax"
+    Route::post('/product/delete-img', 'ProductController@deleteProductImg');
+
+});
