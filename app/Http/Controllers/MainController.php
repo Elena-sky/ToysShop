@@ -45,6 +45,7 @@ class MainController extends BaseController
         return view('index', compact('categories', 'slides', 'lastNewGoods'));
     }
 
+    // Отправка письма контактной формы
     public function viewContact()
     {
         $userId = (Auth::check()) ? Auth::id() : ''; //проверка на пользователя
@@ -54,6 +55,12 @@ class MainController extends BaseController
         }
 
         return view('info.contact', compact('user'));
+    }
+
+    // Контакты
+    public function viewContactPage()
+    {
+        return view('info.contactPage');
     }
 
 
