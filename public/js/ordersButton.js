@@ -81,50 +81,43 @@ $(document).ready(function () {
             type = $(this).data('type'),
             ogid = $(this).data('ogid');
 
-        $.ajax({
-            type: "POST",
-            url: "http://webshop.loc/admin/order/product-action",
-            data: {ogid: ogid, action: 'delete', '_token': token},
-            success: function (response) {
-                window.location.reload(true);
-                console.log(response.success);
-                console.log(response.msg);
-            },
-            error: function () {
-                console.log("ошибка");
-
-            }
-
-        })
-    });
-
-    // admin/productUpdate/delete image
-    // $('.content.clossable').hover(function () {
-    //         $(this).find('.close').animate({opacity: 1}, 100)
-    //     }, function () {
-    //         $(this).find('.close').animate({opacity: 0}, 100)
-    //     }
-    // );
-    $('.close').click(function () {
-            var imgId = $(this).data('img-id'),
-                token = $(this).data('token');
-            console.log("клик по Id" + imgId);
+        if (confirm('Удалить?')) {
             $.ajax({
                 type: "POST",
-                url: "http://webshop.loc/admin/product/delete-img",
-                data: {imgId: imgId, '_token': token},
-                success: function () {
-                    console.log("удалило");
-                    $('#Image1').remove();
-
-                    // $(this).offsetParent().hide();
+                url: "http://webshop.loc/admin/order/product-action",
+                data: {ogid: ogid, action: 'delete', '_token': token},
+                success: function (response) {
+                    window.location.reload(true);
+                    console.log(response.success);
+                    console.log(response.msg);
                 },
                 error: function () {
                     console.log("ошибка");
-
                 }
-            })
+            });
+        }
+    });
 
+    $('.close').click(
+        function () {
+            var imgId = $(this).data('img-id'),
+                token = $(this).data('token');
+            console.log("клик по Id" + imgId);
+
+            if (confirm('Удалить картинку?')) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://webshop.loc/admin/product/delete-img",
+                    data: {imgId: imgId, '_token': token},
+                    success: function () {
+                        console.log("удалило");
+                        $('#Image1').remove();
+                    },
+                    error: function () {
+                        console.log("ошибка");
+                    }
+                });
+            }
         }
     );
 
