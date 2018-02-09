@@ -21,44 +21,23 @@ $(document).ready(function () {
             url: "http://webshop.loc/admin/order/product-action",
             data: {ogid: ogid, oldVal: oldVal, action: 'update', '_token': token},
             success: function (response) {
-                window.location.reload(true);
+                // window.location.reload(true);
 
                 console.log(response.success);
                 console.log(response.msg);
             },
             error: function () {
                 console.log("ошибка");
-
             }
         })
     });
+
+
     $('.input-number').focusin(function () {
         $(this).data('oldValue', $(this).val());
     });
-    /*$('.input-number').change(function () {
-
-        var minValue = parseInt($(this).attr('min'));
-        var maxValue = parseInt($(this).attr('max'));
-        if (!minValue) minValue = 1;
-        if (!maxValue) maxValue = 9999999999999;
-        var valueCurrent = parseInt($(this).val());
-
-        var name = $(this).attr('name');
-        if (valueCurrent >= minValue) {
-            $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
-        } else {
-            alert('Sorry, the minimum value was reached');
-            $(this).val($(this).data('oldValue'));
-        }
-        if (valueCurrent <= maxValue) {
-            $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
-        } else {
-            alert('Sorry, the maximum value was reached');
-            $(this).val($(this).data('oldValue'));
-        }
 
 
-     });*/
     $(".input-number").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||

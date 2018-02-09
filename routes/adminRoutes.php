@@ -42,7 +42,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::get('/orders', 'OrdersController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
     Route::get('/orders/order/{id}', 'OrdersController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
-    Route::post('/order/product-action', 'OrdersController@adminActionOrderProduct')->name('actionOrderProduct');  //Ajax редактировать количество или удалить товар в заказе
     Route::get('/order/delivery-update/{id}', 'OrdersController@adminViewDeliveryUpdate')->name('viewDeliveryUpdate'); // View редактировать данные о доставке
     Route::post('/order/delivery-update/save', 'OrdersController@adminActionDeliverySave')->name('actionDeliverySave'); //Action сохранить данные о доставке
     Route::get('/order/order-update/{id}', 'OrdersController@adminViewOrderUpdate')->name('viewOrderUpdate'); // View редактировать заказ
@@ -53,6 +52,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::group(['namespace' => 'Ajax', 'prefix' => 'admin'], function () {
 // Контроллеры в пространстве имён "App\Http\Controllers\Ajax"
-    Route::post('/product/delete-img', 'ProductController@deleteProductImg');
+    Route::post('/product/delete-img', 'ProductController@deleteProductImg'); //Ajax удаление картинки из товара
+    Route::post('/order/product-action', 'OrdersController@adminActionOrderProduct'); //Ajax редактировать количество или удалить товар в заказе
 
 });
