@@ -25,6 +25,10 @@ $(document).ready(function () {
 
                 console.log(response.success);
                 console.log(response.msg);
+            },
+            error: function () {
+                console.log("ошибка");
+
             }
         })
     });
@@ -85,6 +89,10 @@ $(document).ready(function () {
                 window.location.reload(true);
                 console.log(response.success);
                 console.log(response.msg);
+            },
+            error: function () {
+                console.log("ошибка");
+
             }
 
         })
