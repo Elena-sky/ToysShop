@@ -10,34 +10,72 @@ use App\GoodsImages;
 use App\ImageUploader;
 use Illuminate\Support\Facades\Input;
 
+use App\Post;
+use Auth;
+use Session;
+
 
 class ProductController extends Controller
 {
     use ImageUploader;
 
-    // Управление товарами
+//
+//
+//    public function __construct() {
+//        $this->middleware(['auth', 'clearance']);
+//    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function actionProductView()
     {
-
         $goods = Goods::query()
             ->orderBy('id', 'desc')
             ->paginate(10);
         $category = Categories::getCategories();
 
-        return view('admin.product.productChange', ['goods' => $goods, 'category' => $category]);
+        return view('admin.product.productChange', compact('goods', 'category'));
     }
 
-    // View page добавления нового товара
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewAddProduct()
     {
-        $category = Categories::getCategories();
+        $categories = Categories::getCategories();
 
-        return view('admin.product.productAdd', ['categories' => $category]);
+        return view('admin.product.productAdd', compact('categories'));
     }
 
-    // Action добавление нового товара
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionAddNewProduct(Request $request)
     {
+        //Validating
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'code' => 'required|integer',
+            'made' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric',
+            'is_new' => 'boolean',
+            'is_avaliable' => 'boolean',
+            'displaing' => 'boolean',
+            'description' => 'required',
+        ]);
+
         $path = '/goods';  // Папка для загрузки картинок
         $fileName = self::uploader($request, $path);
         $data = Input::except(['_method', '_token']);
@@ -53,25 +91,39 @@ class ProductController extends Controller
             }
         }
 
-
-        return \redirect(route('addNewProductPage'));
+        //Display a successful message upon save
+        return redirect()->route('addNewProductPage')
+            ->with('flash_message', 'Товар,
+             ' . $good->name . ' создан');
     }
 
-    // View page редактирования товара
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewProductUpdate($id)
     {
         $category = Categories::getCategories();
 
-
         $good = Goods::find($id);
-        $images = Goods::find($id)->goodImg;
-        $productImages = ($images->isEmpty()) ? false : $images;
-        $imagesName = array_pluck($images, 'filename');
 
-        return view('admin.product.productUpdate', ['good' => $good], ['category' => $category, 'images' => $productImages]);
+        $image = Goods::find($id)->goodImg;
+        $images = ($image->isEmpty()) ? false : $image;
+        $imagesName = array_pluck($image, 'filename');
+
+        return view('admin.product.productUpdate', compact('good', 'category', 'images'));
     }
 
-    // Action запись изменений товара в BD
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionProductUpdateSave(Request $request)
     {
         //на 1 картинку
@@ -81,6 +133,18 @@ class ProductController extends Controller
 //
 //        $goodData = Goods::find($data['id']);
 //        $goodData->update($data);
+
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'code' => 'required|integer',
+            'made' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric',
+            'is_new' => 'boolean',
+            'is_avaliable' => 'boolean',
+            'displaing' => 'boolean',
+            'description' => 'required',
+        ]);
 
         $path = '/goods';  // Папка для загрузки картинок
         $fileName = self::uploader($request, $path);
@@ -98,17 +162,27 @@ class ProductController extends Controller
             }
         }
 
-        return \redirect(route('productView'));
+        return redirect()->route('productView')
+            ->with('flash_message', 'Товар, 
+            ' . $goodData->name . ' сохранен');
     }
 
-    // Action удаление товара в BD
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionProductDelete($id)
     {
         $goodDelete = Goods::find($id);
         $goodDelete->goodImg()->delete();
         $goodDelete->delete();
 
-        return \redirect(route('productView'));
+        return redirect()->route('productView')
+            ->with('flash_message',
+                'Товар успешно удален');
     }
 
 }
