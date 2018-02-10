@@ -1,6 +1,7 @@
 @extends('admin.template')
 
 @section('content')
+
     <!-- Page Content -->
 
     <div class="container-fluid">
@@ -59,6 +60,7 @@
                                         </button>
                                     </a>
                                 </td>
+                                @can('Edit Good')
                                 <td>
                                     <a href="{{route('productUpdateView', [$good->id])}}">
                                         <button type="button" class="btn btn-warning"><span
@@ -66,6 +68,8 @@
                                         </button>
                                     </a>
                                 </td>
+                                @endcan
+                                @can('Delete Good')
                                 <td>
                                     <a href="{{route('actionDeleteProduct', [$good->id])}}">
                                         <button type="button" class="btn btn-danger"><span
@@ -73,6 +77,8 @@
                                         </button>
                                     </a>
                                 </td>
+                                @endcan
+
                             </tr>
                         @endforeach
                         </tbody>
