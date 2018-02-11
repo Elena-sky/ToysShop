@@ -15,14 +15,24 @@
 
             <div class="container">
                 <div class="row">
-                        <table class="table table-striped">
+                    <div class="container">
+                        <a href="{{route('userCreate')}}">
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> Создать нового пользователя
+                            </button>
+                        </a>
+                    </div>
+
+                    <table class="table table-striped">
                             <thead>
                             <tr class="table-info">
                                 <th>ID</th>
                                 <th>Имя</th>
                                 <th>E-Mail</th>
-                                <th>Создан</th>
+                                <th>Дата/время создания</th>
                                 <th>Отредактированый</th>
+                                <th>Разрешения</th>
+                                <th>Операции</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -35,7 +45,10 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->created_at}}</td>
+                                    {{--<td>{{ $user->created_at->format('F d, Y h:ia') }}</td>--}}
                                     <td>{{$user->updated_at}}</td>
+                                    {{-- Retrieve array of roles associated to a user and convert to string --}}
+                                    <td>{{ $user->roles()->pluck('name')->implode(' ') }}</td>
                                     <td>
                                         <a href="{{route('viewUserPage', [$user->id])}}">
                                             <button type="button" class="btn btn-info">Обзор</button>

@@ -41,7 +41,7 @@
 
                             <td>{{ $role->name }}</td>
 
-                            {{--<td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>--}}
+                            <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>
                             {{-- Retrieve array of permissions associated to a role and convert to string --}}
                             <td>
                                 <a href="{{route('roleUpdate', $role->id)}}" class="btn btn-warning pull-left"

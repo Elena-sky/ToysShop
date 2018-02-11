@@ -9,7 +9,10 @@
             <li class="breadcrumb-item">
                 <a href="{{route('adminPageView')}}">Админпанель</a>
             </li>
-            <li class="breadcrumb-item active">Управление пользователями</li>
+            <li class="breadcrumb-item">
+                <a href="{{route('viewUsers')}}">Управление пользователями</a>
+            </li>
+            <li class="breadcrumb-item active">Пользователь {{$user->name}}</li>
         </ol>
         <!-- Area Chart Example-->
 
