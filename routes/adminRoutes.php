@@ -3,6 +3,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     // Контроллеры в пространстве имён "App\Http\Controllers\Admin"
     Route::get('/', 'AdminController@adminPageView')->name('adminPageView'); // Админпанель
 
+    // Product
     Route::get('/product', 'ProductController@actionProductView')->name('productView'); // Управление товарами
     Route::get('/product/view', 'ProductController@viewAddProduct')->name('addNewProductPage'); // View page добавления нового товара
     Route::post('/product/add', 'ProductController@actionAddNewProduct')->name('actionNewAddProduct'); //Добавление нового товара
@@ -10,8 +11,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/product/update/save', 'ProductController@actionProductUpdateSave')->name('actionUpdateSave'); // Action редактирование товара
     Route::get('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
 
-
-    //Управление категориями
+    // Category
     Route::get('/category', 'CategoryController@viewCategoryPage')->name('viewCategory'); // View управление категориями
     Route::get('/category/add', 'CategoryController@actionAddCategoryView')->name('addCategory'); // View page добавление новой категории
     Route::post('/category/add/save', 'CategoryController@actionAdminAddCategory')->name('adminActionAddCategory'); // Добавление категории
@@ -19,7 +19,26 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/category/update/save', 'CategoryController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Action сохранить редактироование категории
     Route::get('/category/delete/{id}', 'CategoryController@actionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
 
+    //Permissions
+    Route::get('/permissions', 'PermissionController@permissionsViewPage')->name('permissionsView'); // View управление разрешениями
+    Route::get('/permissions/create', 'PermissionController@permissionsCreateView')->name('permissionsCreate'); // View создание разрешения
+    Route::post('/permissions/create/save', 'PermissionController@permissionsCreateSave')->name('permissionsSaveCreate'); //Action создать
+    Route::get('/permissions/update/{id}', 'PermissionController@permissionsUpdateView')->name('permissionsUpdate'); // View редактирование разрешения
+    Route::post('/permissions/update/save', 'PermissionController@permissionsUpdateSave')->name('permissionsSaveUpdate'); // View сохранить редактирование
+    Route::delete('/permissions/delete/{id}', 'PermissionController@permissionsDeleteAction')->name('permissionsDelete'); // Action удалить разрешение
+
+    //Roles
+    Route::get('/roles', 'RoleController@rolesViewPage')->name('rolesView'); // View управление ролями
+    Route::get('/roles/create', 'RoleController@roleCreateView')->name('roleCreate'); // View создание новой роли
+    Route::post('/roles/create/save', 'RoleController@roleSaveCreate')->name('roleCreateSave'); // Action создать новую роль
+    Route::get('/roles/update/{id}', 'RoleController@roleUpdateView')->name('roleUpdate'); // редактировать роль
+    Route::post('/roles/update/save', 'RoleController@roleUpdateSave')->name('roleSaveUpdate'); // Action сохранить редактирование роли
+    Route::delete('/roles/delete/{id}', 'RoleController@roleDeleteAction')->name('roleDelete'); // Action удаление роли
+
+    // Users
     Route::get('/users', 'UserController@viewUsersList')->name('viewUsers'); // View управление пользователями
+    Route::get('/users/create', 'UserController@viewUserCreate')->name('userCreate'); // Создание нового пользователя с ролью
+    Route::post('/users/create/save', 'UserController@actionUserStore')->name('userStore'); // Сохранение нового созданного пользователя
     Route::get('/users/update/{id}', 'UserController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
     Route::post('/users/update/save', 'UserController@actionSaveUserUpdate')->name('actionSaveUser'); // Action сохранить редактироование пользователя
     Route::get('/users/delete/{id}', 'UserController@actionUserDelete')->name('userDelete'); //Удаление пользователя

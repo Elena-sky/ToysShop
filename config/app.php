@@ -181,6 +181,9 @@ return [
 
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
+        Spatie\Permission\PermissionServiceProvider::class,
+
+
     ],
 
     /*

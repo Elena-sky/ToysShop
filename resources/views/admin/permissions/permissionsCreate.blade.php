@@ -26,7 +26,7 @@
                 <br>
                 {{--If no roles exist yet--}}
                 @if(!$roles->isEmpty())
-                <h4>Assign Permission to Roles</h4>
+                    <h4>Назначить разрешение ролям</h4>
 
                 @foreach ($roles as $role)
                     {{ Form::checkbox('roles[]',  $role->id ) }}

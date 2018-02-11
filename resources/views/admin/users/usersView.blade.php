@@ -9,7 +9,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{route('adminPageView')}}">Админпанель</a>
                 </li>
-                <li class="breadcrumb-item active">Управление пользователями</li>
+                <li class="breadcrumb-item active"><i class="fa fa-users"></i> Управление пользователями</li>
             </ol>
             <!-- Area Chart Example-->
 
@@ -22,7 +22,11 @@
                             </button>
                         </a>
                     </div>
-
+                    <h1><a href="{{ route('rolesView') }}" class="btn btn-default pull-right"><i
+                                    class="fa fa-id-card"></i> Roles</a>
+                        <a href="{{ route('permissionsView') }}" class="btn btn-default pull-right"><i
+                                    class="fa fa-key"></i> Разрешения</a></h1>
+                    <hr>
                     <table class="table table-striped">
                             <thead>
                             <tr class="table-info">
@@ -31,7 +35,7 @@
                                 <th>E-Mail</th>
                                 <th>Дата/время создания</th>
                                 <th>Отредактированый</th>
-                                <th>Разрешения</th>
+                                <th>Роль</th>
                                 <th>Операции</th>
                                 <th></th>
                                 <th></th>

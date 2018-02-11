@@ -66,30 +66,41 @@
                 </ul>
             </li>
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление пользователями">
-                <a class="nav-link" href="{{route('viewUsers')}}">
-                    <i class="fa fa-users"></i>
-                    <span class="nav-link-text">Управление пользователями</span>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление слайдерами">
+                <a class="nav-link" href="{{route('viewSliders')}}">
+                    <i class="fa  fa-fw fa-picture-o"></i>
+                    <span class="nav-link-text">Управление слайдерами</span>
                 </a>
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Содержимое сайта">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdmin"
                    data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-file"></i>
-                    <span class="nav-link-text">Содержимое сайта</span>
+                    <span class="nav-link-text">Управление доступом</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                <ul class="sidenav-second-level collapse" id="collapseAdmin">
                     <li>
-                        <a href="{{route('viewSliders')}}">
-                            <i class="fa fa-picture-o"></i>
-                            <span class="glyphicon glyphicon-picture"></span>Управление слайдерами</a>
+                        <a class="nav-link" href="{{route('viewUsers')}}">
+                            <i class="fa fa-users"></i>
+                            <span class="nav-link-text">Управление пользователями</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Что то еще</a>
+                        <a class="nav-link" href="{{route('rolesView')}}">
+                            <i class="fa fa-id-card"></i>
+                            <span class="nav-link-text">Управление ролями</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{route('permissionsView')}}">
+                            <i class="fa fa-key"></i>
+                            <span class="nav-link-text">Управление разрешениями</span>
+                        </a>
                     </li>
                 </ul>
             </li>
+
 
         </ul>
         <ul class="navbar-nav sidenav-toggler">
@@ -166,6 +177,19 @@
 </nav>
 
 <div class="content-wrapper">
+
+    @if(Session::has('flash_message'))
+        <div class="container">
+            <div class="alert alert-success"><em> {!! session('flash_message') !!}</em>
+            </div>
+        </div>
+    @endif
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            @include ('errors.list') {{-- Including error file --}}
+        </div>
+    </div>
 
 @yield('content')
 
