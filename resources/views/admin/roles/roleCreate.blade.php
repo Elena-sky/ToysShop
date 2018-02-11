@@ -20,11 +20,11 @@
                 {{ Form::open(array('route' => array('roleCreateSave'))) }}
 
                 <div class="form-group">
-                    {{ Form::label('name', 'Name') }}
+                    {{ Form::label('name', 'Имя роли') }}
                     {{ Form::text('name', null, array('class' => 'form-control')) }}
                 </div>
 
-                <h5><b>Assign Permissions</b></h5>
+                <h5><b>Назначить разрешения</b></h5>
 
                 <div class='form-group'>
                     @foreach ($permissions as $permission)
@@ -34,7 +34,7 @@
                     @endforeach
                 </div>
 
-                {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Создать', array('class' => 'btn btn-success')) }}
 
                 {{ Form::close() }}
             </div>

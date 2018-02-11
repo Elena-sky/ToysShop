@@ -15,10 +15,10 @@ use Session;
 class RoleController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware(['auth', 'isAdmin']);//isAdmin middleware lets only users with a //specific permission permission to access these resources
-    }
+//    public function __construct()
+//    {
+//        $this->middleware(['auth', 'isAdmin']);//isAdmin middleware lets only users with a //specific permission permission to access these resources
+//    }
 
     /**
      * Display a listing of the resource.
@@ -41,7 +41,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();//Get all permissions
 
-        return view('admin.roles.roleCreate', ['permissions' => $permissions]);
+        return view('admin.roles.roleCreate', compact('permissions'));
     }
 
     /**
@@ -111,13 +111,13 @@ class RoleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function roleUpdateSave(Request $request)
     {
 
-        $role = Role::findOrFail($id);//Get role with the given id
+        $role = Role::findOrFail($request->id);//Get role with the given id
         //Validate name and permission fields
         $this->validate($request, [
-            'name' => 'required|max:10|unique:roles,name,' . $id,
+            'name' => 'required|max:10|unique:roles,name,' . $request->id,
             'permissions' => 'required',
         ]);
 
@@ -136,9 +136,9 @@ class RoleController extends Controller
             $role->givePermissionTo($p);  //Assign permission to role
         }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('rolesView')
             ->with('flash_message',
-                'Role' . $role->name . ' updated!');
+                'Роль ' . $role->name . ' сохранена!');
     }
 
     /**
@@ -147,14 +147,14 @@ class RoleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function roleDeleteAction($id)
     {
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('roles.index')
+        return redirect()->route('rolesView')
             ->with('flash_message',
-                'Role deleted!');
+                'Роль удалена!');
 
     }
 }

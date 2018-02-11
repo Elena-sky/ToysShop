@@ -17,10 +17,13 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row " style="display: inline-block;width: 100%;">
-                {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
+                {{ Form::model($role, array('route' => array('roleSaveUpdate'), 'method' => 'POST')) }}
+
+                <input name="id" type="hidden" value="{{$role->id}}">
+
 
                 <div class="form-group">
-                    {{ Form::label('name', 'Role Name') }}
+                    {{ Form::label('name', 'Имя роли') }}
                     {{ Form::text('name', null, array('class' => 'form-control')) }}
                 </div>
 
@@ -32,7 +35,7 @@
 
                 @endforeach
                 <br>
-                {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
 
                 {{ Form::close() }}
             </div>

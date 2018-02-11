@@ -41,14 +41,14 @@
 
                             <td>{{ $role->name }}</td>
 
-                            <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>
+                            {{--<td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>--}}
                             {{-- Retrieve array of permissions associated to a role and convert to string --}}
                             <td>
-                                <a href="{{route('roleUpdate', $role->id)}}" class="btn btn-info pull-left"
-                                   style="margin-right: 3px;">Edit</a>
+                                <a href="{{route('roleUpdate', $role->id)}}" class="btn btn-warning pull-left"
+                                   style="margin-right: 3px;">Редактировать</a>
 
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id] ]) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['roleDelete', $role->id] ]) !!}
+                                {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
 
                             </td>
