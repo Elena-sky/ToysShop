@@ -20,11 +20,12 @@
                 {{ Form::open(array('route' => array('permissionsSaveCreate'))) }}
 
                 <div class="form-group">
-                    {{ Form::label('name', 'Name') }}
+                    {{ Form::label('name', 'Имя разрешения') }}
                     {{ Form::text('name', '', array('class' => 'form-control')) }}
                 </div>
                 <br>
-                @if(!$roles->isEmpty()) //If no roles exist yet
+                {{--If no roles exist yet--}}
+                @if(!$roles->isEmpty())
                 <h4>Assign Permission to Roles</h4>
 
                 @foreach ($roles as $role)
@@ -34,7 +35,7 @@
                 @endforeach
                 @endif
                 <br>
-                {{ Form::submit('Создать', array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Создать', array('class' => 'btn btn-success')) }}
 
                 {{ Form::close() }}
             </div>

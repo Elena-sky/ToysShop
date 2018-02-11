@@ -17,10 +17,10 @@ use Session;
 class PermissionController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
-    }
+//    public function __construct()
+//    {
+//        $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
+//    }
 
     /**
      * Display a listing of the resource.
@@ -31,7 +31,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::all(); //Get all permissions
 
-        return view('admin.permissionsView')->with('permissions', $permissions);
+        return view('admin.permissions.permissionsView')->with('permissions', $permissions);
     }
 
     /**
@@ -43,7 +43,7 @@ class PermissionController extends Controller
     {
         $roles = Role::get(); //Get all roles
 
-        return view('admin.permissionsCreate')->with('roles', $roles);
+        return view('admin.permissions.permissionsCreate')->with('roles', $roles);
     }
 
     /**
@@ -77,7 +77,7 @@ class PermissionController extends Controller
 
         return redirect()->route('permissionsView')
             ->with('flash_message',
-                'Разрешение' . $permission->name . ' создано!');
+                'Разрешение ' . $permission->name . '  создано!');
 
     }
 
@@ -102,7 +102,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
 
-        return view('permissionsUpdate', compact('permission'));
+        return view('admin.permissions.permissionsUpdate', compact('permission'));
     }
 
     /**
@@ -112,16 +112,16 @@ class PermissionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function permissionsUpdateSave(Request $request)
     {
-        $permission = Permission::findOrFail($id);
+        $permission = Permission::findOrFail($request->id);
         $this->validate($request, [
             'name' => 'required|max:40',
         ]);
         $input = $request->all();
         $permission->fill($input)->save();
 
-        return redirect()->route('permissionsSaveUpdate')
+        return redirect()->route('permissionsView')
             ->with('flash_message',
                 'Разрешение ' . $permission->name . ' сохранено!');
 
@@ -133,22 +133,22 @@ class PermissionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function permissionsDeleteAction($id)
     {
         $permission = Permission::findOrFail($id);
 
         //Make it impossible to delete this specific permission
         if ($permission->name == "Administer roles & permissions") {
-            return redirect()->route('permissions.index')
+            return redirect()->route('permissionsView')
                 ->with('flash_message',
-                    'Cannot delete this Permission!');
+                    'У Вас нет прав удалять разрешения!');
         }
 
         $permission->delete();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('permissionsView')
             ->with('flash_message',
-                'Permission deleted!');
+                'Разрешение удалено!');
 
     }
 }

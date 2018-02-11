@@ -12,20 +12,21 @@
             <li class="breadcrumb-item">
                 <a href="{{route('permissionsView')}}">Управление разрешениями</a>
             </li>
-            <li class="breadcrumb-item active">Редактировать разрешение {{$permission->name}}</li>
+            <li class="breadcrumb-item active">Редактировать разрешение - {{$permission->name}}</li>
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row " style="display: inline-block;width: 100%;">
-                {{ Form::model($permission, array('route' => array('permissions.update', $permission->id), 'method' => 'PUT')) }}
+                {{ Form::model($permission, array('route' => array('permissionsSaveUpdate'), 'method' => 'POST')) }}
                 {{-- Form model binding to automatically populate our fields with permission data --}}
+                <input name="id" type="hidden" value="{{$permission->id}}">
 
                 <div class="form-group">
-                    {{ Form::label('name', 'Permission Name') }}
+                    {{ Form::label('name', 'Имя разрешения') }}
                     {{ Form::text('name', null, array('class' => 'form-control')) }}
                 </div>
-                <br>
-                {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
+
+                {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
 
                 {{ Form::close() }}
             </div>
