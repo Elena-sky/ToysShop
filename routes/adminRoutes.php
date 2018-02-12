@@ -9,7 +9,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/product/add', 'ProductController@actionAddNewProduct')->name('actionNewAddProduct'); //Добавление нового товара
     Route::get('/product/update/{id}', 'ProductController@viewProductUpdate')->name('productUpdateView'); // Редактирование товара
     Route::post('/product/update/save', 'ProductController@actionProductUpdateSave')->name('actionUpdateSave'); // Action редактирование товара
-    Route::get('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
+    Route::post('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
 
     // Category
     Route::get('/category', 'CategoryController@viewCategoryPage')->name('viewCategory'); // View управление категориями
@@ -52,6 +52,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('fileUpload', ['as' => 'fileUpload', 'uses' => 'HomeController@fileUpload']);
     });
 
+    // Sliders
     Route::get('/sliders', 'SlideController@viewAllSliders')->name('viewSliders'); //View обзор списка слайдеров
     Route::get('/sliders/add', 'SlideController@viewSliderAddPage')->name('viewSlideAdd'); //View добавление нового слайдера
     Route::post('/sliders/add/save', 'SlideController@actionSaveNewSlide')->name('actionNewSlide'); // Action добавление нового слайдера
@@ -59,6 +60,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/sliders/update/save', 'SlideController@actionSlideSaveUpdate')->name('actionSlideSave'); // Action сохранить редактироование
     Route::get('/sliders/delete/{id}', 'SlideController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
 
+    // Orders
     Route::get('/orders', 'OrdersController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
     Route::get('/orders/order/{id}', 'OrdersController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
     Route::get('/order/delivery-update/{id}', 'OrdersController@adminViewDeliveryUpdate')->name('viewDeliveryUpdate'); // View редактировать данные о доставке

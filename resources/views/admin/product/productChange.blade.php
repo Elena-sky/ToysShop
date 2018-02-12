@@ -81,6 +81,9 @@
                                                     class="glyphicon glyphicon-remove"></span> Удалить
                                         </button>
                                     </a>
+                                        {{--{!! Form::open(['method' => 'post', 'route' => ['actionDeleteProduct', $good->id] ]) !!}--}}
+                                        {{--{!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}--}}
+                                        {{--{!! Form::close() !!}--}}
                                     @endcan
                                 </td>
 
