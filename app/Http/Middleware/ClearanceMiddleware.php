@@ -21,7 +21,22 @@ class ClearanceMiddleware
             return $next($request);
         }
 
-        if (Auth::user()->hasRole('User'))  //Simple user no access to admin
+        if (!Auth::user()->hasRole('Admin'))  //Simple user no access to admin
+        {
+            return \redirect(route('index'));
+        }
+
+        if (!Auth::user()->hasRole('Owner'))  //Simple user no access to admin
+        {
+            return \redirect(route('index'));
+        }
+
+        if (!Auth::user()->hasRole('Editor'))  //Simple user no access to admin
+        {
+            return \redirect(route('index'));
+        }
+
+        if (!Auth::user()->hasRole('Viewer'))  //Simple user no access to admin
         {
             return \redirect(route('index'));
         }
