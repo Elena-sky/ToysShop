@@ -74,11 +74,13 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{route('orderDelete', [$order->id])}}">
-                                        <button type="button" class="btn btn-danger"><span
-                                                    class="glyphicon glyphicon-pencil"></span> Удалить заказ
-                                        </button>
-                                    </a>
+                                    @can('Orders-Delete')
+                                        <a href="{{route('orderDelete', [$order->id])}}">
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Удалить заказ
+                                            </button>
+                                        </a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

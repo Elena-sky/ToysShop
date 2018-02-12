@@ -19,7 +19,10 @@ class AdminController extends Controller
 {
     use ImageUploader;
 
-    // Index
+    public function __construct()
+    {
+        $this->middleware(['auth', 'clearance'])->except('index', 'show');
+    }
 
     public function adminPageView()
     {

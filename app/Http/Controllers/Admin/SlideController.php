@@ -13,6 +13,11 @@ class SlideController extends Controller
 {
     use ImageUploader;
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'clearance'])->except('index', 'show');
+    }
+
     // View Управление слайдерами
     public function viewAllSliders()
     {

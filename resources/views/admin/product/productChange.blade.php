@@ -16,6 +16,7 @@
 
         <div class="container">
             <div class="row">
+                @can('Product-Create')
                 <div class="container ">
                     <a href="{{route('addNewProductPage')}}">
                         <button type="button" class="btn btn-primary">
@@ -23,6 +24,7 @@
                         </button>
                     </a>
                 </div>
+                @endcan
 
                 <div class="col-md-12">
                     <table class="table table-striped">
@@ -60,24 +62,28 @@
                                         </button>
                                     </a>
                                 </td>
-                                @can('Edit Good')
+
                                 <td>
+                                    @can('Product-Edit')
                                     <a href="{{route('productUpdateView', [$good->id])}}">
                                         <button type="button" class="btn btn-warning"><span
                                                     class="glyphicon glyphicon-pencil"></span> Изменить
                                         </button>
                                     </a>
+                                    @endcan
                                 </td>
-                                @endcan
-                                @can('Delete Good')
+
+
                                 <td>
+                                    @can('Product-Delete')
                                     <a href="{{route('actionDeleteProduct', [$good->id])}}">
                                         <button type="button" class="btn btn-danger"><span
                                                     class="glyphicon glyphicon-remove"></span> Удалить
                                         </button>
                                     </a>
+                                    @endcan
                                 </td>
-                                @endcan
+
 
                             </tr>
                         @endforeach

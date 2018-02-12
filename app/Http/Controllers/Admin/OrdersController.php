@@ -17,6 +17,11 @@ class OrdersController extends Controller
 {
     //ЗАКАЗЫ
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'clearance'])->except('index', 'show');
+    }
+
     // View всех заказов
     public function adminViewAllOrders()
     {

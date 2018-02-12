@@ -8,11 +8,20 @@ use App\Http\Controllers\Controller;
 use App\Categories;
 use Illuminate\Support\Facades\Input;
 
+use App\Post;
+use Auth;
+use Session;
+
 
 class CategoryController extends Controller
 {
 
     use ImageUploader;
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'clearance'])->except('index', 'show');
+    }
 
     // Управление категориями
     public function viewCategoryPage()

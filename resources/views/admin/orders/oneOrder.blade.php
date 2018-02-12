@@ -38,11 +38,13 @@
                                     <th>Оплата</th>
 
                                     <th>
-                                        <a href="{{route('orderDelete', [$order->id])}}">
-                                            <button type="button" class="btn btn-danger"><span
-                                                        class="glyphicon glyphicon-pencil"></span> Удалить заказ
-                                            </button>
-                                        </a>
+                                        @can('Orders-Delete')
+                                            <a href="{{route('orderDelete', [$order->id])}}">
+                                                <button type="button" class="btn btn-danger"><span
+                                                            class="glyphicon glyphicon-pencil"></span> Удалить заказ
+                                                </button>
+                                            </a>
+                                        @endcan
                                     </th>
                                 </tr>
                                 </thead>
@@ -61,11 +63,13 @@
                                     <td>{{($order->is_paid)? 'Оплачен' : 'Неоплачен'}}</td>
 
                                     <td>
-                                        <a href="{{route('viewOrderUpdate', [$order->id])}}">
-                                            <button type="button" class="btn btn-warning"><span
-                                                        class="glyphicon glyphicon-pencil"></span> Изменить
-                                            </button>
-                                        </a>
+                                        @can('Orders-Edit')
+                                            <a href="{{route('viewOrderUpdate', [$order->id])}}">
+                                                <button type="button" class="btn btn-warning"><span
+                                                            class="glyphicon glyphicon-pencil"></span> Изменить
+                                                </button>
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 </tbody>
@@ -81,7 +85,6 @@
                             </table>
                         </div>
                     </div>
-
 
                     <div style="margin-bottom: 50px">
                         <h3>Информация о доставке</h3>
@@ -106,11 +109,13 @@
                                 <td>{{$delivery->delivery_method}}</td>
                                 <td>{{$delivery->delivery_address}}</td>
                                 <td>
-                                    <a href="{{route('viewDeliveryUpdate', [$order->id])}}">
-                                        <button type="button" class="btn btn-warning"><span
-                                                    class="glyphicon glyphicon-pencil"></span> Изменить
-                                        </button>
-                                    </a>
+                                    @can('Orders-Edit')
+                                        <a href="{{route('viewDeliveryUpdate', [$order->id])}}">
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
+                                        </a>
+                                    @endcan
                                 </td>
                             </tr>
                             </tbody>
@@ -129,7 +134,6 @@
                                 <th>Картинка</th>
                                 <th>Цена</th>
                                 <th></th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -138,49 +142,60 @@
                                 <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
 
                                 <tr class="max-sunbol">
+
                                     <td>{{$orderGoods->goods_id}}</td>
+
                                     <td>{{$good->name}}</td>
+
                                     <td>
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-danger btn-number"
-                                                        data-action="minus" data-ogid="{{$orderGoods->id}}"
-                                                        data-token="{{ csrf_token() }}">
-                                                    <span class="glyphicon glyphicon-minus">-</span>
-                                                </button>
-                                            </span>
+                                        @can('Orders-Edit')
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-danger btn-number"
+                                                            data-action="minus" data-ogid="{{$orderGoods->id}}"
+                                                            data-token="{{ csrf_token() }}">
+                                                        <span class="glyphicon glyphicon-minus">-</span>
+                                                    </button>
+                                                </span>
+                                                <input type="text" style="width: 60px" name="{{$good->id}}"
+                                                       class="form-control input-number" data-token="{{ csrf_token() }}"
+                                                       value="{{$orderGoods->count}}">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-success btn-number"
+                                                            data-action="plus" data-token="{{ csrf_token() }}"
+                                                            data-ogid="{{$orderGoods->id}}">
+                                                        <span class="glyphicon glyphicon-plus">+</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        @elsecannot('Orders-Edit')
                                             <input type="text" style="width: 60px" name="{{$good->id}}"
                                                    class="form-control input-number" data-token="{{ csrf_token() }}"
                                                    value="{{$orderGoods->count}}">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-success btn-number"
-                                                        data-action="plus" data-token="{{ csrf_token() }}"
-                                                        data-ogid="{{$orderGoods->id}}">
-                                                    <span class="glyphicon glyphicon-plus">+</span>
-                                                </button>
-                                            </span>
-                                        </div>
+                                        @endcan
                                     </td>
 
                                     <td>{{$good->code}}</td>
+
                                     <td>
                                         <div>
                                             <img style="max-width: 100px;"
                                                  src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
                                         </div>
                                     </td>
-                                    <td>{{$good->price}} грн</td>
-                                    <td>
 
-                                    </td>
+                                    <td>{{$good->price}} грн</td>
+
                                     <td>
-                                        {{--<a href="{{route('actionOrderProductDelete', [$good->id])}}">--}}
-                                        <button type="button" class="btn btn-danger btn-delete" data-type="delete"
-                                                data-token="{{ csrf_token() }}" data-ogid="{{$orderGoods->id}}"><span
+                                        @can('Orders-Delete')
+                                            <button type="button" class="btn btn-danger btn-delete" data-type="delete"
+                                                    data-token="{{ csrf_token() }}"
+                                                    data-ogid="{{$orderGoods->id}}"><span
                                                         class="glyphicon glyphicon-remove"></span> Удалить
                                             </button>
-                                        {{--</a>--}}
+                                        @endcan
                                     </td>
+
                                 </tr>
                             @endforeach
                             </tbody>

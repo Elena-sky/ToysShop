@@ -14,6 +14,7 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row">
+                @can('Categories-Create')
                 <div class="container ">
                     <a href="{{route('addCategory')}}">
                         <button type="button" class="btn btn-primary">
@@ -21,6 +22,7 @@
                         </button>
                     </a>
                 </div>
+                @endcan
 
                 <div class="col-md-12">
                     <table class="table table-striped">
@@ -47,6 +49,7 @@
                                 @endif
 
                                 <td>{{($category->status)? 'Да':'Нет'}}</td>
+
                                 <td>
                                     <a href="{{route('goodsByCategory', [$category->id])}}">
                                         <button type="button" class="btn btn-info"><span
@@ -54,21 +57,29 @@
                                         </button>
                                     </a>
                                 </td>
+
                                 <td>
-                                    <a href="{{route('viewUpdateCategory', [$category->id])}}">
-                                        <button type="button" class="btn btn-warning"><span
-                                                    class="glyphicon glyphicon-pencil"></span> Изменить
-                                        </button>
-                                    </a>
+                                    @can('Categories-Edit')
+                                        <a href="{{route('viewUpdateCategory', [$category->id])}}">
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
+                                        </a>
+                                    @endcan
                                 </td>
+
                                 <td>
-                                    <a href="{{route('actionDeleteCategory', [$category->id])}}">
-                                        <button type="button" class="btn btn-danger"><span
-                                                    class="glyphicon glyphicon-remove"></span> Удалить
-                                        </button>
-                                    </a>
+                                    @can('Categories-Delete')
+                                        <a href="{{route('actionDeleteCategory', [$category->id])}}">
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-remove"></span> Удалить
+                                            </button>
+                                        </a>
+                                    @endcan
                                 </td>
+
                             </tr>
+
                         @endforeach
                         </tbody>
                     </table>
