@@ -4,9 +4,12 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits;
+use Spatie\Permission\Models\Role;
 
 class ClearanceMiddleware
 {
+    use Traits\HasRoles;
     /**
      * Handle an incoming request.
      *
@@ -21,22 +24,7 @@ class ClearanceMiddleware
             return $next($request);
         }
 
-        if (!Auth::user()->hasRole('Admin'))  //Simple user no access to admin
-        {
-            return \redirect(route('index'));
-        }
-
-        if (!Auth::user()->hasRole('Owner'))  //Simple user no access to admin
-        {
-            return \redirect(route('index'));
-        }
-
-        if (!Auth::user()->hasRole('Editor'))  //Simple user no access to admin
-        {
-            return \redirect(route('index'));
-        }
-
-        if (!Auth::user()->hasRole('Viewer'))  //Simple user no access to admin
+        if (Auth::user()->hasRole('User'))  //Simple user no access to admin
         {
             return \redirect(route('index'));
         }

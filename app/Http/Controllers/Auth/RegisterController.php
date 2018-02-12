@@ -7,6 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+
+//Importing laravel-permission models
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Auth;
+
+
+
 class RegisterController extends Controller
 {
     /*
@@ -62,10 +70,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
+
+        $roles = ['0' => '6']; //Value '6' it is key of the role 'User'
+        //Checking if a role was selected
+        if (isset($roles)) {
+
+            foreach ($roles as $role) {
+                $role_r = Role::where('id', '=', $role)->firstOrFail();
+                $user->assignRole($role_r); //Assigning role to user
+            }
+        }
+
+        return $user;
     }
 }
