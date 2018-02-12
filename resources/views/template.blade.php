@@ -67,6 +67,10 @@ _________________________________________________________ -->
                 @else
                     <li><a href="#">{{ Auth::user()->name }}</a>
                     </li>
+                    @role('Admin') {{-- Laravel-permission blade helper --}}
+                    <li><a href="{{route('adminPageView')}}"><i class="fa fa-btn fa-unlock"></i>Admin</a>
+                    </li>
+                    @endrole
                     <li><a href="{{ route('profile') }}">Профиль</a>
                     </li>
                     <li>
@@ -156,7 +160,7 @@ _________________________________________________________ -->
     <div class="container">
         <div class="navbar-header">
 
-            <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+            <a class="navbar-brand home" href="{{route('index')}}" data-animate-hover="bounce">
                 <img src="{{ asset("img/logo.png") }}" alt="Obaju logo" class="hidden-xs">
                 <img src="{{ asset("img/logo-small.png") }}" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
             </a>
@@ -169,7 +173,7 @@ _________________________________________________________ -->
                     <span class="sr-only">Toggle search</span>
                     <i class="fa fa-search"></i>
                 </button>
-                <a class="btn btn-default navbar-toggle" href="basket.html">
+                <a class="btn btn-default navbar-toggle" href="{{route('cartView')}}">
                     <i class="fa fa-shopping-cart"></i> <span class="hidden-xs"> {{Cart::count()}}
                         товар(ов) в корзине</span>
                 </a>
@@ -240,6 +244,18 @@ _________________________________________________________ -->
 
 <!-- *** NAVBAR END *** -->
 
+@if(Session::has('flash_message'))
+    <div class="container">
+        <div class="alert alert-success"><em> {!! session('flash_message') !!}</em>
+        </div>
+    </div>
+@endif
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @include ('errors.list') {{-- Including error file --}}
+    </div>
+</div>
 
 @yield('content')
 
