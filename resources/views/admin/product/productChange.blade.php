@@ -15,19 +15,33 @@
         <!-- Area Chart Example-->
 
         <div class="container">
+
             <div class="row">
-                @can('Product-Create')
-                <div class="container ">
-                    <a href="{{route('addNewProductPage')}}">
-                        <button type="button" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Добавить новый товар
-                        </button>
-                    </a>
-                </div>
-                @endcan
+
+                {{--{{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET', 'class' => 'form-group']) }}--}}
+                {{--{{ Form::text('search', '', ['id' =>  'sCode', 'placeholder' =>  'Поиск по артикулу...', 'class' => 'form-control mr-sm-2'])}}--}}
+                {{--{{ Form::close() }}--}}
 
                 <div class="col-md-12">
-                    <table class="table table-striped">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            @can('Product-Create')
+                                <a href="{{route('addNewProductPage')}}">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fa fa-plus"></i> Добавить новый товар
+                                    </button>
+                                </a>
+                            @endcan
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div>
+                                <input type="text" class="form-control pull-right" id="search"
+                                       placeholder="Поиск по таблице">
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped" id="mytable" cellspacing="0" style="width: 100%;">
                         <thead>
                         <tr class="table-info">
                             <th>Категория</th>
@@ -65,33 +79,32 @@
 
                                 <td>
                                     @can('Product-Edit')
-                                    <a href="{{route('productUpdateView', [$good->id])}}">
-                                        <button type="button" class="btn btn-warning"><span
-                                                    class="glyphicon glyphicon-pencil"></span> Изменить
-                                        </button>
-                                    </a>
+                                        <a href="{{route('productUpdateView', [$good->id])}}">
+                                            <button type="button" class="btn btn-warning"><span
+                                                        class="glyphicon glyphicon-pencil"></span> Изменить
+                                            </button>
+                                        </a>
                                     @endcan
                                 </td>
 
 
                                 <td>
                                     @can('Product-Delete')
-                                    <a href="{{route('actionDeleteProduct', [$good->id])}}">
-                                        <button type="button" class="btn btn-danger"><span
-                                                    class="glyphicon glyphicon-remove"></span> Удалить
-                                        </button>
-                                    </a>
+                                        <a href="{{route('actionDeleteProduct', [$good->id])}}">
+                                            <button type="button" class="btn btn-danger"><span
+                                                        class="glyphicon glyphicon-remove"></span> Удалить
+                                            </button>
+                                        </a>
                                         {{--{!! Form::open(['method' => 'post', 'route' => ['actionDeleteProduct', $good->id] ]) !!}--}}
                                         {{--{!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}--}}
                                         {{--{!! Form::close() !!}--}}
                                     @endcan
                                 </td>
 
-
                             </tr>
                         @endforeach
                         </tbody>
-                        <thead>
+
                         <tr class="table-info">
                             <th>Категория</th>
                             <th>Название</th>
@@ -104,9 +117,9 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        </thead>
                     </table>
                     {{$goods->links()}}
+
                 </div>
             </div>
         </div>

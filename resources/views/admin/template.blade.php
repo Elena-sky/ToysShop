@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Админ - Мир Игрушек</title>
 
     <!-- Bootstrap core CSS-->
@@ -19,6 +21,7 @@
     <link href="/css/sb-admin.css" rel="stylesheet">
 
     <link href="/css/style-admin.css" rel="stylesheet">
+
 
 </head>
 
@@ -241,6 +244,11 @@
 
         <!-- button product of orders plus and minus-->
         <script src="/js/ordersButton.js"></script>
+        <script src="/js/admin-search.js"></script>
+
+
+        {{--TEST--}}
+
 
 
     </footer>
