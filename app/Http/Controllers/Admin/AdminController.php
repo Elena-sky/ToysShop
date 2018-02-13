@@ -29,8 +29,9 @@ class AdminController extends Controller
         $countNewOrders = Orders::where('is_new', 1)->count();
         $countProduct = Goods::all()->count();
         $countUser = User::all()->count();
+        $categories = Categories::all();
 
-        return view('admin.index', ['countNewOrders' => $countNewOrders, 'countProduct' => $countProduct, 'countUser' => $countUser]);
+        return view('admin.index', compact('countNewOrders', 'countProduct', 'countUser', 'categories'));
     }
 
 

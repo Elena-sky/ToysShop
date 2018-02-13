@@ -311,12 +311,28 @@
                     <!-- Example Pie Chart Card-->
                     <div class="card mb-3">
                         <div class="card-header">
-                            <i class="fa fa-pie-chart"></i> Pie Chart Example
+                            <i class="fa fa-fw fa-sitemap"></i> Категории на сайте
                         </div>
-                        <div class="card-body">
-                            <canvas id="myPieChart" width="100%" height="100"></canvas>
+
+                        <div class="list-group">
+                            @foreach($categories as $category)
+                                <a href="/category/{{$category->id}}" class="list-group-item list-group-item-action">
+                                    <?=($category->status) ? "<i class='fa fa-check-square'></i>" : "<i class='fa fa-minus-square'></i>" ?>
+
+                                    {{$category->name}}
+
+                                    <span class="badge badge-secondary badge-pill">
+                                    {{App\Goods::where('category_id', '=', $category->id)->count()}}
+                                </span>
+                                </a>
+                            @endforeach
+
                         </div>
-                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
+                        <div class="card-footer small text-muted">
+                            <i class='fa fa-check-square'></i> - Видны;
+                            <i class='fa fa-minus-square'></i> - Не видны
+                        </div>
                     </div>
                     <!-- Example Notifications Card-->
                     <div class="card mb-3">
