@@ -169,10 +169,10 @@ _________________________________________________________ -->
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-align-justify"></i>
                 </button>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle search</span>
-                    <i class="fa fa-search"></i>
-                </button>
+                {{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">--}}
+                {{--<span class="sr-only">Toggle search</span>--}}
+                {{--<i class="fa fa-search"></i>--}}
+                {{--</button>--}}
                 <a class="btn btn-default navbar-toggle" href="{{route('cartView')}}">
                     <i class="fa fa-shopping-cart"></i> <span class="hidden-xs"> {{Cart::count()}}
                         товар(ов) в корзине</span>
