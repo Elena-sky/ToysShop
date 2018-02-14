@@ -13,6 +13,7 @@ use Auth;
 use Session;
 
 
+
 class CategoryController extends Controller
 {
 
@@ -23,62 +24,46 @@ class CategoryController extends Controller
         $this->middleware(['auth', 'clearance'])->except('index', 'show');
     }
 
-    // Управление категориями
+
+    /**
+     * Display a listing of the category.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewCategoryPage()
     {
         $categories = Categories::query()
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('admin.category.categoryView', ['categories' => $categories]);
-    }
-
-    // View редактирование категории
-    public function viewAdminUpdateCategory($id)
-    {
-        $category = Categories::find($id);
-
-        return view('admin.category.categoryUpdate', ['category' => $category]);
-    }
-
-    // Action сохранить редактироование категории
-    public function actionAdminSaveUpdate(Request $request)
-    {
-        $path = '/category';  // Папка для загрузки картинки
-        $data = Input::except(['_method', '_token']);
-        $categoryData = Categories::find($data['id']);
-        $categoryData->update($data);
-
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $name = 'categoryImage' . rand(123, 655555) . '.' . $file->getClientOriginalExtension();
-
-            if ($file->move(public_path() . '/uploads' . $path, $name)) {
-                $dataImage = ['image' => $name];
-                $categoryData = Categories::find($data['id']);
-                $categoryData->update($dataImage);
-            }
-        }
-        return \redirect(route('viewCategory'));
-    }
-
-    //Action удаление категории
-    public function actionCategoryDelete($id)
-    {
-        $categoryDelete = Categories::find($id);
-        $categoryDelete->delete();
-        return \redirect(route('viewCategory'));
+        return view('admin.category.categoryView', compact('categories'));
     }
 
 
+    /**
+     * Show the form for creating a new category.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function actionAddCategoryView()
     {
         return view('admin.category.categoryAdd');
     }
 
-    // Добавление новой категории
+
+    /**
+     * Store a newly created category in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionAdminAddCategory(Request $request)
     {
+        //Validate
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
         $path = '/category';  // Папка для загрузки картинки
 
         if ($request->hasFile('image')) {
@@ -109,5 +94,64 @@ class CategoryController extends Controller
         return \redirect(route('addCategory'));
     }
 
+
+    /**
+     * Show the form for editing the specified category
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function viewAdminUpdateCategory($id)
+    {
+        $category = Categories::find($id);
+
+        return view('admin.category.categoryUpdate', compact('category'));
+    }
+
+
+    /**
+     * Update the specified category in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function actionAdminSaveUpdate(Request $request)
+    {
+        //Validate
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $path = '/category';  // Папка для загрузки картинки
+        $data = Input::except(['_method', '_token']);
+        $categoryData = Categories::find($data['id']);
+        $categoryData->update($data);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = 'categoryImage' . rand(123, 655555) . '.' . $file->getClientOriginalExtension();
+
+            if ($file->move(public_path() . '/uploads' . $path, $name)) {
+                $dataImage = ['image' => $name];
+                $categoryData = Categories::find($data['id']);
+                $categoryData->update($dataImage);
+            }
+        }
+        return \redirect(route('viewCategory'));
+    }
+
+
+    /**
+     * Remove the specified category from storage.
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function actionCategoryDelete($id)
+    {
+        $categoryDelete = Categories::find($id);
+        $categoryDelete->delete();
+        return \redirect(route('viewCategory'));
+    }
 
 }

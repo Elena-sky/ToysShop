@@ -12,12 +12,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
 
     // Category
-    Route::get('/category', 'CategoryController@viewCategoryPage')->name('viewCategory'); // View управление категориями
-    Route::get('/category/add', 'CategoryController@actionAddCategoryView')->name('addCategory'); // View page добавление новой категории
-    Route::post('/category/add/save', 'CategoryController@actionAdminAddCategory')->name('adminActionAddCategory'); // Добавление категории
-    Route::get('/category/update/{id}', 'CategoryController@viewAdminUpdateCategory')->name('viewUpdateCategory'); // View редактирование категории
-    Route::post('/category/update/save', 'CategoryController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Action сохранить редактироование категории
-    Route::get('/category/delete/{id}', 'CategoryController@actionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
+    Route::get('/category', 'CategoryController@viewCategoryPage')->name('viewCategory'); // Display a listing of the category.
+    Route::get('/category/add', 'CategoryController@actionAddCategoryView')->name('addCategory'); // Show the form for creating a new category.
+    Route::post('/category/add/save', 'CategoryController@actionAdminAddCategory')->name('adminActionAddCategory'); // Store a newly created category in storage.
+    Route::get('/category/update/{id}', 'CategoryController@viewAdminUpdateCategory')->name('viewUpdateCategory'); // Show the form for editing the specified category
+    Route::post('/category/update/save', 'CategoryController@actionAdminSaveUpdate')->name('actionSaveUpdateCategory'); // Update the specified category in storage.
+    Route::get('/category/delete/{id}', 'CategoryController@actionCategoryDelete')->name('actionDeleteCategory'); //Remove the specified category from storage.
 
     //Permissions
     Route::get('/permissions', 'PermissionController@permissionsViewPage')->name('permissionsView'); // View управление разрешениями
