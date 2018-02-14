@@ -27,7 +27,7 @@ class ProductController extends Controller
 
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the product.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -43,7 +43,7 @@ class ProductController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new product.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

@@ -4,12 +4,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'AdminController@adminPageView')->name('adminPageView'); // Admin page
 
     // Product
-    Route::get('/product', 'ProductController@actionProductView')->name('productView'); // Управление товарами
-    Route::get('/product/view', 'ProductController@viewAddProduct')->name('addNewProductPage'); // View page добавления нового товара
-    Route::post('/product/add', 'ProductController@actionAddNewProduct')->name('actionNewAddProduct'); //Добавление нового товара
-    Route::get('/product/update/{id}', 'ProductController@viewProductUpdate')->name('productUpdateView'); // Редактирование товара
-    Route::post('/product/update/save', 'ProductController@actionProductUpdateSave')->name('actionUpdateSave'); // Action редактирование товара
-    Route::post('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
+    Route::get('/product', 'ProductController@actionProductView')->name('productView'); // Display a listing of the product.
+    Route::get('/product/view', 'ProductController@viewAddProduct')->name('addNewProductPage'); // Show the form for creating a new product.
+    Route::post('/product/add', 'ProductController@actionAddNewProduct')->name('actionNewAddProduct'); // Store a newly created resource in storage.
+    Route::get('/product/update/{id}', 'ProductController@viewProductUpdate')->name('productUpdateView'); // Show the form for editing the specified resource.
+    Route::post('/product/update/save', 'ProductController@actionProductUpdateSave')->name('actionUpdateSave'); //  Update the specified resource in storage.
+    Route::post('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Remove the specified resource from storage.
 
     // Category
     Route::get('/category', 'CategoryController@viewCategoryPage')->name('viewCategory'); // Display a listing of the category.
