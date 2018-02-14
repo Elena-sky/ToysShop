@@ -61,13 +61,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/sliders/delete/{id}', 'SlideController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
 
     // Orders
-    Route::get('/orders', 'OrdersController@adminViewAllOrders')->name('viewAllOrders'); // View всех заказов
-    Route::get('/orders/order/{id}', 'OrdersController@adminViewOneOrder')->name('viewOneOrder'); // View заказа
-    Route::get('/order/delivery-update/{id}', 'OrdersController@adminViewDeliveryUpdate')->name('viewDeliveryUpdate'); // View редактировать данные о доставке
-    Route::post('/order/delivery-update/save', 'OrdersController@adminActionDeliverySave')->name('actionDeliverySave'); //Action сохранить данные о доставке
-    Route::get('/order/order-update/{id}', 'OrdersController@adminViewOrderUpdate')->name('viewOrderUpdate'); // View редактировать заказ
-    Route::post('/order/order-updste/save', 'OrdersController@adminActionOrderSave')->name('actionOrderSave'); // Action созранить редактирование заказа
-    Route::get('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); //Action Удалить заказ
+    Route::get('/orders', 'OrdersController@adminViewAllOrders')->name('viewAllOrders'); // Display all list of orders.
+    Route::get('/orders/order/{id}', 'OrdersController@adminViewOneOrder')->name('viewOneOrder'); // Display one order.
+    Route::get('/order/delivery-update/{id}', 'OrdersController@adminViewDeliveryUpdate')->name('viewDeliveryUpdate'); // Show the form for editing the delivery.
+    Route::post('/order/delivery-update/save', 'OrdersController@adminActionDeliverySave')->name('actionDeliverySave'); // Update of delivery
+    Route::get('/order/order-update/{id}', 'OrdersController@adminViewOrderUpdate')->name('viewOrderUpdate'); // Show page order for editing.
+    Route::post('/order/order-updste/save', 'OrdersController@adminActionOrderSave')->name('actionOrderSave'); // Update order page.
+    Route::get('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); // Remove order.
 
 });
 

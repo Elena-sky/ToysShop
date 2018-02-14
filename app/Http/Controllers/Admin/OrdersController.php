@@ -15,39 +15,62 @@ use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
-    //ЗАКАЗЫ
 
     public function __construct()
     {
         $this->middleware(['auth', 'clearance'])->except('index', 'show');
     }
 
-    // View всех заказов
+
+    /**
+     * Display all list of orders.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminViewAllOrders()
     {
         $orders = (empty($_GET['isnew'])) ? Orders::all() : Orders::where('is_new', $_GET['isnew'])->get();
-        return view('admin.orders.ordersView', ['orders' => $orders]);
+
+        return view('admin.orders.ordersView', compact('orders'));
     }
 
-    // View заказа
+
+    /**
+     * Display one order.
+     *
+     * @param $orderId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminViewOneOrder($orderId)
     {
         $order = Orders::find($orderId);
         $userName = User::getNameById($order->user_id);
         $delivery = OrdersDelivery::find($order->delivery_id);
 
-        return view('admin.orders.oneOrder', ['order' => $order, 'delivery' => $delivery, 'userName' => $userName]);
+        return view('admin.orders.oneOrder', compact('order', 'delivery', 'userName'));
     }
 
-    // View редактировать данные о доставке
+
+    /**
+     *Show the form for editing the delivery.
+     *
+     * @param $orderId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminViewDeliveryUpdate($orderId)
     {
         $order = Orders::find($orderId);
         $delivery = OrdersDelivery::find($order->delivery_id);
-        return view('admin.orders.deliveryUpdate', ['delivery' => $delivery, 'orderId' => $orderId]);
+
+        return view('admin.orders.deliveryUpdate', compact('delivery', 'orderId'));
     }
 
-    //Action сохранить данные о доставке
+
+    /**
+     * Update of delivery
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function adminActionDeliverySave()
     {
         $data = $_POST;
@@ -55,18 +78,30 @@ class OrdersController extends Controller
         $deliveryData = OrdersDelivery::find($data['id']);
         $deliveryData->update($data);
 
-        return \redirect(route('viewOneOrder', ['orderid' => $orderid]));
+        return \redirect(route('viewOneOrder', compact('orderid')));
     }
 
-    // View редактировать заказ
+
+    /**
+     * Show page order for editing.
+     *
+     * @param $orderId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminViewOrderUpdate($orderId)
     {
         $order = Orders::find($orderId);
-        return view('admin.orders.orderUpdate', ['order' => $order]);
+
+        return view('admin.orders.orderUpdate', compact('order'));
 
     }
 
-    // Action созранить редактирование заказа
+
+    /**
+     * Update order page.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function adminActionOrderSave()
     {
         $data = $_POST;
@@ -74,21 +109,22 @@ class OrdersController extends Controller
         $orderData = Orders::find($orderid);
         $orderData->update($data);
 
-        return \redirect(route('viewOneOrder', ['orderid' => $orderid]));
+        return \redirect(route('viewOneOrder', compact('orderid')));
     }
 
-    //удаление из товара 1 картинки
-    public function deleteProductImg()
-    {
-        $data = $_POST;
-        dd($data);
-    }
 
-    //Action Удалить заказ
+    /**
+     * Remove order.
+     *
+     * @param $orderId
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function adminOrderDelete($orderId)
     {
         $orderDelete = Orders::find($orderId);
         $orderDelete->delete();
+
         return \redirect(route('viewAllOrders'));
     }
+
 }
