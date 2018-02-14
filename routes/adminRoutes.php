@@ -1,7 +1,7 @@
 <?php
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     // Контроллеры в пространстве имён "App\Http\Controllers\Admin"
-    Route::get('/', 'AdminController@adminPageView')->name('adminPageView'); // Админпанель
+    Route::get('/', 'AdminController@adminPageView')->name('adminPageView'); // Admin page
 
     // Product
     Route::get('/product', 'ProductController@actionProductView')->name('productView'); // Управление товарами

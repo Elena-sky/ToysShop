@@ -19,11 +19,19 @@ class AdminController extends Controller
 {
     use ImageUploader;
 
+    /**
+     * AdminController constructor.
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'clearance'])->except('index', 'show');
     }
 
+    /**
+     * Show admin page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function adminPageView()
     {
         $countNewOrders = Orders::where('is_new', 1)->count();
