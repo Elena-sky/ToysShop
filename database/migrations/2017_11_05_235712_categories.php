@@ -13,7 +13,7 @@ class Categories extends Migration
      */
     public function up()
     {
-        Schema::﻿update('categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('sort_order')->nullable()->change();
