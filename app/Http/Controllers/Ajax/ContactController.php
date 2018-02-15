@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
+    /**
+     * Sending a letter of contact form.
+     *
+     * @param Request $request
+     */
     public function send(Request $request)
     {
         $this->validate($request, [

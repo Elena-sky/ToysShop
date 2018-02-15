@@ -73,7 +73,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::group(['namespace' => 'Ajax', 'prefix' => 'admin'], function () {
 // Контроллеры в пространстве имён "App\Http\Controllers\Ajax"
-    Route::post('/product/delete-img', 'ProductController@deleteProductImg'); //Ajax удаление картинки из товара
-    Route::post('/order/product-action', 'OrdersController@adminActionOrderProduct'); //Ajax редактировать количество или удалить товар в заказе
+    Route::post('/product/delete-img', 'ProductController@deleteProductImg'); // Ajax remove from the product a picture
+    Route::post('/order/product-action', 'OrdersController@adminActionOrderProduct'); // Ajax edit the quantity or delete the item in the order
 
 });

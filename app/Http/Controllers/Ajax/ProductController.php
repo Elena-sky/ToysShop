@@ -8,7 +8,11 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    //удаление из товара 1 картинки
+    /**
+     * Ajax Remove from the product a picture.
+     *
+     * @return bool
+     */
     public function deleteProductImg()
     {
         $data = $_POST;

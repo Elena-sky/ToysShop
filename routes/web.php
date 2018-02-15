@@ -11,28 +11,26 @@
 |
 */
 
-Route::get('/', 'MainController@index')->name('index');
-Route::get('/pwd', 'HomeController@userCustomPasswordChange')->name('customPwdReset');
+Route::get('/', 'MainController@index')->name('index'); // Show main page.
+Route::get('/pwd', 'HomeController@userCustomPasswordChange')->name('customPwdReset'); // Password reset.
 
-Route::get('/about', function () {
-    return view('about');
-});
+//Route::get('/about', function () {
+//    return view('about');
+//});
 
-Route::get('about/test', 'Controller@test');
+//Route::get('about/test', 'Controller@test');
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
 //Профиль пользователя и его заказы
-Route::get('/profile', 'HomeController@profileUser')->name('profile'); //User view профиль
-Route::post('/profile/save', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); //User сохраняет изменения в профиле
-Route::get('/old-orders', 'HomeController@userViewOldOrders')->name('viewOldOrders'); // Обзор старых заказов
-Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('viewOldOrdersById'); // Обзор старого заказа по id
+Route::get('/profile', 'HomeController@profileUser')->name('profile'); // View user profile.
+Route::post('/profile/save', 'HomeController@userActionSaveProfile')->name('actionSaveProfile'); // Save changes to your profile.
+Route::get('/old-orders', 'HomeController@userViewOldOrders')->name('viewOldOrders'); // Review of old orders.
+Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('viewOldOrdersById'); // View old order by id.
 
 
 //Контакты
 Route::get('/contact', 'MainController@viewContact')->name('contact');
-Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Отправка письма контактной формы
+Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Ajax Sending a letter of contact form.
 Route::get('/contact/page', 'MainController@viewContactPage')->name('contactPage'); // Контакты
 
 //Категории и продукты

@@ -10,7 +10,9 @@ use App\OrdersGoods;
 
 class OrdersController extends Controller
 {
-    //View редактировать количество товаров в заказе
+    /**
+     * Ajax edit the quantity or delete the item in the order
+     */
     public function adminActionOrderProduct()
     {
         $data = Input::get();

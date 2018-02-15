@@ -22,17 +22,12 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
-    }
 
-    //User view профиль
+    /**
+     * View user profile.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function profileUser()
     {
         $user = Auth::user();
@@ -40,15 +35,26 @@ class HomeController extends Controller
         return view('user.profile', ['user' => $user]);
     }
 
-    //User сохраняет изменения в профиле
+
+    /**
+     * Save changes to your profile.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function userActionSaveProfile()
     {
         $data = $_POST;
         $categoryData = User::find($data['id']);
         $categoryData->update($data);
+
         return \redirect(route('profile'));
     }
 
+    /**
+     * Review of old orders.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function userViewOldOrders()
     {
         $userId = Auth::user()->id;
@@ -57,12 +63,18 @@ class HomeController extends Controller
         return view('user.oldOrders', ['orders' => $orders]);
     }
 
+    /**
+     * View old order by id.
+     *
+     * @param $orderId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function userViewOldOrdersById($orderId)
     {
         $order = Orders::find($orderId);
         $delivery = OrdersDelivery::find($order->delivery_id);
 
-        return view('user.oldOrdersById', ['order' => $order, 'delivery' => $delivery]);
+        return view('user.oldOrdersById', compact('order', 'delivery'));
     }
 
 //    public function userCustomPasswordChange()
