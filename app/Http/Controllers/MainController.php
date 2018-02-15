@@ -18,6 +18,12 @@ class MainController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * Select category.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function categoryAction($id)
     {
         //$goods = Categories::find($id)->goods->paginate(5);
@@ -28,6 +34,11 @@ class MainController extends BaseController
 
     }
 
+    /**
+     * Show main page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $categories = Categories::where('status', 1)
@@ -45,7 +56,12 @@ class MainController extends BaseController
         return view('index', compact('categories', 'slides', 'lastNewGoods'));
     }
 
-    // Отправка письма контактной формы
+
+    /**
+     * Ajax Sending a letter of contact form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewContact()
     {
         $userId = (Auth::check()) ? Auth::id() : ''; //проверка на пользователя
@@ -57,7 +73,12 @@ class MainController extends BaseController
         return view('info.contact', compact('user'));
     }
 
-    // Контакты
+
+    /**
+     * Show contact page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewContactPage()
     {
         return view('info.contactPage');

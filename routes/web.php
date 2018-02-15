@@ -31,22 +31,22 @@ Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('vi
 //Контакты
 Route::get('/contact', 'MainController@viewContact')->name('contact');
 Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Ajax Sending a letter of contact form.
-Route::get('/contact/page', 'MainController@viewContactPage')->name('contactPage'); // Контакты
+Route::get('/contact/page', 'MainController@viewContactPage')->name('contactPage'); // Show contact page.
 
 //Категории и продукты
-Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
-Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); //обзор продукта
+Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); // Select category.
+Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); // See the product in more detail.
 
 // Shopping cart
 Route::get('/cart', 'CartController@cartView')->name('cartView');  // Display the shopping cart.
 Route::post('cart/item-update', 'CartController@actionC'); // AJAX actions add, update and remove product from the card.
 
 //Заказ
-Route::get('cart/checkout', 'OrderController@viewCheckoutPage')->name('checkoutData'); // Заполнение данных заказа
+Route::get('cart/checkout', 'OrderController@viewCheckoutPage')->name('checkoutData'); // Order preview.
 Route::post('/cart/checkout/save', 'OrderController@viewCheckoutSave')->name('viewSaveCheckout'); // Action сохранения заказа в базу данных
 
 //Поиск по названию товаров
-Route::get('/search/autocomplete', 'SearchController@autocomplete'); // Search
+Route::get('/search/autocomplete', 'SearchController@autocomplete'); // Search by product name.
 
 
 include_once 'adminRoutes.php';

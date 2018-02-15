@@ -12,6 +12,11 @@ use Illuminate\Http\Response;
 class SearchController extends Controller
 {
 
+    /**
+     * Search by product name.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function autocomplete()
     {
         $term = Input::get('term');

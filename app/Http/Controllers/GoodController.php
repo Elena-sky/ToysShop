@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
+    /**
+     * See the product in more detail.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function productDetail($id)
     {
         $images = Goods::find($id)->goodImg;

@@ -19,24 +19,42 @@ use \Gloudemans\Shoppingcart\Facades\Cart;
 class OrderController extends Controller
 {
 
+    /**
+     * Returns the first image.
+     *
+     * @param $id
+     * @return bool
+     */
     public static function getGoodMainImage($id)
     {
         $good = Goods::find($id);
         if (!$good) return false;
         $good->getFirstImage();
 
-
         return $good->getFirstImage();
     }
 
+
+    /**
+     * Order preview
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewCheckoutPage()
     {
         $user = Auth::user();
-
         $cartItems = Cart::content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
+
         return view('checkout.checkoutData', ['user' => $user, 'items' => $cartItems]);
     }
 
+
+    /**
+     * Store a newly created order in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function viewCheckoutSave(Request $request)
     {
         $userId = Auth::id(); //проверка на пользователя
@@ -47,7 +65,9 @@ class OrderController extends Controller
 
         if (!empty($fullName) && !empty($phone) && !empty($city) && !empty($deliveryAddress) && !empty($userId)) {
             //Добавление в таблицу 'orders_delivery'
-            $newDelivery = OrdersDelivery::create(['full_name' => $fullName, 'phone' => $phone, 'city' => $city, 'payment_method' => $request->payment_method, 'delivery_method' => $request->delivery_method, 'delivery_address' => $deliveryAddress]);
+            $newDelivery = OrdersDelivery::create(['full_name' => $fullName, 'phone' => $phone, 'city' => $city,
+                'payment_method' => $request->payment_method, 'delivery_method' => $request->delivery_method,
+                'delivery_address' => $deliveryAddress]);
 
             //Получение Id информации по доставке
             $lastDeliveryId = $newDelivery->id;
@@ -69,13 +89,14 @@ class OrderController extends Controller
                 //Заполняем таблицу 'OrdersGoods'
                 $add = OrdersGoods::create(['order_id' => $lastOrderId, 'goods_id' => $goodId, 'count' => $goodQty]);
             }
-
         }
 
         return \redirect(route('viewOldOrders'));
-
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewCheckoutAddress()
     {
         $user = Auth::user();
