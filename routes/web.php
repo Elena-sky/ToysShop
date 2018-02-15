@@ -39,9 +39,9 @@ Route::get('/contact/page', 'MainController@viewContactPage')->name('contactPage
 Route::get('/category/{id}', 'MainController@categoryAction')->name('goodsByCategory'); //выбор категории
 Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); //обзор продукта
 
-//Корзина
-Route::get('/cart', 'CartController@cartView')->name('cartView');  //корзина
-Route::post('cart/item-update', 'CartController@actionC'); // Ajax Действия юзера в корзине : добавление, редактирование, удаление
+// Shopping cart
+Route::get('/cart', 'CartController@cartView')->name('cartView');  // Display the shopping cart.
+Route::post('cart/item-update', 'CartController@actionC'); // AJAX actions add, update and remove product from the card.
 
 //Заказ
 Route::get('cart/checkout', 'OrderController@viewCheckoutPage')->name('checkoutData'); // Заполнение данных заказа

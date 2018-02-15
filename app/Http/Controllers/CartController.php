@@ -18,7 +18,13 @@ use \Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
-    // view корзины
+
+    /**
+     * Display the shopping cart.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function cartView(Request $request)
     {
         $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
@@ -29,6 +35,12 @@ class CartController extends Controller
     }
 
 
+    /**
+     * Return shopping cart.
+     *
+     * @param string $returnable
+     * @return mixed
+     */
     public static function kostilMeth($returnable = 'content')
     {
         $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
@@ -39,6 +51,11 @@ class CartController extends Controller
         return $$returnable;
     }
 
+    /**
+     * AJAX actions add, update and remove product from the card.
+     *
+     * @return array|bool
+     */
     public function actionC()
     {
         $data = $_POST;
@@ -103,6 +120,13 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * Search in cart
+     *
+     * @param $id
+     * @param $cartContent
+     * @return null
+     */
     public static function searchInCart($id, $cartContent)
     {
         $rowId = null;
@@ -113,12 +137,17 @@ class CartController extends Controller
     }
 
 
+    /**
+     * Get good main image of products in shopping cart.
+     *
+     * @param $id
+     * @return bool
+     */
     public static function getGoodMainImage($id)
     {
         $good = Goods::find($id);
         if (!$good) return false;
         $good->getFirstImage();
-
 
         return $good->getFirstImage();
     }
