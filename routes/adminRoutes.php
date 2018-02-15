@@ -20,12 +20,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/category/delete/{id}', 'CategoryController@actionCategoryDelete')->name('actionDeleteCategory'); //Remove the specified category from storage.
 
     //Permissions
-    Route::get('/permissions', 'PermissionController@permissionsViewPage')->name('permissionsView'); // View управление разрешениями
-    Route::get('/permissions/create', 'PermissionController@permissionsCreateView')->name('permissionsCreate'); // View создание разрешения
-    Route::post('/permissions/create/save', 'PermissionController@permissionsCreateSave')->name('permissionsSaveCreate'); //Action создать
-    Route::get('/permissions/update/{id}', 'PermissionController@permissionsUpdateView')->name('permissionsUpdate'); // View редактирование разрешения
-    Route::post('/permissions/update/save', 'PermissionController@permissionsUpdateSave')->name('permissionsSaveUpdate'); // View сохранить редактирование
-    Route::delete('/permissions/delete/{id}', 'PermissionController@permissionsDeleteAction')->name('permissionsDelete'); // Action удалить разрешение
+    Route::get('/permissions', 'PermissionController@permissionsViewPage')->name('permissionsView'); // Display a listing of the permission.
+    Route::get('/permissions/create', 'PermissionController@permissionsCreateView')->name('permissionsCreate'); // Show the form for creating a new permission.
+    Route::post('/permissions/create/save', 'PermissionController@permissionsCreateSave')->name('permissionsSaveCreate'); // Store a newly created permission in storage.
+    Route::get('/permissions/update/{id}', 'PermissionController@permissionsUpdateView')->name('permissionsUpdate'); // Show the form for editing the specified permission.
+    Route::post('/permissions/update/save', 'PermissionController@permissionsUpdateSave')->name('permissionsSaveUpdate'); // Update the specified permission in storage.
+    Route::delete('/permissions/delete/{id}', 'PermissionController@permissionsDeleteAction')->name('permissionsDelete'); // Remove the specified permission from storage.
 
     //Roles
     Route::get('/roles', 'RoleController@rolesViewPage')->name('rolesView'); // View управление ролями
