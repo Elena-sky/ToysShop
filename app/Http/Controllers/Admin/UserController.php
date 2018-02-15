@@ -38,7 +38,7 @@ class UserController extends Controller
     }
 
     /**
-     * View profile
+     * View user profile.
      *
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

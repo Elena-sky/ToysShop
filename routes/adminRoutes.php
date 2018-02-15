@@ -28,21 +28,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::delete('/permissions/delete/{id}', 'PermissionController@permissionsDeleteAction')->name('permissionsDelete'); // Remove the specified permission from storage.
 
     //Roles
-    Route::get('/roles', 'RoleController@rolesViewPage')->name('rolesView'); // View управление ролями
-    Route::get('/roles/create', 'RoleController@roleCreateView')->name('roleCreate'); // View создание новой роли
-    Route::post('/roles/create/save', 'RoleController@roleSaveCreate')->name('roleCreateSave'); // Action создать новую роль
-    Route::get('/roles/update/{id}', 'RoleController@roleUpdateView')->name('roleUpdate'); // редактировать роль
-    Route::post('/roles/update/save', 'RoleController@roleUpdateSave')->name('roleSaveUpdate'); // Action сохранить редактирование роли
-    Route::delete('/roles/delete/{id}', 'RoleController@roleDeleteAction')->name('roleDelete'); // Action удаление роли
+    Route::get('/roles', 'RoleController@rolesViewPage')->name('rolesView'); // Display a listing of the resource.
+    Route::get('/roles/create', 'RoleController@roleCreateView')->name('roleCreate'); // Show the form for creating a new resource.
+    Route::post('/roles/create/save', 'RoleController@roleSaveCreate')->name('roleCreateSave'); // Store a newly created resource in storage.
+    Route::get('/roles/update/{id}', 'RoleController@roleUpdateView')->name('roleUpdate'); // Show the form for editing the specified resource.
+    Route::post('/roles/update/save', 'RoleController@roleUpdateSave')->name('roleSaveUpdate'); // Update the specified resource in storage.
+    Route::delete('/roles/delete/{id}', 'RoleController@roleDeleteAction')->name('roleDelete'); // Remove the specified resource from storage.
 
     // Users
-    Route::get('/users', 'UserController@viewUsersList')->name('viewUsers'); // View управление пользователями
-    Route::get('/users/create', 'UserController@viewUserCreate')->name('userCreate'); // Создание нового пользователя с ролью
-    Route::post('/users/create/save', 'UserController@actionUserStore')->name('userStore'); // Сохранение нового созданного пользователя
-    Route::get('/users/update/{id}', 'UserController@viewUserUpdate')->name('viewUserUpdate'); // View редактирование пользователя
-    Route::post('/users/update/save', 'UserController@actionSaveUserUpdate')->name('actionSaveUser'); // Action сохранить редактироование пользователя
-    Route::get('/users/delete/{id}', 'UserController@actionUserDelete')->name('userDelete'); //Удаление пользователя
-    Route::get('/users/user/{id}', 'UserController@adminViewUserPage')->name('viewUserPage'); //посмотреть профиль пользователя
+    Route::get('/users', 'UserController@viewUsersList')->name('viewUsers'); // Display a listing of the resource.
+    Route::get('/users/create', 'UserController@viewUserCreate')->name('userCreate'); // Show the form for creating a new resource.
+    Route::post('/users/create/save', 'UserController@actionUserStore')->name('userStore'); // Store a newly created resource in storage.
+    Route::get('/users/update/{id}', 'UserController@viewUserUpdate')->name('viewUserUpdate'); // Show the form for editing the specified resource.
+    Route::post('/users/update/save', 'UserController@actionSaveUserUpdate')->name('actionSaveUser'); // Update the specified resource in storage.
+    Route::get('/users/delete/{id}', 'UserController@actionUserDelete')->name('userDelete'); // Remove the specified resource from storage.
+    Route::get('/users/user/{id}', 'UserController@adminViewUserPage')->name('viewUserPage'); // View user profile.
 
     Route::group(['middleware' => 'web'], function () {
         Route::get('fileUpload', function () {
