@@ -53,12 +53,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     });
 
     // Sliders
-    Route::get('/sliders', 'SlideController@viewAllSliders')->name('viewSliders'); //View обзор списка слайдеров
-    Route::get('/sliders/add', 'SlideController@viewSliderAddPage')->name('viewSlideAdd'); //View добавление нового слайдера
-    Route::post('/sliders/add/save', 'SlideController@actionSaveNewSlide')->name('actionNewSlide'); // Action добавление нового слайдера
-    Route::get('/sliders/update/{id}', 'SlideController@viewSlideUpdatePage')->name('viewSlideUpdate'); //View редактирование слайда
-    Route::post('/sliders/update/save', 'SlideController@actionSlideSaveUpdate')->name('actionSlideSave'); // Action сохранить редактироование
-    Route::get('/sliders/delete/{id}', 'SlideController@actionDeleteSlide')->name('actionSlideDelete'); // Action удалить слайд
+    Route::get('/sliders', 'SlideController@viewAllSliders')->name('viewSliders'); // Display a listing of the sliders.
+    Route::get('/sliders/add', 'SlideController@viewSliderAddPage')->name('viewSlideAdd'); // Show the form for creating a new slide.
+    Route::post('/sliders/add/save', 'SlideController@actionSaveNewSlide')->name('actionNewSlide'); // Store a newly created slider in storage.
+    Route::get('/sliders/update/{id}', 'SlideController@viewSlideUpdatePage')->name('viewSlideUpdate'); // Show the form for editing a slide.
+    Route::post('/sliders/update/save', 'SlideController@actionSlideSaveUpdate')->name('actionSlideSave'); // Update a slide in storage.
+    Route::get('/sliders/delete/{id}', 'SlideController@actionDeleteSlide')->name('actionSlideDelete'); // Remove a slide from storage.
 
     // Orders
     Route::get('/orders', 'OrdersController@adminViewAllOrders')->name('viewAllOrders'); // Display all list of orders.

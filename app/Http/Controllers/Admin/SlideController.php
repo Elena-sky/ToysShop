@@ -18,24 +18,44 @@ class SlideController extends Controller
         $this->middleware(['auth', 'clearance'])->except('index', 'show');
     }
 
-    // View Управление слайдерами
+
+    /**
+     * Display a listing of the sliders.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewAllSliders()
     {
         $sliders = Sliders::all();
 
-        return view('admin.slide.slideView', ['sliders' => $sliders]);
+        return view('admin.slide.slideView', compact('sliders'));
     }
 
-    //View Добавление нового слайдера
+
+    /**
+     * Show the form for creating a new slide.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewSliderAddPage()
     {
-
         return view('admin.slide.slideAdd');
     }
 
-    // Action Добавление нового слайдера
+
+    /**
+     * Store a newly created slider in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionSaveNewSlide(Request $request)
     {
+        //Validating
+        $this->validate($request, [
+            'images[]' => 'image|mimes:jpg,png',
+            'displaing' => 'required|integer',
+        ]);
 
         $path = '/sliders';  // Папка для загрузки слайдов
         $fileName = self::uploader($request, $path);
@@ -52,24 +72,42 @@ class SlideController extends Controller
         return \redirect(route('viewSlideAdd'));
     }
 
-    // View редактирование слайда
+
+    /**
+     * Show the form for editing a slide.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewSlideUpdatePage($id)
     {
         $slide = Sliders::find($id);
 
-        return view('admin.slide.slideUpdate', ['slide' => $slide]);
+        return view('admin.slide.slideUpdate', compact('slide'));
     }
 
-    // Action сохранить редактироование
+
+    /**
+     * Update a slide in storage.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionSlideSaveUpdate()
     {
         $data = $_POST;
         $slideData = Sliders::find($data['id']);
         $slideData->update($data);
+
         return \redirect(route('viewSliders'));
     }
 
-    // Action удалить слайд
+
+    /**
+     * Remove a slide from storage.
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function actionDeleteSlide($id)
     {
         $slideDelete = Sliders::find($id);
