@@ -39,6 +39,8 @@
 
     <!-- your stylesheet with modifications -->
     <link href="{{ asset("css/1/custom.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/1/style.css") }}" rel="stylesheet">
+
 
     <script src=""{{ asset("js/1/respond.min.js") }}></script>
 

@@ -30,34 +30,39 @@ _________________________________________________________ -->
 
                         @foreach($goods as $good)
                             <div class="col-md-4 col-sm-6">
-                                <div class="product">
+                                <div class="product product-img">
                                     <div class="flip-container">
                                         <div class="flipper">
-                                            <div class="front">
+                                            <div class="front div-for-img">
                                                 <a href="{{route('goodView',['id' => $good->id])}}">
                                                     @if(isset($good->goodImg[1]->filename))
                                                         <img src="{{asset("/uploads/goods/".$good->goodImg[0]->filename) }}"
-                                                             alt="{{$good->name}}" class="img-responsive">
+                                                             alt="{{$good->name}}"
+                                                             class="img-responsive goods-of-category">
                                                     @elseif(isset($good->goodImg[0]->filename))
                                                         <img src="{{asset("/uploads/goods/".$good->goodImg[0]->filename) }}"
-                                                             alt="{{$good->name}}" class="img-responsive">
+                                                             alt="{{$good->name}}"
+                                                             class="img-responsive goods-of-category">
                                                     @else
                                                         <img src="{{ asset("/uploads/no_picture.jpg") }}"
-                                                             alt="no_picture" class="img-responsive">
+                                                             alt="no_picture" class="img-responsive goods-of-category">
                                                     @endif
                                                 </a>
                                             </div>
-                                            <div class="back">
+                                            <div class="back div-for-img">
                                                 <a href="{{route('goodView',['id' => $good->id])}}">
                                                     @if(isset($good->goodImg[1]->filename))
+
                                                         <img src="{{url( asset("/uploads/goods/".$good->goodImg[1]->filename)) }}"
-                                                             alt="{{$good->name}}" class="img-responsive">
+                                                             alt="{{$good->name}}"
+                                                             class="img-responsive goods-of-category">
                                                     @elseif(isset($good->goodImg[0]->filename))
                                                         <img src="{{url( asset("/uploads/goods/".$good->goodImg[0]->filename)) }}"
-                                                             alt="{{$good->name}}" class="img-responsive">
+                                                             alt="{{$good->name}}"
+                                                             class="img-responsive goods-of-category">
                                                     @else
                                                         <img src="{{ asset("/uploads/no_picture.jpg") }}"
-                                                             alt="no_picture" class="img-responsive">
+                                                             alt="no_picture" class="img-responsive goods-of-category">
                                                     @endif
                                                 </a>
                                             </div>
@@ -73,7 +78,7 @@ _________________________________________________________ -->
                                                  alt="no_picture" class="img-responsive">
                                         @endif
                                     </a>
-                                    <div class="text">
+                                    <div class="text product-text">
                                         <h3><a href="{{route('goodView',['id' => $good->id])}}">{{$good->name}}</a></h3>
                                         <p class="price">{{$good->price}} грн</p>
                                         <p class="buttons">

@@ -1,0 +1,23 @@
+
+.div-for-img {
+    height: 203px;
+}
+
+.goods-of-category {
+    max-height: 203px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.product-img {
+    height: 387px;
+}
+
+.product-text {
+    position: absolute;
+    bottom: 30px;
+}
