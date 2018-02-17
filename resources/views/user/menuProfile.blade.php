@@ -7,10 +7,10 @@
     <div class="panel-body">
 
         <ul class="nav nav-pills nav-stacked">
-            <li class="active">
+            <li class="{{ (url()->current() == route('viewOldOrders'))? 'active':''}}">
                 <a href="{{ route('viewOldOrders') }}"><i class="fa fa-list"></i> Мои заказы</a>
             </li>
-            <li>
+            <li class="{{ (url()->current() == route('profile'))? 'active':''}}">
                 <a href="{{ route('profile') }}"><i class="fa fa-user"></i> Мой профиль</a>
             </li>
             <li>
