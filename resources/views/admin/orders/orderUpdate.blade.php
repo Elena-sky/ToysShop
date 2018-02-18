@@ -19,7 +19,7 @@
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
-            <div class="row " style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {!! Form::model($order, array('route' => array('actionOrderSave'))
                 ) !!}
                 <input name="id" type="hidden" value="{{$order->id}}">
@@ -62,13 +62,8 @@
                     </div>
                 </div>
 
+                {{ Form::button('Сохранить', ['class' => 'btn btn-success', 'type' => 'submit']) }}
 
-                <div class="form-group ">
-                    <div class=" col-sm-10">
-                        <h3>{{ Form::button('Сохранить', ['class' => 'btn btn-success', 'type' => 'submit']) }}
-                        </h3>
-                    </div>
-                </div>
                 {!! Form::close() !!}
             </div>
         </div>

@@ -16,7 +16,7 @@
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
-            <div class="row " style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {{ Form::open(array('route' => array('roleCreateSave'))) }}
 
                 <div class="form-group">

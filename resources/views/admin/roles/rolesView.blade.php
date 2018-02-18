@@ -16,8 +16,7 @@
         <div class="container">
             <div class="row">
 
-
-                <div class="container">
+                <div class=" form-group">
                     <a href="{{route('roleCreate')}}">
                         <button type="button" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Создать новую роль
@@ -30,7 +29,6 @@
                     <tr class="table-info">
                         <th>Роль</th>
                         <th>Разрешения</th>
-                        <th>Операции</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -44,9 +42,11 @@
                             <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>
                             {{-- Retrieve array of permissions associated to a role and convert to string --}}
                             <td>
-                                <a href="{{route('roleUpdate', $role->id)}}" class="btn btn-warning pull-left"
-                                   style="margin-right: 3px;">Редактировать</a>
+                                <a href="{{route('roleUpdate', $role->id)}}" class="btn btn-warning pull-left upd">
+                                    Редактировать</a>
+                            </td>
 
+                            <td>
                                 {!! Form::open(['method' => 'DELETE', 'route' => ['roleDelete', $role->id] ]) !!}
                                 {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}

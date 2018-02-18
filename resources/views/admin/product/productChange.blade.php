@@ -10,7 +10,7 @@
             <li class="breadcrumb-item">
                 <a href="{{route('adminPageView')}}">Админпанель</a>
             </li>
-            <li class="breadcrumb-item active">Управление товарами</li>
+            <li class="breadcrumb-item active"><i class="fa fa-fw fa-list-alt"></i> Управление товарами</li>
         </ol>
         <!-- Area Chart Example-->
 
@@ -41,7 +41,7 @@
                         </div>
                     </div>
 
-                    <table class="table table-striped" id="mytable" cellspacing="0" style="width: 100%;">
+                    <table class="table table-striped" id="mytable" cellspacing="0">
                         <thead>
                         <tr class="table-info">
                             <th>Категория</th>

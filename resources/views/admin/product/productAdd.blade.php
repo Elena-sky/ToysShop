@@ -18,7 +18,7 @@
         <!-- Area Chart Example-->
 
         <div class="container">
-            <div class="row" style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {!! Form::model('', array('route' => array('actionNewAddProduct'), 'files' => true)
                 ) !!}
 
@@ -95,12 +95,8 @@
                     </div>
                 </div>
 
-                <div class="form-group ">
-                    <div class=" col-sm-10">
-                        <h3>{{ Form::button('Создать товар', ['class' => 'btn btn-success', 'type' => 'submit']) }}
-                        </h3>
-                    </div>
-                </div>
+                {{ Form::button('Создать товар', ['class' => 'btn btn-success', 'type' => 'submit']) }}
+
                 {!! Form::close() !!}
             </div>
         </div>

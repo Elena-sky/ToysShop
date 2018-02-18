@@ -76,7 +76,7 @@
                             </table>
                         </div>
 
-                        <div style="margin-bottom: 50px">
+                        <div class="adm-table">
                             <table class="table table-striped">
                                 <tr class="max-sunbol">
                                     <td>Комментарий к заказу:</td>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 50px">
+                    <div class="adm-table">
                         <h3>Информация о доставке</h3>
                         <table class="table">
                             <thead>
@@ -122,7 +122,7 @@
                         </table>
                     </div>
 
-                    <div style="margin-bottom: 50px">
+                    <div class="adm-table">
                         <h3>Товары</h3>
                         <table class="table table-striped">
                             <thead>
@@ -157,8 +157,9 @@
                                                         <span class="glyphicon glyphicon-minus">-</span>
                                                     </button>
                                                 </span>
-                                                <input type="text" style="width: 60px" name="{{$good->id}}"
-                                                       class="form-control input-number" data-token="{{ csrf_token() }}"
+                                                <input type="text" name="{{$good->id}}"
+                                                       class="form-control input-number "
+                                                       data-token="{{ csrf_token() }}"
                                                        value="{{$orderGoods->count}}">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-success btn-number"
@@ -169,8 +170,8 @@
                                                 </span>
                                             </div>
                                         @elsecannot('Orders-Edit')
-                                            <input type="text" style="width: 60px" name="{{$good->id}}"
-                                                   class="form-control input-number" data-token="{{ csrf_token() }}"
+                                            <input type="text" name="{{$good->id}}"
+                                                   class="form-control input-number " data-token="{{ csrf_token() }}"
                                                    value="{{$orderGoods->count}}">
                                         @endcan
                                     </td>
@@ -179,7 +180,7 @@
 
                                     <td>
                                         <div>
-                                            <img style="max-width: 100px;"
+                                            <img class="max-w100"
                                                  src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
                                         </div>
                                     </td>

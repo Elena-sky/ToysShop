@@ -16,11 +16,10 @@
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
-            <div class="row " style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {{ Form::model($role, array('route' => array('roleSaveUpdate'), 'method' => 'POST')) }}
 
                 <input name="id" type="hidden" value="{{$role->id}}">
-
 
                 <div class="form-group">
                     {{ Form::label('name', 'Имя роли') }}

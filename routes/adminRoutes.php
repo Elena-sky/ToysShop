@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/users/delete/{id}', 'UserController@actionUserDelete')->name('userDelete'); // Remove the specified resource from storage.
     Route::get('/users/user/{id}', 'UserController@adminViewUserPage')->name('viewUserPage'); // View user profile.
 
+
     Route::group(['middleware' => 'web'], function () {
         Route::get('fileUpload', function () {
             return view('fileUpload');

@@ -9,13 +9,13 @@
             <li class="breadcrumb-item">
                 <a href="{{route('adminPageView')}}">Админпанель</a>
             </li>
-            <li class="breadcrumb-item active">Управление категориями</li>
+            <li class="breadcrumb-item active"><i class="fa fa-fw fa-table"></i> Управление категориями</li>
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row">
                 @can('Categories-Create')
-                <div class="container ">
+                    <div class="col-md-12 form-group">
                     <a href="{{route('addCategory')}}">
                         <button type="button" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Добавить новую категорию

@@ -9,7 +9,7 @@
             <li class="breadcrumb-item">
                 <a href="{{route('adminPageView')}}">Админпанель</a>
             </li>
-            <li class="breadcrumb-item active">Заказы</li>
+            <li class="breadcrumb-item active"><i class="fa fa-fw fa-shopping-cart"></i> Заказы</li>
         </ol>
         <!-- Area Chart Example-->
         <div class="container">

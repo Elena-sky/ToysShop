@@ -10,13 +10,13 @@
             <li class="breadcrumb-item">
                 <a href="{{route('adminPageView')}}">Админпанель</a>
             </li>
-            <li class="breadcrumb-item active">Управление слайдерами</li>
+            <li class="breadcrumb-item active"><i class="fa  fa-fw fa-picture-o"></i> Управление слайдерами</li>
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row">
                 @can('Sliders-Create')
-                    <div class="container ">
+                    <div class="col-md-12 form-group">
                         <a href="{{route('viewSlideAdd')}}">
                             <button type="button" class="btn btn-primary">
                                 <i class="fa fa-plus"></i> Добавить новый слайд

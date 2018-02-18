@@ -36,37 +36,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Админ-панель">
                 <a class="nav-link" href="{{route('adminPageView')}}">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Админ-панель</span>
                 </a>
             </li>
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Заказы">
                 <a class="nav-link" href="{{route('viewAllOrders')}}">
                     <i class="fa fa-fw fa-shopping-cart"></i>
                     <span class="nav-link-text">Заказы</span>
                 </a>
             </li>
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление товарами">
                 <a class="nav-link" href="{{route('productView')}}">
                     <i class="fa fa-fw fa-list-alt"></i>
                     <span class="nav-link-text">Управление товарами</span>
                 </a>
             </li>
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление категориями">
                 <a class="nav-link" href="{{route('viewCategory')}}">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Управление категориями</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="navbar.html">Navbar</a>
-                    </li>
-                    <li>
-                        <a href="cards.html">Cards</a>
-                    </li>
-                </ul>
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Управление слайдерами">

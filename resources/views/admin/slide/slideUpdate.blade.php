@@ -16,7 +16,7 @@
             </ol>
             <!-- Area Chart Example-->
             <div class="container">
-                <div class="row " style="display: inline-block;width: 100%;">
+                <div class="row adm-row">
                     {!! Form::model($slide, array('route' => array('actionSlideSave'), 'files' => true)
                     ) !!}
                     <input name="id" type="hidden" value="{{$slide->id}}">
@@ -36,12 +36,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group ">
-                        <div class=" col-sm-10">
-                            <h3>{{ Form::button('Сохранить', ['class' => 'btn btn-success', 'type' => 'submit']) }}
-                            </h3>
-                        </div>
-                    </div>
+                    {{ Form::button('Сохранить', ['class' => 'btn btn-success', 'type' => 'submit']) }}
+
                     {!! Form::close() !!}
                 </div>
             </div>

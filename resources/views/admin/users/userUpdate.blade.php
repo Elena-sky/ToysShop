@@ -16,7 +16,7 @@
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
-            <div class="row " style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {{ Form::model($user, array('route' => array('actionSaveUser'), 'method' => 'POST')) }}
                 {{-- Form model binding to automatically populate our fields with user data --}}
 
@@ -55,10 +55,7 @@
 
                 </div>
 
-                <div class="form-group ">
-                    {{ Form::submit('Сохранить изменения', array('class' => 'btn btn-success')) }}
-
-                </div>
+                {{ Form::submit('Сохранить изменения', array('class' => 'btn btn-success')) }}
 
                 {!! Form::close() !!}
 

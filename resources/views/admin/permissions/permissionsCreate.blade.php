@@ -16,7 +16,7 @@
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
-            <div class="row " style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {{ Form::open(array('route' => array('permissionsSaveCreate'))) }}
 
                 <div class="form-group">
@@ -31,8 +31,8 @@
                 @foreach ($roles as $role)
                     {{ Form::checkbox('roles[]',  $role->id ) }}
                     {{ Form::label($role->name, ucfirst($role->name)) }}<br>
-
                 @endforeach
+
                 @endif
                 <br>
                 {{ Form::submit('Создать', array('class' => 'btn btn-success')) }}

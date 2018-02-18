@@ -16,7 +16,7 @@
         </ol>
         <!-- Area Chart Example-->
         <div class="container">
-            <div class="row " style="display: inline-block;width: 100%;">
+            <div class="row adm-row">
                 {{ Form::model($permission, array('route' => array('permissionsSaveUpdate'), 'method' => 'POST')) }}
                 {{-- Form model binding to automatically populate our fields with permission data --}}
                 <input name="id" type="hidden" value="{{$permission->id}}">

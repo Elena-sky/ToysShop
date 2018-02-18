@@ -47,11 +47,4 @@ class AdminController extends Controller
         return view('admin.index', compact('countNewOrders', 'countProduct', 'countUser', 'categories', 'lastNewGoods'));
     }
 
-
-
-
-
-
-
-
 }
