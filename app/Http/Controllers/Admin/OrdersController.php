@@ -29,7 +29,7 @@ class OrdersController extends Controller
      */
     public function adminViewAllOrders()
     {
-        $orders = (empty($_GET['isnew'])) ? Orders::all() : Orders::where('is_new', $_GET['isnew'])->get();
+        $orders = (!isset($_GET['isnew'])) ? Orders::all() : Orders::where('is_new', $_GET['isnew'])->get();
 
         return view('admin.orders.ordersView', compact('orders'));
     }
