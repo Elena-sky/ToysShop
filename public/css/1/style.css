@@ -1,4 +1,3 @@
-
 .div-for-img {
     height: 203px;
 }
@@ -20,4 +19,18 @@
 .product-text {
     position: absolute;
     bottom: 30px;
+}
+
+.slider-prod-img {
+    max-height: 203px;
+    margin: auto;
+}
+
+.slider-text {
+    margin-top: 190px;
+    text-align: center;
+}
+
+.goods-of-slide {
+
 }

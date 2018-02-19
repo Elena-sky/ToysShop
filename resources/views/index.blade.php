@@ -84,43 +84,45 @@
 
                         @foreach($lastNewGoods as $newGood)
                         <div class="item">
-                            <div class="product">
+                            <div class="product slider-prod">
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="{{route('goodView',['id' => $newGood->id])}}">
                                                 @if(isset($newGood->goodImg[1]->filename))
                                                     <img src="{{asset("/uploads/goods/".$newGood->goodImg[0]->filename) }}"
-                                                         alt="{{$newGood->name}}" class="img-responsive">
+                                                         alt="{{$newGood->name}}"
+                                                         class="img-responsive slider-prod-img">
                                                 @elseif(isset($newGood->goodImg[0]->filename))
                                                     <img src="{{asset("/uploads/goods/".$newGood->goodImg[0]->filename) }}"
-                                                         alt="{{$newGood->name}}" class="img-responsive">
+                                                         alt="{{$newGood->name}}"
+                                                         class="img-responsive slider-prod-img">
                                                 @else
                                                     <img src="{{ asset("/uploads/no_picture.jpg") }}"
-                                                         alt="no_picture" class="img-responsive">
+                                                         alt="no_picture" class="img-responsive slider-prod-img">
                                                 @endif
+                                                {{--class="img-responsive"--}}
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="{{route('goodView',['id' => $newGood->id])}}">
                                                 @if(isset($newGood->goodImg[1]->filename))
                                                     <img src="{{url( asset("/uploads/goods/".$newGood->goodImg[1]->filename)) }}"
-                                                         alt="{{$newGood->name}}" class="img-responsive">
+                                                         alt="{{$newGood->name}}"
+                                                         class="img-responsive slider-prod-img">
                                                 @elseif(isset($newGood->goodImg[0]->filename))
                                                     <img src="{{url( asset("/uploads/goods/".$newGood->goodImg[0]->filename)) }}"
-                                                         alt="{{$newGood->name}}" class="img-responsive">
+                                                         alt="{{$newGood->name}}"
+                                                         class="img-responsive slider-prod-img">
                                                 @else
                                                     <img src="{{ asset("/uploads/no_picture.jpg") }}"
-                                                         alt="no_picture" class="img-responsive">
+                                                         alt="no_picture" class="img-responsive slider-prod-img">
                                                 @endif
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="{{route('goodView',['id' => $newGood->id])}}" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
+                                <div class="text slider-text">
                                     <h3><a href="{{route('goodView',['id' => $newGood->id])}}">{{$newGood->name}}</a>
                                     </h3>
                                     <p class="price">
