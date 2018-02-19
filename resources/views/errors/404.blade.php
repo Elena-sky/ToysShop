@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="error-template" style="text-align: center; padding: 40px 15px;">
+            <div class="error-template errors-css">
                 <p class="text-center">
                     <img src="{{ asset("img/logo.png") }}" alt="Obaju template">
                 </p>

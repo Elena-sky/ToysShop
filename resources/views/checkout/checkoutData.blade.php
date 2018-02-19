@@ -247,7 +247,7 @@
 
                                     <tr>
                                         <td>
-                                            <img alt="{{$row->name}}" style=" width: 72px; height: 72px;"
+                                            <img class="img-checkout" alt="{{$row->name}}"
                                                  src="{{url( asset("/uploads/goods/".\App\Http\Controllers\CartController::getGoodMainImage($row->id))) }}"/>
                                         </td>
                                         <th>{{$row->name}}</th>

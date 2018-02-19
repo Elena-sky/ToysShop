@@ -31,6 +31,12 @@
     text-align: center;
 }
 
-.goods-of-slide {
+.img-checkout {
+    width: 72px;
+    height: 72px;
+}
 
+.errors-css {
+    text-align: center;
+    padding: 40px 15px;
 }
