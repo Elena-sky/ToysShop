@@ -36,7 +36,7 @@
                         {!! Form::open(['id' => 'contactform', 'method' => 'POST', 'class' => 'validateform']) !!}
                         {{ csrf_field() }}
 
-                        <div id="sendmessage" style="display:none;">
+                        <div id="sendmessage send-message">
 
                             <div class="col-sm-6 col-sm-offset-3">
                                 <div class="box">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="senderror" style="display:none;">
+                        <div id="senderror  send-message">
                             <div class="col-sm-6 col-sm-offset-3">
                                 <div class="box">
 
@@ -66,7 +66,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="row">
                             <input name="id" type="hidden" value="{{$user->id ?? ''}}">
@@ -106,8 +105,6 @@
                             </div>
                             <!-- /.row -->
                         {!! Form::close() !!}
-
-
                     </div>
 
                 </div>
@@ -116,7 +113,4 @@
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
-
-
 @endsection

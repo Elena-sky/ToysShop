@@ -147,6 +147,7 @@
                                     </div>
                                     <!-- /.content -->
                                 </div>
+
                                 <div id="comments" class="tab-pane fade">
                                     <h3>Выберете метод оплаты</h3>
 
@@ -243,8 +244,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($items as $row )
 
+                                @foreach($items as $row )
                                     <tr>
                                         <td>
                                             <img class="img-checkout" alt="{{$row->name}}"
@@ -255,8 +256,8 @@
                                         <th>{{$row->price}} грн</th>
                                         <th>{{$row->price * $row->qty}} грн</th>
                                     </tr>
-
                                 @endforeach
+
                                 </tbody>
                             </table>
                         </div>
@@ -265,9 +266,7 @@
                                 <h4> К оплате: {{Cart::subtotal ()}} грн</h4> (без учета доставки)
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <!-- /.col-md-3 -->
 

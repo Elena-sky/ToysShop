@@ -10,7 +10,6 @@
                 <div class="col-md-12">
                     <div id="main-slider">
 
-
                         <?php $item_class = 'img-responsive'; ?>
                         @foreach($slides as $slide)
                             <div class="item <?= $item_class; ?>">
@@ -21,7 +20,6 @@
 
                             </div>
                         @endforeach
-
 
                     </div>
                     <!-- /#main-slider -->
@@ -39,7 +37,7 @@
                             <a href="{{route('goodsByCategory',['id' => $category->id])}}">
 
                                 <div class="col-sm-4">
-                                    <div class="box same-height clickable" style="height: 200px; width: 100%;">
+                                    <div class="box same-height clickable categ">
                                         <div>
                                             <img class=" img-rounded img-responsive"
                                                  src="{{ asset("/uploads/category/$category->image") }}"
@@ -156,7 +154,5 @@
             <!-- *** NEW END *** -->
         </div>
         <!-- /#content -->
-
-
 
 @endsection

@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <div id="all">
 
         <div id="content">
@@ -68,7 +66,6 @@ _________________________________________________________ -->
                                         wishlist</a>
                                 </p>
 
-
                             </div>
 
                             <div class="row" id="thumbs">
@@ -84,11 +81,9 @@ _________________________________________________________ -->
                                 @endif
                             </div>
 
-
                         </div>
 
                     </div>
-
 
                     <div class="box" id="details">
                         <p>

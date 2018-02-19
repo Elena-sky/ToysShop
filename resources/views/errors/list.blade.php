@@ -7,6 +7,5 @@
             @endforeach
         </ul>
     </div>
+
 @endif
-
-

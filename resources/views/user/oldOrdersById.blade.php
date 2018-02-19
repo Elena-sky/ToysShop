@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div id="all">
 
         <div id="content">

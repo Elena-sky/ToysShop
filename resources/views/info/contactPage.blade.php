@@ -24,9 +24,7 @@
 
                 </div>
 
-
                 <div class="col-md-9">
-
 
                     <div class="box" id="contact">
                         <h1>Контакт-центр</h1>
@@ -76,7 +74,5 @@
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
-
 
 @endsection

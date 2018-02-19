@@ -17,8 +17,8 @@
                             <?php $good = \App\Goods::find($orderGoods->goods_id) ?>
                             <tbody>
                             <tr>
-                                <th style="display: -webkit-box;">
-                                    <div style="max-width: 100px;">
+                                <th class="old-o-by-id-th">
+                                    <div class="old-o-by-id-div">
                                         <img src="{{url( asset("/uploads/goods/".$good->getFirstImage())) }}"/>
                                     </div>
                                 </th>
@@ -32,7 +32,7 @@
                         @endforeach
                     </table>
 
-                    <div style="float:  right;">
+                    <div class="old-o-by-id-st">
                         <div><h5>Статус оплаты: <b>{{($order->is_paid)? 'Оплачен' : 'Неоплачен'}}</b></h5></div>
                         <div>
                             <h5>Статус заказа: {{($order->status)? 'Обрабатываеться' : 'Обработан'}}</h5>

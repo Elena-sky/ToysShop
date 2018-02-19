@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <div id="all">
 
         <div id="content">
@@ -22,7 +20,6 @@ _________________________________________________________ -->
             @include('products.menuAndFilters')
 
             <!-- *** MENUS AND FILTERS END *** -->
-
 
                 <div class="col-md-9">
 
@@ -111,7 +108,6 @@ _________________________________________________________ -->
                     <div class="pages">
                         {{$goods->links()}}
                     </div>
-
 
                 </div>
                 <!-- /.col-md-9 -->

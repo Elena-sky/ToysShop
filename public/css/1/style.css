@@ -21,6 +21,11 @@
     bottom: 30px;
 }
 
+.categ {
+    height: 200px;
+    width: 100%;
+}
+
 .slider-prod-img {
     max-height: 203px;
     margin: auto;
@@ -40,3 +45,20 @@
     text-align: center;
     padding: 40px 15px;
 }
+
+.send-message {
+    display: none;
+}
+
+.old-o-by-id-th {
+    display: -webkit-box;
+}
+
+.old-o-by-id-div {
+    max-width: 100px;
+}
+
+.old-o-by-id-st {
+    float: right;
+}
+
