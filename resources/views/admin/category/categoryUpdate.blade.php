@@ -17,9 +17,11 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row adm-row">
-                {!! Form::model($category, array('route' => array('actionSaveUpdateCategory'), 'files' => true)
+                {!! Form::model($category, array('route' => array('actionSaveUpdateCategory', $category->id), 'files' => true)
                 ) !!}
-                <input name="id" type="hidden" value="{{$category->id}}">
+
+                <input type="hidden" name="_method" value="PUT">
+
 
                 <div class="form-group">
                     {!! Form::label('categoryName', 'Название:') !!}

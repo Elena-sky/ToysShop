@@ -124,7 +124,7 @@ class CategoryController extends Controller
 
         $path = '/category';  // Папка для загрузки картинки
         $data = Input::except(['_method', '_token']);
-        $categoryData = Categories::find($data['id']);
+        $categoryData = Categories::find($request->route('id'));
         $categoryData->update($data);
 
         if ($request->hasFile('image')) {

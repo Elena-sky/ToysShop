@@ -70,11 +70,9 @@
 
                                 <td>
                                     @can('Categories-Delete')
-                                        <a href="{{route('actionDeleteCategory', [$category->id])}}">
-                                            <button type="button" class="btn btn-danger"><span
-                                                        class="glyphicon glyphicon-remove"></span> Удалить
-                                            </button>
-                                        </a>
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['actionDeleteCategory', $category->id] ]) !!}
+                                        {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::close() !!}
                                     @endcan
                                 </td>
 
