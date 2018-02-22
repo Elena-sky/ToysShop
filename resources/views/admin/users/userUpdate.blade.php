@@ -17,11 +17,10 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row adm-row">
-                {{ Form::model($user, array('route' => array('actionSaveUser'), 'method' => 'POST')) }}
+                {{ Form::model($user, array('route' => array('actionSaveUser', $user->id))) }}
                 {{-- Form model binding to automatically populate our fields with user data --}}
 
-                <input name="id" type="hidden" value="{{$user->id}}">
-
+                <input type="hidden" name="_method" value="PUT">
 
                 <div class="form-group">
                     {{ Form::label('userName', 'Имя') }}

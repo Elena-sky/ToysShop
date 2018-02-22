@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/users/create', 'UserController@viewUserCreate')->name('userCreate'); // Show the form for creating a new resource.
     Route::post('/users/create/save', 'UserController@actionUserStore')->name('userStore'); // Store a newly created resource in storage.
     Route::get('/users/update/{id}', 'UserController@viewUserUpdate')->name('viewUserUpdate'); // Show the form for editing the specified resource.
-    Route::post('/users/update/save', 'UserController@actionSaveUserUpdate')->name('actionSaveUser'); // Update the specified resource in storage.
+    Route::put('/users/save/{id}', 'UserController@actionSaveUserUpdate')->name('actionSaveUser'); // Update the specified resource in storage.
     Route::delete('/users/delete/{id}', 'UserController@actionUserDelete')->name('userDelete'); // Remove the specified resource from storage.
     Route::get('/users/user/{id}', 'UserController@adminViewUserPage')->name('viewUserPage'); // View user profile.
 
