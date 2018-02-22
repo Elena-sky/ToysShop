@@ -150,7 +150,7 @@ class ProductController extends Controller
         $fileName = self::uploader($request, $path);
 
         $data = Input::except(['_method', '_token']);
-        $goodData = Goods::find($data['id']);
+        $goodData = Goods::find($request->route('id'));
         $goodData->update($data);
 
         $productId = $goodData->id;

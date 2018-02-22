@@ -90,14 +90,9 @@
 
                                 <td>
                                     @can('Product-Delete')
-                                        <a href="{{route('actionDeleteProduct', [$good->id])}}">
-                                            <button type="button" class="btn btn-danger"><span
-                                                        class="glyphicon glyphicon-remove"></span> Удалить
-                                            </button>
-                                        </a>
-                                        {{--{!! Form::open(['method' => 'post', 'route' => ['actionDeleteProduct', $good->id] ]) !!}--}}
-                                        {{--{!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}--}}
-                                        {{--{!! Form::close() !!}--}}
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['actionDeleteProduct', $good->id] ]) !!}
+                                        {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::close() !!}
                                     @endcan
                                 </td>
 
