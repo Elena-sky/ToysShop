@@ -20,9 +20,10 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row adm-row">
-                {!! Form::model($order, array('route' => array('actionOrderSave'))
+                {!! Form::model($order, array('route' => array('actionOrderSave', $order->id))
                 ) !!}
-                <input name="id" type="hidden" value="{{$order->id}}">
+
+                <input type="hidden" name="_method" value="PUT">
 
                 <div class="form-group ">
                     {!! Form::label('is_ew', 'Состояние заказа:') !!}

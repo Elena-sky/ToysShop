@@ -65,10 +65,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/orders', 'OrdersController@adminViewAllOrders')->name('viewAllOrders'); // Display all list of orders.
     Route::get('/orders/order/{id}', 'OrdersController@adminViewOneOrder')->name('viewOneOrder'); // Display one order.
     Route::get('/order/delivery-update/{id}', 'OrdersController@adminViewDeliveryUpdate')->name('viewDeliveryUpdate'); // Show the form for editing the delivery.
-    Route::post('/order/delivery-update/save', 'OrdersController@adminActionDeliverySave')->name('actionDeliverySave'); // Update of delivery
+    Route::put('/order/delivery-update/save/{id}', 'OrdersController@adminActionDeliverySave')->name('actionDeliverySave'); // Update of delivery
     Route::get('/order/order-update/{id}', 'OrdersController@adminViewOrderUpdate')->name('viewOrderUpdate'); // Show page order for editing.
-    Route::post('/order/order-updste/save', 'OrdersController@adminActionOrderSave')->name('actionOrderSave'); // Update order page.
-    Route::get('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); // Remove order.
+    Route::put('/order/order-update/save/{id}', 'OrdersController@adminActionOrderSave')->name('actionOrderSave'); // Update order page.
+    Route::delete('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); // Remove order.
 
 });
 

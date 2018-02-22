@@ -75,11 +75,9 @@
                                 </td>
                                 <td>
                                     @can('Orders-Delete')
-                                        <a href="{{route('orderDelete', [$order->id])}}">
-                                            <button type="button" class="btn btn-danger"><span
-                                                        class="glyphicon glyphicon-pencil"></span> Удалить заказ
-                                            </button>
-                                        </a>
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['orderDelete', $order->id] ]) !!}
+                                        {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::close() !!}
                                     @endcan
                                 </td>
                             </tr>

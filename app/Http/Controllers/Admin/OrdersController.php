@@ -69,13 +69,14 @@ class OrdersController extends Controller
     /**
      * Update of delivery
      *
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function adminActionDeliverySave()
+    public function adminActionDeliverySave(Request $request)
     {
-        $data = $_POST;
+        $data = Input::except(['_method', '_token']);
         $orderid = $data['orderId'];
-        $deliveryData = OrdersDelivery::find($data['id']);
+        $deliveryData = OrdersDelivery::find($request->id);
         $deliveryData->update($data);
 
         return \redirect(route('viewOneOrder', compact('orderid')));
@@ -100,16 +101,16 @@ class OrdersController extends Controller
     /**
      * Update order page.
      *
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function adminActionOrderSave()
+    public function adminActionOrderSave(Request $request)
     {
-        $data = $_POST;
-        $orderid = $data['id'];
-        $orderData = Orders::find($orderid);
+        $data = Input::except(['_method', '_token']);
+        $orderData = Orders::find($request->id);
         $orderData->update($data);
 
-        return \redirect(route('viewOneOrder', compact('orderid')));
+        return \redirect(route('viewOneOrder', ['orderid' => $request->id]));
     }
 
 
