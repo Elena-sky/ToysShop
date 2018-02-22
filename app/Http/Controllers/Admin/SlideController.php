@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sliders;
 use App\ImageUploader;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Input;
 
 
@@ -90,13 +91,13 @@ class SlideController extends Controller
     /**
      * Update a slide in storage.
      *
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function actionSlideSaveUpdate()
+    public function actionSlideSaveUpdate(Request $request)
     {
-        $data = $_POST;
-        $slideData = Sliders::find($data['id']);
-        $slideData->update($data);
+        $slideData = Sliders::find($request->route('id'));
+        $slideData->update($request->only(['displaing']));
 
         return \redirect(route('viewSliders'));
     }

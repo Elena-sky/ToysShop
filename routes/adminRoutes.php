@@ -58,7 +58,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/sliders/add', 'SlideController@viewSliderAddPage')->name('viewSlideAdd'); // Show the form for creating a new slide.
     Route::post('/sliders/add/save', 'SlideController@actionSaveNewSlide')->name('actionNewSlide'); // Store a newly created slider in storage.
     Route::get('/sliders/update/{id}', 'SlideController@viewSlideUpdatePage')->name('viewSlideUpdate'); // Show the form for editing a slide.
-    Route::post('/sliders/update/save', 'SlideController@actionSlideSaveUpdate')->name('actionSlideSave'); // Update a slide in storage.
+    Route::put('/sliders/save/{id}', 'SlideController@actionSlideSaveUpdate')->name('actionSlideSave'); // Update a slide in storage.
     Route::get('/sliders/delete/{id}', 'SlideController@actionDeleteSlide')->name('actionSlideDelete'); // Remove a slide from storage.
 
     // Orders

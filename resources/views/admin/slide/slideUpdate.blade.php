@@ -17,9 +17,10 @@
             <!-- Area Chart Example-->
             <div class="container">
                 <div class="row adm-row">
-                    {!! Form::model($slide, array('route' => array('actionSlideSave'), 'files' => true)
+                    {!! Form::model($slide, array('route' => array('actionSlideSave', $slide->id), 'files' => true)
                     ) !!}
-                    <input name="id" type="hidden" value="{{$slide->id}}">
+
+                    <input type="hidden" name="_method" value="PUT">
 
                     <div class="form-group ">
                         {!! Form::label('slideImage', 'Текущее изображение:') !!}
