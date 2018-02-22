@@ -17,7 +17,7 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row adm-row">
-                {{ Form::model($permission, array('route' => array('permissionsSaveUpdate', $permission->id), 'method' => 'POST')) }}
+                {{ Form::model($permission, array('route' => array('permissionsSaveUpdate', $permission->id))) }}
                 {{-- Form model binding to automatically populate our fields with permission data --}}
                 <input type="hidden" name="_method" value="PUT">
 

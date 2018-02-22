@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/roles/create', 'RoleController@roleCreateView')->name('roleCreate'); // Show the form for creating a new resource.
     Route::post('/roles/create/save', 'RoleController@roleSaveCreate')->name('roleCreateSave'); // Store a newly created resource in storage.
     Route::get('/roles/update/{id}', 'RoleController@roleUpdateView')->name('roleUpdate'); // Show the form for editing the specified resource.
-    Route::post('/roles/update/save', 'RoleController@roleUpdateSave')->name('roleSaveUpdate'); // Update the specified resource in storage.
+    Route::put('/roles/save/{id}', 'RoleController@roleUpdateSave')->name('roleSaveUpdate'); // Update the specified resource in storage.
     Route::delete('/roles/delete/{id}', 'RoleController@roleDeleteAction')->name('roleDelete'); // Remove the specified resource from storage.
 
     // Users

@@ -17,9 +17,9 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row adm-row">
-                {{ Form::model($role, array('route' => array('roleSaveUpdate'), 'method' => 'POST')) }}
+                {{ Form::model($role, array('route' => array('roleSaveUpdate', $role->id))) }}
 
-                <input name="id" type="hidden" value="{{$role->id}}">
+                <input type="hidden" name="_method" value="PUT">
 
                 <div class="form-group">
                     {{ Form::label('name', 'Имя роли') }}
