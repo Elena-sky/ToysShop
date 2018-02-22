@@ -17,9 +17,9 @@
         <!-- Area Chart Example-->
         <div class="container">
             <div class="row adm-row">
-                {{ Form::model($permission, array('route' => array('permissionsSaveUpdate'), 'method' => 'POST')) }}
+                {{ Form::model($permission, array('route' => array('permissionsSaveUpdate', $permission->id), 'method' => 'POST')) }}
                 {{-- Form model binding to automatically populate our fields with permission data --}}
-                <input name="id" type="hidden" value="{{$permission->id}}">
+                <input type="hidden" name="_method" value="PUT">
 
                 <div class="form-group">
                     {{ Form::label('name', 'Имя разрешения') }}
