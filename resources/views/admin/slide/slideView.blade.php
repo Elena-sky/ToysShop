@@ -61,11 +61,9 @@
 
                                 <td>
                                     @can('Sliders-Delete')
-                                        <a href="{{route('actionSlideDelete', [$slide->id])}}">
-                                            <button type="button" class="btn btn-danger"><span
-                                                        class="glyphicon glyphicon-remove"></span> Удалить
-                                            </button>
-                                        </a>
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['actionSlideDelete', $slide->id] ]) !!}
+                                        {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::close() !!}
                                     @endcan
                                 </td>
 
