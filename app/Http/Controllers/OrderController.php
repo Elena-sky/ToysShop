@@ -19,18 +19,19 @@ use \Gloudemans\Shoppingcart\Facades\Cart;
 class OrderController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['isAuth']);
+    }
+
     /**
      * Returns the first image.
      *
      * @param $id
      * @return bool
      */
-    public static function getGoodMainImage($id)
+    public static function getGoodMainImage(Goods $good)
     {
-        $good = Goods::find($id);
-        if (!$good) return false;
-        $good->getFirstImage();
-
         return $good->getFirstImage();
     }
 
@@ -42,10 +43,9 @@ class OrderController extends Controller
      */
     public function viewCheckoutPage()
     {
-        $user = Auth::user();
         $cartItems = Cart::content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
 
-        return view('checkout.checkoutData', ['user' => $user, 'items' => $cartItems]);
+        return view('checkout.checkoutData', ['items' => $cartItems]);
     }
 
 
@@ -57,24 +57,41 @@ class OrderController extends Controller
      */
     public function viewCheckoutSave(Request $request)
     {
+        $this->validate($request, [
+            'full_name' => 'required|max:100',
+            'phone' => 'required|integer',
+            'city' => 'required',
+            'delivery_method' => 'required',
+            'payment_method' => 'required',
+        ]);
+
         $userId = Auth::id(); //проверка на пользователя
         $fullName = $request->full_name;
         $phone = $request->phone;
         $city = $request->city;
-        $deliveryAddress = $request->delivery_address;
+        $deliveryAddress = (!empty($request->delivery_address)) ? $request->delivery_address : '';
+        $comment = (!empty($request->comment)) ? $request->comment : '';
 
-        if (!empty($fullName) && !empty($phone) && !empty($city) && !empty($deliveryAddress) && !empty($userId)) {
+        if (!empty($userId)) {
             //Добавление в таблицу 'orders_delivery'
-            $newDelivery = OrdersDelivery::create(['full_name' => $fullName, 'phone' => $phone, 'city' => $city,
-                'payment_method' => $request->payment_method, 'delivery_method' => $request->delivery_method,
+            $newDelivery = OrdersDelivery::create([
+                'full_name' => $fullName,
+                'phone' => $phone,
+                'city' => $city,
+                'payment_method' => $request->payment_method,
+                'delivery_method' => $request->delivery_method,
                 'delivery_address' => $deliveryAddress]);
 
             //Получение Id информации по доставке
             $lastDeliveryId = $newDelivery->id;
 
             //Создание заказа в таблице 'orders'
-            $newOrders = Orders::create(['user_id' => $userId, 'delivery_id' => $lastDeliveryId, 'total' => Cart::subtotal(),
-                'status' => $request->status, 'user_coment' => $request->comment]);
+            $newOrders = Orders::create([
+                'user_id' => $userId,
+                'delivery_id' => $lastDeliveryId,
+                'total' => Cart::subtotal(),
+                'status' => $request->status,
+                'user_coment' => $comment]);
 
             //Получение Id заказа
             $lastOrderId = $newOrders->id;
@@ -87,9 +104,14 @@ class OrderController extends Controller
                 $goodQty = $cart->qty;
 
                 //Заполняем таблицу 'OrdersGoods'
-                $add = OrdersGoods::create(['order_id' => $lastOrderId, 'goods_id' => $goodId, 'count' => $goodQty]);
+                $add = OrdersGoods::create([
+                    'order_id' => $lastOrderId,
+                    'goods_id' => $goodId,
+                    'count' => $goodQty]);
             }
         }
+
+        Cart::destroy();
 
         return \redirect(route('viewOldOrders'));
     }
@@ -99,9 +121,7 @@ class OrderController extends Controller
      */
     public function viewCheckoutAddress()
     {
-        $user = Auth::user();
-
-        return view('checkout.checkoutData', ['user' => $user]);
+        return view('checkout.checkoutData');
     }
 
 }
