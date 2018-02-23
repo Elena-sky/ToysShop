@@ -11,6 +11,7 @@ use App\Orders;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
@@ -42,7 +43,7 @@ class AdminController extends Controller
         $lastNewGoods = Goods::query()
             ->where('is_new', 1)
             ->orderBy('id', 'desc')
-            ->limit(8)
+            ->limit(Config::get('constants.limit.last_new_goods'))
             ->get();
         return view('admin.index', compact('countNewOrders', 'countProduct', 'countUser', 'categories', 'lastNewGoods'));
     }

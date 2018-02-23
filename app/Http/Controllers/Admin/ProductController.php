@@ -8,6 +8,7 @@ use App\Categories;
 use App\Goods;
 use App\GoodsImages;
 use App\ImageUploader;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 
 use App\Post;
@@ -35,7 +36,7 @@ class ProductController extends Controller
     {
         $goods = Goods::query()
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(Config::get('constants.paginate.admin_product'));
         $category = Categories::getCategories();
 
         return view('admin.product.productChange', compact('goods', 'category'));

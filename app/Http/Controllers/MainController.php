@@ -12,6 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 
 class MainController extends BaseController
@@ -27,7 +28,7 @@ class MainController extends BaseController
     public function categoryAction($id)
     {
         //$goods = Categories::find($id)->goods->paginate(5);
-        $goods = Goods::query()->where('category_id', $id)->paginate(6);
+        $goods = Goods::query()->where('category_id', $id)->paginate(Config::get('constants.paginate.category_left'));
 
         $categoryName = Categories::find($id);
         return view('products.category-left', compact('goods', 'categoryName'));
@@ -50,7 +51,7 @@ class MainController extends BaseController
         $lastNewGoods = Goods::query()
             ->where('is_new', 1)
             ->orderBy('id', 'desc')
-            ->limit(8)
+            ->limit(Config::get('constants.limit.last_new_goods'))
             ->get();
 
         return view('index', compact('categories', 'slides', 'lastNewGoods'));
