@@ -66,9 +66,9 @@ class SlideController extends Controller
 
         foreach ($fileName as $onefile) {
             $dataImages = ['filename' => $onefile, 'displaing' => $displaing];
-
-            Sliders::create($dataImages);
         }
+
+        Sliders::insert($dataImages);
 
         return \redirect(route('viewSlideAdd'));
     }

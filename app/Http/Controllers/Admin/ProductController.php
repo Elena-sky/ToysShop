@@ -85,10 +85,11 @@ class ProductController extends Controller
 
         if (!empty($fileName)) {
             foreach ($fileName as $onefile) {
-                $dataImages = ['filename' => $onefile, 'product_id' => $productId];
+                $dataImages[] = ['filename' => $onefile, 'product_id' => $productId];
 
-                GoodsImages::create($dataImages);
             }
+
+            GoodsImages::insert($dataImages);
         }
 
         //Display a successful message upon save

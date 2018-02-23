@@ -81,7 +81,6 @@ class OrderController extends Controller
                 'payment_method' => $request->payment_method,
                 'delivery_method' => $request->delivery_method,
                 'delivery_address' => $deliveryAddress]);
-
             //Получение Id информации по доставке
             $lastDeliveryId = $newDelivery->id;
 
@@ -100,15 +99,10 @@ class OrderController extends Controller
             $cartAll = Cart::content();
 
             foreach ($cartAll as $cart) {
-                $goodId = $cart->id;
-                $goodQty = $cart->qty;
-
-                //Заполняем таблицу 'OrdersGoods'
-                $add = OrdersGoods::create([
-                    'order_id' => $lastOrderId,
-                    'goods_id' => $goodId,
-                    'count' => $goodQty]);
+                $data[] = ['order_id' => $lastOrderId, 'goods_id' => $cart->id, 'count' => $cart->qty];
             }
+
+            OrdersGoods::insert($data);
         }
 
         Cart::destroy();
