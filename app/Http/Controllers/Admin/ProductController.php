@@ -159,14 +159,35 @@ class ProductController extends Controller
 
         if (!empty($fileName)) {
             foreach ($fileName as $onefile) {
-                $dataImages = ['filename' => $onefile, 'product_id' => $productId];
-                GoodsImages::create($dataImages);
+                $dataImages[] = ['filename' => $onefile, 'product_id' => $productId];
+
             }
+            GoodsImages::insert($dataImages);
+
         }
 
         return redirect()->route('productView')
             ->with('flash_message', 'Товар, 
             ' . $goodData->name . ' сохранен');
+    }
+
+
+    /**
+     * Ajax Remove from the product a picture.
+     *
+     * @return bool
+     */
+    public function deleteProductImg()
+    {
+        $data = $_POST;
+
+        $imgDelete = GoodsImages::find($data['imgId']);
+        $path = "uploads/goods/" . $imgDelete->filename;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+
+        $imgDelete->delete();
     }
 
 

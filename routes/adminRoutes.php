@@ -9,6 +9,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/product/add', 'ProductController@actionAddNewProduct')->name('actionNewAddProduct'); // Store a newly created resource in storage.
     Route::get('/product/update/{id}', 'ProductController@viewProductUpdate')->name('productUpdateView'); // Show the form for editing the specified resource.
     Route::put('/product/save/{id}', 'ProductController@actionProductUpdateSave')->name('actionUpdateSave'); //  Update the specified resource in storage.
+    Route::post('/product/delete-img', 'ProductController@deleteProductImg'); // Ajax remove from the product a picture
     Route::delete('/product/delete/{id}', 'ProductController@actionProductDelete')->name('actionDeleteProduct'); // Remove the specified resource from storage.
 
     // Category
@@ -68,13 +69,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::put('/order/delivery-update/save/{id}', 'OrdersController@adminActionDeliverySave')->name('actionDeliverySave'); // Update of delivery
     Route::get('/order/order-update/{id}', 'OrdersController@adminViewOrderUpdate')->name('viewOrderUpdate'); // Show page order for editing.
     Route::put('/order/order-update/save/{id}', 'OrdersController@adminActionOrderSave')->name('actionOrderSave'); // Update order page.
-    Route::delete('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); // Remove order.
-
-});
-
-Route::group(['namespace' => 'Ajax', 'prefix' => 'admin'], function () {
-// Контроллеры в пространстве имён "App\Http\Controllers\Ajax"
-    Route::post('/product/delete-img', 'ProductController@deleteProductImg'); // Ajax remove from the product a picture
     Route::post('/order/product-action', 'OrdersController@adminActionOrderProduct'); // Ajax edit the quantity or delete the item in the order
+    Route::delete('/order/delete/{id}', 'OrdersController@adminOrderDelete')->name('orderDelete'); // Remove order.
 
 });

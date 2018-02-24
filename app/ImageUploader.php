@@ -15,7 +15,7 @@ trait ImageUploader
 {
     public static function uploader(Request $request, $path = '')
     {
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('PUT') || $request->isMethod('post')) {
 
             if ($request->hasFile('images')) {
                 $files = $request->file('images');
