@@ -30,7 +30,7 @@ Route::get('/old-orders/{id}', 'HomeController@userViewOldOrdersById')->name('vi
 
 //Контакты
 Route::get('/contact', 'MainController@viewContact')->name('contact');
-Route::post('/contact/sendmail', 'Ajax\ContactController@send'); // Ajax Sending a letter of contact form.
+Route::post('/contact/sendmail', 'ContactController@send'); // Ajax Sending a letter of contact form.
 Route::get('/contact/page', 'MainController@viewContactPage')->name('contactPage'); // Show contact page.
 
 //Категории и продукты

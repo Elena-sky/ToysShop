@@ -95,7 +95,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '/contact/sendmail',
+            url: document.location.origin + '/contact/sendmail',
             data: data,
             success: function (result) {
                 $('#sendmessage').show();
