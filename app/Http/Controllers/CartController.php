@@ -57,9 +57,10 @@ class CartController extends Controller
      *
      * @return array|bool
      */
-    public function itemUpdate()
+    public function itemUpdate(Request $request)
     {
-        $data = $_POST;
+
+        $data = $request;
         $result = false;
         $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
         $goodsData = self::kostilMeth();
@@ -89,9 +90,9 @@ class CartController extends Controller
      *
      * @param $id
      */
-    public function itemAdd()
+    public function itemAdd(Request $request)
     {
-        $data = $_POST;
+        $data = $request;
         $goodsData = self::kostilMeth();
 
         if (!empty($data)) {
@@ -120,9 +121,9 @@ class CartController extends Controller
      *
      * @param $id
      */
-    public function itemDelete()
+    public function itemDelete(Request $request)
     {
-        $data = $_POST;
+        $data = $request;
 
         $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
         $goodsData = Cart::content();
