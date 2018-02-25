@@ -51,74 +51,93 @@ class CartController extends Controller
         return $$returnable;
     }
 
+
     /**
-     * AJAX actions add, update and remove product from the card.
+     * AJAX update an product from the card.
      *
      * @return array|bool
      */
-    public function actionC()
+    public function itemUpdate()
     {
         $data = $_POST;
         $result = false;
         $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
         $goodsData = self::kostilMeth();
 
-        $cartItem = Cart::content();
+        if (!empty($data)) {
+            $id = $data['id'];  // id товара
+            $rowId = self::searchInCart($id, $goodsData); //ищем этот товар в корзине
+
+            if (!is_null($rowId)) { // если не пустой $rowId
+                $qty = $data['count'];
+                $prise = $data['price'];
+
+                $goodPrice = $prise * $qty;
+
+                $count = Cart::update($rowId, $qty);
+
+                $result = ['qty' => $count, 'goodPrice' => $goodPrice];
+            }
+
+            return $result;
+        }
+    }
+
+
+    /**
+     * AJAX аdd an product from the card.
+     *
+     * @param $id
+     */
+    public function itemAdd()
+    {
+        $data = $_POST;
+        $goodsData = self::kostilMeth();
 
         if (!empty($data)) {
             $id = $data['id'];  // id товара
             $rowId = self::searchInCart($id, $goodsData); //ищем этот товар в корзине
 
-            switch ($data['action']) {
-                case 'add':   //добваление товара
+            if (is_null($rowId)) { //не находим, значить нужно добавить
+                $good = Goods::find($id); //стягиваем информацию о товаре по id
+                $cartAdd = Cart::add($id, $good->name, 1, $good->price); //добавляем в корзину 1 шт товара
 
-                    if (is_null($rowId)) { //не находим, значить нужно добавить
-                        $good = Goods::find($id); //стягиваем информацию о товаре по id
-                        $cartAdd = Cart::add($id, $good->name, 1, $good->price); //добавляем в корзину 1 шт товара
+                $result = ['price' => $good->price];
 
-                        $result = ['price' => $good->price];
+            } else {
+                $item = Cart::get($rowId); //ищем товар в корзине для добавления колличества +1
+                $count = $item->qty;// записываем в  $count текущее колличество
+                Cart::update($rowId, ++$count); //добавляет +1 ед товара
 
-                    } else {
-                        $item = Cart::get($rowId); //ищем товар в корзине для добавления колличества +1
-                        $count = $item->qty;// записываем в  $count текущее колличество
-                        Cart::update($rowId, ++$count); //добавляет +1 ед товара
-
-                        $result = ['qty' => $count, 'price' => $item->price];
-
-                    }
-
-                    break;
-
-                case 'delete':
-
-                    if (!is_null($rowId)) { // если не пустой $rowId
-
-                        $result = Cart::remove($rowId); // удаляем
-                    }
-
-                    break;
-
-                case 'update':
-                    if (!is_null($rowId)) { // если не пустой $rowId
-                        $qty = $data['count'];
-                        $prise = $data['price'];
-
-                        $goodPrice = $prise * $qty;
-
-                        $count = Cart::update($rowId, $qty);
-
-                        $result = ['qty' => $count, 'goodPrice' => $goodPrice];
-
-                    }
-
-
-                    break;
+                $result = ['qty' => $count, 'price' => $item->price];
             }
-//            Cart::store($userName . '-shoppingCart'); //сохраняем- POST 500 уже сохранен
-
-            return $result;
         }
     }
+
+
+    /**
+     * AJAX delete an product from the card.
+     *
+     * @param $id
+     */
+    public function itemDelete()
+    {
+        $data = $_POST;
+
+        $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
+        $goodsData = Cart::content();
+
+        if (!empty($data)) {
+            $id = $data['id'];  // id товара
+            $rowId = self::searchInCart($id, $goodsData); //ищем этот товар в корзине
+
+            if (!is_null($rowId)) { // если не пустой $rowId
+
+                $result = Cart::remove($rowId); // удаляем
+            }
+        }
+    }
+
 
     /**
      * Search in cart

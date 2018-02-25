@@ -9,8 +9,8 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type: "post",
-            url: "http://webshop.loc/cart/item-update",
-            data: {id: id, action: 'add'},
+            url: "http://webshop.loc/cart/item-add",
+            data: {id: id},
             success: function (returnable) {
                 console.log(returnable);
                 console.log(id + ' was successfully added!');
@@ -29,8 +29,8 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type: "post",
-            url: "http://webshop.loc/cart/item-update",
-            data: {id: id, action: 'delete'},
+            url: "http://webshop.loc/cart/item-delete",
+            data: {id: id, _method: 'delete'},
             success: function (del) {
                 console.log(id + ' удалилось');
                 window.location.reload(true);
@@ -49,7 +49,7 @@ $(document).ready(function () {
             },
             type: "post",
             url: "http://webshop.loc/cart/item-update",
-            data: {id: $(this).parents('tr').data('item-id'), count: $(this).val(), action: 'update', price: price},
+            data: {id: $(this).parents('tr').data('item-id'), count: $(this).val(), _method: 'put', price: price},
             success: function (result) {
                 console.log(price);
                 window.location.reload(true);

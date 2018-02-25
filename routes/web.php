@@ -39,10 +39,12 @@ Route::get('/product/{id}', 'GoodController@productDetail')->name('goodView'); /
 
 // Shopping cart
 Route::get('/cart', 'CartController@cartView')->name('cartView');  // Display the shopping cart.
-Route::post('cart/item-update', 'CartController@actionC'); // AJAX actions add, update and remove product from the card.
+Route::put('/cart/item-update', 'CartController@itemUpdate'); // AJAX action update product from the card.
+Route::delete('/cart/item-delete', 'CartController@itemDelete'); // AJAX action remove product from the card.
+Route::post('/cart/item-add', 'CartController@itemAdd'); // AJAX action add product from the card.
 
 //Заказ
-Route::get('cart/checkout', 'OrderController@viewCheckoutPage')->name('checkoutData'); // Order preview.
+Route::get('/cart/checkout', 'OrderController@viewCheckoutPage')->name('checkoutData'); // Order preview.
 Route::post('/cart/checkout/save', 'OrderController@viewCheckoutSave')->name('viewSaveCheckout'); // Action сохранения заказа в базу данных
 
 //Поиск по названию товаров
