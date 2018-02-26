@@ -9,7 +9,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type: "post",
-            url: "http://webshop.loc/cart/item-add",
+            url: "http://moreigrushek.01g.info/cart/item-add",
             data: {id: id},
             success: function (returnable) {
                 console.log(returnable);
@@ -29,7 +29,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type: "post",
-            url: "http://webshop.loc/cart/item-delete",
+            url: "http://moreigrushek.01g.info/cart/item-delete",
             data: {id: id, _method: 'delete'},
             success: function (del) {
                 console.log(id + ' удалилось');
@@ -48,7 +48,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type: "post",
-            url: "http://webshop.loc/cart/item-update",
+            url: "http://moreigrushek.01g.info/cart/item-update",
             data: {id: $(this).parents('tr').data('item-id'), count: $(this).val(), _method: 'put', price: price},
             success: function (result) {
                 console.log(price);

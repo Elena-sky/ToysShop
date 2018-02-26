@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'cartWorker' => \App\Http\Middleware\cartWorker::class,
         'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
         'clearance' => \App\Http\Middleware\ClearanceMiddleware::class,
+        'isAuth' => \App\Http\Middleware\UserAuth::class,
+
     ];
 }
