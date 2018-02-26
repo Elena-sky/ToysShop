@@ -6,6 +6,7 @@ use App\Categories;
 use App\Goods;
 use App\Sliders;
 use App\User;
+use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Config;
 class MainController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct()
+    {
+        $this->middleware(['isAuth']);
+    }
 
     /**
      * Select category.
@@ -53,6 +59,7 @@ class MainController extends BaseController
             ->orderBy('id', 'desc')
             ->limit(Config::get('constants.limit.last_new_goods'))
             ->get();
+
 
         return view('index', compact('categories', 'slides', 'lastNewGoods'));
     }

@@ -20,68 +20,27 @@ class CartController extends Controller
 {
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['isAuth']);
+    }
+
+
+    /**
      * Display the shopping cart.
      *
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function cartView(Request $request)
+    public function cartView()
     {
-        $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
-
         $cartItems = Cart::content();//﻿ получаем весь массив айдишников товаров текущего экземпляра корзины
 
         return view('basket', ['items' => $cartItems]);
-    }
-
-
-    /**
-     * Return shopping cart.
-     *
-     * @param string $returnable
-     * @return mixed
-     */
-    public static function kostilMeth($returnable = 'content')
-    {
-        $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
-        Cart::restore($userName . '-shoppingCart'); // Востанавливем корзину по уникальному ID
-        $total = Cart::total();
-        $count = Cart::count();
-        $content = Cart::content();
-        return $$returnable;
-    }
-
-
-    /**
-     * AJAX update an product from the card.
-     *
-     * @return array|bool
-     */
-    public function itemUpdate(Request $request)
-    {
-
-        $data = $request;
-        $result = false;
-        $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
-        $goodsData = self::kostilMeth();
-
-        if (!empty($data)) {
-            $id = $data['id'];  // id товара
-            $rowId = self::searchInCart($id, $goodsData); //ищем этот товар в корзине
-
-            if (!is_null($rowId)) { // если не пустой $rowId
-                $qty = $data['count'];
-                $prise = $data['price'];
-
-                $goodPrice = $prise * $qty;
-
-                $count = Cart::update($rowId, $qty);
-
-                $result = ['qty' => $count, 'goodPrice' => $goodPrice];
-            }
-
-            return $result;
-        }
     }
 
 
@@ -93,7 +52,9 @@ class CartController extends Controller
     public function itemAdd(Request $request)
     {
         $data = $request;
-        $goodsData = self::kostilMeth();
+        $goodsData = Cart::content();
+
+        $userName = (Auth::check()) ? Auth::id() : false; //проверка на пользователя
 
         if (!empty($data)) {
             $id = $data['id'];  // id товара
@@ -117,6 +78,38 @@ class CartController extends Controller
 
 
     /**
+     * AJAX update an product from the card.
+     *
+     * @return array|bool
+     */
+    public function itemUpdate(Request $request)
+    {
+        $data = $request;
+        $result = false;
+        $goodsData = Cart::content();
+        $userId = (Auth::check()) ? Auth::id() : false; //проверка на пользователя
+
+        if (!empty($data)) {
+            $id = $data['id'];  // id товара
+            $rowId = self::searchInCart($id, $goodsData); //ищем этот товар в корзине
+
+            if (!is_null($rowId)) { // если не пустой $rowId
+                $qty = $data['count'];
+                $prise = $data['price'];
+
+                $goodPrice = $prise * $qty;
+
+                $count = Cart::update($rowId, $qty);
+
+                $result = ['qty' => $count, 'goodPrice' => $goodPrice];
+            }
+
+            return $result;
+        }
+    }
+
+
+    /**
      * AJAX delete an product from the card.
      *
      * @param $id
@@ -124,8 +117,6 @@ class CartController extends Controller
     public function itemDelete(Request $request)
     {
         $data = $request;
-
-        $userName = (Auth::check()) ? Auth::id() : 'anonim'; //проверка на пользователя
         $goodsData = Cart::content();
 
         if (!empty($data)) {
