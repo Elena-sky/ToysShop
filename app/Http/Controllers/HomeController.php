@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'isAuth']);
     }
 
 
@@ -30,9 +30,8 @@ class HomeController extends Controller
      */
     public function profileUser()
     {
-        $user = Auth::user();
 
-        return view('user.profile', ['user' => $user]);
+        return view('user.profile');
     }
 
 
