@@ -109,50 +109,6 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mr-lg-2" id="ordersDropdown" href="#" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-fw fa-bell"></i>
-                    <span class="d-lg-none">Заказы
-              <span class="badge badge-pill badge-warning">6 New</span>
-            </span>
-                    <span class="indicator text-warning d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle"></i>
-            </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-
-                    <?$orders = App\Orders::where('is_new', '1')->get()?>
-                    @if(isset($orders))
-                        <h6 class="dropdown-header">Новые заказы:</h6>
-
-                        @foreach(App\Orders::where('is_new', '1')->get() as $order)
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item" href="{{route('viewOneOrder', [$order->id])}}">
-                            <span class="text-success">
-                                <strong><i class="fa fa-long-arrow-up fa-fw"></i>Заказ № {{$order->id}}</strong>
-                            </span>
-                                <span class="small float-right text-muted">{{$order->created_at}}</span>
-                                <div class="dropdown-message small">Кликните для детального просмотра заказа.</div>
-
-                                <div class="dropdown-message small">
-                                    Комментарий: {{($order->user_coment)? $order->user_coment: "нету" }} <br>
-                                    Статус: {{($order->status)? 'Обрабатываеться' : 'Обработан'}} <br>
-                                    Оплата: {{($order->is_paid)? 'Оплачен' : 'Неоплачен'}}</div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-
-                        @endforeach
-
-                        <a class="dropdown-item small" href="{{route('viewAllOrders')}}">Смотреть все заказы</a>
-
-                    @endif
-
-                </div>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link">
                     Ваша роль - {{(Auth::user())->roles()->pluck('name')->implode(' ')}}</a>

@@ -8,7 +8,6 @@
     <meta name="googlebot" content="index,follow,snippet,archive">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Toy shop">
-    <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
     <meta name="keywords" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -163,8 +162,9 @@ _________________________________________________________ -->
         <div class="navbar-header">
 
             <a class="navbar-brand home" href="{{route('index')}}" data-animate-hover="bounce">
-                <img src="{{ asset("img/logo.png") }}" alt="Obaju logo" class="hidden-xs">
-                <img src="{{ asset("img/logo-small.png") }}" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                <img src="{{ asset("img/logo.png") }}" alt="More Igrushek" class="hidden-xs">
+                <img src="{{ asset("img/logo-small.png") }}" alt="More Igrushek" class="visible-xs"><span
+                        class="sr-only">More Igrushek - go to homepage</span>
             </a>
             <div class="navbar-buttons">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -284,13 +284,10 @@ _________________________________________________________ -->
 
                 <hr>
 
-
                 <hr class="hidden-md hidden-lg hidden-sm">
 
             </div>
             <!-- /.col-md-3 -->
-
-
 
             <div class="col-md-3 col-sm-6">
 
@@ -314,7 +311,6 @@ _________________________________________________________ -->
                 <h4>Где найти нас</h4>
 
                 <p><strong>Одесса</strong>
-                    <br>Одеська область
                     <br>проспект Добровольського
                     <br>114/2
                     <br>

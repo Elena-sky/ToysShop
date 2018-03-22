@@ -45,7 +45,8 @@
                                         </div>
 
                                         <p class="text-center">
-                                        <h3>{{$category->name}}</h3></p>
+                                        <h3>{{$category->name}}</h3>
+                                        </p>
 
                                     </div>
                                 </div>

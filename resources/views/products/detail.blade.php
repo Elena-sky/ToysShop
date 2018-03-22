@@ -62,8 +62,7 @@ _________________________________________________________ -->
                                             data-good-id="{{ $good->id}}">
                                         <i class="fa fa-shopping-cart"></i> Добавить в корзину
                                     </button>
-                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Add to
-                                        wishlist</a>
+
                                 </p>
 
                             </div>
