@@ -1,5 +1,4 @@
-<p align="center">Toys shop</p>
-
+## Toys shop
 
 This is web store based on laravel. 
 This online store has a shopping cart, user profile, order history, admin panel. 
