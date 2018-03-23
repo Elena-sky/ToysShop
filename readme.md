@@ -5,6 +5,9 @@ This online store has a shopping cart, user profile, order history, admin panel.
 In the admin panel, you can change content of the site, manage orders and assign access roles to users.
 
 
+## Demo: http://www.moreigrushek.01g.info
+
+
 ## Tools: 
 
 - php(laravel);
