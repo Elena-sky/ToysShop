@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "http://moreigrushek.01g.info/admin/order/product-action",
+            url: document.location.origin + "/admin/order/product-action",
             data: {ogid: ogid, oldVal: oldVal, action: 'update', '_token': token},
             success: function (response) {
                 // window.location.reload(true);
@@ -63,7 +63,7 @@ $(document).ready(function () {
         if (confirm('Удалить?')) {
             $.ajax({
                 type: "POST",
-                url: "http://moreigrushek.01g.info/admin/order/product-action",
+                url: document.location.origin + "/admin/order/product-action",
                 data: {ogid: ogid, action: 'delete', '_token': token},
                 success: function (response) {
                     window.location.reload(true);
@@ -87,7 +87,7 @@ $(document).ready(function () {
             if (confirm('Удалить картинку?')) {
                 $.ajax({
                     type: "POST",
-                    url: "http://moreigrushek.01g.info/admin/product/delete-img",
+                    url: document.location.origin + "/admin/product/delete-img",
                     data: {imgId: imgId, '_token': token},
                     success: function () {
                         console.log("удалило");
